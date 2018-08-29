@@ -1,13 +1,15 @@
 またたき回路
 ============
 
--  書いた人: Kenichi Ito(nichiden\_27)
+-  書いた人: Kenichi Ito(nichiden_27)
 -  更新日時: 2017/03/25
 -  実行に必要な知識・技能: 電子回路、AVRマイコン
 -  タスクの重さ: 3/数週間
 -  タスクの必須度: 2/たまにやるべき
 -  元資料
--  ``一等星投影機付属またたき回路仕様書.docx`` by 西村陽樹(nichiden\_23)
+
+   -  ``一等星投影機付属またたき回路仕様書.docx`` by
+      西村陽樹(nichiden_23)
 
 概要
 ----
@@ -175,20 +177,19 @@ Twinkle.h
 
 -  public変数
 
-   -  int bit\_num[6]:
-      パターンの番号とマイコン側のピンの順番の対応を示す
+   -  int bit_num[6]: パターンの番号とマイコン側のピンの順番の対応を示す
    -  unsigned int on[12]:
       27で追加した、またたきをピンごとに無効化するための配列。1か0
-   -  unsigned int on\_duration[12]:
+   -  unsigned int on_duration[12]:
       一周期のうちLEDが点灯している時間(=またたきパターン)を格納する
 
 -  private変数
 
-   -  unsigned long shift\_chaos: ピン同士を入れ替える際に使う乱数値
+   -  unsigned long shift_chaos: ピン同士を入れ替える際に使う乱数値
    -  unsigned long chaos[12]: またたきパターン用の乱数値
-   -  unsigned int min\_duration[12]:
-      on\_durationの最小値。大きくするとまたたき効果が強くなる
-   -  unsigned int refresh\_rate/rr\_count/shift\_rate/sr\_count: (後述)
+   -  unsigned int min_duration[12]:
+      on_durationの最小値。大きくするとまたたき効果が強くなる
+   -  unsigned int refresh_rate/rr_count/shift_rate/sr_count: (後述)
 
 Twinkle.cpp
 ~~~~~~~~~~~
@@ -215,8 +216,8 @@ Twinkle.cpp
                        shift_rate(TWINKLE_SHIFT),
                        sr_count(TWINKLE_SHIFT){};
 
-port\_shift()
-^^^^^^^^^^^^^
+port_shift()
+^^^^^^^^^^^^
 
 間欠カオス法はあくまで擬似乱数なので、周期性が目立つことがある(らしい)。
 定期的にまたたきパターンと各出力ピンの対応を変えることで、これを防ぐ。
@@ -263,8 +264,8 @@ refresh()
 また、\ ``on_duration``\ は160を超えてはいけないので、\ ``ON_DURATION_MAX``\ と比較して小さい方を採用する。
 実行時間は1msらしい。
 
-chaos\_gen(y)
-^^^^^^^^^^^^^
+chaos_gen(y)
+^^^^^^^^^^^^
 
 入力yに対して間欠カオス法による擬似乱数を一個出力する。
 元の漸化式にアレンジを加え、yの変化が微小になることがないよう調整してある。
@@ -308,8 +309,8 @@ Twinkle.ino
 
 AVRマイコンの制御に直接関連するコードはこちらにまとめた。
 
-ISR(INT0\_vect)
-^^^^^^^^^^^^^^^
+ISR(INT0_vect)
+^^^^^^^^^^^^^^
 
 INT0割り込みで呼ばれる。
 PORTAとPORTBをすべてH、つまり常時点灯・またたきなしの状態にする。
@@ -321,8 +322,8 @@ PORTAとPORTBをすべてH、つまり常時点灯・またたきなしの状態
       PORTB = 0xFF;
     }
 
-ISR(TIMER0\_COMPA\_vect)
-^^^^^^^^^^^^^^^^^^^^^^^^
+ISR(TIMER0_COMPA_vect)
+^^^^^^^^^^^^^^^^^^^^^^
 
 タイマ0割り込みで呼ばれる。
 PORTAとPORTBをすべてHにしてから、Twinkleクラスの\ ``generate()``\ 関数を呼んでパターンの更新処理をする。

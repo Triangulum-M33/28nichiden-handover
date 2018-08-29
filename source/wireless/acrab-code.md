@@ -1,6 +1,7 @@
-# 無線制御(Acrabの実装解説)
+# 無線制御(Acrabの実装解説)※工事中
 - 書いた人: Kenichi Ito(nichiden_27)
-- 更新日時: 2017/05/05
+- 更新: Hanaka Satoh(nichiden_28)
+- 更新日時: 2018/08/26
 - 実行に必要な知識・技能: Web制作、JavaScript
 - 難易度: 3/練習・勉強が必要
 - 情報の必須度: 4/担当者には必須
@@ -35,8 +36,9 @@ JSONファイルのため構造の概略のみ示す。
 ```
 三文字コードというのは、プログラム中で**星座・投影機・そのグループ**を区別するため一意に割り振った三文字を指す。
 星座にはもともと[この形式の略符が用意されている](http://www.nao.ac.jp/new-info/constellation2.html)こともあり、文字数を統一して可読性を高めることを目指した。
+また、`ACRAB`ディレクトリ内に`88星座+略符一覧.txt`を用意してみたので、良ければ参考にしてほしい。
 
-例えば星座絵のピン番号を入れ替える際には、`port.(星座名).pin`を書き換えれば良い。
+例えば星座絵のピン番号を入れ替える際には、`port.(星座名).pin`を書き換えれば良い。(※北天、南天それぞれでpin番号が重複しないようにする)
 `Piscium`側に設定を反映させるためページをリロードすること。
 
 ## acrab_main.js
@@ -54,6 +56,7 @@ $がついたものはjQueryの**readyイベント**といい、**HTMLが全て�
 ページを書き換えるような処理ではページが読み込まれていないと意味がないので、こちらを使うようにしよう。
 
 即時関数・readyイベントで行っている処理は以下の通り。
+冒頭の`acrab_conf.json`の取得とパースだけはreadyイベントでは上手くいかなかったので即時関数を使用している。
 
 - `acrab_conf.json`の取得とパース
     - `$.getJSON()`を使うだけ
@@ -70,10 +73,6 @@ $がついたものはjQueryの**readyイベント**といい、**HTMLが全て�
 
 開発の途中に順次追加したのでかなりグチャグチャになっている。
 自由に読みやすく変更して構わない。
-
-本番まで気づかなかったため未修正だが、実は**コード先頭の即時関数もreadyイベントにすべき**である。
-「`port`と`group`の`name`をボタンに表示」する処理がHTML読み込み後でないとできないからだ。
-稀にだが`acrab_conf.json`が読み込まれない不具合はこれが原因と思われる。
 
 ### getRequest(address, data)
 `address`にURLパラメータとして`data`を付けて送信する関数。
@@ -99,7 +98,7 @@ return deferred;
 ```
 `$.get()`は、指定したURLにGETリクエストを送信する。
 `data`に連想配列を指定するとURLパラメータに整形してくれる嬉しい機能付きだ。
-また、通信が切れている時に固まらないよう、1000msのタイムアウトを設定している。
+また、通信が切れている時に固まらないよう、1500msのタイムアウトを設定している。(1000msだと通信失敗することが多かった。)
 
 その後の`.done()`や`.fail()`にはそれぞれ通信成功時・失敗時の処理を書く。
 ここでは通信するたびにブラウザコンソールに結果を出力し、受信状況の欄を更新するようになっている。
@@ -153,7 +152,8 @@ getRequest(address, data).done(function(res){checkStatus(res)});
 `Piscium`には、`(ip)/setConstellationName/status.json`にアクセスすることでピンごとに名前を設定する機能がある。
 これで`(ip)/setPort/status.json?And=0`のように三文字コードをURLに使えるようになり、ユーザが見てもわかりやすい。
 
-`acrab_conf.json`が読み込まれた後のタイミングで実行される。
+`acrab_conf.json`が読み込まれた後のタイミングで実行される。また、受信状況の「更新」ボタンを押しても実行される。(北天・南天とも)
+これは`PISCIUM`の再起動時に、ページを再読み込みしなくても、「更新」ボタンを押せば`PISCIUM`にピン名称を送れるようにするためである。
 `port.(三文字コード).pin`の中身を順に取得して`getRequest()`に渡すという流れである。
 
 ### buttonオブジェクト
@@ -245,10 +245,9 @@ while(dd < d+T) dd = new Date().getTime();
 LEDの突入電流が流れる時間は数ms程度なので、十分大きくかつ人間には長すぎない程度と判断している。
 
 ## scenarioディレクトリ
-`scenario/`以下には、0.jsonから連番のJSONファイルが入っている。
-これは、番組の指示書を`Acrab`から読み取れるようJSON形式に変換したものである。
+`scenario/`以下には、番組の指示書を`Acrab`から読み取れるようJSON形式に変換したJSONファイルが入っている。
 
-### n.json
+### *.json
 JSONファイルの構造を簡単に示す。
 ```
 ├── "info" [番組情報]
@@ -310,73 +309,40 @@ JSONファイルの構造を簡単に示す。
   ]
  }
 ```
+28で使ったJSONファイルは一旦そのまま残してあるので、`Acrab`の動作テスト用やJSONファイルの書き方例として参考にしてほしい。
 
-### csv/jsonify.py
-CSVで記述した指示書データをJSONに変換するスクリプト。
-CSVファイル側は、タイミングや投影機などのフィールドをJSON変換用に準備しておく必要がある([Acrabの記事](acrab.html)も参照)。
-
-(CSVの記述例)
-```
-word,timing,projector
-,,"{""Fst"": 1, ""Gxy"": 1}"
-プラネタリウムはいかがでしょう,post,"{""St1"": 1, ""St2"": 1}"
-```
-文字コードがUTF-8になっているのを確認したら、`jsonify.py`で変換しよう。
-```python
-# jsonify.py
-# change encode to utf-8 with iconv etc.
-import codecs,csv,json
-result = str([json.dumps(l, ensure_ascii=False) for l in csv.DictReader(codecs.open('1.csv', 'rU'))])
-print(result.replace('\'','"').replace('\\"','"').replace('"{','{').replace('}"','}').replace('"}','}').decode('string-escape'))
-```
-筆者がPythonに慣れてないのでわざわざCSVのファイル名をコードに書く必要がある。
-改良等ご自由に。
-
-`codecs.open()`のオプションに"rU"とつけているのは改行文字対策(らしい、多分コピペした)。
-あとは[pythonでcsv-jsonの変換ツールを作るときに困ったこと](http://qiita.com/hakuaneko/items/768da80393545ec67073)あたりを参考にJSONに変換している。
-`ensure_ascii=False`は日本語の文字化けを防ぐため必要のようだ。
-
-この時点の`result`の中身は、例えば次のようになっている(改行は見やすくするため挿入)。
-```python
-[
-    '{"timing": "", "word": "", "projector": "{\"Fst\": 1, \"Gxy\": 1}"}',
-    '{"timing": "post", "word": "プラネタリウムはいかがでしょう", "projector": "{\"St1\": 1, \"St2\": 1}"}'
-]
-```
-このままでは**JSONとして読むことはできない**。
-まず、Pythonで使われる**シングルクオート**(`'`)は、JSONでは使用が認められていない。
-また、CSVの中に無理やり複数項目を書いていた部分が、**バックスラッシュ**(`\`)でエスケープ(ただの文字として扱うこと)されてしまった。
-
-うまい方法を思いつかないので、文字列置換の繰り返しで対応することにした。
-置換が全て終わると、以下のような文字列が吐き出される。
-```json
-[
-    {"timing": "", "word": "", "projector": {"Fst": 1, "Gxy": 1}},
-    {"timing": "post", "word": "プラネタリウムはいかがでしょう", "projector": {"St1": 1, "St2": 1}}
-]
-```
-これならJSONとしてそのまま読み込める。
-実際には、`info`の部分などを付け足して`Acrab`用JSONファイルの完成となる。
+## scenario_list.json
+後述する`acrab-scenario.js`で、`Acrab`にサーバの指示書ファイルの数を渡すための指示書ファイルのリスト。
+`GRAFFIAS`で生成できる。作り方は`GRAFFIAS`の記事参照のこと。
 
 ## acrab-scenario.js
 「公演用画面」のためのコード。
 分量が多くなったためmainと分けることにした。
 
 ### ページの初期化関連
-前述の通り、指示書は番組ごとに連番のJSONファイルに分けて`scenario/`以下に保存されている。
+前述の通り、指示書は番組ごとのJSONファイルに分けて`scenario/`以下に保存されている。
 `acrab_main.js`と同様に、jQueryの`$.getJSON()`を用いて取得とパースを行っている。
 
-問題は`Acrab`がブラウザ側だけで動作していることで、サーバに**いくつの指示書ファイルがあるか取得できない。**
-苦肉の策として`SCENARIO_COUNT`という定数にファイル数を事前に入れておくことで対応した。
-あまり良い方法とは言えないので、「**設定ファイルの一覧を書く設定ファイル**」を配置しておくなど拡張性の高い方法に変更すべきだろう。
-これなら、ファイル名を連番の数字にする必要もなくなる。
+`Acrab`はブラウザ側だけで動作しているため、サーバにいくつの指示書ファイルがあるかを直接取得できない。
+このため、先述した`scenario_list.json`をjQueryの`$.ajax()`を用いることで取得・パースし、配列の要素数から指示書ファイルの数を得る方式にした。
+`$.ajax()`は本来非同期通信に用いるものであるが、非同期のままだと`scenariolist`にデータが入らなかったため`async: false`にすることで無理矢理対応した。
+本当は非同期通信のまま`$.Deferred`などを使った方がいい気がするが、ページ読み込み時のみの処理なので妥協してしまったところ。読み込み時に気になるようなら書き直してほしい。
 ```js
-for(var i=0;i<SCENARIO_COUNT;i++) scenario_file[i] = $.getJSON('scenario/'+ i +'.json');
+$.ajax({
+  type: "GET", 
+  url: "scenario_list.json",
+  async: false,
+  success: function(data){
+    scenariolist = data.scenariolist;
+  }
+  });
+
+for(var i=0;i< scenariolist.length;i++){ scenario_file[i] = $.getJSON(scenariolist[i]); }
 ```
 
 指示書ファイルを取得したら、番組選択メニューにタイトルと担当者名を追加する。
 `<option>`や`<optgroup>`というのはHTMLのセレクトボックス用のタグで、前者が選択項目、後者が項目をまとめる見出しだ。
-特に工夫したわけではないので特に解説はしない。
+特に工夫したわけではないので解説はしない。
 ググりながらコードを読んで理解してほしい。
 
 最後の`$('select#select').change()`は、セレクトボックスが更新された際に呼ばれるメソッドを指定している。
@@ -430,6 +396,8 @@ function scenarioInit(){
   $('#scenario_now').addClass('scenario1').prop('disabled', true);
   viewScript('#scenario_next', 1);
   $('#scenario_next').addClass('scenario2').attr('onclick', 'goNext();').prop('disabled', true);
+  $('#scenario_skipnext').html('Skip').prop('disabled', true);
+  $('#scenario_skipnext').addClass('scenario2').attr('onclick','skipNext();').prop('disabled',true);
   $('#scenario_number').html('1/' + scenario.length);
   $('#progress_bar progress').attr('pass_time', '00:00:00');
 }
@@ -443,18 +411,17 @@ function viewScript(id, index){
   if($(id).is(':disabled'))$(id).prop('disabled', false);
   $(id).html(function(){
     var res = ''
-    if(!scenario[index].word) res += '開始前'
+    if(!scenario[index].word) res += '開始直後'
     else {
       res += '「'+scenario[index].word+'」の';
       switch(scenario[index].timing){
-        case 'pre': res += '言い始め'; break;
-        case 'post': res += '言い終り'; break;
+        case 'pre': res += '前'; break;
+        case 'post': res += '後'; break;
         default: res +=  scenario[index].timing; break;
       }
     }
-    res += '<br>';
-    $.each(scenario[index].projector, function(key,index){
-      res += '[' +port[key].name + (this == 1 ? '点灯' : '消灯') + '] ';
+    $.each(scenario[index].projector, function(key){
+      res += '<br>' + port[key].name + 'を' + (this == 1 ? '点灯' : '消灯');
     });
     return res;
   });
@@ -528,9 +495,23 @@ var toDoubleDigits = function(num){return ('0' + num).slice(-2);}; // sliceで�
 ### 指示の送信
 `acrab_main.js`に実装がある`getRequest()`と`checkStatus()`を利用する。
 しかし、メイン画面と違いユーザが**進む・戻る**の動作をするので、それに対応した。
-`scenario`オブジェクトから`index`番目の指示を読み取り、`reverse`がtrueなら真偽値の部分を反転させる。
-
+`scenario`オブジェクトから`index`番目の指示を読み取り、`reverse`がtrue(=「前へ」ボタンがクリックされている)なら真偽値の部分を反転させる。
 後は完成した指示を送信するだけだが、前に書いたように同時点灯の問題が出たため、ここでも`each_slice()`した上で送るようにした。
+
+実はこの部分、**グループに対応していない**。`acrab_main.js`の`button.group(obj)`では、「夏の大三角」等のボタンがクリックされると、
+
+1. `ip`からIPアドレスを取得してURLを作成
+1. `group[(三文字コード).value]`で`$.each()`を回し、南北判定していずれかの`data`に追加
+1. `req`オブジェクトに南北それぞれのデータを入れ、`getRequest()`
+
+という手順によって「夏の大三角」の星座が光るシステムだが、指示の送信`sendComm()`では、
+
+1. `ip`からIPアドレスを取得してURLを作成
+1. `getRequest()`
+
+という流れになってしまっているため、折角指示書でグループを指定しても**光らない**。
+グループ関連の指示(Wnd等)が来た時には処理を分岐させるなど、何らかの工夫が必要だろう。
+
 なお、画面右に表示されている星座名付きのグリッドは、メイン画面と同じIDにしてあり**オンになったものに色が付く**。
 同一ページ内でIDが被るのはHTMLの規格上間違いであるが、`Acrab`ではどちらかが常に非表示になるため不具合は出ないと判断した。
 ```js
@@ -550,7 +531,7 @@ function sendComm(index, reverse){
 }
 ```
 
-### 次へ/前へボタン
+### 前へ/次へ/スキップボタン
 指示の送信は`sendComm()`に番号を渡せば済むので、ここでは**何番目の指示を次に送るべきかを管理**する。
 前述の通り、現状を挟んで三つの指示が表示される領域には`scenario{数字}`なるクラスが付与されているので、そこから数字を取り出して利用する。
 
@@ -560,18 +541,24 @@ function sendComm(index, reverse){
 - クラスを一旦削除し、数字を増やし(減らし)て再追加
 - 次のnumが0以下か最終番号を超えるか
     * true: 指示が存在しないので**ボタンを無効化**して**メッセージ表示**
-    * false: `#scenario_now`の処理中なら**指示を送信**
+    * false: `#scenario_now`の処理中なら**指示を送信**(スキップの場合は指示を送信しない)
 - `#scenario_number`に`#scenario_now`の番号を表示
 
 ```js
 function goNext(){
-  $.each(['scenario_prev', 'scenario_now', 'scenario_next'], function(){
+  $.each(['scenario_prev', 'scenario_now', 'scenario_next','scenario_skipnext'], function(){
     var num = $('#'+this).get(0).className.match(/\d/g).join('') / 1; // 数字だけ取り出して渡す(型変換しないとうまくいかなかった)
     $('#'+this).removeClass($('#'+this).get(0).className).addClass('scenario' + (num+1));
-    if(num+1 > scenario.length) $('#'+this).html('(原稿の最後です)').prop('disabled', true);
+    if(num+1 > scenario.length){
+        if(this == 'scenario_skipnext')
+            $('#'+this).html('---').prop('disabled', true);
+        else
+            $('#'+this).html('(原稿の最後です)').prop('disabled', true);
+    } 
     else{
       if(this == 'scenario_now') sendComm(num, 0);
-      viewScript('#'+this, num);
+      if(this != 'scenario_skipnext')
+          viewScript('#'+this, num);
     }
   });
   $('#scenario_number').html($('#scenario_now').get(0).className.match(/\d/g).join('') + '/' + scenario.length);

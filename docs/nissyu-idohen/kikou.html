@@ -101,11 +101,13 @@
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -122,11 +124,12 @@
 <li class="toctree-l1"><a class="reference internal" href="ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -207,12 +210,13 @@
 <h1>日周緯度変(日周緯度変換機構)<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2017/03/03</li>
+<li>更新: Kenta Suda(nichiden_28)</li>
+<li>更新日時: 2018/08/26</li>
 <li>実行に必要な知識・技能: 歯車機構</li>
 <li>タスクの重さ: 5/準備だけで数ヶ月</li>
 <li>タスクの必須度: 2/たまにやるべき</li>
 <li>元資料<ul>
-<li><code class="docutils literal"><span class="pre">saitama.pdf</span></code> by 荒田 実樹(nichiden_23)</li>
+<li><code class="docutils literal notranslate"><span class="pre">saitama.pdf</span></code> by 荒田 実樹(nichiden_23)</li>
 </ul>
 </li>
 </ul>
@@ -234,8 +238,9 @@
 <p>これほどの機構を再現できる技術が失われたため、かなりの長期間作り変えられていない。
 ただし、いつかは必ず壊れてしまうものであり、<strong>なるべく早期に予備を製作すべき</strong>だろう。
 日周緯度変の製作に成功すれば、天文部の歴史に名が残ることは間違いない。</p>
-<p>特に緯度変に関しては、軸が摩耗していたり、ギアの噛み合わせが悪かったりして、
-緯度を動かし続けるとある角度でかごしい全体が「揺れる」ことがある。この点は早急に改善が必要である。</p>
+<p>特に緯度変に関しては27の時点で、軸が摩耗していたり、ギアの噛み合わせが悪かったりして、緯度を動かし続けるとある角度でかごしい全体が「揺れる」ことがある。
+28のかごしいが軸を新しいものにしたためこの「揺れ」は大分改善された。
+ただし、ギアなどは古いままなので、作り直しは必要だろう。</p>
 <p>ギヤボックス周辺の可動部分には<strong>定期的にグリスを塗るか、潤滑油を差しておく</strong>ことが望ましい。
 ただし2017年現在、機構部分の保守作業の大部分は、<strong>かごしいの作業の過程で行われている。</strong>
 ごきぶりやしいたけとの接続も彼らの方がより把握しているはずなので、任せておいて問題はないだろう。</p>
@@ -250,21 +255,21 @@
 <p class="caption"><span class="caption-text">日周緯度変のギヤ構成</span></p>
 </div>
 <p>図に書いてあるギヤの歯の数からギヤ比を計算すると、</p>
-<div class="math">
+<div class="math notranslate">
 \[\begin{split}\begin{aligned}
 \frac{1}{80}\times\frac{25}{80}\times\frac{18}{64}=\frac{9}{8192}
 &amp;&amp;\text{緯度変} \\
 \frac{1}{50}\times\frac{20}{100}=\frac{1}{250}
 &amp;&amp;\text{日周}\end{aligned}\end{split}\]</div>
 <p>となる。なお、これらのギヤの歯の数は動かしながら手で数えたので、もしかすると数え間違いがあるかもしれない。あまり過信しないよう。</p>
-<p>つまり、各軸をある角速度で回したい場合、緯度変の場合は<code class="docutils literal"><span class="pre">8192/9</span></code>を、日周の場合は<code class="docutils literal"><span class="pre">250</span></code>をそれぞれ掛ければモーターが出力すべき角速度が求まる。日周緯度変関連のソースコードで8192や250といった定数が登場するのは、この減速比の変換をするためである。</p>
+<p>つまり、各軸をある角速度で回したい場合、緯度変の場合は<code class="docutils literal notranslate"><span class="pre">8192/9</span></code>を、日周の場合は<code class="docutils literal notranslate"><span class="pre">250</span></code>をそれぞれ掛ければモーターが出力すべき角速度が求まる。日周緯度変関連のソースコードで8192や250といった定数が登場するのは、この減速比の変換をするためである。</p>
 </div>
 <div class="section" id="id5">
 <h2>モーターの角速度<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>ステッピングモーターは速度を自由に設定できるが、もちろん上限はある。緯度変更モジュール単体で試したところ、緯度モーターの最高角速度は<span class="math">\(3500 deg/s\)</span>程度であった。</p>
-<p>この速度をかごしいの速度に換算すると <span class="math">\(3500/(8192/9)=3.84 deg/s\)</span>
+<p>ステッピングモーターは速度を自由に設定できるが、もちろん上限はある。緯度変更モジュール単体で試したところ、緯度モーターの最高角速度は<span class="math notranslate">\(3500 deg/s\)</span>程度であった。</p>
+<p>この速度をかごしいの速度に換算すると <span class="math notranslate">\(3500/(8192/9)=3.84 deg/s\)</span>
 となる。1度動かすのに0.26秒、南北の反転に46.8秒ほどという計算だ。</p>
-<p>ただし、この<span class="math">\(3500 deg/s\)</span>という速度は速度を徐々に上げていった場合の最高速度であり、停止した状態から回転させる場合は<span class="math">\(1800 deg/s\)</span>程度が限度だと思われる。この場合かごしいの速度は<span class="math">\(1800/(8192/9)=1.98 deg/s\)</span>となり、1度動かすのに0.5秒、南北反転には1分半かかることになる。</p>
+<p>ただし、この<span class="math notranslate">\(3500 deg/s\)</span>という速度は速度を徐々に上げていった場合の最高速度であり、停止した状態から回転させる場合は<span class="math notranslate">\(1800 deg/s\)</span>程度が限度だと思われる。この場合かごしいの速度は<span class="math notranslate">\(1800/(8192/9)=1.98 deg/s\)</span>となり、1度動かすのに0.5秒、南北反転には1分半かかることになる。</p>
 <p>また、実際にかごしいを載せた場合や、主投影機を全て設置した場合など、回すものの重量によってさらに実際の速度は低下するので注意すること。</p>
 </div>
 </div>
@@ -295,7 +300,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -324,7 +329,7 @@
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

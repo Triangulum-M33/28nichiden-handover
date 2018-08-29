@@ -40,7 +40,7 @@
         <link rel="search" title="検索" href="search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="index.html"/>
         <link rel="next" title="配線" href="haisen.html"/>
-        <link rel="prev" title="無線制御(Acrabの実装解説)" href="wireless/acrab-code.html"/> 
+        <link rel="prev" title="無線制御(PISCIUM)" href="wireless/piscium.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -101,11 +101,13 @@
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -116,11 +118,12 @@
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">またたき回路</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">原理</a><ul>
@@ -238,8 +241,11 @@
 <li>実行に必要な知識・技能: 電子回路、AVRマイコン</li>
 <li>タスクの重さ: 3/数週間</li>
 <li>タスクの必須度: 2/たまにやるべき</li>
-<li>元資料</li>
-<li><code class="docutils literal"><span class="pre">一等星投影機付属またたき回路仕様書.docx</span></code> by 西村陽樹(nichiden_23)</li>
+<li>元資料<ul>
+<li><code class="docutils literal notranslate"><span class="pre">一等星投影機付属またたき回路仕様書.docx</span></code> by
+西村陽樹(nichiden_23)</li>
+</ul>
+</li>
 </ul>
 <div class="section" id="id2">
 <h2>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -270,7 +276,7 @@
 1/fゆらぎをプログラムで生成する方法はいくつかあるが、またたき回路では処理の軽い「<strong>間欠カオス法</strong>」が用いられてきた。
 これは、漸化式によって擬似乱数を作り出す方法である。
 以下に基本となる式を示す。</p>
-<div class="math">
+<div class="math notranslate">
 \[\begin{split}\begin{aligned}
     \begin{cases}
         X(t＋1)=X(t)+2X(t)^{2} &amp; (X(t)&lt;0.5)\\
@@ -278,10 +284,10 @@
     \end{cases}
 \end{aligned}\end{split}\]</div>
 <p>ただし、実はこのままではこの式はあまり実用的でない。
-まず、<code class="docutils literal"><span class="pre">X(t)＝0.5</span></code>の場合、以降のXの値は0に張り付いてしまう。
+まず、<code class="docutils literal notranslate"><span class="pre">X(t)＝0.5</span></code>の場合、以降のXの値は0に張り付いてしまう。
 また、0と1の近傍では値の変化が小さくなりすぎる問題もある。</p>
 <p>そこで、実際のプログラムでは上限と下限の付近で若干値をいじるようになっている。
-また10進数の浮動小数点演算はマイコンでは時間がかかりすぎるので、実際には<code class="docutils literal"><span class="pre">double</span></code>型ではなく<code class="docutils literal"><span class="pre">unsigned</span> <span class="pre">long</span></code>型(32bit長整数)の値としてある。</p>
+また10進数の浮動小数点演算はマイコンでは時間がかかりすぎるので、実際には<code class="docutils literal notranslate"><span class="pre">double</span></code>型ではなく<code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">long</span></code>型(32bit長整数)の値としてある。</p>
 </div>
 </div>
 <div class="section" id="id6">
@@ -304,7 +310,7 @@
 <img alt="またたき回路の外観" src="_images/twinkle-appearance.jpg" />
 <p class="caption"><span class="caption-text">またたき回路の外観</span></p>
 </div>
-<p>トグルスイッチ(<code class="docutils literal"><span class="pre">SW2</span></code>)が、<strong>またたきのON/OFFスイッチ</strong> である。
+<p>トグルスイッチ(<code class="docutils literal notranslate"><span class="pre">SW2</span></code>)が、<strong>またたきのON/OFFスイッチ</strong> である。
 OFFにすると消灯するわけではなく、またたきの効果のない常時点灯となる。
 いっとうユニット自体のテストやデバッグに使用することを想定している。</p>
 <p>スイッチの近くに設置されたLEDはまたたきの確認用である。
@@ -313,18 +319,18 @@ OFFにすると消灯するわけではなく、またたきの効果のない�
 </div>
 <div class="section" id="id8">
 <h3>またたき制御部<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">ATTiny861A</span></code>を使用している。
-<code class="docutils literal"><span class="pre">SW2</span></code>がpin9(<code class="docutils literal"><span class="pre">INT0/PB6</span></code>)に繋がれており、INT0割り込みを使用してまたたきON/OFFを切り替える。</p>
-<p>INT割り込みはI/Oポートが出力設定になっていても機能するので、プログラムでは<code class="docutils literal"><span class="pre">PB6</span></code>が出力設定になっていても問題ない。
+<p><code class="docutils literal notranslate"><span class="pre">ATTiny861A</span></code>を使用している。
+<code class="docutils literal notranslate"><span class="pre">SW2</span></code>がpin9(<code class="docutils literal notranslate"><span class="pre">INT0/PB6</span></code>)に繋がれており、INT0割り込みを使用してまたたきON/OFFを切り替える。</p>
+<p>INT割り込みはI/Oポートが出力設定になっていても機能するので、プログラムでは<code class="docutils literal notranslate"><span class="pre">PB6</span></code>が出力設定になっていても問題ない。
 また、ON/OFFの制御をするだけのスイッチであるためチャタリング除去はなされていない。</p>
-<p><code class="docutils literal"><span class="pre">PB0</span></code>、<code class="docutils literal"><span class="pre">PA0</span></code>に確認用LEDが接続されている。</p>
+<p><code class="docutils literal notranslate"><span class="pre">PB0</span></code>、<code class="docutils literal notranslate"><span class="pre">PA0</span></code>に確認用LEDが接続されている。</p>
 </div>
 <div class="section" id="id9">
 <h3>またたき出力部<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">TD62003</span></code>トランジスタアレイを使用する。
-<code class="docutils literal"><span class="pre">ATTiny861A</span></code>の<code class="docutils literal"><span class="pre">PA0-PA5</span></code>/<code class="docutils literal"><span class="pre">PB0-PB5</span></code>の12本が出力ピンとなる。
+<p><code class="docutils literal notranslate"><span class="pre">TD62003</span></code>トランジスタアレイを使用する。
+<code class="docutils literal notranslate"><span class="pre">ATTiny861A</span></code>の<code class="docutils literal notranslate"><span class="pre">PA0-PA5</span></code>/<code class="docutils literal notranslate"><span class="pre">PB0-PB5</span></code>の12本が出力ピンとなる。
 いっとうとの接続部はφ2.5の基板用DCジャックを使っている。
-各出力ピンが<code class="docutils literal"><span class="pre">HIGH</span></code>になると、対応したDCジャックのGNDが導通して電流が流れる仕組みである。</p>
+各出力ピンが<code class="docutils literal notranslate"><span class="pre">HIGH</span></code>になると、対応したDCジャックのGNDが導通して電流が流れる仕組みである。</p>
 </div>
 <div class="section" id="id10">
 <h3>過電圧保護回路<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -338,17 +344,17 @@ OFFにすると消灯するわけではなく、またたきの効果のない�
 ダイオードには、逆方向に電圧をかけるとある閾値以上の電位差で逆向きに電流が流れ、それ以上電位差が大きくならない効果がある。
 その閾値をツェナー電圧という。</p>
 <p>通常のダイオードでは非常に高いツェナー電圧だが、ツェナーダイオードは不純物を混ぜることでツェナー電圧を下げている。
-またたき回路で使用した<code class="docutils literal"><span class="pre">HZ5B1</span></code>のツェナー電圧は4.6-4.8V。
+またたき回路で使用した<code class="docutils literal notranslate"><span class="pre">HZ5B1</span></code>のツェナー電圧は4.6-4.8V。
 カソード側の200Ωの抵抗により、回路全体としての閾値を<strong>5.1-5.2V</strong>としてある。</p>
-<p><code class="docutils literal"><span class="pre">VCC_IN</span></code>が約5.1V以下の場合、ツェナーダイオードには電流が流れず、<code class="docutils literal"><span class="pre">2SA1015GR</span></code>はOFFの状態になる。
-<code class="docutils literal"><span class="pre">2SA1015GR</span></code>のコレクタはプルダウンされているので0Vに落ち、FET(<code class="docutils literal"><span class="pre">2SJ471</span></code>)にはゲート・ソース間電圧が発生する。
-従って、FETのソース・ドレイン間に電流が流れ、<code class="docutils literal"><span class="pre">VCC_OUT</span></code>に入力電圧がそのまま出てくる。</p>
-<p><code class="docutils literal"><span class="pre">VCC_IN</span></code>が約5.2Ｖを超えると、ツェナーダイオードに逆向きの電流が流れ始める。
-<code class="docutils literal"><span class="pre">2SA1015GR</span></code>にエミッタ・ベース電流が流れることで、コレクタに電流が流れて<code class="docutils literal"><span class="pre">2SJ471</span></code>のゲート電圧が<code class="docutils literal"><span class="pre">VCC_IN</span></code>とほぼ等しくなる。
+<p><code class="docutils literal notranslate"><span class="pre">VCC_IN</span></code>が約5.1V以下の場合、ツェナーダイオードには電流が流れず、<code class="docutils literal notranslate"><span class="pre">2SA1015GR</span></code>はOFFの状態になる。
+<code class="docutils literal notranslate"><span class="pre">2SA1015GR</span></code>のコレクタはプルダウンされているので0Vに落ち、FET(<code class="docutils literal notranslate"><span class="pre">2SJ471</span></code>)にはゲート・ソース間電圧が発生する。
+従って、FETのソース・ドレイン間に電流が流れ、<code class="docutils literal notranslate"><span class="pre">VCC_OUT</span></code>に入力電圧がそのまま出てくる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">VCC_IN</span></code>が約5.2Ｖを超えると、ツェナーダイオードに逆向きの電流が流れ始める。
+<code class="docutils literal notranslate"><span class="pre">2SA1015GR</span></code>にエミッタ・ベース電流が流れることで、コレクタに電流が流れて<code class="docutils literal notranslate"><span class="pre">2SJ471</span></code>のゲート電圧が<code class="docutils literal notranslate"><span class="pre">VCC_IN</span></code>とほぼ等しくなる。
 結果、ゲート・ソース間電圧はほぼ0Vとなり、FETがOFFの状態になって電源が遮断される。</p>
 <p>この回路の耐圧はツェナーダイオードの許容損失による。
 入力が約15Vを越えると許容損失を超え、ダイオードが焼き切れる可能性がある。
-仮に焼ききれた場合、ツェナーダイオードに電流が流れない状態と同じになり、入力電圧が<code class="docutils literal"><span class="pre">VCC_OUT</span></code>に出力されてしまう。
+仮に焼ききれた場合、ツェナーダイオードに電流が流れない状態と同じになり、入力電圧が<code class="docutils literal notranslate"><span class="pre">VCC_OUT</span></code>に出力されてしまう。
 大変危険なので、<strong>高電圧の電源を接続しないよう注意すべきだ</strong>。</p>
 <p>保護回路の閾値は、ツェナーダイオードのツェナー電圧やカソード側の抵抗値を調整することで変更できる。</p>
 </div>
@@ -360,18 +366,17 @@ IDEを使用してビルドと書き込みを行った。 Arduino
 IDEではメインのソースファイルは.inoという拡張子のファイルになる。
 ただし、ベースはC++なので.cppや.hのファイルに分割して記述しても問題ない。</p>
 <p>23日電のまたたき回路のプログラムでは<strong>マイコンを実際に動作させる部分</strong>と<strong>またたきパターンを生成する部分</strong>が混在していた。
-可読性を高める目的で、前者を<code class="docutils literal"><span class="pre">Twinkle.ino</span></code>に、後者を<code class="docutils literal"><span class="pre">Twinkle.cpp</span></code>及び<code class="docutils literal"><span class="pre">Twinkle.h</span></code>と分けることにした。</p>
-<p><code class="docutils literal"><span class="pre">Twinkle.h</span></code>で宣言している<code class="docutils literal"><span class="pre">Twinkle</span></code>クラスがパターン生成のライブラリのように使えることを目指したが、完全なブラックボックスにはできていないので適宜改善が必要。</p>
+可読性を高める目的で、前者を<code class="docutils literal notranslate"><span class="pre">Twinkle.ino</span></code>に、後者を<code class="docutils literal notranslate"><span class="pre">Twinkle.cpp</span></code>及び<code class="docutils literal notranslate"><span class="pre">Twinkle.h</span></code>と分けることにした。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Twinkle.h</span></code>で宣言している<code class="docutils literal notranslate"><span class="pre">Twinkle</span></code>クラスがパターン生成のライブラリのように使えることを目指したが、完全なブラックボックスにはできていないので適宜改善が必要。</p>
 <div class="section" id="twinkle-h">
 <h3>Twinkle.h<a class="headerlink" href="#twinkle-h" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>プログラム中で使う変数・関数の宣言があるファイル。
-<code class="docutils literal"><span class="pre">NORTH_HEMISPHERE</span></code>や<code class="docutils literal"><span class="pre">SOUTH_HEMISPHERE</span></code>がdefineされているが、これは北天・南天で数値を切り替えるために用いる。
+<code class="docutils literal notranslate"><span class="pre">NORTH_HEMISPHERE</span></code>や<code class="docutils literal notranslate"><span class="pre">SOUTH_HEMISPHERE</span></code>がdefineされているが、これは北天・南天で数値を切り替えるために用いる。
 書き込み前によく確かめて、不要な方をコメントアウトすること(片方をコメントにしていないと、変数宣言が二重となりエラーが出る)。</p>
 <p>使っている変数や配列の注釈を箇条書きしておこう。</p>
 <ul class="simple">
 <li>public変数<ul>
-<li>int bit_num[6]:
-パターンの番号とマイコン側のピンの順番の対応を示す</li>
+<li>int bit_num[6]: パターンの番号とマイコン側のピンの順番の対応を示す</li>
 <li>unsigned int on[12]:
 27で追加した、またたきをピンごとに無効化するための配列。1か0</li>
 <li>unsigned int on_duration[12]:
@@ -392,8 +397,8 @@ on_durationの最小値。大きくするとまたたき効果が強くなる</l
 <h3>Twinkle.cpp<a class="headerlink" href="#twinkle-cpp" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>冒頭でいくつか記号定数が宣言されている。
 コメントを読めば概ね理解できるであろう。
-結局<code class="docutils literal"><span class="pre">Twinkle</span></code>クラスの内部処理で使うだけなので、ヘッダファイルのクラス宣言の方に書いても問題なかったかも。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#define CHAOS_DIV 256 </span><span class="c1">// chaos_gen()で生成される乱数は1~32768の幅であるが、このままではタイマ0割込に使用できないので適当な2の乗数で割る</span>
+結局<code class="docutils literal notranslate"><span class="pre">Twinkle</span></code>クラスの内部処理で使うだけなので、ヘッダファイルのクラス宣言の方に書いても問題なかったかも。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define CHAOS_DIV 256 </span><span class="c1">// chaos_gen()で生成される乱数は1~32768の幅であるが、このままではタイマ0割込に使用できないので適当な2の乗数で割る</span>
 <span class="cp">#define ON_DURATION_MAX 160 </span><span class="c1">// LEDの点灯時間の最大値を決定するパラメーター(タイマ割込の間隔によって決まっているのでオシロスコープで波形を見ながら調整のこと)</span>
 <span class="cp">#define TWINKLE_RATE 2 </span><span class="c1">// またたき用の乱数値の更新レート、nを設定するとn回のタイマ割込に1回の割合で値が更新する</span>
 <span class="cp">#define TWINKLE_SHIFT 100 </span><span class="c1">// 乱数の周期性問題を解決するために、乱数とそれに対応する信号出力ビットをport_shift()で変更している。nを設定するとn回の乱数更新に1回の割合で出力がビットシフトする</span>
@@ -401,8 +406,8 @@ on_durationの最小値。大きくするとまたたき効果が強くなる</l
 </div>
 <p>次に、コンストラクタがある。
 と言っても変数の初期化をしているだけである。
-ここで、<code class="docutils literal"><span class="pre">refresh_rate</span></code>や<code class="docutils literal"><span class="pre">shift_rate</span></code>などを設定する。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">Twinkle</span><span class="o">::</span><span class="n">Twinkle</span><span class="p">()</span><span class="o">:</span><span class="n">refresh_rate</span><span class="p">(</span><span class="n">TWINKLE_RATE</span><span class="p">),</span>
+ここで、<code class="docutils literal notranslate"><span class="pre">refresh_rate</span></code>や<code class="docutils literal notranslate"><span class="pre">shift_rate</span></code>などを設定する。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Twinkle</span><span class="o">::</span><span class="n">Twinkle</span><span class="p">()</span><span class="o">:</span><span class="n">refresh_rate</span><span class="p">(</span><span class="n">TWINKLE_RATE</span><span class="p">),</span>
                    <span class="n">rr_count</span><span class="p">(</span><span class="n">TWINKLE_RATE</span><span class="p">),</span>
                    <span class="n">shift_rate</span><span class="p">(</span><span class="n">TWINKLE_SHIFT</span><span class="p">),</span>
                    <span class="n">sr_count</span><span class="p">(</span><span class="n">TWINKLE_SHIFT</span><span class="p">){};</span>
@@ -418,7 +423,7 @@ on_durationの最小値。大きくするとまたたき効果が強くなる</l
 修正の時間も限られており、本番ではポートの入れ替えを使わずに投影をすることとなった。
 見ていた限りでは特に不自然には感じなかったが、この仕様が必要かどうかは更なる検証を待ちたい。</p>
 <p>参考のためにピンを入れ替える仕組みを解説する。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
     <span class="n">bit_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">bit_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">shift_chaos</span> <span class="o">&gt;=</span> <span class="mi">12000</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">4</span><span class="p">))</span> <span class="o">%</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 6要素の数列を左に回転シフト</span>
 </pre></div>
 </div>
@@ -431,8 +436,8 @@ on_durationの最小値。大きくするとまたたき効果が強くなる</l
 <div class="section" id="refresh">
 <h4>refresh()<a class="headerlink" href="#refresh" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>またたきパターンの更新を行う。
-<code class="docutils literal"><span class="pre">chaos</span></code>の12個の要素それぞれに、新たな乱数値を格納している。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Twinkle</span><span class="o">::</span><span class="n">refresh</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span> <span class="c1">// 乱数値を更新する。所要時間は12変数で1ms</span>
+<code class="docutils literal notranslate"><span class="pre">chaos</span></code>の12個の要素それぞれに、新たな乱数値を格納している。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Twinkle</span><span class="o">::</span><span class="n">refresh</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span> <span class="c1">// 乱数値を更新する。所要時間は12変数で1ms</span>
   <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">SIZE_OF</span><span class="p">(</span><span class="n">on_duration</span><span class="p">);</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
     <span class="n">chaos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">chaos_gen</span><span class="p">(</span><span class="n">chaos</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
     <span class="n">on_duration</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">chaos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">CHAOS_DIV</span> <span class="o">+</span> <span class="n">min_duration</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">ON_DURATION_MAX</span><span class="p">);</span>
@@ -440,17 +445,17 @@ on_durationの最小値。大きくするとまたたき効果が強くなる</l
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>実際のまたたきパターンで使う<code class="docutils literal"><span class="pre">on_duration</span></code>には、<code class="docutils literal"><span class="pre">chaos</span></code>から二つの変化を加える。
-まず、最大32768の出力を<code class="docutils literal"><span class="pre">CHAOS_DIV</span></code>で除した上で、<code class="docutils literal"><span class="pre">min_duration</span></code>という数を加えている。
-<code class="docutils literal"><span class="pre">min_duration</span></code>が大きいほど、<strong>LEDが点灯している時間が増え、またたきの効果が薄まる</strong>。</p>
-<p>また、<code class="docutils literal"><span class="pre">on_duration</span></code>は160を超えてはいけないので、<code class="docutils literal"><span class="pre">ON_DURATION_MAX</span></code>と比較して小さい方を採用する。
+<p>実際のまたたきパターンで使う<code class="docutils literal notranslate"><span class="pre">on_duration</span></code>には、<code class="docutils literal notranslate"><span class="pre">chaos</span></code>から二つの変化を加える。
+まず、最大32768の出力を<code class="docutils literal notranslate"><span class="pre">CHAOS_DIV</span></code>で除した上で、<code class="docutils literal notranslate"><span class="pre">min_duration</span></code>という数を加えている。
+<code class="docutils literal notranslate"><span class="pre">min_duration</span></code>が大きいほど、<strong>LEDが点灯している時間が増え、またたきの効果が薄まる</strong>。</p>
+<p>また、<code class="docutils literal notranslate"><span class="pre">on_duration</span></code>は160を超えてはいけないので、<code class="docutils literal notranslate"><span class="pre">ON_DURATION_MAX</span></code>と比較して小さい方を採用する。
 実行時間は1msらしい。</p>
 </div>
 <div class="section" id="chaos-gen-y">
 <h4>chaos_gen(y)<a class="headerlink" href="#chaos-gen-y" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>入力yに対して間欠カオス法による擬似乱数を一個出力する。
 元の漸化式にアレンジを加え、yの変化が微小になることがないよう調整してある。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">Twinkle</span><span class="o">::</span><span class="n">chaos_gen</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">y</span><span class="p">){</span> <span class="c1">// Max == 32768までの整数値を返す疑似乱数(1/fゆらぎ)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">Twinkle</span><span class="o">::</span><span class="n">chaos_gen</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">y</span><span class="p">){</span> <span class="c1">// Max == 32768までの整数値を返す疑似乱数(1/fゆらぎ)</span>
   <span class="k">if</span><span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">1638</span><span class="p">)</span> <span class="n">y</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pow</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">32768</span> <span class="o">+</span> <span class="mi">1966</span><span class="p">;</span>
   <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">16384</span><span class="p">)</span> <span class="n">y</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pow</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">32768</span><span class="p">;</span>
   <span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">31129</span><span class="p">)</span> <span class="n">y</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pow</span><span class="p">(</span><span class="mi">32768</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">32768</span> <span class="o">+</span> <span class="mi">1310</span><span class="p">;</span>
@@ -464,9 +469,9 @@ on_durationの最小値。大きくするとまたたき効果が強くなる</l
 <h4>generate()<a class="headerlink" href="#generate" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>またたき生成や出力ピンの入れ替えを制御する。
 タイマ割り込みで毎回呼ばれることを想定している。</p>
-<p>割り込みが入るたびに<code class="docutils literal"><span class="pre">rr_count</span></code>と<code class="docutils literal"><span class="pre">sr_count</span></code>が1ずつ減少し、0になると<code class="docutils literal"><span class="pre">port_shift()</span></code>や<code class="docutils literal"><span class="pre">refresh()</span></code>を実行する。
-ただし、27の仕様変更で<code class="docutils literal"><span class="pre">port_shift()</span></code>は不使用としたので、その部分はコメントになっている。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Twinkle</span><span class="o">::</span><span class="n">generate</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span> <span class="c1">// またたきをつかさどる部分</span>
+<p>割り込みが入るたびに<code class="docutils literal notranslate"><span class="pre">rr_count</span></code>と<code class="docutils literal notranslate"><span class="pre">sr_count</span></code>が1ずつ減少し、0になると<code class="docutils literal notranslate"><span class="pre">port_shift()</span></code>や<code class="docutils literal notranslate"><span class="pre">refresh()</span></code>を実行する。
+ただし、27の仕様変更で<code class="docutils literal notranslate"><span class="pre">port_shift()</span></code>は不使用としたので、その部分はコメントになっている。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Twinkle</span><span class="o">::</span><span class="n">generate</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span> <span class="c1">// またたきをつかさどる部分</span>
   <span class="n">rr_count</span><span class="o">--</span><span class="p">;</span> <span class="c1">//乱数更新時期の判定と実行をする</span>
   <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">rr_count</span><span class="p">){</span>
     <span class="n">sr_count</span><span class="o">--</span><span class="p">;</span> <span class="c1">//ビットシフト更新時期の判定と実行をする</span>
@@ -489,7 +494,7 @@ on_durationの最小値。大きくするとまたたき効果が強くなる</l
 <h4>ISR(INT0_vect)<a class="headerlink" href="#isr-int0-vect" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>INT0割り込みで呼ばれる。
 PORTAとPORTBをすべてH、つまり常時点灯・またたきなしの状態にする。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">ISR</span><span class="p">(</span><span class="n">INT0_vect</span><span class="p">){</span> <span class="c1">//またたきOFF（スイッチで切り替え）</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ISR</span><span class="p">(</span><span class="n">INT0_vect</span><span class="p">){</span> <span class="c1">//またたきOFF（スイッチで切り替え）</span>
   <span class="n">PORTA</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span>
   <span class="n">PORTB</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span>
 <span class="p">}</span>
@@ -499,19 +504,19 @@ PORTAとPORTBをすべてH、つまり常時点灯・またたきなしの状態
 <div class="section" id="isr-timer0-compa-vect">
 <h4>ISR(TIMER0_COMPA_vect)<a class="headerlink" href="#isr-timer0-compa-vect" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>タイマ0割り込みで呼ばれる。
-PORTAとPORTBをすべてHにしてから、Twinkleクラスの<code class="docutils literal"><span class="pre">generate()</span></code>関数を呼んでパターンの更新処理をする。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">PORTA</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span>
+PORTAとPORTBをすべてHにしてから、Twinkleクラスの<code class="docutils literal notranslate"><span class="pre">generate()</span></code>関数を呼んでパターンの更新処理をする。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">PORTA</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span>
 <span class="n">PORTB</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span>
 <span class="n">twinkle</span><span class="p">.</span><span class="n">generate</span><span class="p">();</span>
 <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">c_up</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>以降は、実際にピンから出力するコードになる。
-<code class="docutils literal"><span class="pre">pattern_count</span></code>は出力ピンの数(現状12)を表す。</p>
-<p>forループ内では、7μsごとに<code class="docutils literal"><span class="pre">c_up</span></code>をインクリメント(コメントに<code class="docutils literal"><span class="pre">twinkle.c_up</span></code>とあるがこれはミス)していく。
-<code class="docutils literal"><span class="pre">twinkle.on_duration[i]</span></code>と一致したら<code class="docutils literal"><span class="pre">pattern_count</span></code>を一つ減らして、<code class="docutils literal"><span class="pre">twinkle.on[i]</span></code>が0でなければLEDを消灯する。
-<code class="docutils literal"><span class="pre">i</span></code>とピン番号の対応は<code class="docutils literal"><span class="pre">twinkle.bit_num</span></code>に書いてある。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">pattern_count</span> <span class="o">=</span> <span class="n">SIZE_OF</span><span class="p">(</span><span class="n">twinkle</span><span class="p">.</span><span class="n">on_duration</span><span class="p">);</span>
+<code class="docutils literal notranslate"><span class="pre">pattern_count</span></code>は出力ピンの数(現状12)を表す。</p>
+<p>forループ内では、7μsごとに<code class="docutils literal notranslate"><span class="pre">c_up</span></code>をインクリメント(コメントに<code class="docutils literal notranslate"><span class="pre">twinkle.c_up</span></code>とあるがこれはミス)していく。
+<code class="docutils literal notranslate"><span class="pre">twinkle.on_duration[i]</span></code>と一致したら<code class="docutils literal notranslate"><span class="pre">pattern_count</span></code>を一つ減らして、<code class="docutils literal notranslate"><span class="pre">twinkle.on[i]</span></code>が0でなければLEDを消灯する。
+<code class="docutils literal notranslate"><span class="pre">i</span></code>とピン番号の対応は<code class="docutils literal notranslate"><span class="pre">twinkle.bit_num</span></code>に書いてある。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">pattern_count</span> <span class="o">=</span> <span class="n">SIZE_OF</span><span class="p">(</span><span class="n">twinkle</span><span class="p">.</span><span class="n">on_duration</span><span class="p">);</span>
 <span class="k">while</span><span class="p">(</span><span class="n">pattern_count</span><span class="p">){</span> <span class="c1">//twinkle.on_durationの値とtwinkle.c_up（カウントアップ）の値を比較し、一致するまではON、一致したらLEDをOFFにする。全部OFFになったらループを抜けてmainに戻る。</span>
   <span class="n">c_up</span><span class="o">++</span><span class="p">;</span>
   <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">SIZE_OF</span><span class="p">(</span><span class="n">twinkle</span><span class="p">.</span><span class="n">on_duration</span><span class="p">);</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
@@ -527,13 +532,13 @@ PORTAとPORTBをすべてHにしてから、Twinkleクラスの<code class="docu
 </pre></div>
 </div>
 <p>出力ポートの制御であるが、マイコンボードのデジタル出力のようには便利でなく、<strong>出力レジスタというものを使う</strong>。
-<code class="docutils literal"><span class="pre">PORTA</span></code>や<code class="docutils literal"><span class="pre">PORTB</span></code>とあるのが出力レジスタで、ピンの状態が二進数で保存されている。
+<code class="docutils literal notranslate"><span class="pre">PORTA</span></code>や<code class="docutils literal notranslate"><span class="pre">PORTB</span></code>とあるのが出力レジスタで、ピンの状態が二進数で保存されている。
 これを書き換えることで出力がなされる仕組みだ。</p>
-<p>例えば、<code class="docutils literal"><span class="pre">PORTA</span> <span class="pre">=</span> <span class="pre">0xFF(11111111)</span></code>の時に、6番目のピンを<code class="docutils literal"><span class="pre">LOW</span></code>にしたいとする。
-<code class="docutils literal"><span class="pre">^=</span></code>演算子はXOR代入といい、右の数との排他的論理和を代入する。
-XORは二つの数が違えば1、同じなら0を返すので、<code class="docutils literal"><span class="pre">PORTA</span></code>の6桁目と1のXORを取ればそこだけが0になる。
+<p>例えば、<code class="docutils literal notranslate"><span class="pre">PORTA</span> <span class="pre">=</span> <span class="pre">0xFF(11111111)</span></code>の時に、6番目のピンを<code class="docutils literal notranslate"><span class="pre">LOW</span></code>にしたいとする。
+<code class="docutils literal notranslate"><span class="pre">^=</span></code>演算子はXOR代入といい、右の数との排他的論理和を代入する。
+XORは二つの数が違えば1、同じなら0を返すので、<code class="docutils literal notranslate"><span class="pre">PORTA</span></code>の6桁目と1のXORを取ればそこだけが0になる。
 n桁目が1の数は1を(n-1)ビット左にビットシフトすると作れるので、コードはこうなる。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">PORTA</span> <span class="o">^=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">PORTA</span> <span class="o">^=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </div>
@@ -542,9 +547,9 @@ n桁目が1の数は1を(n-1)ビット左にビットシフトすると作れる
 <p>初期設定とメインルーチン。
 I/Oポートの設定・タイマ0(CTCモード)とプリスケーラの設定・タイマ0割り込みの設定・INT0割り込みの設定を行っているらしい。
 ここを変更したければAVRの勉強をしよう。</p>
-<p><code class="docutils literal"><span class="pre">sei()</span></code>は割り込みを許可する組み込み関数である。
+<p><code class="docutils literal notranslate"><span class="pre">sei()</span></code>は割り込みを許可する組み込み関数である。
 設定終了後にこれを呼んで無限ループに入り、割り込みを待つことになる。</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
   <span class="cm">/*** 初期設定(TIMER0_CTC、TIMER割込、INT0割込) ***/</span>
   <span class="n">_delay_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
   <span class="n">DDRA</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span> <span class="c1">//PORTA0~7を出力に設定</span>
@@ -568,10 +573,10 @@ I/Oポートの設定・タイマ0(CTCモード)とプリスケーラの設定�
 </div>
 <div class="section" id="id12">
 <h3>書き込むには<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>書き込みの際、Fuseビットの<code class="docutils literal"><span class="pre">DIVCLK8</span></code>を<code class="docutils literal"><span class="pre">Disable</span></code>する必要がある(内部クロックを1MHzではなく8MHzで使用するため)。</p>
+<p>書き込みの際、Fuseビットの<code class="docutils literal notranslate"><span class="pre">DIVCLK8</span></code>を<code class="docutils literal notranslate"><span class="pre">Disable</span></code>する必要がある(内部クロックを1MHzではなく8MHzで使用するため)。</p>
 <p>27では、書き込みにArduino IDEを使った。
 Arduinoの中身はAVRマイコンなので、マイコン(ボード)の定義を読み込む事で書き込み可能になる。
-ボードマネージャで<a class="reference external" href="http://drazzy.com/package_drazzy.com_index.json">設定ファイルのURL</a>を指定すると各種設定が選べるので、<code class="docutils literal"><span class="pre">ATTiny861A</span></code>を選択して書き込もう。</p>
+ボードマネージャで<a class="reference external" href="http://drazzy.com/package_drazzy.com_index.json">設定ファイルのURL</a>を指定すると各種設定が選べるので、<code class="docutils literal notranslate"><span class="pre">ATTiny861A</span></code>を選択して書き込もう。</p>
 <p>手順の詳細は<a class="reference external" href="http://make.kosakalab.com/make/electronic-work/arduino-ide/attiny-dev/">Arduino IDE に ATtiny45/85/2313
 他の開発環境を組み込む</a>など参照。</p>
 </div>
@@ -591,7 +596,7 @@ Arduinoの中身はAVRマイコンなので、マイコン(ボード)の定義�
         <a href="haisen.html" class="btn btn-neutral float-right" title="配線" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="wireless/acrab-code.html" class="btn btn-neutral" title="無線制御(Acrabの実装解説)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="wireless/piscium.html" class="btn btn-neutral" title="無線制御(PISCIUM)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -604,7 +609,7 @@ Arduinoの中身はAVRマイコンなので、マイコン(ボード)の定義�
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -633,7 +638,7 @@ Arduinoの中身はAVRマイコンなので、マイコン(ボード)の定義�
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -39,8 +39,8 @@
               href="../genindex.html"/>
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
-        <link rel="next" title="東京大学地文研究会天文部 日電引き継ぎ" href="../main.html"/>
-        <link rel="prev" title="無料でWindowsを手に入れる" href="windows.html"/> 
+        <link rel="next" title="無料でWindowsを手に入れる" href="windows.html"/>
+        <link rel="prev" title="テキストエディタを使ってみよう" href="editor.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -100,17 +100,14 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Visual Studioをはじめよう</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">価格</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">インストール</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -121,11 +118,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -256,7 +254,7 @@ Communityのページ</a>にアクセスし、インストーラを入手して�
 興味を引くものがあればチェックを入れておこう。
 インストール後からでも構成を変更できるので、ここで深く悩む必要はない。</p>
 <p>右下に表示される「インストール
-サイズ」を確認し、空き容量と通信回線に問題がなければ<code class="docutils literal"><span class="pre">インストール</span></code>をクリックして実行しよう。</p>
+サイズ」を確認し、空き容量と通信回線に問題がなければ<code class="docutils literal notranslate"><span class="pre">インストール</span></code>をクリックして実行しよう。</p>
 <div class="figure" id="id5">
 <img alt="インストール中の画面" src="../_images/vs-install-2.png" />
 <p class="caption"><span class="caption-text">インストール中の画面</span></p>
@@ -281,10 +279,10 @@ Communityのページ</a>にアクセスし、インストーラを入手して�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../main.html" class="btn btn-neutral float-right" title="東京大学地文研究会天文部 日電引き継ぎ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="windows.html" class="btn btn-neutral float-right" title="無料でWindowsを手に入れる" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="windows.html" class="btn btn-neutral" title="無料でWindowsを手に入れる" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="editor.html" class="btn btn-neutral" title="テキストエディタを使ってみよう" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -297,7 +295,7 @@ Communityのページ</a>にアクセスし、インストーラを入手して�
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -326,7 +324,7 @@ Communityのページ</a>にアクセスし、インストーラを入手して�
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

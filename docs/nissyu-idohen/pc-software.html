@@ -39,8 +39,8 @@
               href="../genindex.html"/>
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
-        <link rel="next" title="日周緯度変(外部制御アプリの歴史)" href="pc-software-history.html"/>
-        <link rel="prev" title="日周緯度変(Ikebukuro)" href="ikebukuro.html"/> 
+        <link rel="next" title="東京大学地文研究会天文部 日電引き継ぎ" href="../main.html"/>
+        <link rel="prev" title="無線制御(GRAFFIAS)" href="../wireless/graffias.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -100,12 +100,36 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">日周緯度変(外部制御アプリ)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">沿革</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ogose">Ogoseの特徴と使い方</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">基本操作</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">通信プログラム</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">シリアル通信の基本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#net">.Netでのシリアル通信</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">他の言語でのシリアル通信</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">仮想シリアルポート</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">今後の展望</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gui">GUIフレームワーク</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">入力機器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">機能追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">メモ帳欄の改良</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -132,16 +156,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#gui">GUIフレームワーク</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id10">入力機器</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">機能追加</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">メモ帳欄の改良</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -222,7 +248,8 @@
 <h1>日周緯度変(外部制御アプリ)<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2017/03/04</li>
+<li>更新: Hanaka Satoh(nichiden_28)</li>
+<li>更新日時: 2018/08/26</li>
 <li>実行に必要な知識・技能: シリアル通信、C#</li>
 <li>タスクの重さ: 3/数週間</li>
 <li>タスクの必須度: 4/毎年やるべき</li>
@@ -231,7 +258,7 @@
 <h2>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>日周緯度変の<a class="reference external" href="ikebukuro.html">外部制御</a>には、大きな可能性があります。PCを使える以上かなり複雑な操作も自動化できるためです。</p>
 <p>ただし、本番で日周緯度変を動かすのは人間である部員たち。
-それも、プログラムの挙動を知っている日電員だけが操作するとは限りません(26・27と、かごしいにも日周緯度変操作を手伝って貰っています)。</p>
+それも、プログラムの挙動を知っている日電員だけが操作するとは限りません(26-28と、かごしいにも日周緯度変操作を手伝って貰っています)。</p>
 <p>誰にでも使いやすい日周緯度変外部制御アプリを作るために注意すべきことを書きます。</p>
 </div>
 <div class="section" id="id3">
@@ -240,9 +267,9 @@
 </div>
 <div class="section" id="ogose">
 <h2>Ogoseの特徴と使い方<a class="headerlink" href="#ogose" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">Ogose</span></code>は、27代日電で作成した、2017/03/01現在最新の外部制御アプリである。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ogose</span></code>は、27代日電で作成した、2017/03/01現在最新の外部制御アプリである。</p>
 <p>特徴は<a class="reference external" href="pc-software-history.html">沿革</a>の方に文章で書いたので、ここでは簡単に箇条書きするにとどめる。</p>
-<div class="figure" id="id12">
+<div class="figure" id="id13">
 <img alt="Ogoseの画面" src="../_images/ogose.png" />
 <p class="caption"><span class="caption-text">Ogoseの画面</span></p>
 </div>
@@ -252,13 +279,13 @@
 <li>回転の開始/停止はトグルボタン(押すたびにON/OFFが切り替わる)</li>
 <li>フルスクリーン切り替えボタン</li>
 <li>誤操作防止用の「公演モード」</li>
-<li>キーボードでも操作可能</li>
+<li>メモ帳を表示・編集可能</li>
 <li>フリーソフトを使ってゲームコントローラに操作を割り当て可能</li>
 </ul>
 <div class="section" id="id4">
 <h3>基本操作<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>起動したら、まずは最上部からシリアルポートを選んで<strong>接続ボタン</strong>を押す。
-さいたまを<code class="docutils literal"><span class="pre">Ikebukuro</span></code>を介して繋いだだけの状態ならポートは一つしか出ないことがほとんどだが、複数出たとしても一つずつ試してモーターが動くかどうかで判断すればよい。</p>
+さいたまを<code class="docutils literal notranslate"><span class="pre">Ikebukuro</span></code>を介して繋いだだけの状態ならポートは一つしか出ないことがほとんどだが、複数出たとしても一つずつ試してモーターが動くかどうかで判断すればよい。</p>
 <p>未接続のままコマンドを送る操作をした場合は、エラーメッセージとともに送信するコマンドが表示される。
 接続していないことに気づけるようにする一方、わざと未接続にすることでコマンド送信のデバッグも可能だ。</p>
 <p>実際に日周緯度変を動かすときは、左側と上側にある<strong>速度切り替えボタン</strong>から速度を選び、動かしたい方向のボタンをクリックする。
@@ -268,15 +295,8 @@
 <p><strong>フルスクリーンボタン</strong>にチェックするとフルスクリーンになる。
 画面全体が黒背景になるので、本番中はフルスクリーンが望ましい。
 <strong>公演モード</strong>ボタンは、ONにすると警告が表示され日周を進めることしかできなくなる。</p>
-<p>モーターの回転はキーボード操作でもできる。</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">W</span></code>: 緯度+</li>
-<li><code class="docutils literal"><span class="pre">A</span></code>: 日周戻す</li>
-<li><code class="docutils literal"><span class="pre">S</span></code>: 緯度-</li>
-<li><code class="docutils literal"><span class="pre">D</span></code>: 日周進める</li>
-</ul>
-<p>と対応している。PCゲーマーには馴染みのある配置かと思う。</p>
-<p><code class="docutils literal"><span class="pre">Ogose</span></code>のコードの解説は、たいへん長いので別記事とする。</p>
+<p>画面の右側には.txtファイルを表示する欄がある。あまり機会はないかもしれないが、Ogoseの画面上で編集して保存することも可能。新規作成はできない。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ogose</span></code>のコードの解説は、たいへん長いので別記事とする。</p>
 <p>-&gt; <a class="reference external" href="pc-software-code.html">Ogoseの実装解説</a></p>
 </div>
 </div>
@@ -284,11 +304,11 @@
 <h2>通信プログラム<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id6">
 <h3>シリアル通信の基本<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><a class="reference external" href="ikebukuro.html">Ikebukuroの記事</a>にある通り、パソコン側からは<code class="docutils literal"><span class="pre">Ikebukuro</span></code>はシリアルポートとして見える。
+<p><a class="reference external" href="ikebukuro.html">Ikebukuroの記事</a>にある通り、パソコン側からは<code class="docutils literal notranslate"><span class="pre">Ikebukuro</span></code>はシリアルポートとして見える。
 よって、シリアルポートにアクセスするプログラムを書けばよい。</p>
-<p>ポート名は、Windowsであれば<code class="docutils literal"><span class="pre">COM1</span></code>や<code class="docutils literal"><span class="pre">COM4</span></code>のように、「&#8217;<code class="docutils literal"><span class="pre">COM</span></code>&#8216;+数字」の形式である。
+<p>ポート名は、Windowsであれば<code class="docutils literal notranslate"><span class="pre">COM1</span></code>や<code class="docutils literal notranslate"><span class="pre">COM4</span></code>のように、「‘<code class="docutils literal notranslate"><span class="pre">COM</span></code>’+数字」の形式である。
 Mac OS
-XやLinuxのようなUNIX環境であれば、<code class="docutils literal"><span class="pre">/dev/tty.usbserial-A5017ABT</span></code>である。</p>
+XやLinuxのようなUNIX環境であれば、<code class="docutils literal notranslate"><span class="pre">/dev/tty.usbserial-A5017ABT</span></code>である。</p>
 <p>シリアルポートの設定は、さいたま6號側のプログラム中に記述してある設定と一致させなければならない。
 現時点での設定は、</p>
 <ul class="simple">
@@ -299,23 +319,23 @@ XやLinuxのようなUNIX環境であれば、<code class="docutils literal"><sp
 </ul>
 <p>である。baud
 rateはこの値である必然性はないので、変えても良い(さいたま6號のプログラムも一緒に変更すること！)。</p>
-<p>通信経路の途中で<code class="docutils literal"><span class="pre">RS485</span></code>を使っている関係上、シリアルポートには読み取りと書き込みのいずれか一方しかできない。</p>
-<p><code class="docutils literal"><span class="pre">RS485</span></code>の通信方向の切り替えには、シリアルポートのRTS端子を使う。
-RTSが<code class="docutils literal"><span class="pre">HIGH</span></code>になるとパソコン側から日周緯度変側への通信ができ、<code class="docutils literal"><span class="pre">LOW</span></code>になると逆方向の通信ができる。
-コマンドを送信する直前にRTSを<code class="docutils literal"><span class="pre">HIGH</span></code>にし、終了したら<code class="docutils literal"><span class="pre">LOW</span></code>に戻すといいだろう。</p>
+<p>通信経路の途中で<code class="docutils literal notranslate"><span class="pre">RS485</span></code>を使っている関係上、シリアルポートには読み取りと書き込みのいずれか一方しかできない。</p>
+<p><code class="docutils literal notranslate"><span class="pre">RS485</span></code>の通信方向の切り替えには、シリアルポートのRTS端子を使う。
+RTSが<code class="docutils literal notranslate"><span class="pre">HIGH</span></code>になるとパソコン側から日周緯度変側への通信ができ、<code class="docutils literal notranslate"><span class="pre">LOW</span></code>になると逆方向の通信ができる。
+コマンドを送信する直前にRTSを<code class="docutils literal notranslate"><span class="pre">HIGH</span></code>にし、終了したら<code class="docutils literal notranslate"><span class="pre">LOW</span></code>に戻すといいだろう。</p>
 </div>
 <div class="section" id="net">
 <h3>.Netでのシリアル通信<a class="headerlink" href="#net" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">.Net</span> <span class="pre">Framework</span></code>を使う場合は、<code class="docutils literal"><span class="pre">System.IO.Ports</span></code>名前空間以下にある<code class="docutils literal"><span class="pre">SerialPort</span></code>クラスを利用すると便利である。
+<p><code class="docutils literal notranslate"><span class="pre">.Net</span> <span class="pre">Framework</span></code>を使う場合は、<code class="docutils literal notranslate"><span class="pre">System.IO.Ports</span></code>名前空間以下にある<code class="docutils literal notranslate"><span class="pre">SerialPort</span></code>クラスを利用すると便利である。
 Mac OS
-XやLinuxでは<code class="docutils literal"><span class="pre">.Net</span></code>のオープンソース実装である<code class="docutils literal"><span class="pre">Mono</span></code>を利用できるが、<code class="docutils literal"><span class="pre">Mono</span></code>においても同様である。</p>
+XやLinuxでは<code class="docutils literal notranslate"><span class="pre">.Net</span></code>のオープンソース実装である<code class="docutils literal notranslate"><span class="pre">Mono</span></code>を利用できるが、<code class="docutils literal notranslate"><span class="pre">Mono</span></code>においても同様である。</p>
 <p>以下ではC#のコード例を示す。</p>
 <p>まず、ソースコードの冒頭に以下の文を書いておくと便利であろう:</p>
-<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.IO.Ports</span><span class="p">;</span>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.IO.Ports</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>通信を開始する前に、まずポートを開く：</p>
-<div class="highlight-c#"><div class="highlight"><pre><span></span><span class="n">SerialPort</span> <span class="n">port</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SerialPort</span><span class="p">(</span>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">SerialPort</span> <span class="n">port</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SerialPort</span><span class="p">(</span>
   <span class="n">portName</span><span class="p">:</span><span class="n">portName</span><span class="p">,</span>
   <span class="n">baudRate</span><span class="p">:</span><span class="m">2400</span><span class="p">,</span>
   <span class="n">parity</span><span class="p">:</span><span class="n">Parity</span><span class="p">.</span><span class="n">None</span><span class="p">,</span>
@@ -325,8 +345,8 @@ XやLinuxでは<code class="docutils literal"><span class="pre">.Net</span></cod
 <span class="n">port</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>この後、<code class="docutils literal"><span class="pre">port.IsOpen</span></code>により、ポートを開くのに成功したか確認しておこう。</p>
-<p>実際に通信するには<code class="docutils literal"><span class="pre">SerialPort.Write</span></code>メソッドを使う。プログラムを終了する際には、<code class="docutils literal"><span class="pre">port.Close()</span></code>によりポートを閉じておく。</p>
+<p>この後、<code class="docutils literal notranslate"><span class="pre">port.IsOpen</span></code>により、ポートを開くのに成功したか確認しておこう。</p>
+<p>実際に通信するには<code class="docutils literal notranslate"><span class="pre">SerialPort.Write</span></code>メソッドを使う。プログラムを終了する際には、<code class="docutils literal notranslate"><span class="pre">port.Close()</span></code>によりポートを閉じておく。</p>
 </div>
 <div class="section" id="id7">
 <h3>他の言語でのシリアル通信<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -347,13 +367,13 @@ XやLinuxでは<code class="docutils literal"><span class="pre">.Net</span></cod
 <p>開発中、きちんとコマンド文字列が送れているか確認したくなることがあるだろう。
 <strong>仮想シリアルポート</strong>は、シリアルポートとして振る舞い、自分自身にデータを送信するループバックテストを可能にするソフトウェアだ。</p>
 <p>Windows用だが、<a class="reference external" href="https://sourceforge.net/projects/com0com/">com0com</a>を紹介する。</p>
-<div class="figure" id="id13">
+<div class="figure" id="id14">
 <img alt="com0comの設定画面" src="../_images/com0com.png" />
 <p class="caption"><span class="caption-text">com0comの設定画面</span></p>
 </div>
 <p>セットアップすると、互いに繋がった二つのCOMポートを用意してくれる。
 番号は、他と被らないよう大きめにしておけば大丈夫だろう。</p>
-<p>あとは、一方に作ったアプリから接続し、他方に<code class="docutils literal"><span class="pre">Tera</span> <span class="pre">Term</span></code>などのターミナルソフトで接続すれば、送っている内容が見えるようになる。</p>
+<p>あとは、一方に作ったアプリから接続し、他方に<code class="docutils literal notranslate"><span class="pre">Tera</span> <span class="pre">Term</span></code>などのターミナルソフトで接続すれば、送っている内容が見えるようになる。</p>
 </div>
 </div>
 <div class="section" id="id9">
@@ -364,30 +384,35 @@ XやLinuxでは<code class="docutils literal"><span class="pre">.Net</span></cod
 歴代日電では、GUI開発にWindows FormアプリケーションやWPFを用いてきた。
 もちろん他にもGUIのフレームワークは山ほどあるが、時間も限られている以上、定番で枯れた技術を使っておくのが無難ではなかろうか。</p>
 <p>一つの可能性としては、最近イケイケのWebアプリがある。
-ChromeとJavaScriptをベースにデスクトップアプリを実現する<code class="docutils literal"><span class="pre">Electron</span></code>など、ここ最近急速にシェアを伸ばしている技術もある。
+ChromeとJavaScriptをベースにデスクトップアプリを実現する<code class="docutils literal notranslate"><span class="pre">Electron</span></code>など、ここ最近急速にシェアを伸ばしている技術もある。
 もしあなたがそういった技術を得意としているなら、乗り換える価値はあるかもしれない。</p>
 </div>
 <div class="section" id="id10">
 <h3>入力機器<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>本番でアプリの操作性にはまだまだ改善の余地がある。
 暗い画面ですばやく操作をするには、マウスよりもキーボードがいいし、タッチパネルやゲームコントローラーといった馴染みのある操作系も役に立つだろう。</p>
-<p>ゲームコントローラーは、27プラネではフリーソフトでキー操作と無理やり関連付けしたが、<code class="docutils literal"><span class="pre">DirectInput</span></code>を使えば単体でも利用できる。
+<p>ゲームコントローラーは、27プラネではフリーソフトでキー操作と無理やり関連付けしたが、<code class="docutils literal notranslate"><span class="pre">DirectInput</span></code>を使えば単体でも利用できる。
 入力機器として完成されているし、操作に慣れている人も多いので、案外自前のボタン配置に凝るよりコスパがいいかもしれない。</p>
-<div class="figure" id="id14">
+<div class="figure" id="id15">
 <img alt="27本番の日周緯度変スタッフ席の様子" src="../_images/honban-nichiden.jpg" />
 <p class="caption"><span class="caption-text">27本番の日周緯度変スタッフ席の様子</span></p>
 </div>
+<p>…28プラネでは、マウス操作一本に絞った。メモ帳をつけたために、キーやコントローラーの割り当てが難しくなったためである。
+また、メモ帳を作ったことでボタン⇔メモ帳欄でのフォーカス変更が難しくなったのもある。キーボード、ゲームコントローラーを使いたい場合、このあたりの問題をクリアする必要が出てくるだろう。
+マウスを使う場合、PCを操作する人の間で、本番ではマウスを誰が持ち込むかの割り当てを決めておいた方がいいだろう。</p>
 </div>
 <div class="section" id="id11">
 <h3>機能追加<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>27の本番中、気になったことがある。
-折角フルスクリーンモードで画面が光らないようにしたのに、画面右端に指示を書いた「メモ帳」が並べられていたのだ。
-黒背景で指示やタイミングをメモしておけるよう、アプリの<strong>画面内にメモ欄</strong>を設けても良いかもしれない。</p>
-<p>また、別の方向性として、<strong>操作の記録・再生</strong>が考えられる。
+<p>機能の追加案としては、<strong>操作の記録・再生</strong>が考えられる。
 23や25で行ってきたことを発展させ、ボタン一つで一本のソフトをまるまる上映できるようになれば楽だろう。</p>
 <p>ただし、当然ソフトの指示は毎年変わるので、開発の負担は増加する。
 ライブ解説ではタイミングを人力で判断せねばならず、想定外の事態も起こりうる以上、全自動化への道は平坦ではない。
 コストに見合うメリットが得られるような仕組みを、ぜひ考案してほしい。</p>
+</div>
+<div class="section" id="id12">
+<h3>メモ帳欄の改良<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>28でメモ帳の表示機能をつけてみたはいいものの、メモ帳を開くコンボボックスの表示がゴチャゴチャしてしまう点をどうしても解決できなかった。
+また、メモ帳のレイアウトも、現状は取り敢えず右に置いてみただけとなっているので、さらに使いやすいレイアウト案があったら改良していってほしい。</p>
 </div>
 </div>
 </div>
@@ -402,10 +427,10 @@ ChromeとJavaScriptをベースにデスクトップアプリを実現する<cod
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pc-software-history.html" class="btn btn-neutral float-right" title="日周緯度変(外部制御アプリの歴史)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../main.html" class="btn btn-neutral float-right" title="東京大学地文研究会天文部 日電引き継ぎ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ikebukuro.html" class="btn btn-neutral" title="日周緯度変(Ikebukuro)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../wireless/graffias.html" class="btn btn-neutral" title="無線制御(GRAFFIAS)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -418,7 +443,7 @@ ChromeとJavaScriptをベースにデスクトップアプリを実現する<cod
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -447,7 +472,7 @@ ChromeとJavaScriptをベースにデスクトップアプリを実現する<cod
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

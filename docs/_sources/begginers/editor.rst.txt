@@ -1,7 +1,7 @@
 テキストエディタを使ってみよう
 ==============================
 
--  書いた人: Kenichi Ito(nichiden\_27)
+-  書いた人: Kenichi Ito(nichiden_27)
 -  更新日時: 2017/04/26
 -  実行に必要な知識・技能: 特になし
 -  難易度: 1/常識の範囲
@@ -24,8 +24,8 @@ Atom
 `GitHub <https://github.com>`__\ が開発しているエディタ。
 `PV <https://www.youtube.com/watch?time_continue=2&v=Y7aEiVwBAdk>`__\ が面白いのでぜひ観よう。
 
-"A hackable text
-editor"と銘打っており、プログラマが\ **自由にカスタマイズして使える**\ ことを売りにしている。
+“A hackable text
+editor”と銘打っており、プログラマが\ **自由にカスタマイズして使える**\ ことを売りにしている。
 とはいえ、標準の状態で既に使いやすいので、プログラマでなくともぜひ触れてみて頂きたい。
 
 .. figure:: _media/atom.png

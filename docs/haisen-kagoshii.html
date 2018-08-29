@@ -40,7 +40,7 @@
         <link rel="search" title="検索" href="search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="index.html"/>
         <link rel="next" title="備品管理" href="bihin.html"/>
-        <link rel="prev" title="配線" href="haisen.html"/> 
+        <link rel="prev" title="主投影機との連携" href="syutou.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -100,12 +100,50 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">配線(かごしい内)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">用語解説</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">かご・しいたけ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">ごきぶり</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">緯度変</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">日周</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">パンタグラフ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">頸動脈</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">地上からパンタグラフへ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">二股ソケット</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">外輪ケーブル</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">パンタグラフから頸動脈へ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">主投影機電源</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ac">ACアダプタ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#atx">ATX電源(参考)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#box">投影機回路BOX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">こうとうBOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">いっとうBOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">星座絵BOX</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">投影機ケーブル</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id21">二色ケーブル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">二分岐ケーブル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">気をつけたいこと</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id24">しいたけ内部主投影機配線の全容</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -116,11 +154,12 @@
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">配線(かごしい内)</a><ul>
@@ -142,22 +181,22 @@
 <li class="toctree-l2"><a class="reference internal" href="#id13">パンタグラフから頸動脈へ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id14">主投影機電源</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ac">ACアダプタ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#atx">ATX電源</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#atx">ATX電源(参考)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#box">投影機回路BOX</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id15">こうとうBOX</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">いっとうBOX</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">星座絵BOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">こうとうBOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">いっとうBOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">星座絵BOX</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id18">投影機ケーブル</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id19">二色ケーブル</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">二分岐ケーブル</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">気をつけたいこと</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">投影機ケーブル</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id21">二色ケーブル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">二分岐ケーブル</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">気をつけたいこと</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">しいたけ内部主投影機配線の全容</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id24">しいたけ内部主投影機配線の全容</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
@@ -237,7 +276,8 @@
 <h1>配線(かごしい内)<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2017/05/28</li>
+<li>更新: Kenta Suda(nichiden_28)</li>
+<li>更新日時: 2018/08/26</li>
 <li>実行に必要な知識・技能: 端子のはんだ付けや圧着</li>
 <li>タスクの重さ: 2/数日かかる</li>
 <li>タスクの必須度: 4/毎年やるべき</li>
@@ -255,7 +295,7 @@
 <h3>かご・しいたけ<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>主投影機を搭載し、回転する台座。
 そのうち半球状になっている部分をその形にちなみ<strong>しいたけ</strong>と呼んでいる。</p>
-<div class="figure" id="id23">
+<div class="figure" id="id25">
 <img alt="かご・しいたけの外観" src="_images/kago-shiitake.jpg" />
 <p class="caption"><span class="caption-text">かご・しいたけの外観</span></p>
 </div>
@@ -290,6 +330,7 @@
 パンタグラフ側は<strong>丸型の圧着端子</strong>をねじで軽く(回転するように)留めている。</p>
 <p>圧着端子やねじは外れることがあるので気をつけよう。
 圧着端子は部室のパーツケースに相当数のストックがあり、圧着工具も数本保管してあるので、部室が使える状況なら修理は容易だ(<strong>本番では体育館に持ち込んでおく</strong>と安心)。</p>
+<p>なお、配線のうちの片方が本番後に断線したので、交換する必要がある。</p>
 </div>
 <div class="section" id="id9">
 <h3>頸動脈<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -312,7 +353,7 @@
 <div class="section" id="id12">
 <h3>外輪ケーブル<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>延長コードに二股ソケットを繋げたら、もう一方をパンタグラフの<strong>外輪から伸びるケーブル</strong>と接続する。</p>
-<div class="figure" id="id24">
+<div class="figure" id="id26">
 <img alt="パンタグラフの外観" src="_images/pantograph.jpg" />
 <p class="caption"><span class="caption-text">パンタグラフの外観</span></p>
 </div>
@@ -345,15 +386,19 @@ AC電源のソケットと違い、切り欠きによって向きが分かるた
 ただし、主投影機の<strong>消費電力をまかなえるだけの個数を用意する</strong>こと。
 ACアダプタの定格を超えて使用すると、寿命を縮めてしまうことがあるので気をつけたい。</p>
 <p>26主投時点では、しいたけ内に5V4A(2個)/12V5A(2個)の4つのACアダプタを、結束バンドで固定して給電していた。</p>
+<p>28代では電源を12V150WのACアダプター1つにした。
+これはPISCIUMやまたたき回路内でレギュレータを用いたため可能となった。
+これによりしいたけ内の配線が簡単になり、ATX電源に比べてかなり軽くなったのでかごしい本体への負担も減った。
+また、ATX電源より安定して電源を供給できるようになった。</p>
 </div>
 <div class="section" id="atx">
-<h3>ATX電源<a class="headerlink" href="#atx" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>ATX電源(参考)<a class="headerlink" href="#atx" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>27主投では、ケーブルの多くなるACアダプタを廃止してPC用の<strong>ATX電源</strong>を使用した。
 しかし、ちょっとした電流サージで停止してしまうというATX電源の仕様により活用は困難だった。
 また、当初案ではしいたけに電源装置をねじ止めする予定だったものの、フレームのサイズが合わず断念した。</p>
 <p>ATX電源は使い方にかなり難があるので、配電管理にコストを割けないのであればACアダプタを使う方が楽かもしれない。
-主投影機の仕様変更でいっとう以外は12V化しているので、12VACアダプタに統一して三端子レギュレータで電圧を下げる……という方針も考えられる。
-なんにせよ、</p>
+そのため、28代では12VACアダプタに統一して三端子レギュレータで電圧を下げるという方針をとった。</p>
+<p>なんにせよ、</p>
 <ul class="simple">
 <li>配線の作業がしやすいこと</li>
 <li>本番で安定して電力供給できること</li>
@@ -365,60 +410,69 @@ ACアダプタの定格を超えて使用すると、寿命を縮めてしまう
 <h2>投影機回路BOX<a class="headerlink" href="#box" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>しいたけ上でACアダプタと各投影機の間を繋ぐ回路が入った箱(実際はタッパー)。
 <strong>こうとうBOX・いっとうBOX・無線BOX</strong>(Piscium)が存在する。
-各投影機の備品を入れる箱も「**ボックス」と称するが別物である。
+各投影機の備品を入れる箱も「<a href="#id15"><span class="problematic" id="id16">**</span></a>ボックス」と称するが別物である。
 正直ややこしいので呼び方を変えるべきかもしれない。</p>
-<div class="section" id="id15">
-<h3>こうとうBOX<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id17">
+<h3>こうとうBOX<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>恒星投影機16個に電力を供給する回路。
-<strong>DCジャックが18個繋がっているだけ</strong>の簡単なものである。
-ただし、こうとうは一個あたり3Wを消費するので、過大な電流が流れないよう回路を<strong>半分の9個ずつに分けてある</strong>。</p>
-<div class="figure" id="id25">
+27代まではDCジャックが18個繋がっているだけの簡単なものであったが、28代で<a class="reference external" href="http://akizukidenshi.com/catalog/g/gP-12543/">突入電流防止用のNTCサーミスタ</a>を入力端子のところに直列で2つずつ取り付けた。
+こうとうは一個あたり3Wを消費するので、過大な電流が流れないよう回路を半分の9個ずつに分けてある。</p>
+<p>このNTCサーミスタは温度が低い(室温程度)の時は抵抗が1Ω程度だが、電流が流れて温度が高くなると抵抗がほぼ0になる。
+そのため突入電流が防げるという仕組みだ。
+27でこうとうのONOFFをやろうとしたところおそらく突入電流のせいでできなかったとのことだったので取り付けた。
+もしかしたらATX電源をACアダプターに変えたことで突入電流に耐えられるようになっていたかもしれないが、サーミスタはつけたままでも問題ないだろう。</p>
+<div class="figure" id="id27">
 <img alt="こうとうBOX外観" src="_images/koutou-box-appearance.jpg" />
 <p class="caption"><span class="caption-text">こうとうBOX外観</span></p>
 </div>
-<p>一番端の二つのジャックに「入力」みたいなことが書いてあるが、実際は繋がった9個のうちどこに刺しても問題はない(ミスを防ぐ観点からは好ましくないが...)。
-壊れる類のものではないので作り変えは例年行われないものの、27代では大電流を流せるよう基板の裏全体に銅箔を貼り付けた。</p>
+<p>壊れる類のものではないので作り変えは例年行われないものの、27代では大電流を流せるよう基板の裏全体に銅箔を貼り付けた。28代ではNTCサーミスタをとりつけた。</p>
 <p>取り付ける部分は、しいたけの下の四角い部分である(他の回路BOXも同様)。
 養生テープなどでは剥がれるリスクがあるので、<strong>結束バンドでフレームに固定する</strong>とよさそうだ。</p>
 </div>
-<div class="section" id="id16">
-<h3>いっとうBOX<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id18">
+<h3>いっとうBOX<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>中身は<a class="reference external" href="twinkle.html">またたき回路</a>。使い方や仕組みはあちらの記事を参照いただきたい。
 主投影機配線の要素の一つとして考えるときは、こちらの呼び方を使うことが多い。</p>
-<div class="figure" id="id26">
+<div class="figure" id="id28">
 <img alt="またたき回路の外観" src="_images/twinkle-appearance.jpg" />
 <p class="caption"><span class="caption-text">またたき回路の外観</span></p>
 </div>
 </div>
-<div class="section" id="id17">
-<h3>星座絵BOX<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id19">
+<h3>星座絵BOX<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><a class="reference external" href="wireless/piscium.html">Piscium</a>のこと。
 26代までは無線は星座絵だけだったので、この呼び名が残る。</p>
 </div>
 </div>
-<div class="section" id="id18">
-<h2>投影機ケーブル<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id20">
+<h2>投影機ケーブル<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><strong>回路BOXと投影機を繋ぐケーブル</strong>は基本的に日電の管理下にある。
 例外として、星座絵投影機は慣例的に本体とケーブルが一体なので製作は任せよう。</p>
-<div class="section" id="id19">
-<h3>二色ケーブル<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>ただし、28主投において、正座絵のケーブルの部分でショートしてPisciumの一部が壊れるということが起きた(詳細は<a class="reference external" href="wireless/piscium.html">Pisciumのページ</a>)。
+ケーブルの制作は正座絵の負担にもなっているので、他の投影機と同様に正座絵も本体にDCジャックをつけるようにして、ケーブルは日電で制作した方が良いかもしれない。
+ケーブルを日電で管理すればショートも防げるだろう。</p>
+<p>また、現在使われている投影機ケーブルの太さは0.3sqである。
+太い線を使うとDCジャック内でショートしやすくなってしまうので注意してほしい。
+なお、正座絵のケーブルがショートした原因も太いケーブルを使ったことである可能性が高いので、日電が作るようにしなくても0.3sqの線(正座絵で持っているものではなく部室にある赤黒の線)を使うように指定すればいいかもしれない。</p>
+<div class="section" id="id21">
+<h3>二色ケーブル<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>毎年使うものであり、必要本数は大抵部室にある。
 とはいえ、もし足りなくなれば早めに増産しておこう。
 適度な長さの二色ケーブルに、DCプラグを2個つけるだけで良い。</p>
-<div class="figure" id="id27">
+<div class="figure" id="id29">
 <img alt="投影機ケーブルの一部" src="_images/syutou-cable.jpg" />
 <p class="caption"><span class="caption-text">投影機ケーブルの一部</span></p>
 </div>
 </div>
-<div class="section" id="id20">
-<h3>二分岐ケーブル<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id22">
+<h3>二分岐ケーブル<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ぎんとうは片方の半球に二つしかないため、BOXの代わりに<strong>二つに分岐するケーブル</strong>を挟む。
 二分岐は自分で作ると耐久性に難があるので、既製品を使っている。</p>
 <p>二つのぎんとうは距離をかなり離して設置されるので、分岐の後さらに<strong>延長ケーブル</strong>を挟まなくてはならない。
 他のケーブルと違って一方がDCプラグ、他方がDCジャックとなるので混同しないように。</p>
 </div>
-<div class="section" id="id21">
-<h3>気をつけたいこと<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id23">
+<h3>気をつけたいこと<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
 <li>投影機の区別をつける<ul>
 <li>しいたけに取り付けると線が絡み合い、元を辿るのは困難を極める</li>
@@ -441,18 +495,18 @@ ACアダプタの定格を超えて使用すると、寿命を縮めてしまう
 </ul>
 </li>
 </ul>
-<div class="figure" id="id28">
+<div class="figure" id="id30">
 <img alt="23代の簡易ケーブルチェッカ" src="_images/cablechecker-23.png" />
 <p class="caption"><span class="caption-text">23代の簡易ケーブルチェッカ</span></p>
 </div>
 </div>
 </div>
-<div class="section" id="id22">
-<h2>しいたけ内部主投影機配線の全容<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id24">
+<h2>しいたけ内部主投影機配線の全容<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>最後に、しいたけ内配線の様子をツリー上に示す。
 記入してはいないが、こうとうBOXやいっとうBOXにももちろんそれぞれの投影機がつながっている。
-27代のPisciumは全主投影機の電源を制御するので、これまでと配線の構造がかなり変化した。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>[26まで]
+Pisciumは全主投影機の電源を制御するので、27代から配線の構造がかなり変化した。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[26まで]
 電源
 ├── ACアダプタ12V-1
 │   └── こうとうBOX-1
@@ -476,6 +530,16 @@ ACアダプタの定格を超えて使用すると、寿命を縮めてしまう
 │   └── こうとうBOX2
 └── USB用ACアダプタ
     └── Piscium(無線モジュール)
+
+[28]
+電源
+└── ACアダプタ12V+Piscium
+    ├── (各星座絵)
+    ├── 二股DCケーブル
+    │   └── (各ぎんとう)
+    ├── いっとうBOX
+    ├── こうとうBOX1
+    └── こうとうBOX2
 </pre></div>
 </div>
 </div>
@@ -494,7 +558,7 @@ ACアダプタの定格を超えて使用すると、寿命を縮めてしまう
         <a href="bihin.html" class="btn btn-neutral float-right" title="備品管理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="haisen.html" class="btn btn-neutral" title="配線" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="syutou.html" class="btn btn-neutral" title="主投影機との連携" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -507,7 +571,7 @@ ACアダプタの定格を超えて使用すると、寿命を縮めてしまう
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -536,7 +600,7 @@ ACアダプタの定格を超えて使用すると、寿命を縮めてしまう
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

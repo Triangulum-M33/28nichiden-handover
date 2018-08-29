@@ -40,7 +40,7 @@
         <link rel="search" title="検索" href="search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="index.html"/>
         <link rel="next" title="部品の買い方" href="begginers/buy_parts.html"/>
-        <link rel="prev" title="主投影機との連携" href="syutou.html"/> 
+        <link rel="prev" title="配線" href="haisen.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -101,11 +101,13 @@
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -116,11 +118,12 @@
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -277,8 +280,8 @@ LEDの電源自体を高速でオンオフする手法が用いられた。</p>
 <h4>パワーLEDの調光<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>25主投(26補助投)の時、あくとうが<strong>パワーLEDを採用した</strong>。
 パワーLEDは大電流を制御する必要があり運用が難しいが、秋月電子などが販売する「<strong>定電流方式ハイパワーLEDドライバモジュール</strong>」を使用すれば、12Vを供給するだけで点灯する。</p>
-<p>このドライバモジュールには<code class="docutils literal"><span class="pre">CL6807</span></code>(<a class="reference external" href="http://akizukidenshi.com/download/ds/chiplink/CL6807_p.pdf">データシートPDF</a>)という制御ICが搭載されているが、このICが調光機能を持っている。
-<code class="docutils literal"><span class="pre">ADJ</span></code>というピンに以下のような入力を与えることで明るさを制御できるのだ。</p>
+<p>このドライバモジュールには<code class="docutils literal notranslate"><span class="pre">CL6807</span></code>(<a class="reference external" href="http://akizukidenshi.com/download/ds/chiplink/CL6807_p.pdf">データシートPDF</a>)という制御ICが搭載されているが、このICが調光機能を持っている。
+<code class="docutils literal notranslate"><span class="pre">ADJ</span></code>というピンに以下のような入力を与えることで明るさを制御できるのだ。</p>
 <ol class="arabic simple">
 <li>0.4V未満: 消灯</li>
 <li>0.5V ~ 2.5V: 電位による調光</li>
@@ -360,12 +363,12 @@ IDEで書き込んでいる。
 しかし、東西切り替えスイッチを物理的に作ると配線が面倒なので、<strong>8本の端子からPWMが出せる</strong>ようにした。</p>
 <p>当然標準のライブラリでは対応できないので、マイコンの機能に頼らずにPWMを発生させねばならない。
 幸い先人が作成したライブラリがいくつかあり、今回は<a class="reference external" href="https://github.com/bhagman/SoftPWM">bhagman/SoftPWM</a>を使用した。
-<code class="docutils literal"><span class="pre">SoftPWMSet(ピン番号,</span> <span class="pre">0~255までの整数)</span></code>という関数で、デジタル出力ピンからPWM信号を出力できる。</p>
-<p>コード中で<code class="docutils literal"><span class="pre">HC4511</span></code>というクラスを定義しているが、これは<a class="reference external" href="http://akizukidenshi.com/catalog/g/gI-11905/">74HC4511</a>という7セグLEDドライバIC用に作ったものである。
-<code class="docutils literal"><span class="pre">write(int</span> <span class="pre">value)</span></code>で数字を表示できるようにしてあり、さらに<code class="docutils literal"><span class="pre">=</span></code>演算子をオーバーロードして数字を代入するだけで使える仕様としている。</p>
+<code class="docutils literal notranslate"><span class="pre">SoftPWMSet(ピン番号,</span> <span class="pre">0~255までの整数)</span></code>という関数で、デジタル出力ピンからPWM信号を出力できる。</p>
+<p>コード中で<code class="docutils literal notranslate"><span class="pre">HC4511</span></code>というクラスを定義しているが、これは<a class="reference external" href="http://akizukidenshi.com/catalog/g/gI-11905/">74HC4511</a>という7セグLEDドライバIC用に作ったものである。
+<code class="docutils literal notranslate"><span class="pre">write(int</span> <span class="pre">value)</span></code>で数字を表示できるようにしてあり、さらに<code class="docutils literal notranslate"><span class="pre">=</span></code>演算子をオーバーロードして数字を代入するだけで使える仕様としている。</p>
 <p>プログラム自体は、初期化→loop関数でPWM発生→ボタンが押されたら割り込みでモード変更
 という流れになっている。
-発光パターンを変えるだけであれば、<code class="docutils literal"><span class="pre">uint8_t</span> <span class="pre">LightPattern</span></code>という配列を書き換えるだけで良い。
+発光パターンを変えるだけであれば、<code class="docutils literal notranslate"><span class="pre">uint8_t</span> <span class="pre">LightPattern</span></code>という配列を書き換えるだけで良い。
 こうしたカンマ区切りの整数列は、<strong>Excelのオートフィルで数字を自動入力</strong>した後カンマを付け足してコピペすることで容易に生成できる。</p>
 <p><em>主な使用部品</em></p>
 <ul class="simple">
@@ -414,7 +417,7 @@ PWM信号をドライバモジュールに送ることで調光を試みたが�
         <a href="begginers/buy_parts.html" class="btn btn-neutral float-right" title="部品の買い方" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="syutou.html" class="btn btn-neutral" title="主投影機との連携" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="haisen.html" class="btn btn-neutral" title="配線" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -427,7 +430,7 @@ PWM信号をドライバモジュールに送ることで調光を試みたが�
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -456,7 +459,7 @@ PWM信号をドライバモジュールに送ることで調光を試みたが�
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

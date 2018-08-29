@@ -39,8 +39,8 @@
               href="../genindex.html"/>
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
-        <link rel="next" title="日周緯度変(Ogoseの実装解説)" href="pc-software-code.html"/>
-        <link rel="prev" title="日周緯度変(外部制御アプリ)" href="pc-software.html"/> 
+        <link rel="next" title="日周緯度変(Ogoseの実装解説)※工事中" href="pc-software-code.html"/>
+        <link rel="prev" title="日周緯度変(Ikebukuro)" href="ikebukuro.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -101,11 +101,13 @@
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -124,11 +126,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#ogose-2016">Ogose(2016)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -213,11 +216,13 @@
 <li>実行に必要な知識・技能: 特になし</li>
 <li>難易度: 2/少しやれば可能</li>
 <li>情報の必須度: 2/知ってると楽</li>
-<li>元資料</li>
-<li><code class="docutils literal"><span class="pre">引き継ぎと技術的補足：日周緯度変外部制御ユーザインタフェース.docx</span></code>
+<li>元資料<ul>
+<li><code class="docutils literal notranslate"><span class="pre">引き継ぎと技術的補足：日周緯度変外部制御ユーザインタフェース.docx</span></code>
 by 紺野雄介(nichiden_23)</li>
-<li><code class="docutils literal"><span class="pre">ふじさわreadme.docx</span></code> by 池下 氏(nichiden_24)</li>
-<li><code class="docutils literal"><span class="pre">25の日周・緯度変について.docx</span></code> by 伊藤太陽(nichiden_25)</li>
+<li><code class="docutils literal notranslate"><span class="pre">ふじさわreadme.docx</span></code> by 池下 氏(nichiden_24)</li>
+<li><code class="docutils literal notranslate"><span class="pre">25の日周・緯度変について.docx</span></code> by 伊藤太陽(nichiden_25)</li>
+</ul>
+</li>
 </ul>
 <div class="section" id="id2">
 <h2>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -230,11 +235,11 @@ by 紺野雄介(nichiden_23)</li>
 <img alt="Tokyo Terminalの画面" src="../_images/tokyoterminal.png" />
 <p class="caption"><span class="caption-text">Tokyo Terminalの画面</span></p>
 </div>
-<p>23代荒田氏が制作した。外部制御は23代で初使用されたが、<code class="docutils literal"><span class="pre">Tokyo</span> <span class="pre">Terminal</span></code>はそのテスト用に書かれたものである。</p>
+<p>23代荒田氏が制作した。外部制御は23代で初使用されたが、<code class="docutils literal notranslate"><span class="pre">Tokyo</span> <span class="pre">Terminal</span></code>はそのテスト用に書かれたものである。</p>
 <p>氏の環境がMac
-OSだったため、Macでしか動作しない。23代の作業データの<code class="docutils literal"><span class="pre">日周緯度変外部制御/Saitama6Brain/</span></code>以下にソースファイルやアプリ本体があるが、最新のMac
+OSだったため、Macでしか動作しない。23代の作業データの<code class="docutils literal notranslate"><span class="pre">日周緯度変外部制御/Saitama6Brain/</span></code>以下にソースファイルやアプリ本体があるが、最新のMac
 OSでは対応していない旨が表示され起動しなかった。</p>
-<p>これ以降の外部制御アプリは全てWindows向けに開発されたものだ。Mac向けに開発する必要に迫られることがもしあれば、<code class="docutils literal"><span class="pre">Tokyo</span> <span class="pre">Terminal</span></code>のコードが参考になるかもしれない(Mac開発の経験があれば一から書いた方が早い可能性も大いにあるが...)。</p>
+<p>これ以降の外部制御アプリは全てWindows向けに開発されたものだ。Mac向けに開発する必要に迫られることがもしあれば、<code class="docutils literal notranslate"><span class="pre">Tokyo</span> <span class="pre">Terminal</span></code>のコードが参考になるかもしれない(Mac開発の経験があれば一から書いた方が早い可能性も大いにあるが…)。</p>
 </div>
 <div class="section" id="nisshuidohencontroller2-2012">
 <h2>NisshuidohenController2(2012)<a class="headerlink" href="#nisshuidohencontroller2-2012" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -242,14 +247,14 @@ OSでは対応していない旨が表示され起動しなかった。</p>
 <img alt="NisshuidohenController2の画面" src="../_images/nisshuidohencontroller2.png" />
 <p class="caption"><span class="caption-text">NisshuidohenController2の画面</span></p>
 </div>
-<p>23代紺野氏の作。<code class="docutils literal"><span class="pre">Tokyo</span> <span class="pre">Terminal</span></code>がMac専用だったため、Windows版として開発された。開発言語はC#で、Windows
-Formアプリケーション(<code class="docutils literal"><span class="pre">System.Windows.Forms</span></code>名前空間を使用)である。</p>
-<p><code class="docutils literal"><span class="pre">Tokyo</span> <span class="pre">Terminal</span></code>と共通の機能が多いが、大きな違いは<strong>操作の記録・再生ができる</strong>ことである。「速度指定」か「角度指定」かを選択して「記録」ボタンを押すと右のスペースに送るコマンドが表示され、同時に<code class="docutils literal"><span class="pre">Instruction.txt</span></code>というファイルにも保存される。</p>
-<p>あらかじめ必要なコマンドを記録しておいて面倒な操作なしに再実行できる画期的な機能である...と言いたいところだが、<strong>表示されるのはコマンドだけ</strong>(数値は16進数)なので、肝心の再生部分が手軽に利用できるとは言い難い。</p>
+<p>23代紺野氏の作。<code class="docutils literal notranslate"><span class="pre">Tokyo</span> <span class="pre">Terminal</span></code>がMac専用だったため、Windows版として開発された。開発言語はC#で、Windows
+Formアプリケーション(<code class="docutils literal notranslate"><span class="pre">System.Windows.Forms</span></code>名前空間を使用)である。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Tokyo</span> <span class="pre">Terminal</span></code>と共通の機能が多いが、大きな違いは<strong>操作の記録・再生ができる</strong>ことである。「速度指定」か「角度指定」かを選択して「記録」ボタンを押すと右のスペースに送るコマンドが表示され、同時に<code class="docutils literal notranslate"><span class="pre">Instruction.txt</span></code>というファイルにも保存される。</p>
+<p>あらかじめ必要なコマンドを記録しておいて面倒な操作なしに再実行できる画期的な機能である…と言いたいところだが、<strong>表示されるのはコマンドだけ</strong>(数値は16進数)なので、肝心の再生部分が手軽に利用できるとは言い難い。</p>
 <p>「高速」「低速」のボタンで出る角速度は以下の数値に固定されている。なお、上半分で入力する角速度はモーターのもの、以下の角速度はギアによる減速後のかごしいのものなので注意。
 - 日周高速ボタン: 4 deg/s - 日周低速ボタン: 1 deg/s - 緯度高速ボタン: 1
 deg/s - 緯度低速ボタン: 0.5 deg/s</p>
-<p>この数値は後発の<code class="docutils literal"><span class="pre">Fujisawa</span></code>、<code class="docutils literal"><span class="pre">Chichibu</span></code>でも同じものが使われている。</p>
+<p>この数値は後発の<code class="docutils literal notranslate"><span class="pre">Fujisawa</span></code>、<code class="docutils literal notranslate"><span class="pre">Chichibu</span></code>でも同じものが使われている。</p>
 <p>当時の日周緯度変は相応のスキルのある日電員が操作しており、自分たちで使うための最小限の機能を盛り込んだという印象だ。実際、本番中に使用したのは「高速」などのボタンだけだったという。</p>
 <p>将来これを使うことはなさそうだが、速度・角度・方向に対応するコマンドを表示してくれるので、デバッグ用の計算機にはなるかもしれない。</p>
 </div>
@@ -259,12 +264,12 @@ deg/s - 緯度低速ボタン: 0.5 deg/s</p>
 <img alt="Fujisawaの画面" src="../_images/fujisawa.png" />
 <p class="caption"><span class="caption-text">Fujisawaの画面</span></p>
 </div>
-<p>24池下氏によるもの。引き続きC#によるWindowsアプリだが、UIのフレームワークに<code class="docutils literal"><span class="pre">Windows</span> <span class="pre">Presentation</span> <span class="pre">Foundation(WPF)</span></code>を使用している。</p>
-<p>WPFの詳細についてはググって欲しいが、デザインとコードを分けて書くことができるというのが大きな利点である。つまり、内部の動作を崩さずに見た目だけをいじり倒せるのだ。その甲斐あってか、23のUIに比べデザイン面が大きく改善した。コマンド文字列を生成するコードは<code class="docutils literal"><span class="pre">fujisawa/NisshuidohenController.cs</span></code>でクラスにまとめて定義されている。</p>
-<p>日周緯度変にPCを使うとき、一番問題になるのは画面が光ることだ。PCは画面も大きいし、そのために星がかき消されてしまいかねない。<code class="docutils literal"><span class="pre">Fujisawa</span></code>は、<strong>黒基調の画面</strong>にすることでPCの光害を抑制している。</p>
-<p>使い方は見れば分かると思うが、「びゅーん」が高速回転、「のろのろ」が低速回転だ。また、本番で画面を暗くしているとマウス操作が大変なので、日周はキーボードでも操作できる。<code class="docutils literal"><span class="pre">C</span></code>:
-高速逆転、<code class="docutils literal"><span class="pre">V</span></code>: 低速逆転、<code class="docutils literal"><span class="pre">B</span></code>: 停止、<code class="docutils literal"><span class="pre">N</span></code>:
-低速順回転、<code class="docutils literal"><span class="pre">M</span></code>: 高速順回転 である。</p>
+<p>24池下氏によるもの。引き続きC#によるWindowsアプリだが、UIのフレームワークに<code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Presentation</span> <span class="pre">Foundation(WPF)</span></code>を使用している。</p>
+<p>WPFの詳細についてはググって欲しいが、デザインとコードを分けて書くことができるというのが大きな利点である。つまり、内部の動作を崩さずに見た目だけをいじり倒せるのだ。その甲斐あってか、23のUIに比べデザイン面が大きく改善した。コマンド文字列を生成するコードは<code class="docutils literal notranslate"><span class="pre">fujisawa/NisshuidohenController.cs</span></code>でクラスにまとめて定義されている。</p>
+<p>日周緯度変にPCを使うとき、一番問題になるのは画面が光ることだ。PCは画面も大きいし、そのために星がかき消されてしまいかねない。<code class="docutils literal notranslate"><span class="pre">Fujisawa</span></code>は、<strong>黒基調の画面</strong>にすることでPCの光害を抑制している。</p>
+<p>使い方は見れば分かると思うが、「びゅーん」が高速回転、「のろのろ」が低速回転だ。また、本番で画面を暗くしているとマウス操作が大変なので、日周はキーボードでも操作できる。<code class="docutils literal notranslate"><span class="pre">C</span></code>:
+高速逆転、<code class="docutils literal notranslate"><span class="pre">V</span></code>: 低速逆転、<code class="docutils literal notranslate"><span class="pre">B</span></code>: 停止、<code class="docutils literal notranslate"><span class="pre">N</span></code>:
+低速順回転、<code class="docutils literal notranslate"><span class="pre">M</span></code>: 高速順回転 である。</p>
 <p>総じて24日電の雰囲気がよく出ており大変分かりやすいものの、回転方向が少し把握しにくい。なお、アプリ名称は往時の天文部の「備品などに駅名をつける」習慣に則ったもので、「ふじさわ」は制作者の地元であるらしい。</p>
 </div>
 <div class="section" id="chichibu-2014">
@@ -274,12 +279,12 @@ deg/s - 緯度低速ボタン: 0.5 deg/s</p>
 <p class="caption"><span class="caption-text">Chichibuの画面</span></p>
 </div>
 <p>25伊藤氏が開発したアプリ。他にない特色として、25ソフト専用のモードが用意され、ボタンを押すだけでシナリオで要求された動きを実現できることがある。</p>
-<p>また、23の<code class="docutils literal"><span class="pre">NisshuidohenController2</span></code>と24の<code class="docutils literal"><span class="pre">Fujisawa</span></code>の画面もそのまま移植され、それぞれの機能が利用できる。本番でも、ライブ解説時には<code class="docutils literal"><span class="pre">Fujisawa</span></code>を使っていたようだ。</p>
+<p>また、23の<code class="docutils literal notranslate"><span class="pre">NisshuidohenController2</span></code>と24の<code class="docutils literal notranslate"><span class="pre">Fujisawa</span></code>の画面もそのまま移植され、それぞれの機能が利用できる。本番でも、ライブ解説時には<code class="docutils literal notranslate"><span class="pre">Fujisawa</span></code>を使っていたようだ。</p>
 <div class="figure" id="id7">
 <img alt="Chichibuに移植されたNisshuidohenController2" src="../_images/chichibu_2.png" />
 <p class="caption"><span class="caption-text">Chichibuに移植されたNisshuidohenController2</span></p>
 </div>
-<p>フルスクリーン状態で起動することで、以前より更に画面の光漏れを抑えている。ただし、ソフト内に終了ボタンがないうえタイトルバーも見えないので、プログラムを終了させる際は<code class="docutils literal"><span class="pre">Alt</span></code>+<code class="docutils literal"><span class="pre">F4</span></code>を押すなどショートカットキーを使うしかない。</p>
+<p>フルスクリーン状態で起動することで、以前より更に画面の光漏れを抑えている。ただし、ソフト内に終了ボタンがないうえタイトルバーも見えないので、プログラムを終了させる際は<code class="docutils literal notranslate"><span class="pre">Alt</span></code>+<code class="docutils literal notranslate"><span class="pre">F4</span></code>を押すなどショートカットキーを使うしかない。</p>
 </div>
 <div class="section" id="ogose-2016">
 <h2>Ogose(2016)<a class="headerlink" href="#ogose-2016" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -287,7 +292,7 @@ deg/s - 緯度低速ボタン: 0.5 deg/s</p>
 <img alt="Ogoseの画面" src="../_images/ogose.png" />
 <p class="caption"><span class="caption-text">Ogoseの画面</span></p>
 </div>
-<p>27日電の伊東が開発した。これまでのUIの問題点を洗い出した上で、改善すべく様々な変更を加えている。デザイン部分(<code class="docutils literal"><span class="pre">MainWindow.xaml</span></code>)は一から作り直したが、コマンド文字列生成は<code class="docutils literal"><span class="pre">NisshuidohenController.cs</span></code>を継続使用した。</p>
+<p>27日電の伊東が開発した。これまでのUIの問題点を洗い出した上で、改善すべく様々な変更を加えている。デザイン部分(<code class="docutils literal notranslate"><span class="pre">MainWindow.xaml</span></code>)は一から作り直したが、コマンド文字列生成は<code class="docutils literal notranslate"><span class="pre">NisshuidohenController.cs</span></code>を継続使用した。</p>
 <p>指定できる速度が各軸4段階に増えたことで、多彩な演出が可能となった。また、速度指定のボタンを回転スタート/ストップボタンとは別に用意したため、回転を止めずとも速度を変更できる。</p>
 <p>ウィンドウモードとフルスクリーンモードをボタンで切り替えられる機能も実装した。また、フルスクリーンボタンの横にある「公演モード」ボタンは、使用できる機能を「日周進める」に限定し誤操作を防止する機能である。キーボード操作などにより意図しない状態になるバグが存在するので注意。</p>
 <p>思いがけないことに、ボタンを十字に配置したことで、ゲームコントローラーのボタンと同様の配置となった。本番ではゲームコントローラーを実際に使用し、慣れていない人でも操作ができるという恩恵があった。</p>
@@ -305,10 +310,10 @@ deg/s - 緯度低速ボタン: 0.5 deg/s</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pc-software-code.html" class="btn btn-neutral float-right" title="日周緯度変(Ogoseの実装解説)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pc-software-code.html" class="btn btn-neutral float-right" title="日周緯度変(Ogoseの実装解説)※工事中" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pc-software.html" class="btn btn-neutral" title="日周緯度変(外部制御アプリ)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ikebukuro.html" class="btn btn-neutral" title="日周緯度変(Ikebukuro)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -321,7 +326,7 @@ deg/s - 緯度低速ボタン: 0.5 deg/s</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -350,7 +355,7 @@ deg/s - 緯度低速ボタン: 0.5 deg/s</p>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

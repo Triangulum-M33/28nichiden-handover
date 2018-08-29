@@ -39,7 +39,7 @@
               href="../genindex.html"/>
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
-        <link rel="next" title="マイコンをはじめよう" href="microcontroller.html"/>
+        <link rel="next" title="回路設計のためのソフトウェア" href="electronic-design.html"/>
         <link rel="prev" title="補助投影機との連携" href="../hojotou.html"/> 
 
   
@@ -101,11 +101,13 @@
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualstudio.html">Visual Studioをはじめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -116,11 +118,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -143,13 +146,13 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id12">ネットで買う</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id13">全体の注意</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">秋月電子通商</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">千石電商</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">マルツ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">スイッチサイエンス</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">オリエンタルモータ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">秋月電子通商</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">千石電商</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">マルツ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">スイッチサイエンス</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">オリエンタルモータ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#maxon">maxon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">ミスミ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">ミスミ</a></li>
 </ul>
 </li>
 </ul>
@@ -276,8 +279,8 @@
 </ul>
 </li>
 <li>バスで<ul>
-<li>正門前や赤門前から<code class="docutils literal"><span class="pre">茶51</span></code>系統で万世橋まで</li>
-<li>本郷二食前から<code class="docutils literal"><span class="pre">学07</span></code>系統で御茶ノ水駅前まで</li>
+<li>正門前や赤門前から<code class="docutils literal notranslate"><span class="pre">茶51</span></code>系統で万世橋まで</li>
+<li>本郷二食前から<code class="docutils literal notranslate"><span class="pre">学07</span></code>系統で御茶ノ水駅前まで</li>
 <li>徒歩が少なくて楽</li>
 </ul>
 </li>
@@ -337,27 +340,31 @@
 <div class="section" id="id12">
 <h2>ネットで買う<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id13">
-<h3>全体の注意<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<span id="id14"></span><h3>全体の注意<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
-<li>まともなサイトは仕様をまとめたデータシートをPDFなどで配布している</li>
+<li>まともなサイトは仕様をまとめたデータシートをPDFなどで配布している<ul>
 <li>必ず確認してから買おう!</li>
 <li>データシートなしの部品には手を出さないのが無難</li>
+</ul>
+</li>
 <li>送料・納期を確認すべし</li>
-<li>領収書は、納品書+支払いの証拠(振込の明細書など)とするのが基本</li>
+<li>領収書は、納品書+支払いの証拠(振込の明細書など)とするのが基本<ul>
 <li>電子部品は店の選択肢が少ないのでこうするしかないようです</li>
 </ul>
+</li>
+</ul>
 </div>
-<div class="section" id="id14">
-<h3><a class="reference external" href="http://akizukidenshi.com/">秋月電子通商</a><a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id15">
+<span id="id16"></span><h3><a class="reference external" href="http://akizukidenshi.com/">秋月電子通商</a><a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>送料一律500円。お店に行く時にもここで予習しておくと便利。
 そのうち本店での商品位置情報が分かるアプリがリリースされるらしい。</p>
 </div>
-<div class="section" id="id15">
-<h3><a class="reference external" href="http://www.sengoku.co.jp/">千石電商</a><a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id17">
+<span id="id18"></span><h3><a class="reference external" href="http://www.sengoku.co.jp/">千石電商</a><a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>これも予習に使える。送料432円。</p>
 </div>
-<div class="section" id="id16">
-<h3><a class="reference external" href="http://www.marutsu.co.jp/">マルツ</a><a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id19">
+<h3><a class="reference external" href="http://www.marutsu.co.jp/">マルツ</a><a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>大手だけどここで買ったことがないのであまり分からず。
 法人/官公庁向けの販売もしているのでサイト構成はちょっと敷居が高い感じ。</p>
 <p><a class="reference external" href="http://www.marutsu.co.jp/pc/static/large_order/led">LEDの使い方</a>をはじめ、初心者~脱初心者向けの情報を提供していたりする。
@@ -365,13 +372,13 @@
 <p>ケース加工やプリント基板加工もしており、しっかりとしたものを作りたい場合はお世話になるかも?
 大学生協との提携も盛んで、学科や研究室で電子回路を扱う時に関わることになるのかもしれない。</p>
 </div>
-<div class="section" id="id17">
-<h3><a class="reference external" href="https://www.switch-science.com/">スイッチサイエンス</a><a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id20">
+<h3><a class="reference external" href="https://www.switch-science.com/">スイッチサイエンス</a><a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>10000円以上で送料無料。海外向け製品など秋月で扱ってない商品もあるようだ。</p>
 <p>電子工作やIoTの<a class="reference external" href="https://connpass.com/search/?q=%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9">イベント</a>を運営していたり、ブログに解説記事を載せたりと活動は活発。</p>
 </div>
-<div class="section" id="id18">
-<h3><a class="reference external" href="https://www.orientalmotor.co.jp/">オリエンタルモータ</a><a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id21">
+<h3><a class="reference external" href="https://www.orientalmotor.co.jp/">オリエンタルモータ</a><a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>モータ専門の企業。日周・緯度変のモータとモータドライバは代々ここで買っている。</p>
 <p>買い替える場合は型番を見て同じものを買えばいいだろう。
 ドライバはかなり高額だが、部室に予備があるしそもそも既製品なのであんまり壊れない。</p>
@@ -381,8 +388,8 @@
 <p>同じくモータ製造大手。データシートが詳細で、モータの勉強ができる。
 <a class="reference external" href="http://academy.maxonjapan.co.jp/">マクソンアカデミー</a>という解説記事群もある。</p>
 </div>
-<div class="section" id="id19">
-<h3><a class="reference external" href="http://jp.misumi-ec.com/">ミスミ</a><a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id22">
+<h3><a class="reference external" href="http://jp.misumi-ec.com/">ミスミ</a><a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>金属系の部品なら買えないものはない、神のような存在。
 しかも送料無料(ネジ一本でも)。ただし法人格のアカウントがないと買えない。</p>
 <p>日電で本格的に機械部品を扱うことは稀なので、無理に使うことはないかもしれない。</p>
@@ -400,7 +407,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="microcontroller.html" class="btn btn-neutral float-right" title="マイコンをはじめよう" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="electronic-design.html" class="btn btn-neutral float-right" title="回路設計のためのソフトウェア" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../hojotou.html" class="btn btn-neutral" title="補助投影機との連携" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -416,7 +423,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -445,7 +452,7 @@
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

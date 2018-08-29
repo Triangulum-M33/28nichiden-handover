@@ -11,7 +11,7 @@
   <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,NOARCHIVE">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>無線制御(Acrabの実装解説) &mdash; Nichiden 0.9 RC ドキュメント</title>
+  <title>無線制御(Acrabの実装解説)※工事中 &mdash; Nichiden 0.9 RC ドキュメント</title>
   
 
   
@@ -39,7 +39,7 @@
               href="../genindex.html"/>
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
-        <link rel="next" title="またたき回路" href="../twinkle.html"/>
+        <link rel="next" title="無線制御(GRAFFIAS)" href="graffias.html"/>
         <link rel="prev" title="無線制御(Acrab)" href="acrab.html"/> 
 
   
@@ -100,27 +100,12 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
-</ul>
-<p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../main.html">東京大学地文研究会天文部 日電引き継ぎ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../management.html">プロジェクト マネジメント</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/kikou.html">日周緯度変(日周緯度変換機構)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/saitama.html">日周緯度変(さいたま)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless.html">無線制御</a></li>
-<li class="toctree-l1"><a class="reference internal" href="piscium.html">無線制御(PISCIUM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(Acrabの実装解説)</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(Acrabの実装解説)※工事中</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#acrab-conf-json">acrab_conf.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#acrab-main-js">acrab_main.js</a><ul>
@@ -141,10 +126,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#scenario">scenarioディレクトリ</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#n-json">n.json</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#csv-jsonify-py">csv/jsonify.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#json-json">*.json JSONファイルの構造を簡単に示す。</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario-list-json">scenario_list.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#acrab-scenario-js">acrab-scenario.js</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id3">ページの初期化関連</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">指示書データの取得と表示</a><ul>
@@ -159,11 +144,72 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id7">指示の送信</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">次へ/前へボタン</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">前へ/次へ/スキップボタン</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">目次</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../main.html">東京大学地文研究会天文部 日電引き継ぎ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../management.html">プロジェクト マネジメント</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/kikou.html">日周緯度変(日周緯度変換機構)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/saitama.html">日周緯度変(さいたま)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless.html">無線制御</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piscium.html">無線制御(PISCIUM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(Acrabの実装解説)※工事中</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acrab-conf-json">acrab_conf.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acrab-main-js">acrab_main.js</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">読み込み時の処理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getrequest-address-data">getRequest(address, data)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checkstatus-stat">checkStatus(stat)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pinsettingsend">pinSettingSend()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#button">buttonオブジェクト</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#button-constellation-obj">星座絵: button.constellation(obj)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#button-projector-obj">投影機: button.projector(obj)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#button-all-obj">全点(消)灯: button.all(obj)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#button-group-obj">グループ: button.group(obj)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#button-stat-obj">ボタンの状態を取得する: button.stat(obj)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#each-slice-obj-n">each_slice(obj, n)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sleep-ms-t">sleep_ms(T)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario">scenarioディレクトリ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#json-json">*.json JSONファイルの構造を簡単に示す。</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario-list-json">scenario_list.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acrab-scenario-js">acrab-scenario.js</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">ページの初期化関連</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">指示書データの取得と表示</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getscenariodata-num">getScenarioData(num)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scenarioinit">scenarioInit()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewscript-id-index">viewScript(id, index)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#timer-button">timer_buttonオブジェクト</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">ボタン関連</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">タイマー関連</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">指示の送信</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">前へ/次へ/スキップボタン</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -221,7 +267,7 @@
     
       <li><a href="../index.html">Nichiden</a> &raquo;</li>
         
-      <li>無線制御(Acrabの実装解説)</li>
+      <li>無線制御(Acrabの実装解説)※工事中</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -241,23 +287,24 @@
             <div itemprop="articleBody">
               
   <div class="section" id="acrab">
-<h1>無線制御(Acrabの実装解説)<a class="headerlink" href="#acrab" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>無線制御(Acrabの実装解説)※工事中<a class="headerlink" href="#acrab" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2017/05/05</li>
+<li>更新: Hanaka Satoh(nichiden_28)</li>
+<li>更新日時: 2018/08/26</li>
 <li>実行に必要な知識・技能: Web制作、JavaScript</li>
 <li>難易度: 3/練習・勉強が必要</li>
 <li>情報の必須度: 4/担当者には必須</li>
 </ul>
 <div class="section" id="id1">
 <h2>概要<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><a class="reference external" href="acrab.html">無線制御(Acrab)</a>から<code class="docutils literal"><span class="pre">Acrab</span></code>の具体的な実装の解説を分離した記事です。</p>
-<p><code class="docutils literal"><span class="pre">Acrab</span></code>のソースコードを読む、あるいは書き換える際に参考にしてください。</p>
+<p><a class="reference external" href="acrab.html">無線制御(Acrab)</a>から<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>の具体的な実装の解説を分離した記事です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>のソースコードを読む、あるいは書き換える際に参考にしてください。</p>
 </div>
 <div class="section" id="acrab-conf-json">
 <h2>acrab_conf.json<a class="headerlink" href="#acrab-conf-json" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">Acrab</span></code>の設定ファイルである。 JSONファイルのため構造の概略のみ示す。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>├── &quot;ip&quot; [Pisciumとの通信用]
+<p><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>の設定ファイルである。 JSONファイルのため構造の概略のみ示す。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── &quot;ip&quot; [Pisciumとの通信用]
 │   ├── &quot;N&quot; [北天受信機のIPアドレス]
 │   └── &quot;S&quot; [南天受信機のIPアドレス]
 ├── &quot;port&quot; [出力ポート用]
@@ -278,56 +325,55 @@
 </pre></div>
 </div>
 <p>三文字コードというのは、プログラム中で<strong>星座・投影機・そのグループ</strong>を区別するため一意に割り振った三文字を指す。
-星座にはもともと<a class="reference external" href="http://www.nao.ac.jp/new-info/constellation2.html">この形式の略符が用意されている</a>こともあり、文字数を統一して可読性を高めることを目指した。</p>
-<p>例えば星座絵のピン番号を入れ替える際には、<code class="docutils literal"><span class="pre">port.(星座名).pin</span></code>を書き換えれば良い。
-<code class="docutils literal"><span class="pre">Piscium</span></code>側に設定を反映させるためページをリロードすること。</p>
+星座にはもともと<a class="reference external" href="http://www.nao.ac.jp/new-info/constellation2.html">この形式の略符が用意されている</a>こともあり、文字数を統一して可読性を高めることを目指した。
+また、<code class="docutils literal notranslate"><span class="pre">ACRAB</span></code>ディレクトリ内に<code class="docutils literal notranslate"><span class="pre">88星座+略符一覧.txt</span></code>を用意してみたので、良ければ参考にしてほしい。</p>
+<p>例えば星座絵のピン番号を入れ替える際には、<code class="docutils literal notranslate"><span class="pre">port.(星座名).pin</span></code>を書き換えれば良い。(※北天、南天それぞれでpin番号が重複しないようにする)
+<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>側に設定を反映させるためページをリロードすること。</p>
 </div>
 <div class="section" id="acrab-main-js">
 <h2>acrab_main.js<a class="headerlink" href="#acrab-main-js" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">Acrab</span></code>全体に関わるコードや、「メイン」画面で使用するコードを記述した。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>全体に関わるコードや、「メイン」画面で使用するコードを記述した。</p>
 <div class="section" id="id2">
 <h3>読み込み時の処理<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ページを読み込んだ後に一度だけ実行したい処理がある。
 JSはスクリプト言語なので、main関数のようなものはなくコードの頭から順に読み込まれる。</p>
-<p>通常は関数を定義しても呼び出されるまで何も起こらないが、<code class="docutils literal"><span class="pre">(function(){})()</span></code>の形式のものは読み込んだ時点で実行される。
+<p>通常は関数を定義しても呼び出されるまで何も起こらないが、<code class="docutils literal notranslate"><span class="pre">(function(){})()</span></code>の形式のものは読み込んだ時点で実行される。
 これを<strong>即時関数</strong>といい、初期設定の適用などに使える。</p>
-<p>また、コード中に<code class="docutils literal"><span class="pre">$(function(){})</span></code>もあるが、これは即時関数ではない。
+<p>また、コード中に<code class="docutils literal notranslate"><span class="pre">$(function(){})</span></code>もあるが、これは即時関数ではない。
 $がついたものはjQueryの<strong>readyイベント</strong>といい、<strong>HTMLが全てロードされた時点で実行される</strong>。
 ページを書き換えるような処理ではページが読み込まれていないと意味がないので、こちらを使うようにしよう。</p>
-<p>即時関数・readyイベントで行っている処理は以下の通り。</p>
+<p>即時関数・readyイベントで行っている処理は以下の通り。
+冒頭の<code class="docutils literal notranslate"><span class="pre">acrab_conf.json</span></code>の取得とパースだけはreadyイベントでは上手くいかなかったので即時関数を使用している。</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">acrab_conf.json</span></code>の取得とパース<ul>
-<li><code class="docutils literal"><span class="pre">$.getJSON()</span></code>を使うだけ</li>
+<li><code class="docutils literal notranslate"><span class="pre">acrab_conf.json</span></code>の取得とパース<ul>
+<li><code class="docutils literal notranslate"><span class="pre">$.getJSON()</span></code>を使うだけ</li>
 </ul>
 </li>
-<li><code class="docutils literal"><span class="pre">port</span></code>と<code class="docutils literal"><span class="pre">group</span></code>の<code class="docutils literal"><span class="pre">name</span></code>をボタンに表示<ul>
-<li><code class="docutils literal"><span class="pre">$.each()</span></code>で配列の全要素にループ処理できる</li>
+<li><code class="docutils literal notranslate"><span class="pre">port</span></code>と<code class="docutils literal notranslate"><span class="pre">group</span></code>の<code class="docutils literal notranslate"><span class="pre">name</span></code>をボタンに表示<ul>
+<li><code class="docutils literal notranslate"><span class="pre">$.each()</span></code>で配列の全要素にループ処理できる</li>
 </ul>
 </li>
-<li>ピン番号の設定を<code class="docutils literal"><span class="pre">Piscium</span></code>に送信(<code class="docutils literal"><span class="pre">pinSettingSend()</span></code>)</li>
+<li>ピン番号の設定を<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>に送信(<code class="docutils literal notranslate"><span class="pre">pinSettingSend()</span></code>)</li>
 <li>各ボタンにclickイベントを追加<ul>
-<li><code class="docutils literal"><span class="pre">.main_button</span></code>というクラスの要素を取得して<code class="docutils literal"><span class="pre">$.each()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">.main_button</span></code>というクラスの要素を取得して<code class="docutils literal notranslate"><span class="pre">$.each()</span></code></li>
 <li>HTMLに手作業で書くのが面倒なので、クラスからボタンの種類を判定して最適な関数を実行する仕組み</li>
 </ul>
 </li>
 <li>更新ボタン、明るさスライダーの処理を追加</li>
 <li>タブの切り替え<ul>
-<li>各タブの画面はそれぞれ<code class="docutils literal"><span class="pre">.content</span></code>クラスに入っている</li>
+<li>各タブの画面はそれぞれ<code class="docutils literal notranslate"><span class="pre">.content</span></code>クラスに入っている</li>
 <li>一度全てを非表示にした後、押したタブの順番と同じ順番の画面のみ表示する</li>
 </ul>
 </li>
 </ul>
 <p>開発の途中に順次追加したのでかなりグチャグチャになっている。
 自由に読みやすく変更して構わない。</p>
-<p>本番まで気づかなかったため未修正だが、実は<strong>コード先頭の即時関数もreadyイベントにすべき</strong>である。
-「<code class="docutils literal"><span class="pre">port</span></code>と<code class="docutils literal"><span class="pre">group</span></code>の<code class="docutils literal"><span class="pre">name</span></code>をボタンに表示」する処理がHTML読み込み後でないとできないからだ。
-稀にだが<code class="docutils literal"><span class="pre">acrab_conf.json</span></code>が読み込まれない不具合はこれが原因と思われる。</p>
 </div>
 <div class="section" id="getrequest-address-data">
 <h3>getRequest(address, data)<a class="headerlink" href="#getrequest-address-data" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">address</span></code>にURLパラメータとして<code class="docutils literal"><span class="pre">data</span></code>を付けて送信する関数。
-jQueryの<code class="docutils literal"><span class="pre">get()</span></code>や<code class="docutils literal"><span class="pre">Deferred</span></code>を使用している。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">data</span> <span class="o">=</span> <span class="nx">data</span> <span class="o">||</span> <span class="p">{}</span>
+<p><code class="docutils literal notranslate"><span class="pre">address</span></code>にURLパラメータとして<code class="docutils literal notranslate"><span class="pre">data</span></code>を付けて送信する関数。
+jQueryの<code class="docutils literal notranslate"><span class="pre">get()</span></code>や<code class="docutils literal notranslate"><span class="pre">Deferred</span></code>を使用している。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">data</span> <span class="o">=</span> <span class="nx">data</span> <span class="o">||</span> <span class="p">{}</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">address</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
 <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span> <span class="c1">// 非同期通信なので完了時にデータを渡す処理</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">({</span>
@@ -346,44 +392,44 @@ jQueryの<code class="docutils literal"><span class="pre">get()</span></code>や
 <span class="k">return</span> <span class="nx">deferred</span><span class="p">;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">$.get()</span></code>は、指定したURLにGETリクエストを送信する。
-<code class="docutils literal"><span class="pre">data</span></code>に連想配列を指定するとURLパラメータに整形してくれる嬉しい機能付きだ。
-また、通信が切れている時に固まらないよう、1000msのタイムアウトを設定している。</p>
-<p>その後の<code class="docutils literal"><span class="pre">.done()</span></code>や<code class="docutils literal"><span class="pre">.fail()</span></code>にはそれぞれ通信成功時・失敗時の処理を書く。
+<p><code class="docutils literal notranslate"><span class="pre">$.get()</span></code>は、指定したURLにGETリクエストを送信する。
+<code class="docutils literal notranslate"><span class="pre">data</span></code>に連想配列を指定するとURLパラメータに整形してくれる嬉しい機能付きだ。
+また、通信が切れている時に固まらないよう、1500msのタイムアウトを設定している。(1000msだと通信失敗することが多かった。)</p>
+<p>その後の<code class="docutils literal notranslate"><span class="pre">.done()</span></code>や<code class="docutils literal notranslate"><span class="pre">.fail()</span></code>にはそれぞれ通信成功時・失敗時の処理を書く。
 ここでは通信するたびにブラウザコンソールに結果を出力し、受信状況の欄を更新するようになっている。</p>
-<p>さて、<code class="docutils literal"><span class="pre">Piscium</span></code>にコマンドを送ると、<strong>各ポートの状態を0か1で表したjsonデータ</strong>が返る。
-<code class="docutils literal"><span class="pre">dataType:</span> <span class="pre">'json'</span></code>としておけばパースまでやってくれるようだ。
+<p>さて、<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>にコマンドを送ると、<strong>各ポートの状態を0か1で表したjsonデータ</strong>が返る。
+<code class="docutils literal notranslate"><span class="pre">dataType:</span> <span class="pre">'json'</span></code>としておけばパースまでやってくれるようだ。
 これを関数の戻り値としたいが、これには工夫が必要になる。</p>
-<p><code class="docutils literal"><span class="pre">$.get()</span></code>のようなAjax通信は<strong>非同期処理</strong>を採用しており、リクエストを送った後応答を待たずに関数が終了してしまう。
+<p><code class="docutils literal notranslate"><span class="pre">$.get()</span></code>のようなAjax通信は<strong>非同期処理</strong>を採用しており、リクエストを送った後応答を待たずに関数が終了してしまう。
 そのため、送られてくるはずのデータを戻り値に入れることができない。</p>
-<p>そこで、<code class="docutils literal"><span class="pre">$.Deferred</span></code>を利用する。
+<p>そこで、<code class="docutils literal notranslate"><span class="pre">$.Deferred</span></code>を利用する。
 ググれば出てくるため詳細は省くが、Deferredオブジェクトを一旦返し<strong>通信が終了してからデータを格納する</strong>ことができる。
-また、通信が失敗した場合<code class="docutils literal"><span class="pre">deferred.reject</span></code>すると以上終了させることもできる。</p>
+また、通信が失敗した場合<code class="docutils literal notranslate"><span class="pre">deferred.reject</span></code>すると以上終了させることもできる。</p>
 </div>
 <div class="section" id="checkstatus-stat">
 <h3>checkStatus(stat)<a class="headerlink" href="#checkstatus-stat" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">Piscium</span></code>から送られてくるjsonをパースしたオブジェクトから<strong>各星座絵・投影機のオンオフ状況を確認する</strong>。
-基本的に<code class="docutils literal"><span class="pre">getRequest()</span></code>で通信した後はこれを呼ぶようにして、表示を常に最新に保つべきである。
-<code class="docutils literal"><span class="pre">getRequest()</span></code>は非同期関数なので、以下のコード片のように<code class="docutils literal"><span class="pre">.done()</span></code>を使う。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">getRequest</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">){</span><span class="nx">checkStatus</span><span class="p">(</span><span class="nx">res</span><span class="p">)});</span>
+<p><code class="docutils literal notranslate"><span class="pre">Piscium</span></code>から送られてくるjsonをパースしたオブジェクトから<strong>各星座絵・投影機のオンオフ状況を確認する</strong>。
+基本的に<code class="docutils literal notranslate"><span class="pre">getRequest()</span></code>で通信した後はこれを呼ぶようにして、表示を常に最新に保つべきである。
+<code class="docutils literal notranslate"><span class="pre">getRequest()</span></code>は非同期関数なので、以下のコード片のように<code class="docutils literal notranslate"><span class="pre">.done()</span></code>を使う。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">getRequest</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">){</span><span class="nx">checkStatus</span><span class="p">(</span><span class="nx">res</span><span class="p">)});</span>
 </pre></div>
 </div>
 <p>ボタンはHTML側で以下のように三文字コードのIDが振られている。</p>
-<div class="highlight-html"><div class="highlight"><pre><span></span><span class="c">&lt;!-- index.html --&gt;</span>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- index.html --&gt;</span>
 <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;main_button constellation&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;And&quot;</span><span class="p">&gt;</span>And<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>三文字コードは<code class="docutils literal"><span class="pre">port</span></code>や<code class="docutils literal"><span class="pre">group</span></code>に入っているので、<code class="docutils literal"><span class="pre">$.each()</span></code>ループを回して巡回する。
-各ボタンに<code class="docutils literal"><span class="pre">on</span></code>クラスを追加すると色などが変わる仕組みだ。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">){</span> <span class="c1">// 星座|投影機ごと</span>
+<p>三文字コードは<code class="docutils literal notranslate"><span class="pre">port</span></code>や<code class="docutils literal notranslate"><span class="pre">group</span></code>に入っているので、<code class="docutils literal notranslate"><span class="pre">$.each()</span></code>ループを回して巡回する。
+各ボタンに<code class="docutils literal notranslate"><span class="pre">on</span></code>クラスを追加すると色などが変わる仕組みだ。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">){</span> <span class="c1">// 星座|投影機ごと</span>
   <span class="k">if</span><span class="p">(</span><span class="nx">stat</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[id=&#39;</span><span class="o">+</span><span class="nx">key</span><span class="o">+</span><span class="s1">&#39;]&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">);</span>
   <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">stat</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[id=&#39;</span><span class="o">+</span><span class="nx">key</span><span class="o">+</span><span class="s1">&#39;]&#39;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">group</span></code>に関しても基本は変わらないが、こちらは<strong>属している星座絵全てが点灯していなければオンにならない</strong>。
+<p><code class="docutils literal notranslate"><span class="pre">group</span></code>に関しても基本は変わらないが、こちらは<strong>属している星座絵全てが点灯していなければオンにならない</strong>。
 例えば、「夏の大三角」ボタンを押すと「こと/わし/はくちょう」が点灯するが、このうち一つでも消すと「夏の大三角」もオフの表示になる。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span>  <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">group</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">){</span> <span class="c1">// 星座グループごと</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span>  <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">group</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">){</span> <span class="c1">// 星座グループごと</span>
     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">isOn</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
     <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span><span class="nx">isOn</span> <span class="o">&amp;=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="k">this</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">);});</span> <span class="c1">// 各星座がオンかどうかのANDをとる</span>
@@ -397,22 +443,23 @@ jQueryの<code class="docutils literal"><span class="pre">get()</span></code>や
 </div>
 <div class="section" id="pinsettingsend">
 <h3>pinSettingSend()<a class="headerlink" href="#pinsettingsend" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">Piscium</span></code>には、<code class="docutils literal"><span class="pre">(ip)/setConstellationName/status.json</span></code>にアクセスすることでピンごとに名前を設定する機能がある。
-これで<code class="docutils literal"><span class="pre">(ip)/setPort/status.json?And=0</span></code>のように三文字コードをURLに使えるようになり、ユーザが見てもわかりやすい。</p>
-<p><code class="docutils literal"><span class="pre">acrab_conf.json</span></code>が読み込まれた後のタイミングで実行される。
-<code class="docutils literal"><span class="pre">port.(三文字コード).pin</span></code>の中身を順に取得して<code class="docutils literal"><span class="pre">getRequest()</span></code>に渡すという流れである。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Piscium</span></code>には、<code class="docutils literal notranslate"><span class="pre">(ip)/setConstellationName/status.json</span></code>にアクセスすることでピンごとに名前を設定する機能がある。
+これで<code class="docutils literal notranslate"><span class="pre">(ip)/setPort/status.json?And=0</span></code>のように三文字コードをURLに使えるようになり、ユーザが見てもわかりやすい。</p>
+<p><code class="docutils literal notranslate"><span class="pre">acrab_conf.json</span></code>が読み込まれた後のタイミングで実行される。また、受信状況の「更新」ボタンを押しても実行される。(北天・南天とも)
+これは<code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>の再起動時に、ページを再読み込みしなくても、「更新」ボタンを押せば<code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>にピン名称を送れるようにするためである。
+<code class="docutils literal notranslate"><span class="pre">port.(三文字コード).pin</span></code>の中身を順に取得して<code class="docutils literal notranslate"><span class="pre">getRequest()</span></code>に渡すという流れである。</p>
 </div>
 <div class="section" id="button">
 <h3>buttonオブジェクト<a class="headerlink" href="#button" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>メイン画面のボタンは、<strong>星座絵/投影機/全点(消)灯/グループ</strong>の四種類ある。
-それぞれに合った処理をするため、<code class="docutils literal"><span class="pre">button</span></code>オブジェクトを作成し必要なメソッドをまとめるようにした。</p>
+それぞれに合った処理をするため、<code class="docutils literal notranslate"><span class="pre">button</span></code>オブジェクトを作成し必要なメソッドをまとめるようにした。</p>
 <div class="section" id="button-constellation-obj">
 <h4>星座絵: button.constellation(obj)<a class="headerlink" href="#button-constellation-obj" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>星座絵は南天か北天に分かれている。
-南北は<code class="docutils literal"><span class="pre">port[(三文字コード)].box</span></code>から判定し、受信機のアドレスを<code class="docutils literal"><span class="pre">ip[(NかS)]</span></code>で取得する。</p>
-<p>また、ボタンのオンオフ状態と逆の真偽値を<code class="docutils literal"><span class="pre">data</span></code>に入れておく。
-後は<code class="docutils literal"><span class="pre">getRequest()</span></code>を呼んで終了する。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">ip</span><span class="p">[</span><span class="nx">port</span><span class="p">[</span><span class="nx">obj</span><span class="p">.</span><span class="nx">id</span><span class="p">].</span><span class="nx">box</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;setPort/status.json&#39;</span><span class="p">;</span>
+南北は<code class="docutils literal notranslate"><span class="pre">port[(三文字コード)].box</span></code>から判定し、受信機のアドレスを<code class="docutils literal notranslate"><span class="pre">ip[(NかS)]</span></code>で取得する。</p>
+<p>また、ボタンのオンオフ状態と逆の真偽値を<code class="docutils literal notranslate"><span class="pre">data</span></code>に入れておく。
+後は<code class="docutils literal notranslate"><span class="pre">getRequest()</span></code>を呼んで終了する。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">ip</span><span class="p">[</span><span class="nx">port</span><span class="p">[</span><span class="nx">obj</span><span class="p">.</span><span class="nx">id</span><span class="p">].</span><span class="nx">box</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;setPort/status.json&#39;</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="nx">data</span><span class="p">[</span><span class="nx">obj</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">button</span><span class="p">.</span><span class="nx">stat</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
 <span class="nx">getRequest</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">data</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">){</span><span class="nx">checkStatus</span><span class="p">(</span><span class="nx">res</span><span class="p">)});</span>
@@ -424,8 +471,8 @@ jQueryの<code class="docutils literal"><span class="pre">get()</span></code>や
 <h4>投影機: button.projector(obj)<a class="headerlink" href="#button-projector-obj" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>星座絵以外の投影機は南北両方に付いているのが普通である。
 そのため<strong>受信機の数だけ同じリクエストを送る</strong>必要がある。
-<code class="docutils literal"><span class="pre">ip</span></code>の各要素について<code class="docutils literal"><span class="pre">$.each()</span></code>を回すことでこれを実現する。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">ip</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+<code class="docutils literal notranslate"><span class="pre">ip</span></code>の各要素について<code class="docutils literal notranslate"><span class="pre">$.each()</span></code>を回すことでこれを実現する。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">ip</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">address</span> <span class="o">=</span> <span class="k">this</span> <span class="o">+</span> <span class="s1">&#39;setPort/status.json&#39;</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
   <span class="nx">data</span><span class="p">[</span><span class="nx">obj</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">button</span><span class="p">.</span><span class="nx">stat</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
@@ -437,9 +484,9 @@ jQueryの<code class="docutils literal"><span class="pre">get()</span></code>や
 </div>
 <div class="section" id="button-all-obj">
 <h4>全点(消)灯: button.all(obj)<a class="headerlink" href="#button-all-obj" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p><code class="docutils literal"><span class="pre">Piscium</span></code>側の全点灯(allSet)・全消灯(allClear)を使う場合。
-コードは<code class="docutils literal"><span class="pre">button.projector(obj)</span></code>と似ているので省略。</p>
-<p><code class="docutils literal"><span class="pre">Piscium</span></code>側の負荷の関係で、今のところ全点灯は使うべきでないようだ。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Piscium</span></code>側の全点灯(allSet)・全消灯(allClear)を使う場合。
+コードは<code class="docutils literal notranslate"><span class="pre">button.projector(obj)</span></code>と似ているので省略。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Piscium</span></code>側の負荷の関係で、今のところ全点灯は使うべきでないようだ。</p>
 </div>
 <div class="section" id="button-group-obj">
 <h4>グループ: button.group(obj)<a class="headerlink" href="#button-group-obj" title="このヘッドラインへのパーマリンク">¶</a></h4>
@@ -448,21 +495,21 @@ jQueryの<code class="docutils literal"><span class="pre">get()</span></code>や
 理由は<strong>各星座絵が南北にばらけていることがある</strong>ため。</p>
 <p>そのため、</p>
 <ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">ip</span></code>からIPアドレスを取得してURLを作成</li>
-<li><code class="docutils literal"><span class="pre">group[(三文字コード).value]</span></code>で<code class="docutils literal"><span class="pre">$.each()</span></code>を回し、南北判定していずれかの<code class="docutils literal"><span class="pre">data</span></code>に追加</li>
-<li><code class="docutils literal"><span class="pre">req</span></code>オブジェクトに南北それぞれのデータを入れ、<code class="docutils literal"><span class="pre">getRequest()</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ip</span></code>からIPアドレスを取得してURLを作成</li>
+<li><code class="docutils literal notranslate"><span class="pre">group[(三文字コード).value]</span></code>で<code class="docutils literal notranslate"><span class="pre">$.each()</span></code>を回し、南北判定していずれかの<code class="docutils literal notranslate"><span class="pre">data</span></code>に追加</li>
+<li><code class="docutils literal notranslate"><span class="pre">req</span></code>オブジェクトに南北それぞれのデータを入れ、<code class="docutils literal notranslate"><span class="pre">getRequest()</span></code></li>
 </ol>
 <p>という手順を踏んでいる。</p>
 <p>実は、本番前にさらに一段階手順を増やした。
 星座絵を10個弱同時に点灯すると電源が不安定化する事象を確認したため、回避のため<strong>少数ずつ分けて点灯する</strong>よう変更したのである。
-このため新たに<code class="docutils literal"><span class="pre">each_slice()</span></code>と<code class="docutils literal"><span class="pre">sleep_ms()</span></code>という関数を定義した。
+このため新たに<code class="docutils literal notranslate"><span class="pre">each_slice()</span></code>と<code class="docutils literal notranslate"><span class="pre">sleep_ms()</span></code>という関数を定義した。
 これらの詳細は後述する。</p>
 </div>
 <div class="section" id="button-stat-obj">
 <h4>ボタンの状態を取得する: button.stat(obj)<a class="headerlink" href="#button-stat-obj" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>ボタンがオンかオフかは、<code class="docutils literal"><span class="pre">on</span></code>クラスを持っているかどうかで分かる。
-<code class="docutils literal"><span class="pre">stat()</span></code>にボタンのオブジェクトを渡すと、現在の状態の逆の値を返す。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="mi">1</span><span class="p">);</span>
+<p>ボタンがオンかオフかは、<code class="docutils literal notranslate"><span class="pre">on</span></code>クラスを持っているかどうかで分かる。
+<code class="docutils literal notranslate"><span class="pre">stat()</span></code>にボタンのオブジェクトを渡すと、現在の状態の逆の値を返す。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -470,21 +517,21 @@ jQueryの<code class="docutils literal"><span class="pre">get()</span></code>や
 <div class="section" id="each-slice-obj-n">
 <h3>each_slice(obj, n)<a class="headerlink" href="#each-slice-obj-n" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>投影機を複数点灯・消灯する際一回あたりの数を抑えるのに使用する。
-<code class="docutils literal"><span class="pre">obj</span></code>にオブジェクトを、<code class="docutils literal"><span class="pre">n</span></code>に最大数を指定すると<code class="docutils literal"><span class="pre">obj</span></code>をn要素ごとに切り分けたオブジェクトの配列を返す。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">each_slice</span><span class="p">({</span><span class="s2">&quot;Ari&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Cnc&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Gem&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Leo&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Aqr&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Cap&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Psc&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">},</span><span class="mi">3</span><span class="p">)</span>
+<code class="docutils literal notranslate"><span class="pre">obj</span></code>にオブジェクトを、<code class="docutils literal notranslate"><span class="pre">n</span></code>に最大数を指定すると<code class="docutils literal notranslate"><span class="pre">obj</span></code>をn要素ごとに切り分けたオブジェクトの配列を返す。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">each_slice</span><span class="p">({</span><span class="s2">&quot;Ari&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Cnc&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Gem&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Leo&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Aqr&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Cap&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Psc&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">},</span><span class="mi">3</span><span class="p">)</span>
 <span class="o">-&gt;</span> <span class="p">[{</span><span class="s2">&quot;Ari&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Cnc&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Gem&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">},{</span><span class="s2">&quot;Leo&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Aqr&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Cap&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">},{</span><span class="s2">&quot;Psc&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">}]</span>
 </pre></div>
 </div>
-<p>ただし、例外として&#8221;St1&#8221;と&#8221;St2&#8221;をキーにもつ場合は1要素のオブジェクトに分ける。
+<p>ただし、例外として“St1”と“St2”をキーにもつ場合は1要素のオブジェクトに分ける。
 これは、こうとうの負荷があまりに大きいため他の投影機と同時に点灯することを避けるためである。</p>
 <p>アルゴリズムとしては、n要素ずつ切ったものをfor文内でオブジェクトに追加していくだけなのでコードは省略する。</p>
 </div>
 <div class="section" id="sleep-ms-t">
 <h3>sleep_ms(T)<a class="headerlink" href="#sleep-ms-t" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">getRequest()</span></code>が<code class="docutils literal"><span class="pre">each_slice()</span></code>により複数回に別れる場合に、間隔を十分取るための関数。
-これがマイコンならば<code class="docutils literal"><span class="pre">delay()</span></code>のような関数が標準で用意されるところだが、ブラウザにはそんなものはないので作るしかない。
-下のコードを見れば分かるように、ひたすら時刻を取得して最初との差が<code class="docutils literal"><span class="pre">T</span></code>を超えたら抜けるという作戦になっている。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
+<p><code class="docutils literal notranslate"><span class="pre">getRequest()</span></code>が<code class="docutils literal notranslate"><span class="pre">each_slice()</span></code>により複数回に別れる場合に、間隔を十分取るための関数。
+これがマイコンならば<code class="docutils literal notranslate"><span class="pre">delay()</span></code>のような関数が標準で用意されるところだが、ブラウザにはそんなものはないので作るしかない。
+下のコードを見れば分かるように、ひたすら時刻を取得して最初との差が<code class="docutils literal notranslate"><span class="pre">T</span></code>を超えたら抜けるという作戦になっている。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
 <span class="kd">var</span> <span class="nx">dd</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
 <span class="k">while</span><span class="p">(</span><span class="nx">dd</span> <span class="o">&lt;</span> <span class="nx">d</span><span class="o">+</span><span class="nx">T</span><span class="p">)</span> <span class="nx">dd</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
 </pre></div>
@@ -495,12 +542,10 @@ LEDの突入電流が流れる時間は数ms程度なので、十分大きくか
 </div>
 <div class="section" id="scenario">
 <h2>scenarioディレクトリ<a class="headerlink" href="#scenario" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">scenario/</span></code>以下には、0.jsonから連番のJSONファイルが入っている。
-これは、番組の指示書を<code class="docutils literal"><span class="pre">Acrab</span></code>から読み取れるようJSON形式に変換したものである。</p>
-<div class="section" id="n-json">
-<h3>n.json<a class="headerlink" href="#n-json" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>JSONファイルの構造を簡単に示す。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>├── &quot;info&quot; [番組情報]
+<p><code class="docutils literal notranslate"><span class="pre">scenario/</span></code>以下には、番組の指示書を<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>から読み取れるようJSON形式に変換したJSONファイルが入っている。</p>
+<div class="section" id="json-json">
+<h3>*.json JSONファイルの構造を簡単に示す。<a class="headerlink" href="#json-json" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── &quot;info&quot; [番組情報]
 │   ├── &quot;day&quot; [(ライブ解説の場合)何日目か]
 │   ├── &quot;title&quot; [番組名]
 │   └── &quot;name&quot; [担当者名]
@@ -520,17 +565,17 @@ LEDの突入電流が流れる時間は数ms程度なので、十分大きくか
     └── (以下同様)
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">info</span></code>オブジェクト内には、番組のメタデータに相当する情報が入っている。
-番組選択画面で番組を選びやすくする為、<code class="docutils literal"><span class="pre">day</span></code>に<strong>公演日</strong>の情報も入れるようにした。
+<p><code class="docutils literal notranslate"><span class="pre">info</span></code>オブジェクト内には、番組のメタデータに相当する情報が入っている。
+番組選択画面で番組を選びやすくする為、<code class="docutils literal notranslate"><span class="pre">day</span></code>に<strong>公演日</strong>の情報も入れるようにした。
 なお、ソフトは駒場祭を通じて上演されるので実際には(ソフト,一日目,二日目,三日目)の四つに分かれる。</p>
-<p><code class="docutils literal"><span class="pre">script</span></code>以下が<strong>セリフやタイミング</strong>を格納する部分である。
+<p><code class="docutils literal notranslate"><span class="pre">script</span></code>以下が<strong>セリフやタイミング</strong>を格納する部分である。
 配列の形で並べてあり、上から順番に時系列で並んでいる必要がある。</p>
 <p>配列の0番目は特別な部分で、公演の<strong>開始前から点灯</strong>したい投影機に使用する。
 このため、先頭のセリフとタイミングは空欄にする必要がある。</p>
-<p><code class="docutils literal"><span class="pre">timing</span></code>に<code class="docutils literal"><span class="pre">pre</span></code>を指定すると「(セリフ)の<strong>言い始め</strong>」、<code class="docutils literal"><span class="pre">post</span></code>を指定すると「(セリフ)の<strong>言い終り</strong>」と画面に表示される。
+<p><code class="docutils literal notranslate"><span class="pre">timing</span></code>に<code class="docutils literal notranslate"><span class="pre">pre</span></code>を指定すると「(セリフ)の<strong>言い始め</strong>」、<code class="docutils literal notranslate"><span class="pre">post</span></code>を指定すると「(セリフ)の<strong>言い終り</strong>」と画面に表示される。
 セリフの前後以外のタイミングを指定したければ、「〜の」につながる形で<strong>自由に書けばそのまま表示</strong>される。</p>
 <p>最後に、JSONファイルの例を示しておく。</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;day&quot;</span><span class="p">:</span> <span class="s2">&quot;sample&quot;</span><span class="p">,</span>
     <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;とてもわかりやすい星座解説&quot;</span><span class="p">,</span>
@@ -556,51 +601,13 @@ LEDの突入電流が流れる時間は数ms程度なので、十分大きくか
  <span class="p">}</span>
 </pre></div>
 </div>
+<p>28で使ったJSONファイルは一旦そのまま残してあるので、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>の動作テスト用やJSONファイルの書き方例として参考にしてほしい。</p>
 </div>
-<div class="section" id="csv-jsonify-py">
-<h3>csv/jsonify.py<a class="headerlink" href="#csv-jsonify-py" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>CSVで記述した指示書データをJSONに変換するスクリプト。
-CSVファイル側は、タイミングや投影機などのフィールドをJSON変換用に準備しておく必要がある(<a class="reference external" href="acrab.html">Acrabの記事</a>も参照)。</p>
-<p>(CSVの記述例)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">word</span><span class="p">,</span><span class="n">timing</span><span class="p">,</span><span class="n">projector</span>
-<span class="p">,,</span><span class="s2">&quot;{&quot;&quot;Fst&quot;&quot;: 1, &quot;&quot;Gxy&quot;&quot;: 1}&quot;</span>
-<span class="n">プラネタリウムはいかがでしょう</span><span class="p">,</span><span class="n">post</span><span class="p">,</span><span class="s2">&quot;{&quot;&quot;St1&quot;&quot;: 1, &quot;&quot;St2&quot;&quot;: 1}&quot;</span>
-</pre></div>
 </div>
-<p>文字コードがUTF-8になっているのを確認したら、<code class="docutils literal"><span class="pre">jsonify.py</span></code>で変換しよう。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># jsonify.py</span>
-<span class="c1"># change encode to utf-8 with iconv etc.</span>
-<span class="kn">import</span> <span class="nn">codecs</span><span class="o">,</span><span class="nn">csv</span><span class="o">,</span><span class="nn">json</span>
-<span class="n">result</span> <span class="o">=</span> <span class="nb">str</span><span class="p">([</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;1.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;rU&#39;</span><span class="p">))])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&quot;&#39;</span><span class="p">,</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&quot;{&#39;</span><span class="p">,</span><span class="s1">&#39;{&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;}&quot;&#39;</span><span class="p">,</span><span class="s1">&#39;}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&quot;}&#39;</span><span class="p">,</span><span class="s1">&#39;}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;string-escape&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>筆者がPythonに慣れてないのでわざわざCSVのファイル名をコードに書く必要がある。
-改良等ご自由に。</p>
-<p><code class="docutils literal"><span class="pre">codecs.open()</span></code>のオプションに&#8221;rU&#8221;とつけているのは改行文字対策(らしい、多分コピペした)。
-あとは<a class="reference external" href="http://qiita.com/hakuaneko/items/768da80393545ec67073">pythonでcsv-jsonの変換ツールを作るときに困ったこと</a>あたりを参考にJSONに変換している。
-<code class="docutils literal"><span class="pre">ensure_ascii=False</span></code>は日本語の文字化けを防ぐため必要のようだ。</p>
-<p>この時点の<code class="docutils literal"><span class="pre">result</span></code>の中身は、例えば次のようになっている(改行は見やすくするため挿入)。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="s1">&#39;{&quot;timing&quot;: &quot;&quot;, &quot;word&quot;: &quot;&quot;, &quot;projector&quot;: &quot;{</span><span class="se">\&quot;</span><span class="s1">Fst</span><span class="se">\&quot;</span><span class="s1">: 1, </span><span class="se">\&quot;</span><span class="s1">Gxy</span><span class="se">\&quot;</span><span class="s1">: 1}&quot;}&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;{&quot;timing&quot;: &quot;post&quot;, &quot;word&quot;: &quot;プラネタリウムはいかがでしょう&quot;, &quot;projector&quot;: &quot;{</span><span class="se">\&quot;</span><span class="s1">St1</span><span class="se">\&quot;</span><span class="s1">: 1, </span><span class="se">\&quot;</span><span class="s1">St2</span><span class="se">\&quot;</span><span class="s1">: 1}&quot;}&#39;</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-<p>このままでは<strong>JSONとして読むことはできない</strong>。
-まず、Pythonで使われる<strong>シングルクオート</strong>(<code class="docutils literal"><span class="pre">'</span></code>)は、JSONでは使用が認められていない。
-また、CSVの中に無理やり複数項目を書いていた部分が、<strong>バックスラッシュ</strong>(<code class="docutils literal"><span class="pre">\</span></code>)でエスケープ(ただの文字として扱うこと)されてしまった。</p>
-<p>うまい方法を思いつかないので、文字列置換の繰り返しで対応することにした。
-置換が全て終わると、以下のような文字列が吐き出される。</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="p">{</span><span class="nt">&quot;timing&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nt">&quot;word&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nt">&quot;projector&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;Fst&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;Gxy&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}},</span>
-    <span class="p">{</span><span class="nt">&quot;timing&quot;</span><span class="p">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="nt">&quot;word&quot;</span><span class="p">:</span> <span class="s2">&quot;プラネタリウムはいかがでしょう&quot;</span><span class="p">,</span> <span class="nt">&quot;projector&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;St1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nt">&quot;St2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-<p>これならJSONとしてそのまま読み込める。
-実際には、<code class="docutils literal"><span class="pre">info</span></code>の部分などを付け足して<code class="docutils literal"><span class="pre">Acrab</span></code>用JSONファイルの完成となる。</p>
-</div>
+<div class="section" id="scenario-list-json">
+<h2>scenario_list.json<a class="headerlink" href="#scenario-list-json" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>後述する<code class="docutils literal notranslate"><span class="pre">acrab-scenario.js</span></code>で、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>にサーバの指示書ファイルの数を渡すための指示書ファイルのリスト。
+<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>で生成できる。作り方は<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>の記事参照のこと。</p>
 </div>
 <div class="section" id="acrab-scenario-js">
 <h2>acrab-scenario.js<a class="headerlink" href="#acrab-scenario-js" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -608,22 +615,31 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
 分量が多くなったためmainと分けることにした。</p>
 <div class="section" id="id3">
 <h3>ページの初期化関連<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>前述の通り、指示書は番組ごとに連番のJSONファイルに分けて<code class="docutils literal"><span class="pre">scenario/</span></code>以下に保存されている。
-<code class="docutils literal"><span class="pre">acrab_main.js</span></code>と同様に、jQueryの<code class="docutils literal"><span class="pre">$.getJSON()</span></code>を用いて取得とパースを行っている。</p>
-<p>問題は<code class="docutils literal"><span class="pre">Acrab</span></code>がブラウザ側だけで動作していることで、サーバに<strong>いくつの指示書ファイルがあるか取得できない。</strong>
-苦肉の策として<code class="docutils literal"><span class="pre">SCENARIO_COUNT</span></code>という定数にファイル数を事前に入れておくことで対応した。
-あまり良い方法とは言えないので、「<strong>設定ファイルの一覧を書く設定ファイル</strong>」を配置しておくなど拡張性の高い方法に変更すべきだろう。
-これなら、ファイル名を連番の数字にする必要もなくなる。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">SCENARIO_COUNT</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="nx">scenario_file</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s1">&#39;scenario/&#39;</span><span class="o">+</span> <span class="nx">i</span> <span class="o">+</span><span class="s1">&#39;.json&#39;</span><span class="p">);</span>
+<p>前述の通り、指示書は番組ごとのJSONファイルに分けて<code class="docutils literal notranslate"><span class="pre">scenario/</span></code>以下に保存されている。
+<code class="docutils literal notranslate"><span class="pre">acrab_main.js</span></code>と同様に、jQueryの<code class="docutils literal notranslate"><span class="pre">$.getJSON()</span></code>を用いて取得とパースを行っている。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>はブラウザ側だけで動作しているため、サーバにいくつの指示書ファイルがあるかを直接取得できない。
+このため、先述した<code class="docutils literal notranslate"><span class="pre">scenario_list.json</span></code>をjQueryの<code class="docutils literal notranslate"><span class="pre">$.ajax()</span></code>を用いることで取得・パースし、配列の要素数から指示書ファイルの数を得る方式にした。
+<code class="docutils literal notranslate"><span class="pre">$.ajax()</span></code>は本来非同期通信に用いるものであるが、非同期のままだと<code class="docutils literal notranslate"><span class="pre">scenariolist</span></code>にデータが入らなかったため<code class="docutils literal notranslate"><span class="pre">async:</span> <span class="pre">false</span></code>にすることで無理矢理対応した。
+本当は非同期通信のまま<code class="docutils literal notranslate"><span class="pre">$.Deferred</span></code>などを使った方がいい気がするが、ページ読み込み時のみの処理なので妥協してしまったところ。読み込み時に気になるようなら書き直してほしい。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+  <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;scenario_list.json&quot;</span><span class="p">,</span>
+  <span class="nx">async</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">scenariolist</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">scenariolist</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">});</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span> <span class="nx">scenariolist</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span> <span class="nx">scenario_file</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">scenariolist</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p>指示書ファイルを取得したら、番組選択メニューにタイトルと担当者名を追加する。
-<code class="docutils literal"><span class="pre">&lt;option&gt;</span></code>や<code class="docutils literal"><span class="pre">&lt;optgroup&gt;</span></code>というのはHTMLのセレクトボックス用のタグで、前者が選択項目、後者が項目をまとめる見出しだ。
-特に工夫したわけではないので特に解説はしない。
+<code class="docutils literal notranslate"><span class="pre">&lt;option&gt;</span></code>や<code class="docutils literal notranslate"><span class="pre">&lt;optgroup&gt;</span></code>というのはHTMLのセレクトボックス用のタグで、前者が選択項目、後者が項目をまとめる見出しだ。
+特に工夫したわけではないので解説はしない。
 ググりながらコードを読んで理解してほしい。</p>
-<p>最後の<code class="docutils literal"><span class="pre">$('select#select').change()</span></code>は、セレクトボックスが更新された際に呼ばれるメソッドを指定している。
-<code class="docutils literal"><span class="pre">getScenarioData()</span></code>を使うと、該当する番号の指示書ファイルを読み込む。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="cm">/*** Initialize select box ***/</span>
+<p>最後の<code class="docutils literal notranslate"><span class="pre">$('select#select').change()</span></code>は、セレクトボックスが更新された際に呼ばれるメソッドを指定している。
+<code class="docutils literal notranslate"><span class="pre">getScenarioData()</span></code>を使うと、該当する番号の指示書ファイルを読み込む。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="cm">/*** Initialize select box ***/</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">when</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">scenario_file</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span> <span class="c1">// シナリオファイルが全部取得できたら&lt;option&gt;と&lt;optgroup&gt;追加</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">){</span> <span class="c1">// argumentsに取得したjsonが全部入ってるのでそれぞれ読む</span>
     <span class="kd">var</span> <span class="nx">init_info</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">info</span><span class="p">;</span>
@@ -649,9 +665,9 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
 <h3>指示書データの取得と表示<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="section" id="getscenariodata-num">
 <h4>getScenarioData(num)<a class="headerlink" href="#getscenariodata-num" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p><code class="docutils literal"><span class="pre">num</span></code>番目の<strong>指示書ファイルを取得</strong>し、JSONとしてパースする。
-取得を終えたら、<code class="docutils literal"><span class="pre">scenarioInit()</span></code>を呼び出す。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">getScenarioData</span><span class="p">(</span><span class="nx">num</span><span class="p">){</span>
+<p><code class="docutils literal notranslate"><span class="pre">num</span></code>番目の<strong>指示書ファイルを取得</strong>し、JSONとしてパースする。
+取得を終えたら、<code class="docutils literal notranslate"><span class="pre">scenarioInit()</span></code>を呼び出す。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">getScenarioData</span><span class="p">(</span><span class="nx">num</span><span class="p">){</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;getScenarioData called. num: &#39;</span><span class="o">+</span><span class="nx">num</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s1">&#39;scenario/&#39;</span><span class="o">+</span> <span class="nx">num</span> <span class="o">+</span><span class="s1">&#39;.json&#39;</span><span class="p">)).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
     <span class="nx">info</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">info</span><span class="p">;</span>
@@ -664,15 +680,17 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
 </div>
 <div class="section" id="scenarioinit">
 <h4>scenarioInit()<a class="headerlink" href="#scenarioinit" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>取得された<strong>指示書のデータ</strong>(<code class="docutils literal"><span class="pre">scenario</span></code>)<strong>を画面に表示</strong>する。
+<p>取得された<strong>指示書のデータ</strong>(<code class="docutils literal notranslate"><span class="pre">scenario</span></code>)<strong>を画面に表示</strong>する。
 情報が表示される要素にはHTML側で該当するタグを付与してある。</p>
-<p>各要素に何番目の指示が表示されるかを管理するため、<code class="docutils literal"><span class="pre">scenario{数字}</span></code>という名称のクラスを<code class="docutils literal"><span class="pre">scenario0</span></code>から順に追加するようになっている。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">scenarioInit</span><span class="p">(){</span>
+<p>各要素に何番目の指示が表示されるかを管理するため、<code class="docutils literal notranslate"><span class="pre">scenario{数字}</span></code>という名称のクラスを<code class="docutils literal notranslate"><span class="pre">scenario0</span></code>から順に追加するようになっている。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">scenarioInit</span><span class="p">(){</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#scenario_prev&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;(前のシーンが表示されます)&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;scenario0&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;onclick&#39;</span><span class="p">,</span> <span class="s1">&#39;goPrev();&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
   <span class="nx">viewScript</span><span class="p">(</span><span class="s1">&#39;#scenario_now&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#scenario_now&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;scenario1&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
   <span class="nx">viewScript</span><span class="p">(</span><span class="s1">&#39;#scenario_next&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#scenario_next&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;scenario2&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;onclick&#39;</span><span class="p">,</span> <span class="s1">&#39;goNext();&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#scenario_skipnext&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;Skip&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#scenario_skipnext&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;scenario2&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;onclick&#39;</span><span class="p">,</span><span class="s1">&#39;skipNext();&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#scenario_number&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;1/&#39;</span> <span class="o">+</span> <span class="nx">scenario</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#progress_bar progress&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;pass_time&#39;</span><span class="p">,</span> <span class="s1">&#39;00:00:00&#39;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -681,25 +699,24 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
 </div>
 <div class="section" id="viewscript-id-index">
 <h4>viewScript(id, index)<a class="headerlink" href="#viewscript-id-index" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p><code class="docutils literal"><span class="pre">id</span></code>のIDを持つ要素に、
-<code class="docutils literal"><span class="pre">index</span></code>番目の<strong>セリフ・タイミング・指示</strong>を表示する。
+<p><code class="docutils literal notranslate"><span class="pre">id</span></code>のIDを持つ要素に、
+<code class="docutils literal notranslate"><span class="pre">index</span></code>番目の<strong>セリフ・タイミング・指示</strong>を表示する。
 タイミング等の表記を変えたければ、ここを編集すれば良い。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">viewScript</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">viewScript</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
   <span class="k">if</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">&#39;:disabled&#39;</span><span class="p">))</span><span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">(</span><span class="nx">id</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
     <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">scenario</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">word</span><span class="p">)</span> <span class="nx">res</span> <span class="o">+=</span> <span class="s1">&#39;開始前&#39;</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">scenario</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">word</span><span class="p">)</span> <span class="nx">res</span> <span class="o">+=</span> <span class="s1">&#39;開始直後&#39;</span>
     <span class="k">else</span> <span class="p">{</span>
       <span class="nx">res</span> <span class="o">+=</span> <span class="s1">&#39;「&#39;</span><span class="o">+</span><span class="nx">scenario</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">word</span><span class="o">+</span><span class="s1">&#39;」の&#39;</span><span class="p">;</span>
       <span class="k">switch</span><span class="p">(</span><span class="nx">scenario</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">timing</span><span class="p">){</span>
-        <span class="k">case</span> <span class="s1">&#39;pre&#39;</span><span class="o">:</span> <span class="nx">res</span> <span class="o">+=</span> <span class="s1">&#39;言い始め&#39;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
-        <span class="k">case</span> <span class="s1">&#39;post&#39;</span><span class="o">:</span> <span class="nx">res</span> <span class="o">+=</span> <span class="s1">&#39;言い終り&#39;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s1">&#39;pre&#39;</span><span class="o">:</span> <span class="nx">res</span> <span class="o">+=</span> <span class="s1">&#39;前&#39;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s1">&#39;post&#39;</span><span class="o">:</span> <span class="nx">res</span> <span class="o">+=</span> <span class="s1">&#39;後&#39;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
         <span class="k">default</span><span class="o">:</span> <span class="nx">res</span> <span class="o">+=</span>  <span class="nx">scenario</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">timing</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
       <span class="p">}</span>
     <span class="p">}</span>
-    <span class="nx">res</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span>
-    <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">scenario</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">projector</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="nx">index</span><span class="p">){</span>
-      <span class="nx">res</span> <span class="o">+=</span> <span class="s1">&#39;[&#39;</span> <span class="o">+</span><span class="nx">port</span><span class="p">[</span><span class="nx">key</span><span class="p">].</span><span class="nx">name</span> <span class="o">+</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;点灯&#39;</span> <span class="o">:</span> <span class="s1">&#39;消灯&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;] &#39;</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">scenario</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">projector</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">){</span>
+      <span class="nx">res</span> <span class="o">+=</span> <span class="s1">&#39;&lt;br&gt;&#39;</span> <span class="o">+</span> <span class="nx">port</span><span class="p">[</span><span class="nx">key</span><span class="p">].</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;を&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="s1">&#39;点灯&#39;</span> <span class="o">:</span> <span class="s1">&#39;消灯&#39;</span><span class="p">);</span>
     <span class="p">});</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
   <span class="p">});</span>
@@ -713,7 +730,7 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
 <div class="section" id="id5">
 <h4>ボタン関連<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p><strong>「開始」「停止」「再開」「リセット」</strong>の四つのボタンの動きを管理する。
-<code class="docutils literal"><span class="pre">timer_button</span></code>には四つのメンバ関数が用意されており、それぞれが各ボタンが押された際に呼ばれる。</p>
+<code class="docutils literal notranslate"><span class="pre">timer_button</span></code>には四つのメンバ関数が用意されており、それぞれが各ボタンが押された際に呼ばれる。</p>
 <p>なお画面ではボタンは二つに見えるが、内部的には四つのボタンの表示/非表示を切り替えて内容が変わるように見せている。
 以下にそれぞれの動作内容を簡単に記す(「」内はボタン名称)。</p>
 <ul class="simple">
@@ -738,13 +755,13 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
 <li><strong>タイマー</strong>と<strong>指示書表示</strong>の初期化</li>
 <li><strong>セレクトボックス</strong>を有効化</li>
 <li>「<strong>再開</strong>」を「<strong>開始</strong>」に、「<strong>リセット</strong>」を無効化</li>
-<li>セリフ・指示表示エリアから<code class="docutils literal"><span class="pre">scenario{数字}</span></code>のクラスを除去</li>
+<li>セリフ・指示表示エリアから<code class="docutils literal notranslate"><span class="pre">scenario{数字}</span></code>のクラスを除去</li>
 </ul>
 </li>
 </ul>
 <p>「停止」ボタンは意図せぬリセットを防ぐ意味合いで設置したため、押しても「次へ」などは有効のままである。
-コード例として、<code class="docutils literal"><span class="pre">timer_button.start()</span></code>を掲載しておく。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="nx">start</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+コード例として、<code class="docutils literal notranslate"><span class="pre">timer_button.start()</span></code>を掲載しておく。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="nx">start</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
   <span class="nx">sendComm</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#select&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#scenario_next&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
@@ -760,13 +777,13 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
 <h4>タイマー関連<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>画面には、<strong>「開始」が押されてからの時間経過</strong>を表示するタイマーがある。
 特にタイマーが必須だったわけではなく、遊びでつけてしまったものである。</p>
-<p>ボタン操作と連動するので、<code class="docutils literal"><span class="pre">timer_button</span></code>のメンバとなっている。
-<code class="docutils literal"><span class="pre">pass_time</span></code>が経過時間で、単位は秒。
-<code class="docutils literal"><span class="pre">readTime()</span></code>を呼び出すと、<code class="docutils literal"><span class="pre">pass_time</span></code>を<strong>&#8220;時:分:秒&#8221;のフォーマット</strong>に直した上で表示する。
-「開始」または「再開」が押されると<code class="docutils literal"><span class="pre">setInterval()</span></code>によって<code class="docutils literal"><span class="pre">readTime()</span></code>が<strong>1秒おきに実行</strong>されるようになる。</p>
-<p>また、タイマーが表示される部分は<strong>プログレスバー</strong>(進行状況を示す棒グラフ)であり、<code class="docutils literal"><span class="pre">value</span></code>に0~1の値を入れることができる。
-ここでは、公演の標準的な時間を25分として、進行の目安を確認できるようにした(本番で活用されてはいなかったようだが...)。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">pass_time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<p>ボタン操作と連動するので、<code class="docutils literal notranslate"><span class="pre">timer_button</span></code>のメンバとなっている。
+<code class="docutils literal notranslate"><span class="pre">pass_time</span></code>が経過時間で、単位は秒。
+<code class="docutils literal notranslate"><span class="pre">readTime()</span></code>を呼び出すと、<code class="docutils literal notranslate"><span class="pre">pass_time</span></code>を<strong>“時:分:秒”のフォーマット</strong>に直した上で表示する。
+「開始」または「再開」が押されると<code class="docutils literal notranslate"><span class="pre">setInterval()</span></code>によって<code class="docutils literal notranslate"><span class="pre">readTime()</span></code>が<strong>1秒おきに実行</strong>されるようになる。</p>
+<p>また、タイマーが表示される部分は<strong>プログレスバー</strong>(進行状況を示す棒グラフ)であり、<code class="docutils literal notranslate"><span class="pre">value</span></code>に0~1の値を入れることができる。
+ここでは、公演の標準的な時間を25分として、進行の目安を確認できるようにした(本番で活用されてはいなかったようだが…)。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">pass_time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">readTime</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">hour</span>     <span class="o">=</span> <span class="nx">toDoubleDigits</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">pass_time</span> <span class="o">/</span> <span class="mi">3600</span><span class="p">));</span>
   <span class="kd">var</span> <span class="nx">minute</span>   <span class="o">=</span> <span class="nx">toDoubleDigits</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">pass_time</span> <span class="o">-</span> <span class="mi">3600</span><span class="o">*</span><span class="nx">hour</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">));</span>
@@ -783,13 +800,26 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
 </div>
 <div class="section" id="id7">
 <h3>指示の送信<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">acrab_main.js</span></code>に実装がある<code class="docutils literal"><span class="pre">getRequest()</span></code>と<code class="docutils literal"><span class="pre">checkStatus()</span></code>を利用する。
+<p><code class="docutils literal notranslate"><span class="pre">acrab_main.js</span></code>に実装がある<code class="docutils literal notranslate"><span class="pre">getRequest()</span></code>と<code class="docutils literal notranslate"><span class="pre">checkStatus()</span></code>を利用する。
 しかし、メイン画面と違いユーザが<strong>進む・戻る</strong>の動作をするので、それに対応した。
-<code class="docutils literal"><span class="pre">scenario</span></code>オブジェクトから<code class="docutils literal"><span class="pre">index</span></code>番目の指示を読み取り、<code class="docutils literal"><span class="pre">reverse</span></code>がtrueなら真偽値の部分を反転させる。</p>
-<p>後は完成した指示を送信するだけだが、前に書いたように同時点灯の問題が出たため、ここでも<code class="docutils literal"><span class="pre">each_slice()</span></code>した上で送るようにした。
-なお、画面右に表示されている星座名付きのグリッドは、メイン画面と同じIDにしてあり<strong>オンになったものに色が付く</strong>。
-同一ページ内でIDが被るのはHTMLの規格上間違いであるが、<code class="docutils literal"><span class="pre">Acrab</span></code>ではどちらかが常に非表示になるため不具合は出ないと判断した。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">sendComm</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">reverse</span><span class="p">){</span>
+<code class="docutils literal notranslate"><span class="pre">scenario</span></code>オブジェクトから<code class="docutils literal notranslate"><span class="pre">index</span></code>番目の指示を読み取り、<code class="docutils literal notranslate"><span class="pre">reverse</span></code>がtrue(=「前へ」ボタンがクリックされている)なら真偽値の部分を反転させる。
+後は完成した指示を送信するだけだが、前に書いたように同時点灯の問題が出たため、ここでも<code class="docutils literal notranslate"><span class="pre">each_slice()</span></code>した上で送るようにした。</p>
+<p>実はこの部分、<strong>グループに対応していない</strong>。<code class="docutils literal notranslate"><span class="pre">acrab_main.js</span></code>の<code class="docutils literal notranslate"><span class="pre">button.group(obj)</span></code>では、「夏の大三角」等のボタンがクリックされると、</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">ip</span></code>からIPアドレスを取得してURLを作成</li>
+<li><code class="docutils literal notranslate"><span class="pre">group[(三文字コード).value]</span></code>で<code class="docutils literal notranslate"><span class="pre">$.each()</span></code>を回し、南北判定していずれかの<code class="docutils literal notranslate"><span class="pre">data</span></code>に追加</li>
+<li><code class="docutils literal notranslate"><span class="pre">req</span></code>オブジェクトに南北それぞれのデータを入れ、<code class="docutils literal notranslate"><span class="pre">getRequest()</span></code></li>
+</ol>
+<p>という手順によって「夏の大三角」の星座が光るシステムだが、指示の送信<code class="docutils literal notranslate"><span class="pre">sendComm()</span></code>では、</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">ip</span></code>からIPアドレスを取得してURLを作成</li>
+<li><code class="docutils literal notranslate"><span class="pre">getRequest()</span></code></li>
+</ol>
+<p>という流れになってしまっているため、折角指示書でグループを指定しても<strong>光らない</strong>。
+グループ関連の指示(Wnd等)が来た時には処理を分岐させるなど、何らかの工夫が必要だろう。</p>
+<p>なお、画面右に表示されている星座名付きのグリッドは、メイン画面と同じIDにしてあり<strong>オンになったものに色が付く</strong>。
+同一ページ内でIDが被るのはHTMLの規格上間違いであるが、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>ではどちらかが常に非表示になるため不具合は出ないと判断した。</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">sendComm</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">reverse</span><span class="p">){</span>
   <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="p">{},</span> <span class="nx">scenario</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">projector</span><span class="p">);</span>
   <span class="k">if</span><span class="p">(</span><span class="nx">reverse</span><span class="p">)</span> <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">){</span>
     <span class="nx">data</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
@@ -807,29 +837,36 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
 </div>
 </div>
 <div class="section" id="id8">
-<h3>次へ/前へボタン<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>指示の送信は<code class="docutils literal"><span class="pre">sendComm()</span></code>に番号を渡せば済むので、ここでは<strong>何番目の指示を次に送るべきかを管理</strong>する。
-前述の通り、現状を挟んで三つの指示が表示される領域には<code class="docutils literal"><span class="pre">scenario{数字}</span></code>なるクラスが付与されているので、そこから数字を取り出して利用する。</p>
-<p>実装については<code class="docutils literal"><span class="pre">goNext()</span></code>のコード例を読んで頂くとして、処理の流れのみ解説しておく。</p>
+<h3>前へ/次へ/スキップボタン<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>指示の送信は<code class="docutils literal notranslate"><span class="pre">sendComm()</span></code>に番号を渡せば済むので、ここでは<strong>何番目の指示を次に送るべきかを管理</strong>する。
+前述の通り、現状を挟んで三つの指示が表示される領域には<code class="docutils literal notranslate"><span class="pre">scenario{数字}</span></code>なるクラスが付与されているので、そこから数字を取り出して利用する。</p>
+<p>実装については<code class="docutils literal notranslate"><span class="pre">goNext()</span></code>のコード例を読んで頂くとして、処理の流れのみ解説しておく。</p>
 <ul class="simple">
-<li>クラス名から<strong>数字を取得</strong>し、<code class="docutils literal"><span class="pre">num</span></code>に格納</li>
+<li>クラス名から<strong>数字を取得</strong>し、<code class="docutils literal notranslate"><span class="pre">num</span></code>に格納</li>
 <li>クラスを一旦削除し、数字を増やし(減らし)て再追加</li>
 <li>次のnumが0以下か最終番号を超えるか<ul>
 <li>true:
 指示が存在しないので<strong>ボタンを無効化</strong>して<strong>メッセージ表示</strong></li>
-<li>false: <code class="docutils literal"><span class="pre">#scenario_now</span></code>の処理中なら<strong>指示を送信</strong></li>
+<li>false:
+<code class="docutils literal notranslate"><span class="pre">#scenario_now</span></code>の処理中なら<strong>指示を送信</strong>(スキップの場合は指示を送信しない)</li>
 </ul>
 </li>
-<li><code class="docutils literal"><span class="pre">#scenario_number</span></code>に<code class="docutils literal"><span class="pre">#scenario_now</span></code>の番号を表示</li>
+<li><code class="docutils literal notranslate"><span class="pre">#scenario_number</span></code>に<code class="docutils literal notranslate"><span class="pre">#scenario_now</span></code>の番号を表示</li>
 </ul>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">goNext</span><span class="p">(){</span>
-  <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">([</span><span class="s1">&#39;scenario_prev&#39;</span><span class="p">,</span> <span class="s1">&#39;scenario_now&#39;</span><span class="p">,</span> <span class="s1">&#39;scenario_next&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(){</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">goNext</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">([</span><span class="s1">&#39;scenario_prev&#39;</span><span class="p">,</span> <span class="s1">&#39;scenario_now&#39;</span><span class="p">,</span> <span class="s1">&#39;scenario_next&#39;</span><span class="p">,</span><span class="s1">&#39;scenario_skipnext&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(){</span>
     <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="k">this</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">className</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\d/g</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 数字だけ取り出して渡す(型変換しないとうまくいかなかった)</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="k">this</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">className</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;scenario&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="nx">num</span><span class="o">+</span><span class="mi">1</span><span class="p">));</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">num</span><span class="o">+</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="nx">scenario</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="k">this</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;(原稿の最後です)&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">num</span><span class="o">+</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="nx">scenario</span><span class="p">.</span><span class="nx">length</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="s1">&#39;scenario_skipnext&#39;</span><span class="p">)</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="k">this</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="k">this</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;(原稿の最後です)&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span>
     <span class="k">else</span><span class="p">{</span>
       <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="s1">&#39;scenario_now&#39;</span><span class="p">)</span> <span class="nx">sendComm</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-      <span class="nx">viewScript</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="k">this</span><span class="p">,</span> <span class="nx">num</span><span class="p">);</span>
+      <span class="k">if</span><span class="p">(</span><span class="k">this</span> <span class="o">!=</span> <span class="s1">&#39;scenario_skipnext&#39;</span><span class="p">)</span>
+          <span class="nx">viewScript</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="k">this</span><span class="p">,</span> <span class="nx">num</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">});</span>
   <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#scenario_number&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#scenario_now&#39;</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">className</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\d/g</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">scenario</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
@@ -850,7 +887,7 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../twinkle.html" class="btn btn-neutral float-right" title="またたき回路" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="graffias.html" class="btn btn-neutral float-right" title="無線制御(GRAFFIAS)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="acrab.html" class="btn btn-neutral" title="無線制御(Acrab)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -866,7 +903,7 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -895,7 +932,7 @@ CSVファイル側は、タイミングや投影機などのフィールドをJS
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

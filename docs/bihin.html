@@ -39,7 +39,7 @@
               href="genindex.html"/>
         <link rel="search" title="検索" href="search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="index.html"/>
-        <link rel="next" title="主投影機との連携" href="syutou.html"/>
+        <link rel="next" title="無線制御(Acrab)" href="wireless/acrab.html"/>
         <link rel="prev" title="配線(かごしい内)" href="haisen-kagoshii.html"/> 
 
   
@@ -100,12 +100,20 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">備品管理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">日電カゴ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">延長コード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">部室の部品及び工具</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -116,18 +124,20 @@
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">備品管理</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">日電カゴ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">部室の部品及び工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">延長コード</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">部室の部品及び工具</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="syutou.html">主投影機との連携</a></li>
@@ -206,7 +216,8 @@
 <h1>備品管理<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2017/03/25</li>
+<li>更新: Kenta Suda(nichiden_28)</li>
+<li>更新日時: 2018/08/26</li>
 <li>実行に必要な知識・技能: 特になし</li>
 <li>タスクの重さ: 1/数時間で可能</li>
 <li>タスクの必須度: 2/たまにやるべき</li>
@@ -218,17 +229,27 @@
 </div>
 <div class="section" id="id3">
 <h2>日電カゴ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="figure" id="id5">
+<div class="figure" id="id6">
 <img alt="日電カゴの外観" src="_images/basket.jpg" />
 <p class="caption"><span class="caption-text">日電カゴの外観</span></p>
 </div>
-<p>部室の机がある側の区画に入って左側の棚に、黒色で持ち手が黄色のカゴが二つある。
-この二つが日電のカゴとなっている。</p>
+<p>部室の机がある側の区画に入って左側の棚の一番下に、黒色で持ち手が黄色のカゴと蓋つきの半透明のケースがある。
+この二つが日電のカゴとなっている。
+また、本番で入りきらなかったものはダンボールに入れてある。
+なお、画像は27代のときのものなので2つともカゴだが、28代で片方はケースに買い替えた。</p>
 <p>内容は代によって変化するものの、日周緯度変や無線送受信機、主投影機の配線など重要物品が入っている。
 このカゴは基本的に他投影機の人は触らないので、<strong>壊れたり無くなったりすると困るもの</strong>を入れておこう。</p>
 </div>
 <div class="section" id="id4">
-<h2>部室の部品及び工具<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>延長コード<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>部室の機材がある側の棚に延長コードのたくさん入ったケースと少し古そうな延長コードの入ったカゴ(ダンボールになっているかもしれない)がある。
+これも日電の備品だ。</p>
+<p>ケースに入っている延長コードは基本的に<strong>本番ですべて使う</strong>ので、本数などを確認したらあまり使わないほうがいいだろう(駒場祭の片付けで使わないものも混ざった可能性があるので要確認)。
+他の投影機にも延長コードを使いたいときはカゴの方から持っていくように伝えておこう。
+なお、延長コードのたくさん入ったケースは想像以上に重いので持ち運びの際は注意しよう。</p>
+</div>
+<div class="section" id="id5">
+<h2>部室の部品及び工具<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>日電のカゴがあるのと同じ区画の棚には、電子部品や工具などが収納されている。
 これらは基本的に日電の管轄で、勝手に使わないようになどと引き継ぎに書いてある投影機もある。</p>
 <p>ただし、部室にある部品は基本的に過去に購入して余らせているものなので、各投影機で再利用してもらう方がむしろ有益である。
@@ -245,9 +266,11 @@
 <li>多くの投影機が電気関係の作業をするため、工具等が足りなくなることがあります。主投・補助投とも必ずないと困る工具は各自持ち込んでください。</li>
 </ul>
 </div></blockquote>
+<p>28代ではここまで丁寧な告知はしておらず、この棚にあるものは自由に使って良いということだけ伝えた。
+これで特にトラブルは起きなかったが、使う頻度の高い投影機の機長には個別に何があるか等も伝えた方が良いかもしれない。</p>
 <p>部品の在庫調査は毎年行う必要は全くないが、各ケースの内容を軽く見ておくと突然部品が必要になっても対処できるようになるだろう。
 箱の大部分にはラベルが付してあり、種類別にある程度分類されている。</p>
-<div class="figure" id="id6">
+<div class="figure" id="id7">
 <img alt="部品ボックスの内容例" src="_images/partsbox-example.jpg" />
 <p class="caption"><span class="caption-text">部品ボックスの内容例</span></p>
 </div>
@@ -277,6 +300,9 @@
 <li>コネクタ1, 2</li>
 <li>ネジ1, 2, 3</li>
 </ol>
+<p>ただし、28代で整理をしたため内容が少し変わっているはずである。
+また、作業が進むにつれて本来あるべき場所と違う場所にある部品もあるはずだ。
+何があるかの把握にもなるので軽く整理するといいかもしれない。</p>
 <p>工具に関しては十分な量が用意してあるが、特にハンダ付け関連のものは消耗しやすいので注意しておこう。
 コテ台が足りなかったり、コテ先やスポンジが劣化したりしていた場合は買い出しの際に補充すると良い。</p>
 </div>
@@ -292,7 +318,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="syutou.html" class="btn btn-neutral float-right" title="主投影機との連携" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="wireless/acrab.html" class="btn btn-neutral float-right" title="無線制御(Acrab)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="haisen-kagoshii.html" class="btn btn-neutral" title="配線(かごしい内)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -308,7 +334,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -337,7 +363,7 @@
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

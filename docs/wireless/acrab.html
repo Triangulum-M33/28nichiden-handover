@@ -39,8 +39,8 @@
               href="../genindex.html"/>
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
-        <link rel="next" title="無線制御(Acrabの実装解説)" href="acrab-code.html"/>
-        <link rel="prev" title="無線制御(PISCIUM)" href="piscium.html"/> 
+        <link rel="next" title="無線制御(Acrabの実装解説)※工事中" href="acrab-code.html"/>
+        <link rel="prev" title="備品管理" href="../bihin.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -100,12 +100,54 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(Acrab)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">使い方</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">下準備</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">起動と接続</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">公演用画面</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">プログラム</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">ファイル構成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">技術要素</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#htmlcss">HTMLとCSS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jquery">jQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#json">JSON</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">指示書の検討</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">指示書をどう表現するか</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">エクセルからJSONデータへ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">ソースコード解説</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">今後の展望</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">既知の問題</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">同時多数点灯対策でごちゃごちゃしている</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">星座のグループが正しく点灯・消灯しない</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">画面レイアウトの改善</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">フルスクリーン機能について</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">追加機能案</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id20">設定画面の改善・機能追加</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">デスクトップアプリ化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -116,7 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(Acrab)</a><ul>
@@ -145,23 +187,23 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id13">今後の展望</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id14">既知の問題</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#acrab-conf-json">読み込んだ際、設定ファイル(acrab_conf.json)が読み込まれないことがある</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id15">同時多数点灯対策でごちゃごちゃしている</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">指示書のデータがあるファイルの読み込み処理</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">公演用画面で、指示をスキップできない</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#piscium">Pisciumが再起動した後、ピン名称を再送する必要がある</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">星座のグループが正しく点灯・消灯しない</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">画面レイアウトの改善</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">フルスクリーン機能について</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">追加機能案</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id19">設定画面の導入</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id20">デスクトップアプリ化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">追加機能案</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id20">設定画面の改善・機能追加</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">デスクトップアプリ化</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -242,6 +284,7 @@
 <h1>無線制御(Acrab)<a class="headerlink" href="#acrab" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
+<li>更新: Hanaka Satoh(nichiden_28)</li>
 <li>更新日時: 2017/05/06</li>
 <li>実行に必要な知識・技能: Web制作、JavaScript</li>
 <li>タスクの重さ: 3/数週間</li>
@@ -249,7 +292,7 @@
 </ul>
 <div class="section" id="id1">
 <h2>概要<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">Acrab</span></code>は、27代で開発した投影機無線操作用Webアプリケーションです。
+<p><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>は、27代で開発した投影機無線操作用Webアプリケーションです。
 最新のブラウザ(Chrome推奨)があれば、どんな環境でも使うことができます。</p>
 <p>名称は、ブラウザで星座絵などを操れることからApplication for
 Constellation Remote controlling Assistance on
@@ -259,42 +302,43 @@ Browserの頭文字をとりました。 さそり座β星の固有名でもあ�
 <h2>使い方<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id3">
 <h3>下準備<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>まず、<a class="reference external" href="https://github.com/macv35/nichiden27/tree/master/ACRAB">Acrabの各種ファイル</a>を同じフォルダに配置する。
+<p>まず、<a class="reference external" href="https://github.com/Triangulum-M33/nichiden28/tree/master/ACRAB">Acrabの各種ファイル</a>を同じフォルダに配置する。
 ファイルの読み込みにAjaxを使っているので、index.htmlをそのまま開いただけ(<a class="reference external" href="file:///">file:///</a>)では機能が使えない。
 回避方法は「Ajax
 ローカル」などとググれば複数出てくるが、ローカルにWebサーバを立てる方法を解説する。</p>
 <p>Windowsでローカルホストを立てるには、<a class="reference external" href="https://www.apachefriends.org/jp/index.html">XAMPP</a>を使うのが簡単だ。
-GUIなので、操作も分かりやすいだろう。
-MacならApacheが標準で入っているはずなので、<code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apachectl</span> <span class="pre">start</span></code>を打てば<code class="docutils literal"><span class="pre">httpd</span></code>が動き出す。
+GUIなので、操作も分かりやすいだろう。XAMPPの設定については<a class="reference external" href="http://creator.aainc.co.jp/archives/6388">xamppでローカル作業環境構築をしよう</a>や<a class="reference external" href="https://qiita.com/nbkn/items/e72b283c54403a30b2e1">XAMPPで任意のディレクトリをバーチャルホストにする方法</a>等が参考になるだろう。</p>
+<p>MacならApacheが標準で入っているはずなので、<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apachectl</span> <span class="pre">start</span></code>を打てば<code class="docutils literal notranslate"><span class="pre">httpd</span></code>が動き出す。
 設定については、ググれば役に立つ情報が得られる。</p>
 </div>
 <div class="section" id="id4">
 <h3>起動と接続<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>localhostにアクセスすれば以下のような画面が表示されるはずだ。
 もしボタンに日本語が表示されない場合、設定ファイルの読み込みに失敗しているので再読み込みすること。</p>
-<div class="figure" id="id21">
-<img alt="Acrabのメイン画面" src="../_images/acrab-main.png" />
-<p class="caption"><span class="caption-text">Acrabのメイン画面</span></p>
+<div class="figure" id="id22">
+<img alt="Acrabのメイン画面(※画像は27代のもの)" src="../_images/acrab-main.png" />
+<p class="caption"><span class="caption-text">Acrabのメイン画面(※画像は27代のもの)</span></p>
 </div>
-<p>次に、<code class="docutils literal"><span class="pre">Piscium</span></code>との接続を確認する。
-<code class="docutils literal"><span class="pre">Piscium</span></code>の電源が入っていて、Wi-Fiネットワークに接続していれば、画面上の「受信状況」が緑色に変わるはずだ。</p>
-<p>もし「接続なし」のままなら、PCと<code class="docutils literal"><span class="pre">Piscium</span></code>が同じLANに接続しているか(PCが別のルーターに接続してしまうミスは結構ある)、受信モジュールのIPアドレスが正しいかなどを確認しよう。
-「受信状況」欄右の更新ボタンを押すと、<code class="docutils literal"><span class="pre">Piscium</span></code>へのリクエストが再送される。</p>
+<p>次に、<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>との接続を確認する。
+<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>の電源が入っていて、Wi-Fiネットワークに接続していれば、画面上の「受信状況」が緑色に変わるはずだ。</p>
+<p>もし「接続なし」のままなら、PCと<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>が同じLANに接続しているか(PCが別のルーターに接続してしまうミスは結構ある)、受信モジュールのIPアドレスが正しいかなどを確認しよう。
+「受信状況」欄右の更新ボタンを押すと、<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>へのリクエストが再送される。</p>
 <p>無事接続できたら下に並ぶボタンを押して投影機をオンオフさせてみよう。
 投影機を繋いでいなくても、コマンド自体は送ることができる。
-<code class="docutils literal"><span class="pre">Piscium</span></code>から応答が来なかった場合はボタンの色が変わらないので、不具合に気づける。</p>
+<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>から応答が来なかった場合はボタンの色が変わらないので、不具合に気づける。</p>
 </div>
 <div class="section" id="id5">
 <h3>公演用画面<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ソフトの指示を次へ・前へのボタンで実行できるモード。
 画面上に「<strong>公演用</strong>」ボタンがあり、押すと画面が切り替わる。</p>
-<div class="figure" id="id22">
+<div class="figure" id="id23">
 <img alt="Acrabの公演用画面" src="../_images/acrab-scenario.png" />
 <p class="caption"><span class="caption-text">Acrabの公演用画面</span></p>
 </div>
 <p>左上のメニューから番組名を選べるので、選んでから「<strong>開始</strong>」ボタンを押すと一番初めのコマンドが送信される。
 下にタイミングが表示されるので、緑色の「<strong>次へ</strong>」ボタンを押して番組を進行する。
-「<strong>前へ</strong>」ボタンでは、直前と逆の指示を送信できる。</p>
+「<strong>前へ</strong>」ボタンでは、直前と逆の指示を送信できる。
+「<strong>Skip</strong>」ボタンでは、番組は進行するが、指示は送信されない。番組進行者が「次へ」ボタンをうっかり押し忘れた時等に使う。</p>
 <p>「開始」した後は左のボタンが「<strong>停止</strong>」「<strong>再開</strong>」に変化するが、これは右上のタイマーが止まるだけで深い意味はない。
 「<strong>リセット</strong>」ボタンを押すと、タイマーと番組の進行状況が最初に戻る。</p>
 <p>誤操作防止のため、「リセット」は「停止」状態でないとできない。
@@ -303,13 +347,13 @@ MacならApacheが標準で入っているはずなので、<code class="docutil
 </div>
 <div class="section" id="id6">
 <h2>プログラム<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">Acrab</span></code>はWebの技術を使って通信や画面表示を行っている。
+<p><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>はWebの技術を使って通信や画面表示を行っている。
 画面の情報はHTML、デザインはCSS、内部処理や画面の書き換えはJavaScript(以下JS)という構成だ。</p>
 <div class="section" id="id7">
 <h3>ファイル構成<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>以下のようなディレクトリ構成になっている。
 ファイルを動かす際はリンク切れに注意すること。</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>ACRAB
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ACRAB
 ├── acrab_conf.json
 ├── img
 │   ├── acrab-banner.svg
@@ -331,20 +375,20 @@ MacならApacheが標準で入っているはずなので、<code class="docutil
 └── testscript.json
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">index.html</span></code>がAcrabのメインページである。
-デザイン関連の記述は<code class="docutils literal"><span class="pre">style.css</span></code>に分離した。
-<code class="docutils literal"><span class="pre">acrab_conf.json</span></code>には、各種設定が格納されている。</p>
-<p><code class="docutils literal"><span class="pre">img/</span></code>以下にはページで使用した画像、<code class="docutils literal"><span class="pre">js/</span></code>以下にはJavaScriptのコードが入っている。
-<code class="docutils literal"><span class="pre">scenario/</span></code>内は、番組の指示書を指定形式で入力したデータ。</p>
+<p><code class="docutils literal notranslate"><span class="pre">index.html</span></code>がAcrabのメインページである。
+デザイン関連の記述は<code class="docutils literal notranslate"><span class="pre">style.css</span></code>に分離した。
+<code class="docutils literal notranslate"><span class="pre">acrab_conf.json</span></code>には、各種設定が格納されている。</p>
+<p><code class="docutils literal notranslate"><span class="pre">img/</span></code>以下にはページで使用した画像、<code class="docutils literal notranslate"><span class="pre">js/</span></code>以下にはJavaScriptのコードが入っている。
+<code class="docutils literal notranslate"><span class="pre">scenario/</span></code>内は、番組の指示書を指定形式で入力したデータ。</p>
 </div>
 <div class="section" id="id8">
 <h3>技術要素<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="section" id="htmlcss">
 <h4>HTMLとCSS<a class="headerlink" href="#htmlcss" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>最近のWebアプリは、サーバ側でHTMLファイルを動的に生成して送ってくることが多い。
-しかし、<code class="docutils literal"><span class="pre">Acrab</span></code>は<strong>静的なHTMLファイルを準備し、クライアント(ブラウザ)側で書き換える</strong>方式を採っている。
+しかし、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>は<strong>静的なHTMLファイルを準備し、クライアント(ブラウザ)側で書き換える</strong>方式を採っている。
 単に開発が楽であること、サーバ側で作業する必要がないこと、多数のユーザに後悔するような規模でないことがその理由である。</p>
-<p><code class="docutils literal"><span class="pre">Acrab</span></code>の<strong>ページ構成</strong>を変えたければ<code class="docutils literal"><span class="pre">index.html</span></code>を、<strong>色やサイズ</strong>なら<code class="docutils literal"><span class="pre">style.css</span></code>を編集すれば良い。
+<p><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>の<strong>ページ構成</strong>を変えたければ<code class="docutils literal notranslate"><span class="pre">index.html</span></code>を、<strong>色やサイズ</strong>なら<code class="docutils literal notranslate"><span class="pre">style.css</span></code>を編集すれば良い。
 どちらもググれば分かる程度の機能しか使っていないつもりなので、Webの経験がなくても対応できるだろう。
 それぞれの内容についてはここでは触れないが、JS部分と連動する箇所は都度解説する。</p>
 </div>
@@ -353,23 +397,23 @@ MacならApacheが標準で入っているはずなので、<code class="docutil
 <p>プログラムにはJSを用いていると書いたが、素のJSだけで書くと記述が長くなってしまう。
 そこで、jQueryというライブラリを採用している。
 動的なページの書き換えやAjaxによるファイル取得などを簡単に書けるようになり、コードを読みやすくできる。</p>
-<p>近頃のWebアプリはサーバ側が急速に発展し、jQueryは不要な存在となりつつあるが、<code class="docutils literal"><span class="pre">Acrab</span></code>はクライアントサイドだけで動作する仕様のためあえて採用した。
+<p>近頃のWebアプリはサーバ側が急速に発展し、jQueryは不要な存在となりつつあるが、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>はクライアントサイドだけで動作する仕様のためあえて採用した。
 数年前の流行りとはいえネット上に解説記事が充実しており、学習が容易であることも採用の理由だ。</p>
-<p>jQueryは単一のjsファイルにまとめて配布されるので、最新版をダウンロードして<code class="docutils literal"><span class="pre">js/</span></code>内に入れておけば使えるようになる。
+<p>jQueryは単一のjsファイルにまとめて配布されるので、最新版をダウンロードして<code class="docutils literal notranslate"><span class="pre">js/</span></code>内に入れておけば使えるようになる。
 わざわざダウンロードしておくのは、ネットに接続できない本番ドーム内などでもjQueryを取得できるようにするため。</p>
 <p>jQueryの機能は解説しないのでググって補完されたい。
-<code class="docutils literal"><span class="pre">acrab_main.js</span></code>や<code class="docutils literal"><span class="pre">acrab_scenario.js</span></code>内に頻繁に登場する<code class="docutils literal"><span class="pre">$</span></code>という文字は、jQueryを呼び出すためのものである。
-<code class="docutils literal"><span class="pre">$.(メソッド名)</span></code>といった形式で各種メソッドを使用できる。</p>
+<code class="docutils literal notranslate"><span class="pre">acrab_main.js</span></code>や<code class="docutils literal notranslate"><span class="pre">acrab_scenario.js</span></code>内に頻繁に登場する<code class="docutils literal notranslate"><span class="pre">$</span></code>という文字は、jQueryを呼び出すためのものである。
+<code class="docutils literal notranslate"><span class="pre">$.(メソッド名)</span></code>といった形式で各種メソッドを使用できる。</p>
 </div>
 <div class="section" id="json">
 <h4>JSON<a class="headerlink" href="#json" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p><code class="docutils literal"><span class="pre">Acrab</span></code>では、各種設定を個別ファイルに分離している。
+<p><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>では、各種設定を個別ファイルに分離している。
 投影する星座の名称を変えたい、指示書を編集したいと言った要求はいつ来てもおかしくない。
 こうした変更に迅速に対応できるよう<strong>JSON</strong>形式の設定ファイルを読み込む方式とした。</p>
 <p>JSON(JavaScript Object
 Notation)は、JavaScriptのオブジェクトの形式でデータを記述するものである。
 「JavaScriptのオブジェクト」というのは配列や連想配列を入れ子にした構造を指す。</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;hoge&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">null</span> <span class="p">],</span>
   <span class="s2">&quot;fuga&quot;</span><span class="o">:</span> <span class="p">{</span>
     <span class="s2">&quot;one&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&quot;tenmon&quot;</span> <span class="p">],</span>
@@ -379,18 +423,20 @@ Notation)は、JavaScriptのオブジェクトの形式でデータを記述す�
 </pre></div>
 </div>
 <p>上の例のように、項目にラベルを付ける、入れ子にするといったことが比較的シンプルな記述で可能になる。
-また、オブジェクトなので<code class="docutils literal"><span class="pre">.</span></code>でラベル名を繋ぐだけでデータを取り出せる(例:
-<code class="docutils literal"><span class="pre">fuga.one[1]</span></code>は<code class="docutils literal"><span class="pre">&quot;tenmon&quot;</span></code>)。
+また、オブジェクトなので<code class="docutils literal notranslate"><span class="pre">.</span></code>でラベル名を繋ぐだけでデータを取り出せる(例:
+<code class="docutils literal notranslate"><span class="pre">fuga.one[1]</span></code>は<code class="docutils literal notranslate"><span class="pre">&quot;tenmon&quot;</span></code>)。
 文法がJavaScriptからの流用なので親和性がよく、読み込みが簡単なのも嬉しい。</p>
 <p>ただ、文法がたいへん厳しくかつ目で眺めてもミスに気づきにくいので、パースエラーが出ないことを確かめてから使うよう心がけたい。
 <a class="reference external" href="http://jsonlint.com/">JSONLint</a>など、JSONの文法ミスを検出してくれるサービスが存在する。</p>
+<p>また、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>では、JSON形式の指示書の一覧を<code class="docutils literal notranslate"><span class="pre">scenario_list.json</span></code>というJSONファイルにして、<code class="docutils literal notranslate"><span class="pre">ACRAB</span></code>ディレクトリ内に配置している。
+これは、<code class="docutils literal notranslate"><span class="pre">Acrab_scenario.js</span></code>が指示書の個数やタイトルを読み込むのに必要なファイルであり、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>によって簡単に生成することができる。</p>
 </div>
 </div>
 <div class="section" id="id9">
 <h3>指示書の検討<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>PCで投影機を操作する場合、指示書の内容が表示されていると便利なのは言うまでもない。
 しかし、コードに直接書き込むような方式では、翌年にはもう使えなくなってしまう。
-そこで、<code class="docutils literal"><span class="pre">Acrab</span></code>が<strong>外部の指示書ファイルを読み込む</strong>方式を検討した。</p>
+そこで、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>が<strong>外部の指示書ファイルを読み込む</strong>方式を検討した。</p>
 <div class="section" id="id10">
 <h4>指示書をどう表現するか<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>ソフトの指示書には様々な情報が書かれているが、主投影機に限れば必要な情報は</p>
@@ -411,7 +457,7 @@ Notation)は、JavaScriptのオブジェクトの形式でデータを記述す�
 xlsxファイルはかなり複雑で、プログラムから読むのは大変なので、テキスト形式のデータに変換したい。</p>
 <p>エクセルならCSVが扱えるが、CSVは表形式のデータとなり階層構造が表現できない。
 階層状にできるXMLかJSONのうち、XMLは扱いづらそうだったため<strong>JSON</strong>を採用した。
-JSONならばJavaScriptの<code class="docutils literal"><span class="pre">Acrab</span></code>との親和性もある。</p>
+JSONならばJavaScriptの<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>との親和性もある。</p>
 <p>具体的にどのような構造のJSONかについては、ソースコード解説の記事にゆずる(概ね上の箇条書きの通りと思ってよい)。</p>
 </div>
 <div class="section" id="id11">
@@ -419,57 +465,8 @@ JSONならばJavaScriptの<code class="docutils literal"><span class="pre">Acrab
 <p>指示書のデータはソフトが持っているので貰ってくるとして、一発でJSONに変換できる訳ではない。
 日本語の指示を<strong>プログラム用の形式にする</strong>作業が待っている。</p>
 <p>とはいえ、JSONを手で書くのは非常に面倒で、しかもミスがあるとパースができない。
-そこで一旦CSVにして保存し、CSV→JSONの変換はプログラムに任せることにした。</p>
-<p>CSVは階層データを表現できないが、1フィールド(Excelで言う1セル)に<strong>複数データを無理やり入れてしまえば</strong>なんちゃって階層データが作れる。
-今回は二階層しかないので、下の階層は<strong>JSONを直接入力してしまう</strong>と言う苦肉の策を講じた。
-変換の手順を表で表すとこのようになる。</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="12%" />
-<col width="60%" />
-<col width="28%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">工程</th>
-<th class="head">内容</th>
-<th class="head">データ形式</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>0</td>
-<td>ソフトからExcelデータを入手</td>
-<td>xlsx</td>
-</tr>
-<tr class="row-odd"><td>1</td>
-<td>人力でJSONへの変換を準備</td>
-<td>CSV(Shift-JIS)</td>
-</tr>
-<tr class="row-even"><td>2</td>
-<td>(Excelで保存した場合)文字コード変換</td>
-<td>CSV(UTF-8)</td>
-</tr>
-<tr class="row-odd"><td>3</td>
-<td>プログラムでJSONデータに変換</td>
-<td>JSON</td>
-</tr>
-</tbody>
-</table>
-<p><strong>工程1</strong>で、JSONに自動変換できる状態にまで指示書を編集する。
-この段階は、エクセルで作業した方が余計な列の削除・列移動等が楽だろう。</p>
-<p>実装解説でも触れるが、<code class="docutils literal"><span class="pre">Acrab</span></code>では星座絵や投影機を<strong>半角三文字のコード</strong>で管理している。
-投影機の指示もこれに準じたものに変える。
-例えば、「アンドロメダ座を点灯する」なら<code class="docutils literal"><span class="pre">&quot;And&quot;:</span> <span class="pre">1</span></code>になる。
-詳しくは<a class="reference external" href="acrab-code.html">実装解説の記事</a>や、本番で使用したデータなどをご覧いただきたい。</p>
-<p>この工程で、指示の<strong>曖昧さを完全になくす</strong>ことを目指す。
-「いい感じのタイミングでつけてください」のような記述があったり、点灯したまま消灯しない投影機が出たりという事態はよくある。
-疑問を感じたら<strong>ソフトあるいはライブ解説者に確認</strong>しよう。
-面倒な作業ではあるが、本番直前に気づくよりは対処に余裕を持てる。</p>
-<p><strong>工程2</strong>はExcelからCSVを出力した場合に必要だ。
-ExcelはCSVをShift-JISで保存するが、文字化けの元凶となるので<strong>Unicodeに変換しておく</strong>のが望ましい。
-コマンドで変換しても、テキストエディタで保存しなおしてもいい。</p>
-<p><strong>工程3</strong>でJSONに自動変換となる訳だが、CSV内にJSONを無理やり混ぜているので変換するだけではいけない。
-JSONの括弧(<code class="docutils literal"><span class="pre">{</span></code>,<code class="docutils literal"><span class="pre">}</span></code>)が<code class="docutils literal"><span class="pre">&quot;&quot;</span></code>で囲まれたり、<code class="docutils literal"><span class="pre">&quot;</span></code>がバックスラッシュで文字列にエスケープされたりしているので、置換などで修正する必要がある。
-27代では<code class="docutils literal"><span class="pre">scenario/csv/</span></code>に入っている<code class="docutils literal"><span class="pre">jsonify.py</span></code>というPythonスクリプトで変換と置換の処理をした。</p>
+そこで28では<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>という、JSON作成を補助するGUIを作成・使用した。
+<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>の使用法・解説については長くなるので、<a class="reference external" href="graffias.html">GRAFFIASの記事</a>に分離する。</p>
 </div>
 </div>
 <div class="section" id="id12">
@@ -481,63 +478,52 @@ JSONの括弧(<code class="docutils literal"><span class="pre">{</span></code>,<
 <h2>今後の展望<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id14">
 <h3>既知の問題<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="section" id="acrab-conf-json">
-<h4>読み込んだ際、設定ファイル(acrab_conf.json)が読み込まれないことがある<a class="headerlink" href="#acrab-conf-json" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>開発時に<strong>即時関数</strong>と<strong>jQuery.readyイベント関数</strong>の違いを理解していなかったことが原因。
-即時関数を使うのをやめれば修正可能。</p>
-</div>
 <div class="section" id="id15">
 <h4>同時多数点灯対策でごちゃごちゃしている<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>27の本番近くになり、星座絵の突入電流で電源が不安定化するのを避けるため<code class="docutils literal"><span class="pre">each_slice()</span></code>や<code class="docutils literal"><span class="pre">sleep_ms()</span></code>を急遽追加した。
+<p>27の本番近くになり、星座絵の突入電流で電源が不安定化するのを避けるため<code class="docutils literal notranslate"><span class="pre">each_slice()</span></code>や<code class="docutils literal notranslate"><span class="pre">sleep_ms()</span></code>を急遽追加した。
 これでも動作はするが、こういった処理はマイコン側でする方が簡単である(sleep関数も用意されている)。
 直前に追加したことでコードが読みにくくなっているので、<strong>無線受信機側で小分けにして点灯</strong>するような対策に切り替えるのが良いだろう。</p>
 </div>
 <div class="section" id="id16">
-<h4>指示書のデータがあるファイルの読み込み処理<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p><code class="docutils literal"><span class="pre">Acrab</span></code>はブラウザがあれば動作することを目指していた(XMLHttpRequestができず断念)ので、<strong>設定ファイルの名称や数を取得できない</strong>。
-現在は、指示書のファイルを連番の数字にリネームし、コード中で最大数を指定する方法を採っているが拡張性に欠ける。</p>
-<p>元となる設定ファイル(<code class="docutils literal"><span class="pre">acrab_conf.json</span></code>など)に<strong>他の設定ファイルの情報を書けば</strong>、変に工夫せずとも問題は解決するだろう。
-設定ファイルに一覧を書き込むのが手間だが、後述する<strong>設定画面</strong>が動けば問題なさそうだ。</p>
+<h4>星座のグループが正しく点灯・消灯しない<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>28の公演中、公演用画面で夏の大三角・冬のダイヤモンドと言った星座グループについて点灯・消灯を指定してもこれが反映されない問題が発生した。
+後にこれは<code class="docutils literal notranslate"><span class="pre">acrab_scenario.js</span></code>でのコードのミスだと判明したが、修正する時間が足りなかったのでJSONを書き換えて星座グループを使用しないことで無理矢理対応した。
+詳しくは<a class="reference external" href="acrab-code.html">Acrabの実装解説</a>で説明しているので、修正をお願いしたい。</p>
 </div>
 <div class="section" id="id17">
-<h4>公演用画面で、指示をスキップできない<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>本番で<code class="docutils literal"><span class="pre">Acrab</span></code>を操作している際、うっかり操作を忘れてしまうことがある。
-現在の公演用画面の仕様では<strong>ボタンを押すと必ず指示が実行される</strong>ので、押し忘れ以降次に進めなくなる問題が起きた。</p>
-<p>ボタンの押し忘れやページを再読み込みした後など、<strong>投影機に影響を与えずに指示書の任意の時点に移動できる</strong>ように、「スキップ」のようなボタンがあると良さそうだ。
-「前へ」「次へ」ボタンと同じ処理でコマンド送信だけを省けばいいので、実装はすぐにできるだろう。</p>
-</div>
-<div class="section" id="piscium">
-<h4>Pisciumが再起動した後、ピン名称を再送する必要がある<a class="headerlink" href="#piscium" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p><code class="docutils literal"><span class="pre">Acrab</span></code>側の問題ではないが、こちらにまとめて記載する。
-<code class="docutils literal"><span class="pre">Piscium</span></code>は、<code class="docutils literal"><span class="pre">setConstellationName/status.json</span></code>にコマンドを送信する事で、<strong>各投影機の名称を好きにつけることができる</strong>。
-URLが人間に読めるものになるので便利だが、この設定は<code class="docutils literal"><span class="pre">Piscium</span></code>起動後毎回送る必要がある。</p>
-<p>27主投の本番(と投影機調整)では頻繁に<code class="docutils literal"><span class="pre">Piscium</span></code>が再起動することになり、その度に<code class="docutils literal"><span class="pre">Acrab</span></code>のページを再読み込みするという非効率な事態となった。
-対策は複数考えられる。
-一つ目は、<code class="docutils literal"><span class="pre">Acrab</span></code>の<strong>「更新」ボタン</strong>を押した際に<code class="docutils literal"><span class="pre">setConstellationName</span></code>してしまうことだ。
-どのURLにアクセスしても<code class="docutils literal"><span class="pre">status.json</span></code>が返ってくる仕組みなので、これでも更新ボタンとして機能する。</p>
-<p>二つ目は、<code class="docutils literal"><span class="pre">Piscium</span></code>が<strong>直前の設定を記憶する</strong>ようにしてしまうことだ。
-使用している<code class="docutils literal"><span class="pre">ESP8266</span></code>には4MBのフラッシュメモリが積まれており、記憶域として利用できる(使えるのは3MBまで)。
-<code class="docutils literal"><span class="pre">EEPROM</span></code>というクラスを使えばデータを読み書きできる(<a class="reference external" href="http://qiita.com/exabugs/items/0220edd4c9bf93da981b">参考記事</a>)。
-ここに投影機の名称設定を保存しておけば、再送前でも投影機の操作ができるようになるだろう。</p>
-</div>
+<h4>画面レイアウトの改善<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>28では、27に比べ表示する星座絵の数が増えたため、ボタンの幅を狭めるなどしてこれに対処したが、これを別PCの画面で見ると表示ずれが起きることがあった。
+これはおそらくPCの画面サイズの違いが原因だと思われるので、余裕があれば他のPCでも表示テストをしてみるといいかもしれない。
+また、「前へ」・「次へ」ボタンは中のテキストによって横幅が変わる仕様(<code class="docutils literal notranslate"><span class="pre">Flexbox</span></code>による)だが、これにより「次へ」ボタンの一部が画面からはみ出すことがある。
+cssを調整する、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>を弄って改行コードを有効にする等して対応してほしい。(MacとWindowsでも表示異なる可能性あり…？要検証)
+Skipボタンについても、とりあえず「次へ」ボタンの右側に配置してみたが、本番で一度押し間違いがあったようなので配置を変更した方がいいかもしれない。(そもそも担当者が本番中に寝落ちしなければ不要説も…)
+求むデザインセンス。</p>
 </div>
 <div class="section" id="id18">
-<h3>追加機能案<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h4>フルスクリーン機能について<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>28の公演中に<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>画面外のアドレスバーの光が漏れていたことがあったので、プログラム的に弄るべきところはないがここに記載しておく。
+<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>は<code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Chrome</span></code>上で動かすことを前提としたアプリであるため、<code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Chrome</span></code>の<strong>フルスクリーン</strong>機能が使える。
+Windowsでは<code class="docutils literal notranslate"><span class="pre">F11</span></code>、Macでは<code class="docutils literal notranslate"><span class="pre">shift+command+F</span></code>でフルスクリーンにできる。当日、公演用のPCを持ってきてくれた人に伝えておくといいだろう。
+あと、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>はマウスを使うと操作しやすいので、誰がマウスを持ってくるかをちゃんと割り当てておこう。</p>
+</div>
+</div>
 <div class="section" id="id19">
-<h4>設定画面の導入<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p><code class="docutils literal"><span class="pre">Acrab</span></code>は、メンテナンス性・拡張性を高めるために各種設定をプログラムとは別のファイルに保存している。
+<h3>追加機能案<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id20">
+<h4>設定画面の改善・機能追加<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>は、メンテナンス性・拡張性を高めるために各種設定をプログラムとは別のファイルに保存している。
 しかし、設定ファイル自体の読み書きがプログラマにしかできないようでは、その変更は結局日電メンバの仕事となる。
-これを解消するために、<strong>GUIの設定画面を設ける</strong>ことを27日電も構想していたが、時間が足りず実施しなかった。</p>
+そこで28日電では指示書のJSONファイル作成補助として<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>を製作した。</p>
 <p>ローカルにWebサーバを立てると、大体の場合<strong>PHPも動く</strong>ようになる。
 PHPならサーバのファイルに書き込めるので、設定用のJSONファイルを読み込んで画面に表示し、修正して書き込むということが可能だ。
 JSONの入出力については<a class="reference external" href="https://syncer.jp/how-to-use-json">PHPでJSONのデータを処理する方法</a>など詳しい記事を参照のこと。</p>
-<p>単にテキストボックスを並べてもいいし、受信機や投影機の数の増減にも対応できるよう、行の追加・削除ができる表のような仕掛けを用意してもいい。
-色々と工夫の余地がありそうな機能だ。</p>
+<p>現状では指示書用JSONの作成補助と、作成したJSONファイルの一覧を作る機能しかない簡素なものだが、今後は、<code class="docutils literal notranslate"><span class="pre">acrab_conf.json</span></code>の書き換えにも対応した設定画面を作る、受信機や投影機の数の増減にも対応できるよう、行の追加・削除ができる表のような仕掛けを用意するなどしてもいい。
+色々と工夫の余地がありそうなところだ。</p>
 </div>
-<div class="section" id="id20">
-<h4>デスクトップアプリ化<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>最近Web界で流行っている<code class="docutils literal"><span class="pre">Electron</span></code>という技術を使うと、Webの作法を使ってクロスプラットフォーム(Win/Mac/Linux)のアプリが組める。
-<code class="docutils literal"><span class="pre">Acrab</span></code>は基本的にサーバサイドで処理をしないので、移植しようと思えばできるだろう。
+<div class="section" id="id21">
+<h4>デスクトップアプリ化<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>最近Web界で流行っている<code class="docutils literal notranslate"><span class="pre">Electron</span></code>という技術を使うと、Webの作法を使ってクロスプラットフォーム(Win/Mac/Linux)のアプリが組める。
+<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>は基本的にサーバサイドで処理をしないので、移植しようと思えばできるだろう。
 Web技術が大好きor勉強してみたいのであれば、やってみてはいかがだろうか。</p>
 <p>参考:
 <a class="reference external" href="https://www.slideshare.net/hiroyukianai/webelectron">WebアプリをElectronに乗せる</a></p>
@@ -556,10 +542,10 @@ Web技術が大好きor勉強してみたいのであれば、やってみては
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="acrab-code.html" class="btn btn-neutral float-right" title="無線制御(Acrabの実装解説)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="acrab-code.html" class="btn btn-neutral float-right" title="無線制御(Acrabの実装解説)※工事中" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="piscium.html" class="btn btn-neutral" title="無線制御(PISCIUM)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../bihin.html" class="btn btn-neutral" title="備品管理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -572,7 +558,7 @@ Web技術が大好きor勉強してみたいのであれば、やってみては
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -601,7 +587,7 @@ Web技術が大好きor勉強してみたいのであれば、やってみては
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

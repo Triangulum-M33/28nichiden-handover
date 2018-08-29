@@ -20,9 +20,6 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-import recommonmark
-from recommonmark.parser import CommonMarkParser
-from recommonmark.transform import AutoStructify
 import sphinx_rtd_theme
 
 # -- General configuration ------------------------------------------------
@@ -43,10 +40,7 @@ templates_path = ['_templates']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-source_suffix = ['.rst', '.md']
-source_parsers = {
-    '.md' : 'recommonmark.parser.CommonMarkParser'
-}
+source_suffix = ['.rst']
 
 # The master toctree document.
 master_doc = 'index'
@@ -162,14 +156,3 @@ texinfo_documents = [
      author, 'Nichiden', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/doc/'
-def setup(app):
-    app.add_config_value('recommonmark_config', {
-        'url_resolver': lambda url: github_doc_root + url,
-        'auto_toc_tree_section': 'Contents',
-        'enable_math': True,
-        'enable_inline_math': True,
-        }, True)
-    app.add_transform(AutoStructify)
-

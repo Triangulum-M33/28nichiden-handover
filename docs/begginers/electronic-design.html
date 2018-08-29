@@ -39,8 +39,8 @@
               href="../genindex.html"/>
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
-        <link rel="next" title="無料でWindowsを手に入れる" href="windows.html"/>
-        <link rel="prev" title="【直前特集】本番で気をつけたい三箇条" href="../honban.html"/> 
+        <link rel="next" title="マイコンをはじめよう" href="microcontroller.html"/>
+        <link rel="prev" title="部品の買い方" href="buy_parts.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -100,24 +100,14 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">回路設計のためのソフトウェア</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#bsch3v">BSch3V</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#tips">操作/Tips</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#qt-bsch3v-modified">Qt-BSch3V Modified</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#eagle">Eagle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#kicad">KiCad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fritzing">Fritzing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">まとめ</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualstudio.html">Visual Studioをはじめよう</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -128,11 +118,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -313,9 +304,9 @@ Editor</a>」も配布している。</p>
 <h2>Qt-BSch3V Modified<a class="headerlink" href="#qt-bsch3v-modified" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="47%" />
-<col width="26%" />
-<col width="26%" />
+<col width="50%" />
+<col width="25%" />
+<col width="25%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">開発</th>
@@ -347,8 +338,8 @@ Modified」である。
 <h2>Eagle<a class="headerlink" href="#eagle" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="27%" />
-<col width="41%" />
+<col width="26%" />
+<col width="42%" />
 <col width="32%" />
 </colgroup>
 <thead valign="bottom">
@@ -384,9 +375,9 @@ Windows / Mac / Linuxで使用可能。</p>
 <h2>KiCad<a class="headerlink" href="#kicad" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="45%" />
-<col width="18%" />
-<col width="38%" />
+<col width="47%" />
+<col width="16%" />
+<col width="37%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">開発</th>
@@ -415,16 +406,16 @@ Eagle同様、各種OSに対応している。</p>
 <p>回路図やプリント基板の設計が可能で、非常に多機能。
 チュートリアルをこなしてから使うことをお勧めする。</p>
 <p>国内コミュニティの方々の努力により、現行バージョンでは<strong>日本語版のマニュアルとチュートリアル</strong>が同梱されるようになった。
-メニューの <code class="docutils literal"><span class="pre">ヘルプ</span></code> から選択できる。
+メニューの <code class="docutils literal notranslate"><span class="pre">ヘルプ</span></code> から選択できる。
 また、トラ技編集部から<a class="reference external" href="https://www.amazon.co.jp/dp/4789849279/">Kicad本</a>も出版されているので、紙のチュートリアルが欲しければこちらを購入するのもいいだろう。</p>
 </div>
 <div class="section" id="fritzing">
 <h2>Fritzing<a class="headerlink" href="#fritzing" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="53%" />
-<col width="23%" />
-<col width="23%" />
+<col width="57%" />
+<col width="22%" />
+<col width="22%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">開発</th>
@@ -477,10 +468,10 @@ Fab」というサービスにプリント基板のデータを送ると、ド�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="windows.html" class="btn btn-neutral float-right" title="無料でWindowsを手に入れる" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="microcontroller.html" class="btn btn-neutral float-right" title="マイコンをはじめよう" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../honban.html" class="btn btn-neutral" title="【直前特集】本番で気をつけたい三箇条" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="buy_parts.html" class="btn btn-neutral" title="部品の買い方" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -493,7 +484,7 @@ Fab」というサービスにプリント基板のデータを送ると、ド�
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -522,7 +513,7 @@ Fab」というサービスにプリント基板のデータを送ると、ド�
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

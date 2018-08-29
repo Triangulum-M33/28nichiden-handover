@@ -40,7 +40,7 @@
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
         <link rel="next" title="テキストエディタを使ってみよう" href="editor.html"/>
-        <link rel="prev" title="部品の買い方" href="buy_parts.html"/> 
+        <link rel="prev" title="回路設計のためのソフトウェア" href="electronic-design.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -101,11 +101,13 @@
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualstudio.html">Visual Studioをはじめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -116,11 +118,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -141,13 +144,13 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#mbed">mbed</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id8">購入</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">開発環境</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">言語</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">開発環境</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">言語</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">結局何を選べばいいのか</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">結局何を選べばいいのか</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="editor.html">テキストエディタを使ってみよう</a></li>
@@ -229,8 +232,8 @@
 <div class="section" id="id2">
 <h2>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>マイコンとは、小型のコンピュータシステムのことです。
-和製英語なので注意。&#8221;microcomputer&#8221;だとパソコンも含んでしまうので、&#8221;microcontroller&#8221;と呼べば間違いはないかと。</p>
-<p>最近では<code class="docutils literal"><span class="pre">Arduino</span></code>や<code class="docutils literal"><span class="pre">mbed</span></code>に代表される手軽なマイコンボードが増え、かなりの用途に対応できます。これらについても簡単に解説します。</p>
+和製英語なので注意。“microcomputer”だとパソコンも含んでしまうので、“microcontroller”と呼べば間違いはないかと。</p>
+<p>最近では<code class="docutils literal notranslate"><span class="pre">Arduino</span></code>や<code class="docutils literal notranslate"><span class="pre">mbed</span></code>に代表される手軽なマイコンボードが増え、かなりの用途に対応できます。これらについても簡単に解説します。</p>
 </div>
 <div class="section" id="id3">
 <h2>マイコン比較<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -256,7 +259,7 @@ X</a>というIDE(統合開発環境)が無償配布</li>
 <li>主にTinyシリーズ(下位)とMegaシリーズ(上位)に分かれる</li>
 <li><a class="reference external" href="http://www.atmel.com/ja/jp/microsite/atmel-studio/default.aspx">Atmel
 Studio</a>というIDEを無償配布している</li>
-<li>ライタはAVRISP mkIIなど(秋月のサイトから消えてる...)<ul>
+<li>ライタはAVRISP mkIIなど(秋月のサイトから消えてる…)<ul>
 <li>自作もできるらしい</li>
 </ul>
 </li>
@@ -275,7 +278,7 @@ Studio</a>というIDEを無償配布している</li>
 </li>
 </ul>
 <p>プラネ用途であればPICかAVRで十分であろう。</p>
-<p>以前は&#8221;C言語を使うならAVR&#8221;ということで、23-25の代でAVRが多数使われた。
+<p>以前は“C言語を使うならAVR”ということで、23-25の代でAVRが多数使われた。
 しかしPICもC言語で開発できるようになり、27ではPICを使用していた。
 今では、どちらを採用しても支障はないだろう。</p>
 </div>
@@ -310,18 +313,18 @@ Edisonなども見た目が似ているが、これらはOSを動作させるこ
 <p>例えば、国内で買うと3000円弱かかるArduino
 Nanoの互換機が、中国サイトなどで300円ちょっとで入手できてしまう(送料はかかる)。
 信頼性が要求される場合や、初めてArduinoを使うときは避けるべきだが、沢山のArduinoを必要とする場面などでは検討してはいかがだろうか(クレカ情報を守るためpaypal推奨)。</p>
-<p>安い互換機は、USBシリアル変換チップに<code class="docutils literal"><span class="pre">CH340G</span></code>という中国製品を使っていることが多々ある。
+<p>安い互換機は、USBシリアル変換チップに<code class="docutils literal notranslate"><span class="pre">CH340G</span></code>という中国製品を使っていることが多々ある。
 最近のWindowsなら刺せば認識するようだが、Macで初めて使う際はドライバを入れねばならない。<a class="reference external" href="http://www.wch.cn/download/CH341SER_MAC_ZIP.html">江苏沁恒股份有限公司のページ</a>から落としてきてインストールしよう。</p>
 </div>
 <div class="section" id="id6">
 <h4>開発環境<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>開発にはArduino
 IDEをPCにダウンロードする必要がある。2017年現在のバージョンは1.8系で、arduino.cc/arduino.orgのどちらでも同じものが入手できる。このIDEでスケッチと呼ばれるプログラムの作成からビルド、ボードへの書き込みまでを行う。</p>
-<p>...はずだったのだが、2016年夏に<a class="reference external" href="https://create.arduino.cc/">Arduino
-Create</a>がリリースされ、mbedのようにブラウザからオンライン開発環境(<code class="docutils literal"><span class="pre">Arduino</span> <span class="pre">Web</span> <span class="pre">Editor</span></code>)を使えるようになった。
+<p>…はずだったのだが、2016年夏に<a class="reference external" href="https://create.arduino.cc/">Arduino
+Create</a>がリリースされ、mbedのようにブラウザからオンライン開発環境(<code class="docutils literal notranslate"><span class="pre">Arduino</span> <span class="pre">Web</span> <span class="pre">Editor</span></code>)を使えるようになった。
 まだ普及している印象はないが、コミュニティ機能などが充実しているようだ。
 使いこなせれば強い味方になるかもしれない。</p>
-<div class="figure" id="id12">
+<div class="figure" id="id15">
 <img alt="Arduino Web Editorの画面" src="../_images/arduino-web-editor.png" />
 <p class="caption"><span class="caption-text">Arduino Web Editorの画面</span></p>
 </div>
@@ -346,54 +349,54 @@ C++なので自分でクラスを作るのも自由。</p>
 アカウントを共有すればチーム開発ができてしまうなど便利さがある一方、ネット接続前提というのが足かせになってしまうこともある(最近になりオフライン開発が容易になった、後述)。</p>
 <p>日本国内にはコアなファンが結構おり、<a class="reference external" href="https://mbed.doorkeeper.jp/">mbed祭り</a>というユーザイベントが度々開催されるなど盛り上がっている。developer.mbed.org自体がユーザコミュニティ機能を備えており、開発と情報収集・発信が連続しているというのが強みだろう。</p>
 <div class="section" id="id8">
-<h4>購入<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<span id="id9"></span><h4>購入<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>秋月電子やスイッチサイエンスなどで扱っている。</p>
-<p>mbedの中で一番有名なのは<code class="docutils literal"><span class="pre">LPC1768</span></code>だ。
+<p>mbedの中で一番有名なのは<code class="docutils literal notranslate"><span class="pre">LPC1768</span></code>だ。
 コンパクトで高性能だが、価格は6千〜7千円と安くはない。
-低電圧版の<code class="docutils literal"><span class="pre">LPC11U24</span></code>でも5千円ほどはする。</p>
+低電圧版の<code class="docutils literal notranslate"><span class="pre">LPC11U24</span></code>でも5千円ほどはする。</p>
 <p>そのためホイホイと買えなかったmbedだが、<strong>mbed-enabled</strong>プラットフォームの登場により状況は変わった。
 ハードウェアの設計がオープンソースとなったことで、mbedの開発環境で使用できるボードが数多く生まれたのだ。
 その全容は公式の<a class="reference external" href="https://developer.mbed.org/platforms/">platforms</a>で確認できる。</p>
-<p>なかでも、秋月電子などで容易に購入できるものにSTmicroの&#8221;<code class="docutils literal"><span class="pre">Nucleo</span> <span class="pre">Board</span></code>&#8220;がある。
+<p>なかでも、秋月電子などで容易に購入できるものにSTmicroの“<code class="docutils literal notranslate"><span class="pre">Nucleo</span> <span class="pre">Board</span></code>”がある。
 搭載するマイコンの種類やフラッシュメモリの容量によって数十種が存在し、そのうち20種弱は<a class="reference external" href="http://akizukidenshi.com/catalog/c/cstm32/">秋月電子</a>や<a class="reference external" href="https://www.switch-science.com/catalog/list/615/">スイッチサイエンス</a>などから入手可能だ。
 さらに、大部分が1500〜1900円程度と、本家mbedに比べて安価に購入できる。</p>
-<p><code class="docutils literal"><span class="pre">Nucleo</span> <span class="pre">Board</span></code>にはArduino
+<p><code class="docutils literal notranslate"><span class="pre">Nucleo</span> <span class="pre">Board</span></code>にはArduino
 UNOとピン配置の互換性があるため、Arduinoのシールドを流用できる場合もある。Arduinoに慣れている人にも触りやすいボードかもしれない。</p>
 <p>また、変わったケースとして<a class="reference external" href="http://akizukidenshi.com/catalog/g/gI-06071/">LPC1114FN28</a>というのもある。
 これは、見た目は28ピンのマイコンだが、mbed対応だ。
-USBでPCと繋いで他のmbedと同じ感覚で扱えるボードもあり、一個400円(110円の時代もあったらしい...)のマイコンを載せ替えれば使い回せる。
+USBでPCと繋いで他のmbedと同じ感覚で扱えるボードもあり、一個400円(110円の時代もあったらしい…)のマイコンを載せ替えれば使い回せる。
 流石にボード型のものと比べて性能に制限はあるが、予算を抑えたい場合や多数のmbedを揃える場合に選択肢になりうる。</p>
 </div>
-<div class="section" id="id9">
-<h4>開発環境<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="section" id="id10">
+<span id="id11"></span><h4>開発環境<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>さきに述べた通り、mbedの開発環境はオンラインに存在する。
 mbedを買ってアカウントを作成すれば早速使えるようになり、どこからでも保存したコードを閲覧できる。
 開発環境自体も自動ヘルプ機能やライブラリのリファレンスを備えており、コードを書いていて特段不自由は感じない。</p>
-<p>ビルドが成功すると拡張子<code class="docutils literal"><span class="pre">.bin</span></code>のファイルがダウンロードされる。
+<p>ビルドが成功すると拡張子<code class="docutils literal notranslate"><span class="pre">.bin</span></code>のファイルがダウンロードされる。
 これをフラッシュメモリとして認識されるmbedのルートディレクトリに配置するだけで書き込み完了だ。
 リセットボタンを押せば書き込んだプログラムが動作する。</p>
 <p>どうしても、オフラインでコンパイルをしたい場合がある。
 従来は、オンラインIDEの機能でプロジェクトを書き出した上で、自前で構築したARM向けの開発環境でビルドしていた。</p>
-<p>2016年8月、<code class="docutils literal"><span class="pre">mbed</span> <span class="pre">OS</span> <span class="pre">5</span></code>がリリースされる。
-これは、それまでのいわゆるmbedである<code class="docutils literal"><span class="pre">mbed</span> <span class="pre">2.0</span></code>と、IoT向けのOSである<code class="docutils literal"><span class="pre">mbed</span> <span class="pre">OS</span> <span class="pre">3</span></code>を統合した新たなmbedのソフトウェア基盤だ。
-これに伴い、コマンドラインの開発環境<code class="docutils literal"><span class="pre">mbed</span> <span class="pre">CLI</span></code>が使用可能になった。</p>
-<p><code class="docutils literal"><span class="pre">mbed</span> <span class="pre">CLI</span></code>は、<code class="docutils literal"><span class="pre">mbed</span> <span class="pre">2.0</span></code>のコードをインポートしてビルドすることもできる。
+<p>2016年8月、<code class="docutils literal notranslate"><span class="pre">mbed</span> <span class="pre">OS</span> <span class="pre">5</span></code>がリリースされる。
+これは、それまでのいわゆるmbedである<code class="docutils literal notranslate"><span class="pre">mbed</span> <span class="pre">2.0</span></code>と、IoT向けのOSである<code class="docutils literal notranslate"><span class="pre">mbed</span> <span class="pre">OS</span> <span class="pre">3</span></code>を統合した新たなmbedのソフトウェア基盤だ。
+これに伴い、コマンドラインの開発環境<code class="docutils literal notranslate"><span class="pre">mbed</span> <span class="pre">CLI</span></code>が使用可能になった。</p>
+<p><code class="docutils literal notranslate"><span class="pre">mbed</span> <span class="pre">CLI</span></code>は、<code class="docutils literal notranslate"><span class="pre">mbed</span> <span class="pre">2.0</span></code>のコードをインポートしてビルドすることもできる。
 本家ツールだけあってmbedとの親和性や機能性は優れているようなので、オフライン環境が欲しくなった際は使ってみてはいかがだろうか。
 詳細は、<a class="reference external" href="https://developer.mbed.org/users/MACRUM/notebook/mbed-offline-development/">mbed
 オフラインの開発環境</a>を確認されたい。</p>
 </div>
-<div class="section" id="id10">
-<h4>言語<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="section" id="id12">
+<span id="id13"></span><h4>言語<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>C++をベースとしている。
 C++を書き慣れている開発者は違和感なく扱える一方、プログラム自体初心者だと意味を理解するのにしばらくかかるかもしれない。</p>
-<p>Arduinoより後発のため、<code class="docutils literal"><span class="pre">=</span></code>などの演算子をクラスごとにオーバーロードするなど直感的に書くための工夫が進んでいる。
+<p>Arduinoより後発のため、<code class="docutils literal notranslate"><span class="pre">=</span></code>などの演算子をクラスごとにオーバーロードするなど直感的に書くための工夫が進んでいる。
 また、オンラインIDE自体にコミュニティ機能・コードの公開機能があり、他ユーザが公開している既存資源を簡単に自分のプロジェクトに取り込める。
 mbedのシステムをフル活用すれば、かなり快適に開発を進められそうだ。</p>
 </div>
 </div>
 </div>
-<div class="section" id="id11">
-<h2>結局何を選べばいいのか<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id14">
+<h2>結局何を選べばいいのか<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>ここまで長々と書いてきたが、一体どのマイコン(ボード)を買いに行けばいいのだろう。</p>
 <p>Arduinoやmbedといったマイコンボードの使い勝手は年々進化し続けており、従来のマイコンからは考えられない開発スピードを実現できる。
 学生団体レベルの製作物ならば、無理に素のマイコンを使おうとせず、マイコンボードを採用して構わないだろう。</p>
@@ -421,7 +424,7 @@ mbedのシステムをフル活用すれば、かなり快適に開発を進め�
         <a href="editor.html" class="btn btn-neutral float-right" title="テキストエディタを使ってみよう" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="buy_parts.html" class="btn btn-neutral" title="部品の買い方" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="electronic-design.html" class="btn btn-neutral" title="回路設計のためのソフトウェア" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -434,7 +437,7 @@ mbedのシステムをフル活用すれば、かなり快適に開発を進め�
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -463,7 +466,7 @@ mbedのシステムをフル活用すれば、かなり快適に開発を進め�
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -1,15 +1,15 @@
 日周緯度変(さいたま)
 ====================
 
--  書いた人: Kenichi Ito(nichiden\_27)
+-  書いた人: Kenichi Ito(nichiden_27)
 -  更新日時: 2017/02/26
 -  実行に必要な知識・技能: AVRマイコン、電子回路
 -  タスクの重さ: 3/数週間
 -  タスクの必須度: 3/年による
 -  元資料
 
-   -  ``日周・緯度変資料.pdf`` by 岩滝宗一郎(nichiden\_22)
-   -  ``saitama.pdf`` by 荒田 実樹(nichiden\_23)
+   -  ``日周・緯度変資料.pdf`` by 岩滝宗一郎(nichiden_22)
+   -  ``saitama.pdf`` by 荒田 実樹(nichiden_23)
 
 概要
 ----
@@ -126,12 +126,12 @@ motordrive.c
 ここが最も重要な部分である。
 ステッピングモーターのドライブ回路に定期的にパルスを送り、指定した速度でモーターを回す。
 
-モーターを角速度\ :math:`Speed`\ (コード中ではm->current\_speed
+モーターを角速度\ :math:`Speed`\ (コード中ではm->current_speed
 :math:`[deg/s]`)で回すにはどうすればよいか考えてみよう。
-一回のパルスでモーターが回転する角度はモーターとドライブ回路によって決まっており、\ :math:`\mathrm{MotorStep}=0.72 \mathrm{deg}`\ (コード中ではMOTOR\_STEP
+一回のパルスでモーターが回転する角度はモーターとドライブ回路によって決まっており、\ :math:`\mathrm{MotorStep}=0.72 \mathrm{deg}`\ (コード中ではMOTOR_STEP
 :math:`[10^{-2}deg]`)である。
 
-AVRのタイマ機能により、\ ``motordrive``\ 関数は\ :math:`\mathrm{ControlPeriod}=100 \mu\mathrm{s}`\ (コード中ではCONTROL\_PERIOD
+AVRのタイマ機能により、\ ``motordrive``\ 関数は\ :math:`\mathrm{ControlPeriod}=100 \mu\mathrm{s}`\ (コード中ではCONTROL_PERIOD
 :math:`[\mu\mathrm{s}]`)間隔で呼ばれる。
 前回パルスを送ってからの経過時間を\ :math:`n\cdot\mathrm{ControlPeriod}`\ とする(前回パルスを送ってから\ :math:`n`\ 回目の\ ``motordrive``\ の呼び出し;
 :math:`n`\ はコード中ではm->count)。

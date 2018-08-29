@@ -39,8 +39,7 @@
               href="genindex.html"/>
         <link rel="search" title="検索" href="search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="index.html"/>
-        <link rel="next" title="【直前特集】本番で気をつけたい三箇条" href="honban.html"/>
-        <link rel="prev" title="日電引き継ぎドキュメント" href="index.html"/> 
+        <link rel="prev" title="無料でWindowsを手に入れる" href="begginers/windows.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -100,46 +99,14 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">引き継ぎ資料の作成方法</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">日電引き継ぎに使用している技術やツール</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#markdown">Markdown</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sphinx">Sphinx</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">導入</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rest">reST記法について</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">出力</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">編集</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#pandoc">Pandoc</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gitgithub">GitとGitHub</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">引き継ぎ資料のディレクトリ構造</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">最上部</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#source">source以下</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#build-sh">ビルド用スクリプト<code class="docutils literal"><span class="pre">build.sh</span></code>でやっていることの解説</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id9">呪文</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id10">第一段階</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">第二段階</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#sed">1回目のsed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">2回目のsed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">第3段階</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">第4段階</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">第5段階</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -150,11 +117,12 @@
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -187,14 +155,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#source">source以下</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#build-sh">ビルド用スクリプト<code class="docutils literal"><span class="pre">build.sh</span></code>でやっていることの解説</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build-sh">ビルド用スクリプト<code class="docutils literal notranslate"><span class="pre">build.sh</span></code>でやっていることの解説</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id9">呪文</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id10">第一段階</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id11">第二段階</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sed">1回目のsed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">2回目のsed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sed-1">2回目のsed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id13">第3段階</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id14">第4段階</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id15">第5段階</a></li>
@@ -292,7 +260,7 @@
 <li>Pandoc</li>
 <li>GitとGitHub</li>
 </ol>
-<p>日電は引き継ぎをWordや<span class="math">\(\rm{\LaTeX}\)</span>などで作っていましたが、27でSphinxを使用したWebサイト形式に変えました。
+<p>日電は引き継ぎをWordや<span class="math notranslate">\(\rm{\LaTeX}\)</span>などで作っていましたが、27でSphinxを使用したWebサイト形式に変えました。
 各代でそれぞれPDFの資料を作成していては分量は増える一方で、<strong>読む側の負担</strong>が増してしまいます。
 今は不要な情報と必要な情報が混ざった古い資料が沢山あるのです(これはこれで歴史を感じられて楽しいですが)。
 従って、多くの情報を閲覧しやすく、また追記修正しやすい形にまとめる必要がありました。</p>
@@ -318,20 +286,20 @@ WindowsでもMacでも、特定のソフトに依存せずに閲覧できます�
 <h3>Sphinx<a class="headerlink" href="#sphinx" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>Markdownだけでは単なる文法なので、それを綺麗に表示するツールが必要です。
 <strong>Sphinx</strong>はドキュメント作成に特化したツールで、本来はPythonのドキュメント作成用に作られました。
-WebページやPDF(要<span class="math">\(\rm{\LaTeX}\)</span>)をはじめ、多数の形式で出力できます。</p>
+WebページやPDF(要<span class="math notranslate">\(\rm{\LaTeX}\)</span>)をはじめ、多数の形式で出力できます。</p>
 <div class="section" id="id4">
 <h4>導入<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>Sphinx自体もPythonでできています。
-pipがある環境なら、導入は<code class="docutils literal"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">Sphinx</span></code>で大丈夫です。
+pipがある環境なら、導入は<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">Sphinx</span></code>で大丈夫です。
 Windowsの方は以下などを参考にしてください。</p>
 <ul class="simple">
 <li><a class="reference external" href="https://qiita.com/cosmos4701141/items/949b2c785a85a0cd5db9">python3.6にsphinxをインストール（Windows）</a></li>
 </ul>
 <p>基本的には好きな方法でPythonを導入して、SphinxをインストールすればOKです。
-<code class="docutils literal"><span class="pre">sphinx-quickstart</span></code>と入力してなにやら表示されれば、導入に成功しています。</p>
+<code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code>と入力してなにやら表示されれば、導入に成功しています。</p>
 <p><strong>(追記)</strong>
-<code class="docutils literal"><span class="pre">easy_install</span></code>だと失敗する場合、<code class="docutils literal"><span class="pre">pip</span></code>を使ってみてください。</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo easy_install pip
+<code class="docutils literal notranslate"><span class="pre">easy_install</span></code>だと失敗する場合、<code class="docutils literal notranslate"><span class="pre">pip</span></code>を使ってみてください。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo easy_install pip
 sudo pip install Sphinx
 </pre></div>
 </div>
@@ -343,20 +311,20 @@ sudo pip install Sphinx
 <strong>reStructuredText</strong>は、Sphinxが標準で使う軽量マークアップ言語です。
 Markdownの仲間ですが、できることがより多くなっています。
 その分書き方が難しいので、日電では採用していません。</p>
-<p>唯一<code class="docutils literal"><span class="pre">index.rst</span></code>だけは目次作成のために書く必要があるので、ご注意ください。
+<p>唯一<code class="docutils literal notranslate"><span class="pre">index.rst</span></code>だけは目次作成のために書く必要があるので、ご注意ください。
 他の記事は、一旦reSTに変換してからSphinxに読ませています。
 SphinxはMarkdownをそのまま処理することもできますが、諸々の理由(数式を入れたいなど)から断念しました。</p>
 </div>
 <div class="section" id="id5">
 <h4>出力<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p>日電引き継ぎの一番上のディレクトリにある<code class="docutils literal"><span class="pre">build.sh</span></code>を実行すると、変換作業を行って<code class="docutils literal"><span class="pre">doc/</span></code>以下に全ページを出力するようになってます。
+<p>日電引き継ぎの一番上のディレクトリにある<code class="docutils literal notranslate"><span class="pre">build.sh</span></code>を実行すると、変換作業を行って<code class="docutils literal notranslate"><span class="pre">doc/</span></code>以下に全ページを出力するようになってます。
 ただ、macOSで作っていたので、Windowsのコマンドプロンプトではおそらく動かないです……。</p>
 <p>もしWin環境で出力したいのであれば、Win10ではbashが使えるので導入するか、スクリプト自体を書き換える必要があると思います。</p>
 </div>
 <div class="section" id="id6">
 <h4>編集<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>既存の記事を編集する場合は、単に該当のファイルを書き換えて保存してからビルドを行うだけです。
-記事を追加するときは、<code class="docutils literal"><span class="pre">index.rst</span></code>に記事のファイル名を忘れずに追加しましょう。
+記事を追加するときは、<code class="docutils literal notranslate"><span class="pre">index.rst</span></code>に記事のファイル名を忘れずに追加しましょう。
 でないとせっかく書いた記事が目次に出てきません。</p>
 </div>
 </div>
@@ -367,17 +335,17 @@ SphinxはMarkdownをそのまま処理することもできますが、諸々の
 Pandoc!</a>で簡単に試せます。
 日電引き継ぎでは、MarkdownをreSTに自動変換するのに使っています。</p>
 <p>導入は、<a class="reference external" href="https://github.com/jgm/pandoc/releases">Pandocのリリースページ</a>から最新版のインストーラを落として実行するだけです。
-<code class="docutils literal"><span class="pre">pandoc</span> <span class="pre">-v</span></code>コマンドでバージョン情報が出てくれば導入完了です。</p>
+<code class="docutils literal notranslate"><span class="pre">pandoc</span> <span class="pre">-v</span></code>コマンドでバージョン情報が出てくれば導入完了です。</p>
 </div>
 <div class="section" id="gitgithub">
 <h3>GitとGitHub<a class="headerlink" href="#gitgithub" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><a class="reference external" href="https://kn1cht.github.io/nichiden-handover/">27引き継ぎのサイト</a>は、GitHub
 Pagesという無料(!)サービスで公開しています。
-<code class="docutils literal"><span class="pre">docs/</span></code>フォルダにデータを入れておくと、Webサイトを公開してくれるありがたいものです(<a class="reference external" href="https://qiita.com/tonkotsuboy_com/items/f98667b89228b98bc096">解説</a>)。
+<code class="docutils literal notranslate"><span class="pre">docs/</span></code>フォルダにデータを入れておくと、Webサイトを公開してくれるありがたいものです(<a class="reference external" href="https://qiita.com/tonkotsuboy_com/items/f98667b89228b98bc096">解説</a>)。
 ただ、GitとGitHubの操作がわかっている必要があります。</p>
 <p>Gitはバージョン管理や差分・履歴の管理がとても簡単で、この先ソフトウェアを触るならぜひ習得しておくべきものです。
 ただ概念がとっつきにくいのも事実で、Gitの操作がわからず作業が止まることがもしあれば、それは本末転倒だと思います。</p>
-<p>引き継ぎのデータを自分のPCにコピーし、Sphinxで出力した<code class="docutils literal"><span class="pre">index.html</span></code>をブラウザで開くだけでも閲覧自体に全く問題はありません。
+<p>引き継ぎのデータを自分のPCにコピーし、Sphinxで出力した<code class="docutils literal notranslate"><span class="pre">index.html</span></code>をブラウザで開くだけでも閲覧自体に全く問題はありません。
 皆さんの技術レベルに応じて適切な方法を選択して頂ければと思います。</p>
 </div>
 </div>
@@ -387,7 +355,7 @@ Pagesという無料(!)サービスで公開しています。
 Sphinxの動作に絶対必要なものや、必須ではないが見栄えのために分けたものなど、重要度が違うのでここで解説します。</p>
 <div class="section" id="id8">
 <h3>最上部<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>nichiden-handover
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>nichiden-handover
 ├── Makefile
 ├── build
 │   ├── doctrees
@@ -420,8 +388,8 @@ Sphinxの動作に絶対必要なものや、必須ではないが見栄えの�
 <li>[ディレクトリ]docs<ul>
 <li>GitHub
 Pagesで公開するには、ここにHTMLなどを入れておく必要があります。</li>
-<li><code class="docutils literal"><span class="pre">build.sh</span></code>がファイルをコピーするので、<strong>手動でいじる必要はありません</strong>。</li>
-<li>ただし、更新の都度ビルドを実行しないと<code class="docutils literal"><span class="pre">docs</span></code>の内容が古いままになってしまうので要注意。</li>
+<li><code class="docutils literal notranslate"><span class="pre">build.sh</span></code>がファイルをコピーするので、<strong>手動でいじる必要はありません</strong>。</li>
+<li>ただし、更新の都度ビルドを実行しないと<code class="docutils literal notranslate"><span class="pre">docs</span></code>の内容が古いままになってしまうので要注意。</li>
 </ul>
 </li>
 <li>[ディレクトリ]source<ul>
@@ -432,7 +400,7 @@ Pagesで公開するには、ここにHTMLなどを入れておく必要があ�
 </div>
 <div class="section" id="source">
 <h3>source以下<a class="headerlink" href="#source" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>source
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source
 ├── _media
 ├── _static
 │   └── css
@@ -462,12 +430,12 @@ Pagesで公開するには、ここにHTMLなどを入れておく必要があ�
 <li>[ディレクトリ]_media<ul>
 <li>記事に入れる画像などを入れておく所です。</li>
 <li><strong>本当は画像はどこに置いてもいい</strong>のですが、増えてくると目障りなので分けています。</li>
-<li>記事に画像を入れたいときは、<code class="docutils literal"><span class="pre">![画像の説明](_media/gazou.png)</span></code>みたいに書きましょう。</li>
+<li>記事に画像を入れたいときは、<code class="docutils literal notranslate"><span class="pre">![画像の説明](_media/gazou.png)</span></code>みたいに書きましょう。</li>
 </ul>
 </li>
 <li>[ディレクトリ]_static<ul>
 <li>静的ファイルの置き場。現状CSSだけ入ってる。</li>
-<li>この下にある<code class="docutils literal"><span class="pre">my_theme.css</span></code>を編集するとサイトの色を変えたりできるので、暇ならどうぞ。</li>
+<li>この下にある<code class="docutils literal notranslate"><span class="pre">my_theme.css</span></code>を編集するとサイトの色を変えたりできるので、暇ならどうぞ。</li>
 </ul>
 </li>
 <li>[ディレクトリ]_templates<ul>
@@ -489,21 +457,21 @@ Pagesで公開するには、ここにHTMLなどを入れておく必要があ�
 <li>今は<a class="reference external" href="https://github.com/rtfd/sphinx_rtd_theme">Read the
 Docs</a>というテーマになってます。</li>
 <li>さらに、Read the
-Docsを<strong>&#8220;mytheme&#8221;で一部上書き</strong>して、自分好みのデザインにしました。</li>
+Docsを<strong>“mytheme”で一部上書き</strong>して、自分好みのデザインにしました。</li>
 <li>「<a class="reference external" href="http://blog.amedama.jp/entry/2016/01/06/122931">Sphinx:
 既存のテーマをカスタマイズする</a>」を参考にしたので興味があれば読んでください。</li>
 </ul>
 </li>
 <li>ここに出てこなかったディレクトリ<ul>
 <li>同一カテゴリの記事を分類するためのものです。</li>
-<li><strong>一々ディレクトリに分けなくても別にいい</strong>んですが、<code class="docutils literal"><span class="pre">.md</span></code>のファイルが多すぎると見づらいので……</li>
+<li><strong>一々ディレクトリに分けなくても別にいい</strong>んですが、<code class="docutils literal notranslate"><span class="pre">.md</span></code>のファイルが多すぎると見づらいので……</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <div class="section" id="build-sh">
-<h2>ビルド用スクリプト<code class="docutils literal"><span class="pre">build.sh</span></code>でやっていることの解説<a class="headerlink" href="#build-sh" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>ビルド用スクリプト<code class="docutils literal notranslate"><span class="pre">build.sh</span></code>でやっていることの解説<a class="headerlink" href="#build-sh" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li>build.shがうまく動かない</li>
 <li>build.shの動作を変更したい</li>
@@ -517,37 +485,35 @@ Docsを<strong>&#8220;mytheme&#8221;で一部上書き</strong>して、自分�
 今どの段階の作業をしているのか、数字付きで表示するようになってます。</p>
 <div class="section" id="id9">
 <h3>呪文<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<ul>
-<li><p class="first rubric" id="binbash">/bin/bash</p>
 <ul class="simple">
+<li>#/bin/bash<ul>
 <li>shebangって言います。ググれ。</li>
 </ul>
 </li>
-<li><p class="first">cd <code class="docutils literal"><span class="pre">dirname</span> <span class="pre">$0</span></code></p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">build.sh</span></code>が置いてあるディレクトリに移動します。</li>
-<li>これがないと、別の場所から<code class="docutils literal"><span class="pre">build.sh</span></code>を読んだ時にうまく動きません。</li>
+<li>cd <code class="docutils literal notranslate"><span class="pre">dirname</span> <span class="pre">$0</span></code><ul>
+<li><code class="docutils literal notranslate"><span class="pre">build.sh</span></code>が置いてあるディレクトリに移動します。</li>
+<li>これがないと、別の場所から<code class="docutils literal notranslate"><span class="pre">build.sh</span></code>を読んだ時にうまく動きません。</li>
 </ul>
 </li>
 </ul>
 <div class="section" id="id10">
 <h4>第一段階<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>find ./* -name <span class="s1">&#39;*.md&#39;</span> -print0 <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> -r -d <span class="s1">&#39;&#39;</span> file
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find ./* -name <span class="s1">&#39;*.md&#39;</span> -print0 <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> -r -d <span class="s1">&#39;&#39;</span> file
 <span class="k">do</span>
   <span class="nb">echo</span> <span class="s2">&quot;[1] Converting Markdown to reST : </span><span class="nv">$file</span><span class="s2">&quot;</span>
   pandoc -f markdown -t rst <span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span> -o <span class="s2">&quot;</span><span class="si">${</span><span class="nv">file</span><span class="p">%%.md</span><span class="si">}</span><span class="s2">.rst&quot;</span> <span class="c1"># translate Markdown to reST</span>
 <span class="k">done</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">.md</span></code>の付いたMarkdown形式のファイルをreST形式に変換します。
+<p><code class="docutils literal notranslate"><span class="pre">.md</span></code>の付いたMarkdown形式のファイルをreST形式に変換します。
 Pandocが必要なので入れておきましょう。
 Markdownの文法にミスがあるとPandocがエラーを出します。</p>
-<p>これ以降<code class="docutils literal"><span class="pre">find</span></code>コマンドの結果でループを回す場面が多々ありますが、これはググると解説が山ほど出てくる基本技なので調べてみてください。</p>
-<p><code class="docutils literal"><span class="pre">&quot;${file%%.md}.rst&quot;</span></code>の部分は、「拡張子.mdを削除して代わりに.rstを付ける」という意味です。これが終わると<code class="docutils literal"><span class="pre">.rst</span></code>のファイルが一杯できます。</p>
+<p>これ以降<code class="docutils literal notranslate"><span class="pre">find</span></code>コマンドの結果でループを回す場面が多々ありますが、これはググると解説が山ほど出てくる基本技なので調べてみてください。</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;${file%%.md}.rst&quot;</span></code>の部分は、「拡張子.mdを削除して代わりに.rstを付ける」という意味です。これが終わると<code class="docutils literal notranslate"><span class="pre">.rst</span></code>のファイルが一杯できます。</p>
 </div>
 <div class="section" id="id11">
 <h4>第二段階<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>find ./* -name <span class="s1">&#39;*.rst&#39;</span> -print0 <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> -r -d <span class="s1">&#39;&#39;</span> file
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find ./* -name <span class="s1">&#39;*.rst&#39;</span> -print0 <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> -r -d <span class="s1">&#39;&#39;</span> file
 <span class="k">do</span>
   <span class="nb">echo</span> <span class="s2">&quot;[2] Processing reST code : </span><span class="nv">$file</span><span class="s2">&quot;</span>
   sed -i .bak -e <span class="s1">&#39;s/\.\.\ code:: math/.. math::/g&#39;</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">file</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1"># substitution for code hilighting</span>
@@ -555,34 +521,34 @@ Markdownの文法にミスがあるとPandocがエラーを出します。</p>
 <span class="k">done</span>
 </pre></div>
 </div>
-<p>今度は<code class="docutils literal"><span class="pre">.rst</span></code>のファイルを加工します。<code class="docutils literal"><span class="pre">sed</span></code>というコマンドで、全てのreST形式のファイルに一括で検索・置換をかけています。</p>
-<p><code class="docutils literal"><span class="pre">sed</span></code>の書き方に慣れてないとよく分からないかもしれませんが、それぞれ次のようなことを行なっています。</p>
+<p>今度は<code class="docutils literal notranslate"><span class="pre">.rst</span></code>のファイルを加工します。<code class="docutils literal notranslate"><span class="pre">sed</span></code>というコマンドで、全てのreST形式のファイルに一括で検索・置換をかけています。</p>
+<p><code class="docutils literal notranslate"><span class="pre">sed</span></code>の書き方に慣れてないとよく分からないかもしれませんが、それぞれ次のようなことを行なっています。</p>
 </div>
 </div>
 <div class="section" id="sed">
 <h3>1回目のsed<a class="headerlink" href="#sed" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">..</span> <span class="pre">math::</span></code>という記述を<code class="docutils literal"><span class="pre">..</span> <span class="pre">math::</span></code>に置き換えます(reSTではディレクティブと呼ばれる宣言)。
-Sphinxの仕様の問題で、こうしないと<span class="math">\(\rm{\LaTeX}\)</span>の<strong>数式が正常に変換されません</strong>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">math::</span></code>という記述を<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">math::</span></code>に置き換えます(reSTではディレクティブと呼ばれる宣言)。
+Sphinxの仕様の問題で、こうしないと<span class="math notranslate">\(\rm{\LaTeX}\)</span>の<strong>数式が正常に変換されません</strong>。</p>
 </div>
-<div class="section" id="id12">
-<h3>2回目のsed<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">..</span> <span class="pre">code-block::</span></code>を<code class="docutils literal"><span class="pre">..</span> <span class="pre">code-block::</span></code>に置き換えます。</p>
-<p>理由を忘れましたが、Pandocはコードブロック用の<code class="docutils literal"><span class="pre">code-block</span></code>ディレクティブをなぜか<code class="docutils literal"><span class="pre">code</span></code>に変換してしまいます。
+<div class="section" id="sed-1">
+<span id="id12"></span><h3>2回目のsed<a class="headerlink" href="#sed-1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">code-block::</span></code>を<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">code-block::</span></code>に置き換えます。</p>
+<p>理由を忘れましたが、Pandocはコードブロック用の<code class="docutils literal notranslate"><span class="pre">code-block</span></code>ディレクティブをなぜか<code class="docutils literal notranslate"><span class="pre">code</span></code>に変換してしまいます。
 コードを書いた部分の表示が崩壊するので、対策しました。</p>
 </div>
 <div class="section" id="id13">
 <h3>第3段階<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>find ./* -name <span class="s1">&#39;*.bak&#39;</span> -type f <span class="p">|</span> xargs rm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find ./* -name <span class="s1">&#39;*.bak&#39;</span> -type f <span class="p">|</span> xargs rm
 
 <span class="nb">echo</span> <span class="s2">&quot;[3] Building Documantation&quot;</span>
 make html
 </pre></div>
 </div>
-<p>いよいよSphinxのビルド本番ですが、コマンドは<code class="docutils literal"><span class="pre">make</span> <span class="pre">html</span></code>だけです。数秒待つと、<code class="docutils literal"><span class="pre">build/</span></code>の下にHTMLのファイルが作られます。</p>
+<p>いよいよSphinxのビルド本番ですが、コマンドは<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>だけです。数秒待つと、<code class="docutils literal notranslate"><span class="pre">build/</span></code>の下にHTMLのファイルが作られます。</p>
 </div>
 <div class="section" id="id14">
 <h3>第4段階<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;[4] Removing backup &amp; reST files&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;[4] Removing backup &amp; reST files&quot;</span>
 find ./* -name <span class="s1">&#39;*.bak&#39;</span> -type f <span class="p">|</span> xargs rm
 find ./* -name <span class="s1">&#39;*.md&#39;</span> -print0 <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> -r -d <span class="s1">&#39;&#39;</span> file
 <span class="k">do</span>
@@ -590,22 +556,22 @@ find ./* -name <span class="s1">&#39;*.md&#39;</span> -print0 <span class="p">|<
 <span class="k">done</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">sed</span></code>の上書き時に発生したバックアップファイルを削除します。<code class="docutils literal"><span class="pre">find</span></code>コマンドの結果を<code class="docutils literal"><span class="pre">xargs</span></code>に渡して、<code class="docutils literal"><span class="pre">rm</span></code>を実行します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">sed</span></code>の上書き時に発生したバックアップファイルを削除します。<code class="docutils literal notranslate"><span class="pre">find</span></code>コマンドの結果を<code class="docutils literal notranslate"><span class="pre">xargs</span></code>に渡して、<code class="docutils literal notranslate"><span class="pre">rm</span></code>を実行します。</p>
 <p>Sphinx用に生成したreSTのファイルを削除します。
-しかし、単純に<code class="docutils literal"><span class="pre">.rst</span></code>で検索して削除すると<code class="docutils literal"><span class="pre">index.rst</span></code>が<strong>巻き添えで消えてしまいます</strong>。
-<code class="docutils literal"><span class="pre">.md</span></code>で検索してから拡張子を付け替えることで、自動生成されたものだけが消えるようにしました。</p>
+しかし、単純に<code class="docutils literal notranslate"><span class="pre">.rst</span></code>で検索して削除すると<code class="docutils literal notranslate"><span class="pre">index.rst</span></code>が<strong>巻き添えで消えてしまいます</strong>。
+<code class="docutils literal notranslate"><span class="pre">.md</span></code>で検索してから拡張子を付け替えることで、自動生成されたものだけが消えるようにしました。</p>
 </div>
 <div class="section" id="id15">
 <h3>第5段階<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;[5] Copying all files to docs/&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;[5] Copying all files to docs/&quot;</span>
 rm -r docs/*
 cp -r build/html/* docs/
 touch docs/.nojekyll
 </pre></div>
 </div>
 <p>GitHub
-Pagesで公開するために、<code class="docutils literal"><span class="pre">build/html/</span></code>にできたファイルを全部<code class="docutils literal"><span class="pre">docs/</span></code>にコピーします。</p>
-<p>最後に<code class="docutils literal"><span class="pre">.nojekyll</span></code>を作成する理由ですが、これはGitHub
+Pagesで公開するために、<code class="docutils literal notranslate"><span class="pre">build/html/</span></code>にできたファイルを全部<code class="docutils literal notranslate"><span class="pre">docs/</span></code>にコピーします。</p>
+<p>最後に<code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code>を作成する理由ですが、これはGitHub
 Pagesで動いているJekyllによって<strong>CSSが無効化されてしまうのを防ぐ</strong>ためのものです。</p>
 <p>(参考) <a class="reference external" href="https://qiita.com/sky_y/items/b96ae52c90457bcd7846">GitHub Pagesで普通の静的ホスティングをしたいときは .nojekyll
 ファイルを置く</a></p>
@@ -623,10 +589,8 @@ Pagesで動いているJekyllによって<strong>CSSが無効化されてしま�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="honban.html" class="btn btn-neutral float-right" title="【直前特集】本番で気をつけたい三箇条" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="index.html" class="btn btn-neutral" title="日電引き継ぎドキュメント" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="begginers/windows.html" class="btn btn-neutral" title="無料でWindowsを手に入れる" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -639,7 +603,7 @@ Pagesで動いているJekyllによって<strong>CSSが無効化されてしま�
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -668,7 +632,7 @@ Pagesで動いているJekyllによって<strong>CSSが無効化されてしま�
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

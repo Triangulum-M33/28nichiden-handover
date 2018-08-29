@@ -10,11 +10,13 @@
    :maxdepth: 1
    :caption: 最近更新した記事
 
-   handover
-   honban
-   begginers/electronic-design
-   begginers/windows
-   begginers/visualstudio
+   syutou
+   haisen-kagoshii
+   bihin
+   wireless/acrab
+   wireless/acrab-code
+   wireless/graffias
+   nissyu-idohen/pc-software
 
 .. toctree::
    :maxdepth: 2
@@ -32,6 +34,7 @@
    wireless/piscium
    wireless/acrab
    wireless/acrab-code
+   wireless/graffias
    twinkle
    haisen
    haisen-kagoshii

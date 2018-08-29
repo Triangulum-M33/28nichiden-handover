@@ -39,6 +39,7 @@
               href="../genindex.html"/>
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
+        <link rel="next" title="Visual Studioをはじめよう" href="visualstudio.html"/>
         <link rel="prev" title="マイコンをはじめよう" href="microcontroller.html"/> 
 
   
@@ -100,11 +101,13 @@
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualstudio.html">Visual Studioをはじめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -115,11 +118,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -227,14 +231,14 @@ X/Linuxのどれでも使えることを重視して紹介します。</p>
 <p><a class="reference external" href="https://atom.io">atom.io</a></p>
 <p><a class="reference external" href="https://github.com">GitHub</a>が開発しているエディタ。
 <a class="reference external" href="https://www.youtube.com/watch?time_continue=2&amp;v=Y7aEiVwBAdk">PV</a>が面白いのでぜひ観よう。</p>
-<p>&#8220;A hackable text
-editor&#8221;と銘打っており、プログラマが<strong>自由にカスタマイズして使える</strong>ことを売りにしている。
+<p>“A hackable text
+editor”と銘打っており、プログラマが<strong>自由にカスタマイズして使える</strong>ことを売りにしている。
 とはいえ、標準の状態で既に使いやすいので、プログラマでなくともぜひ触れてみて頂きたい。</p>
 <div class="figure" id="id5">
 <img alt="Atomの画面例" src="../_images/atom.png" />
 <p class="caption"><span class="caption-text">Atomの画面例</span></p>
 </div>
-<p>Markdownの文書を書く場合、<code class="docutils literal"><span class="pre">Ctrl(Cmd)+Shift+M</span></code>を押すと右に<strong>プレビュー画面</strong>を表示してくれる。
+<p>Markdownの文書を書く場合、<code class="docutils literal notranslate"><span class="pre">Ctrl(Cmd)+Shift+M</span></code>を押すと右に<strong>プレビュー画面</strong>を表示してくれる。
 いわゆるWYSIWYG(表示と処理結果が一致)なエディタとして使用できるわけだ。
 プレビューは編集内容に合わせてリアルタイムで更新される。
 Markdown以外にも、プラグインを追加することで様々な言語のプレビューに対応できる。</p>
@@ -257,7 +261,7 @@ MSは最近オープンソース化・クロスプラットフォーム化に舵
 <p class="caption"><span class="caption-text">Visual Studio Codeの画面例</span></p>
 </div>
 <p>また、Visual
-Studio譲りの超強力な補完機能である<code class="docutils literal"><span class="pre">IntelliSense</span></code>をいくつかの言語で利用できる。
+Studio譲りの超強力な補完機能である<code class="docutils literal notranslate"><span class="pre">IntelliSense</span></code>をいくつかの言語で利用できる。
 コーディングの機会が多い人にとっても有力な選択肢となりそうだ。</p>
 <p>今後も、アップデートの度に新機能の追加が期待でき、さらに使い勝手が向上する可能性もある。
 Atomを自力でカスタマイズしていくのが面倒に感じたら、VSCodeの豊富な機能を使いこなすのもいいかもしれない。</p>
@@ -277,7 +281,7 @@ Atomを自力でカスタマイズしていくのが面倒に感じたら、VSCo
 <p>キーボードでの操作に慣れてくると、CUIエディタを好んで使うようになるかもしれない。
 こうなるとデフォルトの設定では物足りないし、作業効率が悪い。
 <strong>設定ファイルやプラグイン</strong>を使い、自分に合ったエディタにしてみよう。</p>
-<p>Vimなら<code class="docutils literal"><span class="pre">.vimrc</span></code>、Emacsなら<code class="docutils literal"><span class="pre">.emacs.el</span></code>というファイルをホームディレクトリに作ると読み込んでくれる。
+<p>Vimなら<code class="docutils literal notranslate"><span class="pre">.vimrc</span></code>、Emacsなら<code class="docutils literal notranslate"><span class="pre">.emacs.el</span></code>というファイルをホームディレクトリに作ると読み込んでくれる。
 ネットにオススメの設定がたくさん落ちているので、いいと思ったものを集めれば自分用設定の完成だ。
 なお、起動中は変更しても反映されないので、コマンドで反映させるかエディタを再起動しよう。</p>
 <p><a class="reference external" href="https://github.com">GitHub</a>などで自分の設定ファイルを管理しておくと、他の環境で作業する時でも設定を簡単に共有できる。
@@ -296,6 +300,8 @@ Atomを自力でカスタマイズしていくのが面倒に感じたら、VSCo
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="visualstudio.html" class="btn btn-neutral float-right" title="Visual Studioをはじめよう" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
       
         <a href="microcontroller.html" class="btn btn-neutral" title="マイコンをはじめよう" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
@@ -310,7 +316,7 @@ Atomを自力でカスタマイズしていくのが面倒に感じたら、VSCo
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -339,7 +345,7 @@ Atomを自力でカスタマイズしていくのが面倒に感じたら、VSCo
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

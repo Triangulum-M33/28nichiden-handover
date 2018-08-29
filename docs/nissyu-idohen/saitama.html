@@ -101,11 +101,13 @@
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/electronic-design.html">回路設計のためのソフトウェア</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/windows.html">無料でWindowsを手に入れる</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -131,11 +133,12 @@
 <li class="toctree-l1"><a class="reference internal" href="ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
@@ -221,8 +224,8 @@
 <li>タスクの重さ: 3/数週間</li>
 <li>タスクの必須度: 3/年による</li>
 <li>元資料<ul>
-<li><code class="docutils literal"><span class="pre">日周・緯度変資料.pdf</span></code> by 岩滝宗一郎(nichiden_22)</li>
-<li><code class="docutils literal"><span class="pre">saitama.pdf</span></code> by 荒田 実樹(nichiden_23)</li>
+<li><code class="docutils literal notranslate"><span class="pre">日周・緯度変資料.pdf</span></code> by 岩滝宗一郎(nichiden_22)</li>
+<li><code class="docutils literal notranslate"><span class="pre">saitama.pdf</span></code> by 荒田 実樹(nichiden_23)</li>
 </ul>
 </li>
 </ul>
@@ -266,7 +269,7 @@
 <p class="caption"><span class="caption-text">さいたま6號のボタン配置図</span></p>
 </div>
 <p>コントローラ前面には6つのスイッチがある。現在では<a class="reference external" href="ikebukuro.md">外部制御</a>でPCから動かす方がはるかに便利だが、PCが使えない緊急時や急いでいるときはこのスイッチを使えばよい。</p>
-<p>ラベルを参照すれば大体の意味は分かることだろう。回転のON/OFFと方向はそれぞれの軸で独立しているが、回転速度は2軸で変えることはできない。<code class="docutils literal"><span class="pre">外部制御ON/OFF</span></code>スイッチは、PCから操作したい場合にONにする。これがONになっているときは、さいたま側のスイッチに反応しなくなるので気をつけよう。</p>
+<p>ラベルを参照すれば大体の意味は分かることだろう。回転のON/OFFと方向はそれぞれの軸で独立しているが、回転速度は2軸で変えることはできない。<code class="docutils literal notranslate"><span class="pre">外部制御ON/OFF</span></code>スイッチは、PCから操作したい場合にONにする。これがONになっているときは、さいたま側のスイッチに反応しなくなるので気をつけよう。</p>
 </div>
 <div class="section" id="id5">
 <h2>電装<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -297,7 +300,7 @@
 </div>
 <div class="section" id="id6">
 <h2>プログラム<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>23代が<code class="docutils literal"><span class="pre">nissyuido</span></code>ディレクトリ以下に使用したソースコードを残している。<code class="docutils literal"><span class="pre">WinAVR</span></code>環境があれば<code class="docutils literal"><span class="pre">default</span></code>ディレクトリに移動して<code class="docutils literal"><span class="pre">make</span></code>コマンドを打てばビルドされるとのことだ。</p>
+<p>23代が<code class="docutils literal notranslate"><span class="pre">nissyuido</span></code>ディレクトリ以下に使用したソースコードを残している。<code class="docutils literal notranslate"><span class="pre">WinAVR</span></code>環境があれば<code class="docutils literal notranslate"><span class="pre">default</span></code>ディレクトリに移動して<code class="docutils literal notranslate"><span class="pre">make</span></code>コマンドを打てばビルドされるとのことだ。</p>
 <p>ただし、前述の通り<strong>24代でマイコンをATmega328Pに変更</strong>しており、以前のコードを使用できるかは定かでない。作り変えをする際は、24代の方に問い合わせてみることも検討されたい。</p>
 <p>以下のプログラム解説は、23荒田氏の作成されたドキュメントと同内容である。必要なら氏のPDFや、コード中のコメントなども併せて確認すると良いだろう。</p>
 <div class="section" id="main-c">
@@ -306,25 +309,25 @@
 <img alt="プログラムの流れ" src="../_images/saitama_program_flow.png" />
 <p class="caption"><span class="caption-text">プログラムの流れ</span></p>
 </div>
-<p>プログラムの起点となる <code class="docutils literal"><span class="pre">main</span></code> 関数が入っている。
+<p>プログラムの起点となる <code class="docutils literal notranslate"><span class="pre">main</span></code> 関数が入っている。
 プログラムの大まかな流れは図を参照。</p>
-<p>プログラムは初期化(<code class="docutils literal"><span class="pre">main.c</span></code>の<code class="docutils literal"><span class="pre">init</span></code>関数)の後、メインループ(無限ループ)に入る。ただ、初期化の時にタイマ割り込みを設定しているため、100マイクロ秒ごとに現在メインループで実行されている内容に関係なく「タイマ割り込み」の内容が実行される。</p>
-<p>メインループの処理内容は<code class="docutils literal"><span class="pre">main.c</span></code>を、「タイマ割り込み」の処理内容は<code class="docutils literal"><span class="pre">motordrive.c</span></code>を参照されたい。</p>
+<p>プログラムは初期化(<code class="docutils literal notranslate"><span class="pre">main.c</span></code>の<code class="docutils literal notranslate"><span class="pre">init</span></code>関数)の後、メインループ(無限ループ)に入る。ただ、初期化の時にタイマ割り込みを設定しているため、100マイクロ秒ごとに現在メインループで実行されている内容に関係なく「タイマ割り込み」の内容が実行される。</p>
+<p>メインループの処理内容は<code class="docutils literal notranslate"><span class="pre">main.c</span></code>を、「タイマ割り込み」の処理内容は<code class="docutils literal notranslate"><span class="pre">motordrive.c</span></code>を参照されたい。</p>
 <p>外部制御コマンドのフォーマットはここで処理している。</p>
 </div>
 <div class="section" id="motordrive-c">
 <h3>motordrive.c<a class="headerlink" href="#motordrive-c" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ここが最も重要な部分である。
 ステッピングモーターのドライブ回路に定期的にパルスを送り、指定した速度でモーターを回す。</p>
-<p>モーターを角速度<span class="math">\(Speed\)</span>(コード中ではm-&gt;current_speed
-<span class="math">\([deg/s]\)</span>)で回すにはどうすればよいか考えてみよう。
-一回のパルスでモーターが回転する角度はモーターとドライブ回路によって決まっており、<span class="math">\(\mathrm{MotorStep}=0.72 \mathrm{deg}\)</span>(コード中ではMOTOR_STEP
-<span class="math">\([10^{-2}deg]\)</span>)である。</p>
-<p>AVRのタイマ機能により、<code class="docutils literal"><span class="pre">motordrive</span></code>関数は<span class="math">\(\mathrm{ControlPeriod}=100 \mu\mathrm{s}\)</span>(コード中ではCONTROL_PERIOD
-<span class="math">\([\mu\mathrm{s}]\)</span>)間隔で呼ばれる。
-前回パルスを送ってからの経過時間を<span class="math">\(n\cdot\mathrm{ControlPeriod}\)</span>とする(前回パルスを送ってから<span class="math">\(n\)</span>回目の<code class="docutils literal"><span class="pre">motordrive</span></code>の呼び出し;
-<span class="math">\(n\)</span>はコード中ではm-&gt;count)。</p>
-<p>このとき、簡単な考察により、<span class="math">\(n\cdot\mathrm{ControlPeriod}\cdot\mathrm{Speed}\ge\mathrm{MotorStep}\)</span>の時に次のパルスを送ればよいことが分かる。</p>
+<p>モーターを角速度<span class="math notranslate">\(Speed\)</span>(コード中ではm-&gt;current_speed
+<span class="math notranslate">\([deg/s]\)</span>)で回すにはどうすればよいか考えてみよう。
+一回のパルスでモーターが回転する角度はモーターとドライブ回路によって決まっており、<span class="math notranslate">\(\mathrm{MotorStep}=0.72 \mathrm{deg}\)</span>(コード中ではMOTOR_STEP
+<span class="math notranslate">\([10^{-2}deg]\)</span>)である。</p>
+<p>AVRのタイマ機能により、<code class="docutils literal notranslate"><span class="pre">motordrive</span></code>関数は<span class="math notranslate">\(\mathrm{ControlPeriod}=100 \mu\mathrm{s}\)</span>(コード中ではCONTROL_PERIOD
+<span class="math notranslate">\([\mu\mathrm{s}]\)</span>)間隔で呼ばれる。
+前回パルスを送ってからの経過時間を<span class="math notranslate">\(n\cdot\mathrm{ControlPeriod}\)</span>とする(前回パルスを送ってから<span class="math notranslate">\(n\)</span>回目の<code class="docutils literal notranslate"><span class="pre">motordrive</span></code>の呼び出し;
+<span class="math notranslate">\(n\)</span>はコード中ではm-&gt;count)。</p>
+<p>このとき、簡単な考察により、<span class="math notranslate">\(n\cdot\mathrm{ControlPeriod}\cdot\mathrm{Speed}\ge\mathrm{MotorStep}\)</span>の時に次のパルスを送ればよいことが分かる。</p>
 <p>実際には、速度指定モード・角度指定モードがあったり、速度を徐々に変化させる処理を行っているので、もう少し複雑なプログラムになっている。</p>
 <p>「速度を徐々に変化させる処理」であるが、今のところ、現在の速度と目標速度が一致しなければ一定の加速度を加えるという、比較的単純な制御になっている。
 時間と速度をグラフで表すと図のようになる。赤線が指定した速度、青線が実際の速度である。
@@ -334,24 +337,24 @@
 <p class="caption"><span class="caption-text">速度変化</span></p>
 </div>
 <p>角度指定モードの、速度を下げ始めるタイミングについて。</p>
-<p>プログラムが実行されている時点を時刻<span class="math">\(t_0\)</span>とし、時刻<span class="math">\(t_1\)</span>にモーターが停止するとする。
-モーターの<span class="math">\(t_0\)</span>における角速度を<span class="math">\(\omega_0\)</span>とする。単位時間当たりのモーターの角速度の変化を<span class="math">\(\alpha\)</span>とする。
-現在のプログラムでは、<code class="docutils literal"><span class="pre">motordrive</span></code>が呼ばれるたびに速度を<span class="math">\(1\mathrm{deg/s}\)</span>ずつ増減するので、</p>
-<div class="math">
+<p>プログラムが実行されている時点を時刻<span class="math notranslate">\(t_0\)</span>とし、時刻<span class="math notranslate">\(t_1\)</span>にモーターが停止するとする。
+モーターの<span class="math notranslate">\(t_0\)</span>における角速度を<span class="math notranslate">\(\omega_0\)</span>とする。単位時間当たりのモーターの角速度の変化を<span class="math notranslate">\(\alpha\)</span>とする。
+現在のプログラムでは、<code class="docutils literal notranslate"><span class="pre">motordrive</span></code>が呼ばれるたびに速度を<span class="math notranslate">\(1\mathrm{deg/s}\)</span>ずつ増減するので、</p>
+<div class="math notranslate">
 \[\alpha=\pm\frac{1 \mathrm{deg/s}}{\mathrm{ControlPeriod}}\]</div>
-<p>である。モーターの時刻<span class="math">\(t\)</span>における角度(位置)を<span class="math">\(\theta(t)\)</span>とする。</p>
-<p>時刻<span class="math">\(t\)</span>におけるモーターの角速度と角度はそれぞれ</p>
-<div class="math">
+<p>である。モーターの時刻<span class="math notranslate">\(t\)</span>における角度(位置)を<span class="math notranslate">\(\theta(t)\)</span>とする。</p>
+<p>時刻<span class="math notranslate">\(t\)</span>におけるモーターの角速度と角度はそれぞれ</p>
+<div class="math notranslate">
 \[\begin{split}\begin{aligned}
     \omega(t)&amp;=\omega_0+\alpha(t-t_0) \\
     \theta(t)&amp;=\theta(t_0)+\omega_0(t-t_0)+\frac{1}{2}\alpha(t-t_0)^2
 \end{aligned}\end{split}\]</div>
 <p>となる。
-時刻<span class="math">\(t_1\)</span>にモーターが停止、すなわち<span class="math">\(\omega(t_1)=0\)</span>より、</p>
-<div class="math">
+時刻<span class="math notranslate">\(t_1\)</span>にモーターが停止、すなわち<span class="math notranslate">\(\omega(t_1)=0\)</span>より、</p>
+<div class="math notranslate">
 \[t_1-t_0=-\frac{\omega_0}{\alpha}\]</div>
-<p>である。これを<span class="math">\(\theta(t_1)\)</span>に代入すると、</p>
-<div class="math">
+<p>である。これを<span class="math notranslate">\(\theta(t_1)\)</span>に代入すると、</p>
+<div class="math notranslate">
 \[\begin{split}\begin{aligned}
     \theta(t_1)&amp;=\theta(t_0)-\frac{\omega_0^2}{\alpha}
     +\frac{1}{2}\alpha\left(-\frac{\omega_0}{\alpha}\right)^2 \\
@@ -360,19 +363,19 @@
 \end{aligned}\end{split}\]</div>
 <p>を得る。</p>
 <p>求めたい量は、現在角がどういう値になったら速度を下げ始めるか、その角度である。
-つまり、<span class="math">\(\theta(t_1)-\theta(t_0)\)</span>の値である:</p>
-<div class="math">
+つまり、<span class="math notranslate">\(\theta(t_1)-\theta(t_0)\)</span>の値である:</p>
+<div class="math notranslate">
 \[\begin{split}\begin{aligned}
     \theta(t_1)-\theta(t_0)&amp;=-\frac{1}{2\alpha}\omega_0^2 \\
     &amp;=\frac{1}{2\left(\frac{1 \mathrm{deg/s}}{\mathrm{ControlPeriod}}\right)}\omega_0^2 \\
     &amp;=\frac{\mathrm{ControlPeriod}}{2(1 \mathrm{deg/s})}\omega_0^2
 \end{aligned}\end{split}\]</div>
-<p>ステップ数に換算するために両辺を<span class="math">\(\mathrm{MotorStep}\)</span>で割ると、</p>
-<div class="math">
+<p>ステップ数に換算するために両辺を<span class="math notranslate">\(\mathrm{MotorStep}\)</span>で割ると、</p>
+<div class="math notranslate">
 \[\frac{\theta(t_1)-\theta(t_0)}{\mathrm{MotorStep}}
 =\frac{\mathrm{ControlPeriod}}{2(1 \mathrm{deg/s})\mathrm{MotorStep}}\omega_0^2\]</div>
 <p>を得る。</p>
-<p>なお、コード中では<span class="math">\(\frac{\mathrm{MotorStep}}{\mathrm{ControlPeriod}}\)</span>に<code class="docutils literal"><span class="pre">MOTOR_MAX_SPEED</span></code>という名前を与えている。</p>
+<p>なお、コード中では<span class="math notranslate">\(\frac{\mathrm{MotorStep}}{\mathrm{ControlPeriod}}\)</span>に<code class="docutils literal notranslate"><span class="pre">MOTOR_MAX_SPEED</span></code>という名前を与えている。</p>
 </div>
 <div class="section" id="uart-c">
 <h3>uart.c<a class="headerlink" href="#uart-c" title="このヘッドラインへのパーマリンク">¶</a></h3>
@@ -380,27 +383,27 @@
 </div>
 <div class="section" id="timer-c">
 <h3>timer.c<a class="headerlink" href="#timer-c" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">motordrive</span></code>関数を<span class="math">\(100\mu s\)</span>間隔で呼び出すための設定を行う。
-ぶっちゃけ、<code class="docutils literal"><span class="pre">motordrive</span></code>関数をそのままタイマ割り込みハンドラにし
+<p><code class="docutils literal notranslate"><span class="pre">motordrive</span></code>関数を<span class="math notranslate">\(100\mu s\)</span>間隔で呼び出すための設定を行う。
+ぶっちゃけ、<code class="docutils literal notranslate"><span class="pre">motordrive</span></code>関数をそのままタイマ割り込みハンドラにし
 ても良い気がする。</p>
 </div>
 <div class="section" id="id7">
 <h3>コンパイルするには<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>ソースコードを編集したら、書き込む前にコンパイルする必要がある。<code class="docutils literal"><span class="pre">default</span></code>ディレクトリ以下に<code class="docutils literal"><span class="pre">Makefile</span></code>が入っているので、<code class="docutils literal"><span class="pre">Makefile</span></code>の意味が分かる人は利用すると良いだろう。</p>
+<p>ソースコードを編集したら、書き込む前にコンパイルする必要がある。<code class="docutils literal notranslate"><span class="pre">default</span></code>ディレクトリ以下に<code class="docutils literal notranslate"><span class="pre">Makefile</span></code>が入っているので、<code class="docutils literal notranslate"><span class="pre">Makefile</span></code>の意味が分かる人は利用すると良いだろう。</p>
 <p>Makefileの意味が分からない人は、Atmel
 Studioだか何だか知らないが、適当にプロジェクトを作ってファイルを放り込んでコンパイルすればよろしい。その際、</p>
 <ul class="simple">
 <li>マイコンの種類は ATmega328P</li>
 <li>クロック周波数は 16MHz:
-プリプロセッサの設定をいじって、<code class="docutils literal"><span class="pre">F_CPU=16000000UL</span></code>がpredefinedになるようにする。(コンパイラオプションとして<code class="docutils literal"><span class="pre">-DF_CPU=16000000UL</span></code>が渡されればOK)</li>
-<li>言語規格はC99+GNU拡張(コンパイラオプションとして<code class="docutils literal"><span class="pre">-std=gnu99</span></code>が渡されればOK)</li>
+プリプロセッサの設定をいじって、<code class="docutils literal notranslate"><span class="pre">F_CPU=16000000UL</span></code>がpredefinedになるようにする。(コンパイラオプションとして<code class="docutils literal notranslate"><span class="pre">-DF_CPU=16000000UL</span></code>が渡されればOK)</li>
+<li>言語規格はC99+GNU拡張(コンパイラオプションとして<code class="docutils literal notranslate"><span class="pre">-std=gnu99</span></code>が渡されればOK)</li>
 </ul>
 <p>となるように注意する。</p>
 </div>
 </div>
 <div class="section" id="id8">
 <h2>今後の展望<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>もしもさいたまを作り替えるようなら、もう少し強力なマイコンを搭載すること、センサー(後述)対応にすること、<strong>通信経路</strong>についてもっとしっかり考えること(<code class="docutils literal"><span class="pre">RS-485</span></code>にするのか、全部<code class="docutils literal"><span class="pre">RS-232</span></code>とUSBシリアル通信で統一するのか)が望ましい。</p>
+<p>もしもさいたまを作り替えるようなら、もう少し強力なマイコンを搭載すること、センサー(後述)対応にすること、<strong>通信経路</strong>についてもっとしっかり考えること(<code class="docutils literal notranslate"><span class="pre">RS-485</span></code>にするのか、全部<code class="docutils literal notranslate"><span class="pre">RS-232</span></code>とUSBシリアル通信で統一するのか)が望ましい。</p>
 <p>23代で相対角度指定が実装されたが(現在使われていない)、<strong>絶対角度指定</strong>があると良いだろう。つまり、投影される星空を見ながら日周緯度変を操作するのではなく、「緯度は何度、日周は何月何日何時」という形で指定できるようにする。</p>
 <p>絶対角度指定のためには、角度センサーを設置して現在位置を取得するか、一ヶ所にフォトインタラプタなどを設置して初期位置を判別できるようにして、後はステッピングモーターのステップ数で現在位置を把握する、などの方法が考えられる。</p>
 <p>いずれにせよ、さいたまを作り直す際に日周緯度変に設置したセンサーを接続することを考慮しておくとよいだろう。</p>
@@ -438,7 +441,7 @@ Studioだか何だか知らないが、適当にプロジェクトを作って�
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -467,7 +470,7 @@ Studioだか何だか知らないが、適当にプロジェクトを作って�
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/translations.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

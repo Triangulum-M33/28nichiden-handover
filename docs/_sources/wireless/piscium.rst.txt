@@ -33,19 +33,16 @@ Images Utility Module)です！！
 かごしいの側面に固定して使うことを想定しています。
 また，事前に部室にあるはずの無線Wi-Fiルーターの電源を入れておきましょう。
 
-.. figure:: _media/router_photo.jpg
-   :alt: 
+|image0|
 
 使用するには，電源を接続（27代ではパソコン用のATX電源とUSB充電器を使用）し，出力用の側面のDCジャックに星座絵などの投影機を接続してください。
 使用している電源は，\ `玄人志向の400Wの電源 <http://www.kuroutoshikou.com/product/power/atx/krpw-l5-400w_80_/>`__\ です。
 
-.. figure:: _media/atx-dengen.jpg
-   :alt: 
+|image1|
 
 ATX電源は，20ピンATXと，6ピンPCI Express用のコネクタを使用しています。
 
-.. figure:: _media/電源コネクタ説明.png
-   :alt: 
+|image2|
 
 ``PISCIUM``\ を上から見たときに，DCジャックが見えていない方を下側面としたときに，
 
@@ -53,7 +50,7 @@ ATX電源は，20ピンATXと，6ピンPCI Express用のコネクタを使用し
 -  左側面が，上から，こうとう1(12V)，こうとう2(12V)，いっとう(5V)，ぎんとう(5Vまたは12V，内部のピンヘッダで切り替え可能,現在は12Vに設定してある。ピンヘッダは上と真ん中が接続されているときは12V,
    真ん中と下が接続されているときは5Vになる)
 
-となっています。 |image0|
+となっています。 |image3|
 
 左側面だけは，こうとうやいっとうなど，特殊な投影機を接続するためにそのほかのDCジャックとは異なる仕様になっているので注意してください。
 また，こうとうを星座絵の所などに接続すると，電力が大きすぎてよくないので，注意してください。
@@ -116,10 +113,12 @@ IDEで開発できるようになっていて，Wi-Fiサーバーなどの高度
 ただ，USB-シリアル変換素子はArduino純正のものとは違うので，ドライバをインストールする必要があります。
 USB-シリアル変換素子の型番は，\ ``CH340g``\ です。Githubとか製造元のサイトからドライバ落としてきてインスコしてください。
 また，ボードの書き込み設定などは，\ `このサイト <http://trac.switch-science.com/wiki/esp_dev_arduino_ide>`__\ などを参照してください。
-"ESP8266 書き込み"とかでググるとわんさか出てくるはずです。
+“ESP8266 書き込み”とかでググるとわんさか出てくるはずです。
 
 27代が開発したプログラムは，\ ``ESP8266``\ 上でwebサーバー（のようなもの）を動かし，特定のURIのGETリクエストを受け取ると，シリアル通信でPICマイコンに点灯状況を送信する形になっています。
 IPアドレスは，固定IPで，北天が192.168.11.100，南天が192.168.11.101になっています。
+
+.. _使い方-1:
 
 使い方
 ^^^^^^
@@ -128,14 +127,16 @@ IPアドレスは，固定IPで，北天が192.168.11.100，南天が192.168.11.
 
     Send GET request to certain url.
 
+..
+
     1. **Refresh Confirm**
-       (example) http://(ip)/refresh\_confirm/status.json
+       (example) http://(ip)/refresh_confirm/status.json
     2. **Set Port** Set ON/OFF of each port.
        (example) http://(ip)/setPort/status.json?P01=0&P02=1
     3. **Set Constellation Name**
        Change names of pin used in communication.
        (example)
-       >http://(ip)/setConstellationName/status.json?p01=And&p02=Aql...
+       >http://(ip)/setConstellationName/status.json?p01=And&p02=Aql…
     4. **All Set**
        Set all port ON.
        (example) http://(ip)/allSet/status.json
@@ -147,7 +148,7 @@ IPアドレスは，固定IPで，北天が192.168.11.100，南天が192.168.11.
 通常の公演時は，\ ``Acrab``\ がこの辺のことはやってくれるはずですが，回路関係のデバッグをする際には，手持ちのスマホとかでこれらのURIにアクセスしながらやると楽です。
 
 ``ESP8266``\ が正しくURIをパーズすると，シリアル通信（UART）でPICマイコンにコマンドが送られます。
-"NS"の2文字を送ったあとに，各DCジャック（ポート）20個分の点灯状況を点灯の時"1"，消灯の時"0"として，20文字分送ったあとに，23文字目に"\\n"（改行）をパケットとして送るプロトコルを使用しています。
+“NS”の2文字を送ったあとに，各DCジャック（ポート）20個分の点灯状況を点灯の時“1”，消灯の時“0”として，20文字分送ったあとに，23文字目に“\\n”（改行）をパケットとして送るプロトコルを使用しています。
 名付けてNS（Nichiden Seizae）プロトコル…雑です，はい，すみません。
 まあ，どうせUARTなんだし，こんな雑なプロトコルでも問題は起きていませんのでご安心を。
 
@@ -168,6 +169,9 @@ Xのプロジェクトファイルが引き継ぎ資料の\ ``/pic_decoder/``\ �
 もし万が一，PICが壊れたりした場合は，\ ``PICkit3``\ を差し込めるピンヘッダを用意しておいたので，PICを交換して書き込み直してください。
 書き込み方は，\ `PICkit3の使い方 <http://ww1.microchip.com/downloads/jp/DeviceDoc/52010A_JP.pdf>`__\ をみてください。
 
-.. |image0| image:: _media/PISCIUM端子番号.jpg
+.. |image0| image:: _media/router_photo.jpg
+.. |image1| image:: _media/atx-dengen.jpg
+.. |image2| image:: _media/電源コネクタ説明.png
+.. |image3| image:: _media/PISCIUM端子番号.jpg
 .. |回路図| image:: _media/PISCIUM_circuit.png
 
