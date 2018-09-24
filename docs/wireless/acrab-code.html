@@ -11,7 +11,7 @@
   <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,NOARCHIVE">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>無線制御(Acrabの実装解説)※工事中 &mdash; Nichiden 0.9 RC ドキュメント</title>
+  <title>無線制御(Acrabの実装解説) &mdash; Nichiden 0.9 RC ドキュメント</title>
   
 
   
@@ -105,7 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(Acrabの実装解説)※工事中</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(Acrabの実装解説)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#acrab-conf-json">acrab_conf.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#acrab-main-js">acrab_main.js</a><ul>
@@ -165,7 +165,7 @@
 <li class="toctree-l1"><a class="reference internal" href="wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(Acrabの実装解説)※工事中</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(Acrabの実装解説)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#acrab-conf-json">acrab_conf.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#acrab-main-js">acrab_main.js</a><ul>
@@ -223,6 +223,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../begginers/windows.html">無料でWindowsを手に入れる</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
 </ul>
 
             
@@ -267,7 +268,7 @@
     
       <li><a href="../index.html">Nichiden</a> &raquo;</li>
         
-      <li>無線制御(Acrabの実装解説)※工事中</li>
+      <li>無線制御(Acrabの実装解説)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -287,7 +288,7 @@
             <div itemprop="articleBody">
               
   <div class="section" id="acrab">
-<h1>無線制御(Acrabの実装解説)※工事中<a class="headerlink" href="#acrab" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>無線制御(Acrabの実装解説)<a class="headerlink" href="#acrab" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
 <li>更新: Hanaka Satoh(nichiden_28)</li>
@@ -607,7 +608,7 @@ LEDの突入電流が流れる時間は数ms程度なので、十分大きくか
 <div class="section" id="scenario-list-json">
 <h2>scenario_list.json<a class="headerlink" href="#scenario-list-json" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>後述する<code class="docutils literal notranslate"><span class="pre">acrab-scenario.js</span></code>で、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>にサーバの指示書ファイルの数を渡すための指示書ファイルのリスト。
-<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>で生成できる。作り方は<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>の記事参照のこと。</p>
+<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>で生成できる。作り方は<a class="reference external" href="graffias.html">無線制御(GRAFFIAS)</a>参照のこと。</p>
 </div>
 <div class="section" id="acrab-scenario-js">
 <h2>acrab-scenario.js<a class="headerlink" href="#acrab-scenario-js" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -617,10 +618,12 @@ LEDの突入電流が流れる時間は数ms程度なので、十分大きくか
 <h3>ページの初期化関連<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>前述の通り、指示書は番組ごとのJSONファイルに分けて<code class="docutils literal notranslate"><span class="pre">scenario/</span></code>以下に保存されている。
 <code class="docutils literal notranslate"><span class="pre">acrab_main.js</span></code>と同様に、jQueryの<code class="docutils literal notranslate"><span class="pre">$.getJSON()</span></code>を用いて取得とパースを行っている。</p>
-<p><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>はブラウザ側だけで動作しているため、サーバにいくつの指示書ファイルがあるかを直接取得できない。
-このため、先述した<code class="docutils literal notranslate"><span class="pre">scenario_list.json</span></code>をjQueryの<code class="docutils literal notranslate"><span class="pre">$.ajax()</span></code>を用いることで取得・パースし、配列の要素数から指示書ファイルの数を得る方式にした。
-<code class="docutils literal notranslate"><span class="pre">$.ajax()</span></code>は本来非同期通信に用いるものであるが、非同期のままだと<code class="docutils literal notranslate"><span class="pre">scenariolist</span></code>にデータが入らなかったため<code class="docutils literal notranslate"><span class="pre">async:</span> <span class="pre">false</span></code>にすることで無理矢理対応した。
-本当は非同期通信のまま<code class="docutils literal notranslate"><span class="pre">$.Deferred</span></code>などを使った方がいい気がするが、ページ読み込み時のみの処理なので妥協してしまったところ。読み込み時に気になるようなら書き直してほしい。</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Acrab</span></code>はブラウザ側だけで動作しているため、サーバにいくつの指示書ファイルがあるかを直接取得できない。</div>
+<div class="line">このため、先述した<code class="docutils literal notranslate"><span class="pre">scenario_list.json</span></code>をjQueryの<code class="docutils literal notranslate"><span class="pre">$.ajax()</span></code>を用いることで取得・パースし、配列の要素数から指示書ファイルの数を得る方式にした。</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">$.ajax()</span></code>は本来非同期通信に用いるものであるが、非同期のままだと<code class="docutils literal notranslate"><span class="pre">scenariolist</span></code>にデータが入らなかったため<code class="docutils literal notranslate"><span class="pre">async:</span> <span class="pre">false</span></code>にすることで無理矢理対応した。</div>
+<div class="line">本当は非同期通信のまま<code class="docutils literal notranslate"><span class="pre">$.Deferred</span></code>などを使った方がいい気がするが、ページ読み込み時のみの処理なので妥協してしまったところ。読み込み時に気になるようなら書き直してほしい。</div>
+</div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
   <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
   <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;scenario_list.json&quot;</span><span class="p">,</span>

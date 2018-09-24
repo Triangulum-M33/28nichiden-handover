@@ -40,7 +40,7 @@
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
         <link rel="next" title="日周緯度変(外部制御アプリ)" href="../nissyu-idohen/pc-software.html"/>
-        <link rel="prev" title="無線制御(Acrabの実装解説)※工事中" href="acrab-code.html"/> 
+        <link rel="prev" title="無線制御(Acrabの実装解説)" href="acrab-code.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -105,7 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acrab-code.html">無線制御(Acrabの実装解説)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(GRAFFIAS)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">使い方</a><ul>
@@ -131,7 +131,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">今後の課題点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">今後の課題点</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
@@ -149,7 +149,7 @@
 <li class="toctree-l1"><a class="reference internal" href="wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acrab-code.html">無線制御(Acrabの実装解説)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(GRAFFIAS)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">使い方</a><ul>
@@ -175,7 +175,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">今後の課題点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">今後の課題点</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
@@ -191,6 +191,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../begginers/windows.html">無料でWindowsを手に入れる</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../handover.html">引き継ぎ資料の作成方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
 </ul>
 
             
@@ -292,7 +293,7 @@
 <p>なお、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>のみを別のPCで使うときは、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>ディレクトリ内の<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>ディレクトリのみを移せば使える仕様になっている。
 これにより、プログラミング担当者以外の人や日電メンバー以外にも指示書作成を手伝ってもらえる…といいなあ。</p>
 <p>localhostにアクセスすると、以下のような画面が表示される。</p>
-<div class="figure" id="id13">
+<div class="figure" id="id11">
 <img alt="GRAFFIASメイン画面" src="../_images/graffias-main.png" />
 <p class="caption"><span class="caption-text">GRAFFIASメイン画面</span></p>
 </div>
@@ -323,7 +324,7 @@
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>の画面上の各フォームは、このJSONの構造に対応している。</p>
-<div class="figure" id="id14">
+<div class="figure" id="id12">
 <img alt="GRAFFIAS操作画面" src="../_images/graffias-opscreen.png" />
 <p class="caption"><span class="caption-text">GRAFFIAS操作画面</span></p>
 </div>
@@ -341,18 +342,22 @@
 <p>情報を入力していると、指示書の曖昧な点や不明点、矛盾点が見えてくることもある。これらは入力中にソフトの人やライブ解説担当者に問い合わせて、できるだけ潰しておくといいだろう。</p>
 <p>全ての情報を入力し終わったら右下の「JSONを作成」ボタンをクリックする。
 すると、JSONファイルが<code class="docutils literal notranslate"><span class="pre">GRAFFIAS/scenario</span></code>ディレクトリ内に作成される。</p>
-<p>実は、このままでは<strong>``Acrab``からJSONファイルを参照できない</strong>ため、JSONファイルが揃ったら、
-<strong>``ACRAB/scenario``ディレクトリ内にJSONファイルをコピーして使う</strong>のが必須となる。
-なぜこんな面倒な仕様なのかというと、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>は、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>のみをコピーしてプログラム担当ではない人に渡して使ってもらうことを想定しているためである。
-年にもよるが、基本的に指示書の数は多いうえに大体本番ギリギリにならないと揃わない。このため、とにかく作業人数が多いほど本番直前の負担が減る。よって、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>ディレクトリのみをコピーして複数人に渡し、各自の<code class="docutils literal notranslate"><span class="pre">GRAFFIAS/scinario</span></code>内に出力されたJSONを、USBなりLINEなりメールなりでJSONを取りまとめる人に送信する…ということを考えた。全員がGitを使いこなせれば無問題な気もするが、そういう専門知識のない人にも容易に使えるような仕様を目指したのでこうなった。</p>
+<div class="line-block">
+<div class="line">実は、このままでは<strong>AcrabからJSONファイルを参照できない</strong>ため、JSONファイルが揃ったら、
+<strong>ACRAB/scenarioディレクトリ内にJSONファイルをコピーして使う</strong>のが必須となる。</div>
+<div class="line">なぜこんな面倒な仕様なのかというと、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>は、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>のみをコピーしてプログラム担当ではない人に渡して使ってもらうことを想定しているためである。
+年にもよるが、基本的に指示書の数は多いうえに大体本番ギリギリにならないと揃わない。このため、とにかく作業人数が多いほど本番直前の負担が減る。よって、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>ディレクトリのみをコピーして複数人に渡し、各自の<code class="docutils literal notranslate"><span class="pre">GRAFFIAS/scinario</span></code>内に出力されたJSONを、USBなりLINEなりメールなりでJSONを取りまとめる人に送信する…ということを考えた。
+全員がGitを使いこなせれば無問題な気もするが、そういう専門知識のない人にも容易に使えるような仕様を目指したのでこうなった。</div>
+</div>
 </div>
 <div class="section" id="id5">
 <h4>JSONリストの作成<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>全ての番組のJSONファイルを作成し終わったら、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS/scenario</span></code>ディレクトリに全ての番組のJSONファイルがあることを確認する。
-<strong>``GRAFFIAS``ディレクトリが``ACRAB``ディレクトリの直下にあることも確認する。</strong></p>
+<strong>GRAFFIASディレクトリがACRABディレクトリの直下にあることも確認する。</strong></p>
 <div class="line-block">
 <div class="line">ここまで確認できたら、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>の画面で「<strong>↑↑↓↓←→←→BA</strong>」と入力すると、画面一番下の右側(赤っぽいエリアの外)に赤い「JSONリストの作成」ボタンが表示される。
-これをクリックすると、<code class="docutils literal notranslate"><span class="pre">ACRAB</span></code>ディレクトリ内に<code class="docutils literal notranslate"><span class="pre">scenario_list.json</span></code>が作成される。既に<code class="docutils literal notranslate"><span class="pre">scenario_list.json</span></code>がある状態で押すと、これが上書きされる仕様。
+これをクリックすると、<code class="docutils literal notranslate"><span class="pre">ACRAB</span></code>ディレクトリ内に<code class="docutils literal notranslate"><span class="pre">scenario_list.json</span></code>が作成される。</div>
+<div class="line">既に<code class="docutils literal notranslate"><span class="pre">scenario_list.json</span></code>がある状態で押すと、これが上書きされる仕様。
 このため直前のタイトル変更にもササッと対応できる。</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">scenario_list.json</span></code>は、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>がサーバにある指示書ファイルの数を知るために使われる。詳しくは<a class="reference external" href="acrab-code.html">Acrabの実装解説#acrab_main.js</a>参照のこと。</div>
 </div>
@@ -364,9 +369,9 @@
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>はWebの技術を使って内部処理や画面表示を行っている。
 画面の情報はHTML、デザインはCSS、画面の書き換えはJavaScript(以下JS)、内部処理やファイルの生成はphpという構成だ。</div>
-<div class="line">phpの仕様上、HTMLは<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>の中に書いてある。基本的にはphpをプログラム前半に、HTML部分をプログラムの後半に書いてあるので、編集時はそれぞれを参照してほしい。
-プログラムの細かい仕様については説明を省くが、要所については説明を加えておく。</div>
+<div class="line">phpの仕様上、HTMLは<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>の中に書いてある。基本的にはphpをプログラム前半に、HTML部分をプログラムの後半に書いてあるので、編集時はそれぞれを参照してほしい。</div>
 </div>
+<p>プログラムの細かい仕様については説明を省くが、要所については説明を加えておく。</p>
 <div class="section" id="graffias-php-html">
 <h3>GRAFFIAS.phpの実装解説(HTML部)<a class="headerlink" href="#graffias-php-html" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">GRAFFIAS</span></code>では、入力された情報を受け取るのに、HTMLの<code class="docutils literal notranslate"><span class="pre">&lt;FORM&gt;</span></code>タグを使用している。<code class="docutils literal notranslate"><span class="pre">&lt;FORM&gt;</span></code>タグ内にラジオボタン、セレクトボックス、テキストボックス等を配置し、入力された情報を</p>
@@ -377,28 +382,32 @@
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;projector_a[0]&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;projector_a[0]&quot;</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>等のセレクトボックスについては、セレクトボックスの中身をいじれば、その年に使用する星座にも対応できる。
-セレクトボックスの中身を操作するようなGUIは、時間の都合上作ることができなかったので、もし余裕があったら考えてみるのもいいかもしれない。(GUIを丸ごと作り直した方が速いかもしれないが…)
-他のHTML部については、後述する<code class="docutils literal notranslate"><span class="pre">script.js</span></code>に関連する部分以外は、基本的にググればすぐ分かる程度の内容しか書いていないため、割愛する。</p>
+<div class="line-block">
+<div class="line">等のセレクトボックスについては、セレクトボックスの中身をいじれば、その年に使用する星座にも対応できる。
+セレクトボックスの中身を操作するようなGUIは、時間の都合上作ることができなかったので、もし余裕があったら考えてみるのもいいかもしれない。(GUIを丸ごと作り直した方が速いかもしれないが…)</div>
+<div class="line">他のHTML部については、後述する<code class="docutils literal notranslate"><span class="pre">script.js</span></code>に関連する部分以外は、基本的にググればすぐ分かる程度の内容しか書いていないため、割愛する。</div>
+</div>
 </div>
 <div class="section" id="script-js">
 <h3>script.jsの実装解説<a class="headerlink" href="#script-js" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>一旦<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>からは外れるが、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>のフォームの追加・削除機能に関する部分である、<code class="docutils literal notranslate"><span class="pre">script.js</span></code>の解説に入る。
-<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>には、フォーム追加用の+ボタンと、フォーム削除用の-ボタンがあるが、これは<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>のみではただのボタンであり、何の機能もない。
-これにフォームを追加/削除し、現在のフォームの数を変数を用いカウントして<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>に渡すのが<code class="docutils literal notranslate"><span class="pre">script.js</span></code>の主な役割である。
-また、<code class="docutils literal notranslate"><span class="pre">script.js</span></code>には<code class="docutils literal notranslate"><span class="pre">jQuery</span></code>が使われている。これは<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>関連のjavascriptを触った人ならお馴染みであろう。ネット上に参考文献が大量にあるので分からない場合は参照してほしい。
-今回は<a class="reference external" href="https://qiita.com/SiskAra/items/5f4bc7ee4e598b863add">こちらのページ</a>を参考にした…というかほとんど丸パクしたのでまずリンク先を参照してほしい。
--
-<code class="docutils literal notranslate"><span class="pre">$(obj).attr('id').replace(/\[\d{1,3}\]+$/,</span> <span class="pre">'['</span> <span class="pre">+</span> <span class="pre">frm_cnt</span> <span class="pre">+</span> <span class="pre">']')</span></code>などの<code class="docutils literal notranslate"><span class="pre">/\[\d{1,3}\]+$/</span></code>の部分は「正規表現」と呼ばれる表記である。
+<p>一旦<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>からは外れるが、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>のフォームの追加・削除機能に関する部分である、<code class="docutils literal notranslate"><span class="pre">script.js</span></code>の解説に入る。</p>
+<p><code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>には、フォーム追加用の+ボタンと、フォーム削除用の-ボタンがあるが、これは<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>のみではただのボタンであり、何の機能もない。
+これにフォームを追加/削除し、現在のフォームの数を変数を用いカウントして<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>に渡すのが<code class="docutils literal notranslate"><span class="pre">script.js</span></code>の主な役割である。</p>
+<p>また、<code class="docutils literal notranslate"><span class="pre">script.js</span></code>には<code class="docutils literal notranslate"><span class="pre">jQuery</span></code>が使われている。これは<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>関連のjavascriptを触った人ならお馴染みであろう。ネット上に参考文献が大量にあるので分からない場合は参照してほしい。
+今回は<a class="reference external" href="https://qiita.com/SiskAra/items/5f4bc7ee4e598b863add">こちらのページ</a>を参考にした…というかほとんど丸パクしたのでまずリンク先を参照してほしい。</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">$(obj).attr('id').replace(/\[\d{1,3}\]+$/,</span> <span class="pre">'['</span> <span class="pre">+</span> <span class="pre">frm_cnt</span> <span class="pre">+</span> <span class="pre">']')</span></code>などの<code class="docutils literal notranslate"><span class="pre">/\[\d{1,3}\]+$/</span></code>の部分は「正規表現」と呼ばれる表記である。
 ここだけではなく、日電が作成した他のプログラムにも含まれている…し、プログラミングに関わったことがあるなら見たことがあるかもしれない。
-表記がややこしいので、<a class="reference external" href="https://www.sejuku.net/blog/20973#i-3">参考文献へのリンク</a>を貼っておく。</p>
+表記がややこしいので、<a class="reference external" href="https://www.sejuku.net/blog/20973#i-3">参考文献へのリンク</a>を貼っておく。</li>
+</ul>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#send_button&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
        <span class="nb">document</span><span class="p">.</span><span class="nx">forms</span><span class="p">[</span><span class="s1">&#39;frm&#39;</span><span class="p">].</span><span class="nx">elements</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">].</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">frm_cnt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
        <span class="nb">document</span><span class="p">.</span><span class="nx">frm</span><span class="p">.</span><span class="nx">submit</span><span class="p">();</span>
    <span class="p">});</span>
 </pre></div>
 </div>
-<p>上記の部分は、「JSONを作成」ボタンを押した時に、現在のフォームの数を、<code class="docutils literal notranslate"><span class="pre">script.js</span></code>内でフォームの数を数える変数である、<code class="docutils literal notranslate"><span class="pre">frm_cnt</span></code>の数に1を足した数として<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>内のHTML部に組み込むためのコードである。これは、javascriptで変更したフォームの数を、どうしてもphp側で参照できるようにしたかったからである。色々と調べてはみたが、作成者の技術では、javascript→HTML→phpという流れで受け渡す方法しか思いつかなかったのでこの仕様である。もっとスマートな方法もあるのかもしれない。</p>
+<p>上記の部分は、「JSONを作成」ボタンを押した時に、現在のフォームの数を、<code class="docutils literal notranslate"><span class="pre">script.js</span></code>内でフォームの数を数える変数である、<code class="docutils literal notranslate"><span class="pre">frm_cnt</span></code>の数に1を足した数として<code class="docutils literal notranslate"><span class="pre">GRAFFIAS.php</span></code>内のHTML部に組み込むためのコードである。これは、javascriptで変更したフォームの数を、どうしてもphp側で参照できるようにしたかったからである。
+色々と調べてはみたが、作成者の技術では、javascript→HTML→phpという流れで受け渡す方法しか思いつかなかったのでこの仕様である。もっとスマートな方法もあるのかもしれない。</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">inputKey</span> <span class="o">=</span> <span class="p">[];</span>
      <span class="kd">var</span> <span class="nx">konamiCommand</span> <span class="o">=</span> <span class="p">[</span><span class="mi">38</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">65</span><span class="p">];</span>
      <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">keyup</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
@@ -410,12 +419,17 @@
       <span class="p">});</span>
 </pre></div>
 </div>
-<p>…上記の部分は、完全にお遊びで入れてしまった部分である。指示書用のJSONを全て作成し終わった後、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>から参照できるように、JSONの一覧をまとめたJSONファイルを作らないといけないのだが、このJSONリストを作る機会は少ない。というか基本1回しかない。このため、隠しコマンドでJSONリスト作成用のボタンが出せたらいいな…隠しコマンドと言えばコナミコマンドかな？という発想から付け足しただけである。(と思ったが同世代に伝わらなかった)世の中同じことを考える人は多いようで、「コナミコマンド　javascript」でググるといろいろ文献が出てくる。このコードもネット上から引っ張ってきた。</p>
+<div class="line-block">
+<div class="line">…上記の部分は、完全にお遊びで入れてしまった部分である。指示書用のJSONを全て作成し終わった後、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>から参照できるように、JSONの一覧をまとめたJSONファイルを作らないといけないのだが、このJSONリストを作る機会は少ない。というか基本1回しかない。</div>
+<div class="line">このため、隠しコマンドでJSONリスト作成用のボタンが出せたらいいな…隠しコマンドと言えばコナミコマンドかな？という発想から付け足しただけである。(と思ったが同世代に伝わらなかった)世の中同じことを考える人は多いようで、「コナミコマンド　javascript」でググるといろいろ文献が出てくる。このコードもネット上から引っ張ってきた。</div>
+</div>
 </div>
 <div class="section" id="graffias-php-php">
 <h3>GRAFFIAS.phpの実装解説(php部)<a class="headerlink" href="#graffias-php-php" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>さて、ここからが本題のphp部分になる。php初学者が何とか動くように1週間で無理矢理書き上げたものなので、非常にエラーが多いことに留意していただきたい。
-冒頭の、<code class="docutils literal notranslate"><span class="pre">ini_set('display_errors',</span> <span class="pre">&quot;Off&quot;);</span></code>をコメントアウトすると、phpの実行時にエラーが表示されるようになる。デバッグ時の参考にしてほしい。</p>
+<div class="line-block">
+<div class="line">さて、ここからが本題のphp部分になる。php初学者が何とか動くように1週間で無理矢理書き上げたものなので、非常にエラーが多いことに留意していただきたい。</div>
+<div class="line">冒頭の、<code class="docutils literal notranslate"><span class="pre">ini_set('display_errors',</span> <span class="pre">&quot;Off&quot;);</span></code>をコメントアウトすると、phpの実行時にエラーが表示されるようになる。デバッグ時の参考にしてほしい。</div>
+</div>
 <div class="section" id="form">
 <h4>FORMから送信されたデータの変数への格納<a class="headerlink" href="#form" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">if(isset($_POST[&#39;filename&#39;])){</span>
@@ -423,13 +437,15 @@
 <span class="x">    //echo $filename;</span>
 </pre></div>
 </div>
-<p>上記の形式で記述した部分は、入力された内容をphp部で扱う変数に格納する役割だ。
-コメントアウトしている<code class="docutils literal notranslate"><span class="pre">echo</span></code>部は出力が正しいかのテスト時に使える。
-セリフ、タイミングにあたる<code class="docutils literal notranslate"><span class="pre">word</span></code>、<code class="docutils literal notranslate"><span class="pre">timing</span></code>や星座絵にあたる<code class="docutils literal notranslate"><span class="pre">projector</span></code>、各フォームのON/OFFボタンにあたる<code class="docutils literal notranslate"><span class="pre">on_off</span></code>については、配列として格納している。
-これは、1つの指示書内にこれらが複数あるからである。
-また、現在のフォーム数もこの形式で受け取って、<code class="docutils literal notranslate"><span class="pre">$count</span></code>という変数に格納している。
-ここで注意してほしいのが、<code class="docutils literal notranslate"><span class="pre">projector</span></code>については、1個目のフォームの、1番上の星座絵用セレクトボックスがprojector_a[0]、1個目のフォームの、上から2番目のものは<strong>projector_a[1]ではなく、projector_b[0]</strong>になるということである。<code class="docutils literal notranslate"><span class="pre">on_off</span></code>のラジオボタンも同じ仕様になっている。
-あらかた作った後で、この分かりにくさに気が付いてしまったが時間的に修正できなかったのでこのままである。非常に分かりにくい仕様になってしまって申し訳ない。</p>
+<div class="line-block">
+<div class="line">上記の形式で記述した部分は、入力された内容をphp部で扱う変数に格納する役割だ。</div>
+<div class="line">コメントアウトしている<code class="docutils literal notranslate"><span class="pre">echo</span></code>部は出力が正しいかのテスト時に使える。</div>
+<div class="line">セリフ、タイミングにあたる<code class="docutils literal notranslate"><span class="pre">word</span></code>、<code class="docutils literal notranslate"><span class="pre">timing</span></code>や星座絵にあたる<code class="docutils literal notranslate"><span class="pre">projector</span></code>、各フォームのON/OFFボタンにあたる<code class="docutils literal notranslate"><span class="pre">on_off</span></code>については、配列として格納している。
+これは、1つの指示書内にこれらが複数あるからである。</div>
+<div class="line">また、現在のフォーム数もこの形式で受け取って、<code class="docutils literal notranslate"><span class="pre">$count</span></code>という変数に格納している。</div>
+<div class="line">ここで注意してほしいのが、<code class="docutils literal notranslate"><span class="pre">projector</span></code>については、1個目のフォームの、1番上の星座絵用セレクトボックスがprojector_a[0]、1個目のフォームの、上から2番目のものは<strong>projector_a[1]ではなく、projector_b[0]</strong>になるということである。<code class="docutils literal notranslate"><span class="pre">on_off</span></code>のラジオボタンも同じ仕様になっている。</div>
+<div class="line">あらかた作った後で、この分かりにくさに気が付いてしまったが時間的に修正できなかったのでこのままである。非常に分かりにくい仕様になってしまって申し訳ない。</div>
+</div>
 </div>
 <div class="section" id="id7">
 <h4>JSONファイルとして出力するための雛形の作成<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h4>
@@ -531,10 +547,10 @@
 </pre></div>
 </div>
 <p>の記述により、<strong>GRAFFASディレクトリ内の</strong><code class="docutils literal notranslate"><span class="pre">GRAFFIAS/scenario</span></code>ディレクトリに、<code class="docutils literal notranslate"><span class="pre">(ファイル名).json</span></code>の形式でJSONが出力される。最初の方にも書いたが、このままでは<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>から参照できないので注意。
-実際に使う場合は、<a href="#id9"><span class="problematic" id="id10">*</span></a>*<code class="docutils literal notranslate"><span class="pre">ACRAB/scenario</span></code>ディレクトリ内に、<code class="docutils literal notranslate"><span class="pre">GRAFFIAS/scenario</span></code>ディレクトリの中身をコピーして使うこと。</p>
+実際に使う場合は、<strong>ACRAB/scenarioディレクトリ内に、GRAFFIAS/scenarioディレクトリの中身をコピーして使う</strong>こと。</p>
 </div>
 <div class="section" id="json-1">
-<span id="id11"></span><h4>JSONリストの作成<a class="headerlink" href="#json-1" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<span id="id9"></span><h4>JSONリストの作成<a class="headerlink" href="#json-1" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>全てのJSON作成が終わったら、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>が参照できるJSONリストを、JSON形式で出力する。</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">if(isset($_POST[&#39;listmake&#39;])){</span>
 <span class="x">        foreach(glob(&quot;scenario/*.json&quot;) as $ListMake){</span>
@@ -548,24 +564,22 @@
 <span class="x">    }</span>
 </pre></div>
 </div>
-<p>上記の記述により、JSONファイルの一覧をJSON形式で出力したものが、「JSONリストの作成」<strong>``GRAFFIAS``ディレクトリの1つ上のディレクトリ</strong>内に出力される。</p>
+<p>上記の記述により、「JSONリストの作成」を押すとJSONファイルの一覧をJSON形式で出力したものが<strong>GRAFFIASディレクトリの1つ上のディレクトリ</strong>内に出力される。</p>
 </div>
 </div>
 </div>
-<div class="section" id="id12">
-<h2>今後の課題点<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id10">
+<h2>今後の課題点<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>知識0からのスタート＆1週間弱で作ったプログラムなので、非常に課題点が多い。ここで挙げた点以外にも、何か気づくところあればどんどん修正なり、機能追加なりしてほしい。
-よりよいものが作れそうであれば、もう原型残さず改造でいいレベルでもある。
--
-使い始める前の、HTML部の書き換えが面倒。これをさくっと選択形式で直せるような仕様にすると後々楽かも…？
-- 現状指示書を作る機能しかないので、
-Acrabの方でファイルを書き換える作業には非対応。ただ、GRAFFIASは色んな人にGRAFFIAS単体で渡して使ってもらうのを想定しているので、そこまで作成するなら別でAcrab用設定画面UIを作った方が便利な可能性は高い
--
-改行コードを一括削除する仕様にしたが、長いセリフが来ると読みにくい＆ACRABのボタンレイアウトが崩れる。これはAcrabで時々指示書の表示チェックをしながら、AcrabのCSSも弄るのを考えておくといいかもしれない。
--
-<strong>肝心の星座グループ指定が機能していない。</strong>これはGRAFFIAS自体の問題ではないが、かなりの痛手である。原因はAcrabにあるのが分かっているので、是非本番までに直していただきたい。
--
-エラーがとにかく多い。これでどのような問題が発生しているかはよく分かっていないが、動作の遅さがどうしても気になるなら改善すべき…なのかもしれない。</p>
+よりよいものが作れそうであれば、もう原型残さず改造でいいレベルでもある。</p>
+<ul class="simple">
+<li>使い始める前の、HTML部の書き換えが面倒。これをさくっと選択形式で直せるような仕様にすると後々楽かも…？</li>
+<li>現状指示書を作る機能しかないので、
+Acrabの方でファイルを書き換える作業には非対応。ただ、GRAFFIASは色んな人にGRAFFIAS単体で渡して使ってもらうのを想定しているので、そこまで作成するなら別でAcrab用設定画面UIを作った方が便利な可能性は高い</li>
+<li>改行コードを一括削除する仕様にしたが、長いセリフが来ると読みにくい＆ACRABのボタンレイアウトが崩れる。これはAcrabで時々指示書の表示チェックをしながら、AcrabのCSSも弄るのを考えておくといいかもしれない。</li>
+<li><strong>肝心の星座グループ指定が機能していない。</strong>これはGRAFFIAS自体の問題ではないが、かなりの痛手である。原因はAcrabにあるのが分かっているので、是非本番までに直していただきたい。</li>
+<li>エラーがとにかく多い。これでどのような問題が発生しているかはよく分かっていないが、動作の遅さがどうしても気になるなら改善すべき…なのかもしれない。</li>
+</ul>
 </div>
 </div>
 
@@ -582,7 +596,7 @@ Acrabの方でファイルを書き換える作業には非対応。ただ、GRA
         <a href="../nissyu-idohen/pc-software.html" class="btn btn-neutral float-right" title="日周緯度変(外部制御アプリ)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="acrab-code.html" class="btn btn-neutral" title="無線制御(Acrabの実装解説)※工事中" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="acrab-code.html" class="btn btn-neutral" title="無線制御(Acrabの実装解説)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

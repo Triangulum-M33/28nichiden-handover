@@ -39,6 +39,7 @@
               href="genindex.html"/>
         <link rel="search" title="検索" href="search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="index.html"/>
+        <link rel="next" title="【直前特集】本番で気をつけたい三箇条" href="honban.html"/>
         <link rel="prev" title="無料でWindowsを手に入れる" href="begginers/windows.html"/> 
 
   
@@ -104,7 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 </ul>
@@ -121,7 +122,7 @@
 <li class="toctree-l1"><a class="reference internal" href="wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
@@ -170,6 +171,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
 </ul>
 
             
@@ -237,7 +239,8 @@
 <h1>引き継ぎ資料の作成方法<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2018/01/31</li>
+<li>更新: Hanaka Satoh(nichiden_28)</li>
+<li>更新日時: 2018/09/02</li>
 <li>実行に必要な知識・技能<ul>
 <li>CUIを扱ったことがある</li>
 <li>Gitを使ったことがある(できれば)</li>
@@ -249,8 +252,11 @@
 </ul>
 <div class="section" id="id2">
 <h2>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>まず、本記事の執筆が遅れたことをお詫びいたします。
-学科の演習と試験に追われていたらいつの間にか年が明けてしまって今に至ります。</p>
+<div class="line-block">
+<div class="line">引継ぎ文書の作成法解説です。</div>
+<div class="line">下で紹介する方法ではGit、Githubの知識が必要になりますが、引継ぎ文書をWebサイトで公開できるようになります。</div>
+<div class="line">URLさえ記録しておけばどの端末からも簡単に閲覧できるのが強みです。</div>
+</div>
 </div>
 <div class="section" id="id3">
 <h2>日電引き継ぎに使用している技術やツール<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -304,6 +310,18 @@ sudo pip install Sphinx
 </pre></div>
 </div>
 <p>とか。それでもダメなら、pipを入れ直すとか……</p>
+<div class="line-block">
+<div class="line">また、変換時に必要になるので、ここで<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sphinx_rtd_theme</span></code>と入力して<code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code>を導入しておいてください。</div>
+<div class="line">後述しているPandocも導入しておく必要があります。</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Windowsの場合</strong></div>
+<div class="line">使っているシェルにもよりますが、後の変換作業で<code class="docutils literal notranslate"><span class="pre">make</span></code>コマンドが入っていないために<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>でエラーが出ることがあります。
+もし<code class="docutils literal notranslate"><span class="pre">make</span></code>コマンドが入っていない場合は以下のページ等を参照してください。</div>
+</div>
+<ul class="simple">
+<li><a class="reference external" href="https://qiita.com/tokikaze0604/items/e13c04192762f8d4ec85">Windowsでmakeコマンドを使う</a></li>
+</ul>
 </div>
 <div class="section" id="rest">
 <h4>reST記法について<a class="headerlink" href="#rest" title="このヘッドラインへのパーマリンク">¶</a></h4>
@@ -319,7 +337,14 @@ SphinxはMarkdownをそのまま処理することもできますが、諸々の
 <h4>出力<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>日電引き継ぎの一番上のディレクトリにある<code class="docutils literal notranslate"><span class="pre">build.sh</span></code>を実行すると、変換作業を行って<code class="docutils literal notranslate"><span class="pre">doc/</span></code>以下に全ページを出力するようになってます。
 ただ、macOSで作っていたので、Windowsのコマンドプロンプトではおそらく動かないです……。</p>
-<p>もしWin環境で出力したいのであれば、Win10ではbashが使えるので導入するか、スクリプト自体を書き換える必要があると思います。</p>
+<div class="line-block">
+<div class="line">もしWin環境で出力したいのであれば、Win10ではbashが使えるので導入するか、スクリプト自体を書き換える必要があると思います。
+<strong>(追記)</strong>
+Windows7でも、Gitをインストールした時についてくる<code class="docutils literal notranslate"><span class="pre">Git</span> <span class="pre">bash</span></code>でスクリプト動かせました。</div>
+<div class="line">ただ、<code class="docutils literal notranslate"><span class="pre">make</span></code>コマンドが標準では入っていないのでインストールの必要ありです。</div>
+<div class="line">スクリプトも、そのままでは動かなかったので微修正して<code class="docutils literal notranslate"><span class="pre">buildwin.sh</span></code>として<code class="docutils literal notranslate"><span class="pre">build.sh</span></code>と同じディレクトリに放り込んでいます。</div>
+<div class="line">Windowsの人はこちらを試してみてください。</div>
+</div>
 </div>
 <div class="section" id="id6">
 <h4>編集<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h4>
@@ -588,6 +613,8 @@ Pagesで動いているJekyllによって<strong>CSSが無効化されてしま�
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="honban.html" class="btn btn-neutral float-right" title="【直前特集】本番で気をつけたい三箇条" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="begginers/windows.html" class="btn btn-neutral" title="無料でWindowsを手に入れる" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

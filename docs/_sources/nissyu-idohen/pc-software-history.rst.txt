@@ -104,9 +104,9 @@ Ogose(2016)
 -----------
 
 .. figure:: _media/ogose.png
-   :alt: Ogoseの画面
+   :alt: Ogoseの画面(画像は28日電使用時)
 
-   Ogoseの画面
+   Ogoseの画面(画像は28日電使用時)
 
 27日電の伊東が開発した。これまでのUIの問題点を洗い出した上で、改善すべく様々な変更を加えている。デザイン部分(\ ``MainWindow.xaml``)は一から作り直したが、コマンド文字列生成は\ ``NisshuidohenController.cs``\ を継続使用した。
 
