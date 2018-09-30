@@ -10,13 +10,10 @@
    :maxdepth: 1
    :caption: 最近更新した記事
 
-   syutou
-   haisen-kagoshii
-   bihin
-   wireless/acrab
-   wireless/acrab-code
-   wireless/graffias
-   nissyu-idohen/pc-software
+   haisen
+   hojotou
+   protect
+   twinkle
 
 .. toctree::
    :maxdepth: 2
@@ -36,6 +33,7 @@
    wireless/acrab-code
    wireless/graffias
    twinkle
+   protect
    haisen
    haisen-kagoshii
    bihin

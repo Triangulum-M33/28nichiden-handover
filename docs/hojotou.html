@@ -39,7 +39,7 @@
               href="genindex.html"/>
         <link rel="search" title="検索" href="search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="index.html"/>
-        <link rel="next" title="部品の買い方" href="begginers/buy_parts.html"/>
+        <link rel="next" title="過電圧保護回路" href="protect.html"/>
         <link rel="prev" title="配線" href="haisen.html"/> 
 
   
@@ -100,14 +100,32 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="syutou.html">主投影機との連携</a></li>
-<li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">補助投影機との連携</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">あおとう</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">あくとう</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">あくとうコントローラの歴史</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#led">砲弾型LEDの調光</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">パワーLEDの調光</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">自動化の試み</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">現在のあくとうコントローラ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">回路</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">プログラム</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">しるとう</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">りゅうとう</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">あゆとう</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protect.html">過電圧保護回路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -125,6 +143,7 @@
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protect.html">過電圧保護回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
@@ -148,6 +167,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id11">しるとう</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id12">りゅうとう</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">あゆとう</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="begginers/buy_parts.html">部品の買い方</a></li>
@@ -225,7 +245,8 @@
 <h1>補助投影機との連携<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2017/05/04</li>
+<li>更新: Kenta Suda(nichiden_28)</li>
+<li>更新日時: 2018/09/26</li>
 <li>実行に必要な知識・技能: 電子回路、マイコン、Arduino</li>
 <li>タスクの重さ: 2/数日かかる</li>
 <li>タスクの必須度: 3/年による</li>
@@ -243,7 +264,8 @@
 <p>現状、電球を毎年利用する唯一の投影機。
 全投影機を<strong>同時に調光</strong>できる必要がある。</p>
 <p>電球はAC100Vなので、交流のまま<strong>調光回路だけを挟めばコントローラーになる</strong>。
-使用しているのは、ドームコンソールでも採用している秋月電子の<a class="reference external" href="akizukidenshi.com/catalog/g/gK-00098/">トライアック万能調光器キット</a>。</p>
+使用しているのは、ドームコンソールでも採用している秋月電子の<a class="reference external" href="akizukidenshi.com/catalog/g/gK-00098/">トライアック万能調光器キット</a>。
+このコントローラーをあおとうに使っている延長コードの根元に入れればよい。</p>
 <p>電球の調光であればキットを一個そのまま使うだけでよく、故障も極めて起きにくいので、数年前のものを毎年使っている。
 なお、同キットには秋月電子によるやたら詳しい説明書が付いているので、念のため一度は目を通しておきたい。</p>
 <p>気をつけたい点としては、アルミケース上面に付いている<strong>ボリュームの取り付けが緩む</strong>ことくらいだ。
@@ -272,7 +294,7 @@ LEDの電源自体を高速でオンオフする手法が用いられた。</p>
 <p>24日電では、メモリ機能を取り除き基板とプログラムの改修を実施した。
 この時期のあくとうは、通常のLEDを大きな平板に付けたものを並べるという方式(LEDの個数は144個にのぼったという)を採っていた。
 そのため、コントローラの他に東西切り替え器(信号を東西に分ける)・分配器(信号を各板に分ける)などの周辺機器も存在した。</p>
-<div class="figure" id="id13">
+<div class="figure" id="id14">
 <img alt="24主投当時のあくとうコントローラ" src="_images/akutou_24.jpg" />
 <p class="caption"><span class="caption-text">24主投当時のあくとうコントローラ</span></p>
 </div>
@@ -297,7 +319,7 @@ LEDの電源自体を高速でオンオフする手法が用いられた。</p>
 投影機の目標が<strong>操作の自動化</strong>であったこと、東西切り替え器などの周辺回路をコントローラ自体にまとめようとしたことがその理由である。</p>
 <p>自動モードか手動モードかを数字で区別できる<strong>7セグメントLED</strong>や、東西切り替えをコントローラ内で行う<strong>ロータリスイッチ</strong>が新たに追加された。
 マイコンは製作者が慣れていたためPICを使用した。</p>
-<div class="figure" id="id14">
+<div class="figure" id="id15">
 <img alt="26主投当時のあくとうコントローラ" src="_images/akutou_27.jpg" />
 <p class="caption"><span class="caption-text">26主投当時のあくとうコントローラ</span></p>
 </div>
@@ -330,11 +352,10 @@ LEDの電源自体を高速でオンオフする手法が用いられた。</p>
 </div>
 <div class="section" id="id8">
 <h3>現在のあくとうコントローラ<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>現在、最新のあくとうコントローラは<strong>27日電が2016年に製作したもの</strong>である。
-27あくとうのものは配線などの破損がひどく、放棄して作り直した方がコストがかからないと判断した。</p>
+<p>現在、最新のあくとうコントローラは27日電が2016年に製作し、28日電が変更を加えたものである。</p>
 <p>問題の多い全自動モードを廃止し、専用の<strong>つまみを回すことで時間を進める</strong>半自動モードを実装した。
 時間の進み方を担当者が調節することでタイミングを合わせやすく、しかも4色を別々に操作するよりはるかに手間が少ない。</p>
-<div class="figure" id="id15">
+<div class="figure" id="id16">
 <img alt="28あくとうコントローラ外観" src="_images/akutou_28.jpg" />
 <p class="caption"><span class="caption-text">28あくとうコントローラ外観</span></p>
 </div>
@@ -344,32 +365,42 @@ Nano</strong>を使用し、<strong>ケースはタッパ</strong>として修�
 <div class="section" id="id9">
 <h4>回路<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>回路図を掲載する。</p>
-<div class="figure" id="id16">
-<img alt="28あくとうコントローラ回路図" src="_images/akutou_28_circuit.png" />
-<p class="caption"><span class="caption-text">28あくとうコントローラ回路図</span></p>
+<div class="figure" id="id17">
+<img alt="29あくとうコントローラ回路図" src="_images/akutou_29_circuit.png" />
+<p class="caption"><span class="caption-text">29あくとうコントローラ回路図</span></p>
 </div>
-<p>基本の構成はこれまで同様、ボリュームの抵抗値をマイコンが読み、出力端子からPWMを発生させるというものだ。
-今回は半自動モード用のボリュームが増え、合計5つとなっている。</p>
-<p>出力端子は今回8つを使用し、<strong>東西切り替えをソフトウェアで実現する</strong>こととした。
-使用する側の4本からはPWM信号が送られ、残り4本は電位が0Vに落ちる仕様だ。
+<p>基本の構成はこれまで同様、ボリュームの抵抗値をマイコンが読み、出力端子からPWMを発生させるというものだ。</p>
+<p>出力端子は10個使用し、<strong>東西切り替えをソフトウェアで実現する</strong>こととした。
+使用する側の5本からはPWM信号が送られ、残り5本は電位が0Vに落ちる仕様だ。
 回路図左上のCN1/CN2が投影機に接続するコネクタ、左下のLED群はデバッグ用LED(実際は取り外し可能)。</p>
+<p>本体と違い、<strong>電源電圧が5Vなので注意する</strong>こと。
+間違えて12VをつなげるとArduinoが壊れてしまうので<strong>絶対にやってはいけない</strong>。</p>
 </div>
 <div class="section" id="id10">
 <h4>プログラム<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h4>
-<p><a class="reference external" href="https://github.com/macv35/nichiden27/blob/master/akutou/AkutouController28/AkutouController28.ino">AkutouController28.ino</a>をArduino
+<p><a class="reference external" href="https://github.com/Triangulum-M33/nichiden28/blob/master/akutou/AkutouController29/AkutouController29.ino">AkutouController29.ino</a>をArduino
 IDEで書き込んでいる。
+なお、このコードは27日電の作成した<a class="reference external" href="https://github.com/macv35/nichiden27/blob/master/akutou/AkutouController28/AkutouController28.ino">AkutouController28.ino</a>を加筆修正したものである。
 全ては解説しないので、必要に応じコードを読んで理解していただきたい。
 なお、言語はC++である。</p>
 <p>Arduino NanoにはPWM用の端子が6本ある。
-しかし、東西切り替えスイッチを物理的に作ると配線が面倒なので、<strong>8本の端子からPWMが出せる</strong>ようにした。</p>
+しかし、東西切り替えスイッチを物理的に作ると配線が面倒なので、<strong>10本の端子からPWMが出せる</strong>ようにした。</p>
 <p>当然標準のライブラリでは対応できないので、マイコンの機能に頼らずにPWMを発生させねばならない。
 幸い先人が作成したライブラリがいくつかあり、今回は<a class="reference external" href="https://github.com/bhagman/SoftPWM">bhagman/SoftPWM</a>を使用した。
 <code class="docutils literal notranslate"><span class="pre">SoftPWMSet(ピン番号,</span> <span class="pre">0~255までの整数)</span></code>という関数で、デジタル出力ピンからPWM信号を出力できる。</p>
+<p>28のあくとうは4色だったので出力ピンが8本であったが、29のあくとうで5色になったので、出力ピンが10本になった。
+そのため、シリアル通信のTX用のピン(D1)をPWMの出力用に使うようにしたので、実行中に<strong>パソコンとのシリアル通信ができなく</strong>なっている。
+28あくとうの時はシリアルプリントによるデバッグができるようになっていたが、D1を使ったことでそれができなくなった。
+シリアルプリントをしようとすると挙動がおかしくなる可能性があるので、すべてコメントアウトしてある。</p>
+<p>また、29のあくとうで色を5色に増やしたことでRAM不足のエラーが出た。
+これを解決するために発光パターンの配列を<strong>フラッシュメモリに保存</strong>するようにした。
+フラッシュメモリに関しては<a class="reference external" href="http://www.musashinodenpa.com/arduino/ref/index.php?f=0&amp;pos=1830">「Arduino
+日本語リファレンス」の該当ページ</a>を参考にするとよいだろう。</p>
 <p>コード中で<code class="docutils literal notranslate"><span class="pre">HC4511</span></code>というクラスを定義しているが、これは<a class="reference external" href="http://akizukidenshi.com/catalog/g/gI-11905/">74HC4511</a>という7セグLEDドライバIC用に作ったものである。
 <code class="docutils literal notranslate"><span class="pre">write(int</span> <span class="pre">value)</span></code>で数字を表示できるようにしてあり、さらに<code class="docutils literal notranslate"><span class="pre">=</span></code>演算子をオーバーロードして数字を代入するだけで使える仕様としている。</p>
 <p>プログラム自体は、初期化→loop関数でPWM発生→ボタンが押されたら割り込みでモード変更
 という流れになっている。
-発光パターンを変えるだけであれば、<code class="docutils literal notranslate"><span class="pre">uint8_t</span> <span class="pre">LightPattern</span></code>という配列を書き換えるだけで良い。
+発光パターンを変えるだけであれば、<code class="docutils literal notranslate"><span class="pre">PROGMEM</span> <span class="pre">const</span> <span class="pre">unsigned</span> <span class="pre">char</span> <span class="pre">LightPattern[3][5][120]</span></code>という配列の中身を書き換えるだけで良い。
 こうしたカンマ区切りの整数列は、<strong>Excelのオートフィルで数字を自動入力</strong>した後カンマを付け足してコピペすることで容易に生成できる。</p>
 <p><em>主な使用部品</em></p>
 <ul class="simple">
@@ -391,17 +422,27 @@ PWM信号をドライバモジュールに送ることで調光を試みたが�
 原因は確定していないが、あくとうより遥かに<strong>ケーブルが長く(30m程度)PWM信号が減衰してしまう</strong>ためと考えられている。</p>
 <p>27日電の時に、パワーLEDモジュールの調光ICを<strong>電位変化(0.5V~2.5V)で制御する方法</strong>が確立され、本番で調光に成功した。
 電位を変化させるだけならば、<strong>抵抗二つと可変抵抗二つ</strong>で作れてしまう。
-今後、パワーLEDの調光が大変楽になると期待される。</p>
+原理はぎんとうの調光と全く同じであるのでそちらの回路図を参考にすること。
+ただし、ぎんとうと違い、調光用には5Vの別電源を用いている。
+<strong>グラウンドの共通化</strong>を忘れないようにしよう。</p>
 <p><em>主な使用部品(数値は電源が5Vの場合の例)</em></p>
 <ul class="simple">
 <li>抵抗(1.2kΩ／240Ω)</li>
 <li>可変抵抗(1kΩ)</li>
 </ul>
+<p>理論上この抵抗値でよいはずなのが、これだと完全に消灯しなかったため抵抗値を調整してある。
+実物を見て確認すること。</p>
+<p>また、電源の電圧がLEDは12Vであるが、<strong>コントローラーの電圧は5V</strong>であるので注意すること。</p>
 </div>
 <div class="section" id="id12">
 <h2>りゅうとう<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>りゅうとうは毎回機構が大きく変化するため、コントローラの類も自分たちで製作することが多い(25日電がモータ制御用の回路を製作した事例はあるが)。
 質問を受けたら答える程度で構わないだろう。</p>
+</div>
+<div class="section" id="id13">
+<h2>あゆとう<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>あゆとうは1WのパワーLEDを1つ使っているのみである。
+必要な部品や配線の仕方を聞かれたら答える程度で大丈夫だろう。</p>
 </div>
 </div>
 
@@ -415,7 +456,7 @@ PWM信号をドライバモジュールに送ることで調光を試みたが�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="begginers/buy_parts.html" class="btn btn-neutral float-right" title="部品の買い方" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="protect.html" class="btn btn-neutral float-right" title="過電圧保護回路" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="haisen.html" class="btn btn-neutral" title="配線" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

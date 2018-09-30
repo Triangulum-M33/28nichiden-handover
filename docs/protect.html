@@ -11,7 +11,7 @@
   <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,NOARCHIVE">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>【直前特集】本番で気をつけたい三箇条 &mdash; Nichiden 0.9 RC ドキュメント</title>
+  <title>過電圧保護回路 &mdash; Nichiden 0.9 RC ドキュメント</title>
   
 
   
@@ -39,7 +39,8 @@
               href="genindex.html"/>
         <link rel="search" title="検索" href="search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="index.html"/>
-        <link rel="prev" title="引き継ぎ資料の作成方法" href="handover.html"/> 
+        <link rel="next" title="またたき回路" href="twinkle.html"/>
+        <link rel="prev" title="補助投影機との連携" href="hojotou.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -99,10 +100,14 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hojotou.html">補助投影機との連携</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protect.html">過電圧保護回路</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">過電圧保護回路</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">回路</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
@@ -121,7 +126,11 @@
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protect.html">過電圧保護回路</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">過電圧保護回路</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">回路</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
@@ -134,14 +143,7 @@
 <li class="toctree-l1"><a class="reference internal" href="begginers/visualstudio.html">Visual Studioをはじめよう</a></li>
 <li class="toctree-l1"><a class="reference internal" href="begginers/windows.html">無料でWindowsを手に入れる</a></li>
 <li class="toctree-l1"><a class="reference internal" href="handover.html">引き継ぎ資料の作成方法</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">【直前特集】本番で気をつけたい三箇条</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">新機能を諦める勇気</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">人に頼る</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">記録を残す</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">おわりに</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="honban.html">【直前特集】本番で気をつけたい三箇条</a></li>
 </ul>
 
             
@@ -186,13 +188,13 @@
     
       <li><a href="index.html">Nichiden</a> &raquo;</li>
         
-      <li>【直前特集】本番で気をつけたい三箇条</li>
+      <li>過電圧保護回路</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/honban.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/protect.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -206,50 +208,48 @@
             <div itemprop="articleBody">
               
   <div class="section" id="id1">
-<h1>【直前特集】本番で気をつけたい三箇条<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>過電圧保護回路<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
-<li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2017/11/22</li>
-<li>実行に必要な知識・技能: 特になし</li>
-<li>難易度: 1/常識の範囲</li>
-<li>情報の必須度: 5/全員必須</li>
+<li>書いた人: Kenta Suda(nichiden_28)</li>
+<li>更新日時: 2018/09/28</li>
+<li>実行に必要な知識・技能: 電子回路の知識</li>
+<li>難易度: 2/少しやれば可能</li>
+<li>情報の必須度: 3/必要な場合がある</li>
+<li>元資料<ul>
+<li><code class="docutils literal notranslate"><span class="pre">27日電引き継ぎドキュメント</span><span class="pre">またたき回路</span></code> by Kenichi
+Ito(nichiden_27)</li>
+</ul>
+</li>
 </ul>
 <div class="section" id="id2">
 <h2>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>いよいよ本番が近づいてきました。
-本番は準備期間とは違う動き方になるので、気をつけてほしいことをいくつか書きます。</p>
+<p>27代までのまたたき回路についていた回路です。
+27代まではまたたき回路の電源が5Vであったため、誤って12Vを刺しても壊れないように使っていました。
+28代でまたたき回路の電源を12Vに変更したため必要なくなりましたが、あくとうコントローラーなど他の電源が5Vの回路に組み込むなどの利用方法があります。</p>
 </div>
 <div class="section" id="id3">
-<h2>新機能を諦める勇気<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>準備期間中は新しい機能を作り、改善するために努力してきたことでしょう。
-ただ、本番ではこれまで表に出なかった問題が出現し、うまく動かないこともやはり多いです。
-そうした時に、<strong>新機能を捨てる判断</strong>が素早くできることが大切です。</p>
-<p>せっかく作ったものだから、何とか修理して使いたいというのは当たり前の心情でしょう。
-ただ、<strong>お客様や他の投影機の人</strong>にとって何が最善かをぜひ考えて下さい。</p>
-<p>お客様は日電の最新技術を楽しみに来場している訳ではありません(OB/OGや他団体の偵察は別)。
-お客様は「東大天文部の星空」を体験するために来場されます。
-<strong>一回でも多くの公演を正常に行う</strong>ことを最優先に、新要素を撤廃する、予備の方法に変えるなど柔軟に対応するのがよいと思います。</p>
-<p>また、本番夜の時間帯には各主投影機の位置調整が行われます。
-日電が設備の修理やテストを行えば、主投調整がそれだけ遅れてしまいます。
-主投が本来の力を発揮できるよう、日電は安定した電源を提供することを重視してください。</p>
+<h2>回路<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="figure" id="id4">
+<img alt="過電圧保護回路" src="_images/protection.png" />
+<p class="caption"><span class="caption-text">過電圧保護回路</span></p>
 </div>
-<div class="section" id="id4">
-<h2>人に頼る<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>日電は人数が少なく、やることの多い本番では休む暇もなく動き続けるようなことが起きます。
-休養が十分でないと視野が狭くなり、本来のパフォーマンスを発揮できません。</p>
-<p>他の日電メンバーはもちろん、<strong>その辺にいる天文部員に積極的に相談</strong>してください。
-手を動かす人が一人から二人に増えるだけで、作業効率はなんと(約)2倍なのです。</p>
-</div>
-<div class="section" id="id5">
-<h2>記録を残す<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><strong>本番中に起きたことの記録</strong>は、備品の故障部位の特定や次年度以降の改善にとても役立ちます。
-忙しい中きちんとした記録など残せるはずもないですが、断片的なメモや、チャットのログなど後から経過を辿れるような心がけをしてみてはどうでしょうか。</p>
-<p>駒場祭が終わると改善点などを報告するよう要請がありますし、駒場祭回顧号の執筆もあるわけですから、本番で頭に浮かぶちょっとしたことのメモは決して無駄にはなりません。</p>
-</div>
-<div class="section" id="id6">
-<h2>おわりに<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>最後に、本番の成功と皆様の健康を祈念します。</p>
-<p>(平成29年11月22日 27日電)</p>
+<p>閾値の検出に使用しているのは<strong>ツェナーダイオード</strong>である。
+ダイオードには、逆方向に電圧をかけるとある閾値以上の電位差で逆向きに電流が流れ、それ以上電位差が大きくならない効果がある。
+その閾値をツェナー電圧という。</p>
+<p>通常のダイオードでは非常に高いツェナー電圧だが、ツェナーダイオードは不純物を混ぜることでツェナー電圧を下げている。
+またたき回路で使用した<code class="docutils literal notranslate"><span class="pre">HZ5B1</span></code>のツェナー電圧は4.6-4.8V。
+カソード側の200Ωの抵抗により、回路全体としての閾値を<strong>5.1-5.2V</strong>としてある。</p>
+<p><code class="docutils literal notranslate"><span class="pre">VCC_IN</span></code>が約5.1V以下の場合、ツェナーダイオードには電流が流れず、<code class="docutils literal notranslate"><span class="pre">2SA1015GR</span></code>はOFFの状態になる。
+<code class="docutils literal notranslate"><span class="pre">2SA1015GR</span></code>のコレクタはプルダウンされているので0Vに落ち、FET(<code class="docutils literal notranslate"><span class="pre">2SJ471</span></code>)にはゲート・ソース間電圧が発生する。
+従って、FETのソース・ドレイン間に電流が流れ、<code class="docutils literal notranslate"><span class="pre">VCC_OUT</span></code>に入力電圧がそのまま出てくる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">VCC_IN</span></code>が約5.2Ｖを超えると、ツェナーダイオードに逆向きの電流が流れ始める。
+<code class="docutils literal notranslate"><span class="pre">2SA1015GR</span></code>にエミッタ・ベース電流が流れることで、コレクタに電流が流れて<code class="docutils literal notranslate"><span class="pre">2SJ471</span></code>のゲート電圧が<code class="docutils literal notranslate"><span class="pre">VCC_IN</span></code>とほぼ等しくなる。
+結果、ゲート・ソース間電圧はほぼ0Vとなり、FETがOFFの状態になって電源が遮断される。</p>
+<p>この回路の耐圧はツェナーダイオードの許容損失による。
+入力が約15Vを越えると許容損失を超え、ダイオードが焼き切れる可能性がある。
+仮に焼ききれた場合、ツェナーダイオードに電流が流れない状態と同じになり、入力電圧が<code class="docutils literal notranslate"><span class="pre">VCC_OUT</span></code>に出力されてしまう。
+大変危険なので、<strong>高電圧の電源を接続しないよう注意すべきだ</strong>。</p>
+<p>保護回路の閾値は、ツェナーダイオードのツェナー電圧やカソード側の抵抗値を調整することで変更できる。</p>
 </div>
 </div>
 
@@ -263,8 +263,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="twinkle.html" class="btn btn-neutral float-right" title="またたき回路" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="handover.html" class="btn btn-neutral" title="引き継ぎ資料の作成方法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="hojotou.html" class="btn btn-neutral" title="補助投影機との連携" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

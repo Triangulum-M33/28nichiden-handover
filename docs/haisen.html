@@ -40,7 +40,7 @@
         <link rel="search" title="検索" href="search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="index.html"/>
         <link rel="next" title="補助投影機との連携" href="hojotou.html"/>
-        <link rel="prev" title="またたき回路" href="twinkle.html"/> 
+        <link rel="prev" title="日電引き継ぎドキュメント" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -100,14 +100,38 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="syutou.html">主投影機との連携</a></li>
-<li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">配線</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">配線を行うタイミング</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">配線計画</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">電力計算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">電力配分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">配線図</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">コードの管理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">在庫調査</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">コードの買い増し</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">ドーム外配線</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">卒検・リハ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">タイムスケジュール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">トレ体</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">一体</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">危険箇所</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">本番</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">ドーム内配線</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hojotou.html">補助投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protect.html">過電圧保護回路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -125,6 +149,7 @@
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twinkle.html">またたき回路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protect.html">過電圧保護回路</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">配線</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">配線を行うタイミング</a></li>
@@ -232,7 +257,8 @@
 <h1>配線<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2017/03/10</li>
+<li>更新: Kenta Suda(nichiden_28)</li>
+<li>更新日時: 2018/09/25</li>
 <li>実行に必要な知識・技能: 特になし</li>
 <li>タスクの重さ: 2/数日かかる</li>
 <li>タスクの必須度: 5/しないとプラネ終了</li>
@@ -257,6 +283,9 @@
 ただし、リハ以降の練習ができる唯一の機会でもあり、大した負担でもないので全て配線してしまってもいいだろう。</p>
 <p>リハでは、補助投の設置状態などがほぼ確定している。
 補助投の仕様変更などを把握し、本番同様の状態を構築できるのが望ましい。</p>
+<p>また、卒検やリハは天気などにより短時間で必要最低限の調整のみを行うことになる可能性がある。
+実際、28代の卒検では昼前から雨の予報が出ていたためドームの確認と最低限の主投調整のみを行った。
+そのような場合、本番の配線の確認はできなくなってしまうが、電気が必要な場所になるべくはやく電源を供給できるように臨機応変に対応しよう。</p>
 <p>前日準備はとにかく時間との戦いになる。
 配線の遅れが投影機調整の遅れ、公演開始の遅れと連鎖してしまうこともある。
 コードをつなぐだけなので、手の空いた補助投の人に協力してもらっても構わない。</p>
@@ -272,7 +301,7 @@
 <p>各投影機の消費電力は、白熱球やハロゲンランプからLEDへの移行によって減少傾向にある。
 ただ、あおとうやソフトなど大電力を要求する投影機があるため、急激に上下することはない。
 毎年3000W前後であり、大学側への申請は更に余裕をみて<strong>3500W</strong>としてある。</p>
-<p>参考までに、27で計算した電力を掲載する。数値は概略である。
+<p>参考までに、27で計算した電力(28で修正)を掲載する。数値は概略である。
 投影機仕様に大幅な変更があれば、必要に応じて再計算して欲しい。</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -299,14 +328,14 @@
 </tr>
 <tr class="row-odd"><td>いっとう</td>
 <td>LED</td>
-<td>20</td>
-<td>2</td>
+<td>24</td>
 <td>5</td>
+<td>12</td>
 </tr>
 <tr class="row-even"><td>星座絵</td>
 <td>パワーLED1W</td>
-<td>28</td>
-<td>30</td>
+<td>32</td>
+<td>32</td>
 <td>12</td>
 </tr>
 <tr class="row-odd"><td>ぎんとう</td>
@@ -374,6 +403,8 @@
 </div>
 <div class="section" id="id6">
 <h3>電力配分<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>以下に書く内容は28代までの内容なので第二体育館での配線の話である。
+29代以降実施場所が変わるので、あくまで参考として読んでもらいたい。</p>
 <p>第二体育館の電源系統は一つではなく、4つに分かれている。
 一つの系統に負担が集中しすぎると、落ちてしまうというわけだ。</p>
 <div class="figure" id="id19">
@@ -393,18 +424,35 @@
 </ul>
 <p>ソフト関連は、PCのノイズが影響しないようアンプとそれ以外を分ける慣例となっている。
 また、主投と補助投は別電源にするなどリスクを抑える工夫がある。</p>
+<p>ただし、28代においてA系統を取っているコンセントから安定して電力が供給されていないことが確認された。(そのため前日準備でドームを膨らませていた際にダクトが止まるという危険な状況が発生した。)
+前日に急遽わかったことだったので詳細は忘れてしまったが、他の系統に分散させて三系統で使用していた。</p>
+<p>なお、会場が変わるため新しい体育館の各コンセントの電気容量を確認しておくとよいだろう。
+その際、かごしいのアースを取れる場所も調べておくとよい。</p>
 </div>
 <div class="section" id="id7">
 <h3>配線図<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>電力配分が決まったら、配線図を作成する。
 配線図は毎年作成されているものではなく、実際数年で大きくは変わらないので流用してもいい。
 ただし、配線の様子を頭に入れるには、実際に図を書いてみるのが有効だろう。</p>
-<p>27で更新した配線図を掲載しておく。
+<p>27で更新した配線図を掲載しておく。 28でも同じ配線図を使用した。
 配線図はドーム内で作業中に繰り返し参照することになるので、各自の端末にすぐ表示できるようにしておくと良い。</p>
 <div class="figure" id="id20">
 <img alt="27配線図" src="_images/haisen-27.jpg" />
 <p class="caption"><span class="caption-text">27配線図</span></p>
 </div>
+<p>以下、28代で配線を担当した芝田のコメントを載せる。</p>
+<blockquote>
+<div><ul class="simple">
+<li>配線図の「照」とは「青くないあおとう」です。</li>
+<li>必要なものから順に配線してください。</li>
+<li>28では29のしるとうが優秀で、方位投の配線をする必要がありませんでした。
+来年も様子を見て必要であれば配線をお願いします。</li>
+<li>27の配線図ではしる・あおの位置が簡略化されています。
+実際にはメインドア・スタッフドア・長机を避けてだいたい45°ずつ配置されます。
+ドームドアが南側、スタッフドアが北側、PCなどの長机がスタッフドアの両側に設置されます。
+リハの際に確認してください。</li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="id8">
@@ -416,9 +464,10 @@
 <p>部室の機材などがある側に、延長コードが入った大きなケースがある。
 大量の金属が入っているのでかなり重いので運ぶときは注意。
 27まではダンボールに入っていたが、中身の重さで破れてしまうのでプラスチックのケースに変更した。</p>
-<p>山ほどコードがあるように見えるが、プラネがフル稼働するとギリギリの数しかないので必ず全てあるか確認すること。プラネ作業中は他の投影機が持ち出していたりすることも多々ある。</p>
+<p>山ほどコードがあるように見えるが、プラネがフル稼働するとギリギリの数しかないので必ず全てあるか確認すること。</p>
 <p>コードには、番号を書いたテープが付いている(番号がないものは予備である)。
-適切な長さや口数のものが使えるよう、通し番号で管理されているのだ。27で長さや口数の調査をしたので、結果を掲載する。</p>
+適切な長さや口数のものが使えるよう、通し番号で管理されているのだ。
+27で長さや口数の調査をしたので、結果を掲載する。</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -493,14 +542,22 @@
 </tbody>
 </table>
 <p>毎年長さを測る必要はなく、直近で調査がなされているなら全部の番号があるかだけ調べれば良さそうだ。</p>
+<p>28ではこれらがすべてそろっていることを確認した。
+しかし、<strong>31番のタップの接触が絶望的に悪い</strong>ことが本番で発覚した。
+そのため、本番中にあくとうが点滅するなどの不具合が発生した。
+これは<strong>必ず買い替えるべき</strong>である。
+スイッチが光るタイプはドームを暗くした時に邪魔なので、光らないものにするといいだろう。</p>
 <p>これとは別に、コンセントが四口あるコードリールが部室に5つある。</p>
+<p>また、古い延長コードは予備として別のかごで保管してある。
+(ただし、<strong>28の駒場祭本番で混ざってしまっている</strong>。)
+普段の作業で延長コードを使う場合はこの予備から使ってもらうようにして、本番用のコードは紛失しないようにしっかりとしまっておこう。</p>
 </div>
 <div class="section" id="id10">
 <h3>コードの買い増し<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>延長コードは既製品で、簡単に切れたりはしないので買い替えのスパンは長い。
 また、現状の量で本番に対応できているのでこれ以上増やす必要性はあまりない。
 古かったり汚れが気になるものを適宜買い換える程度で大丈夫だろう。</p>
-<p>パソコン用の電源タップは壊れると替えが効かず、またスイッチが光るタイプはドームを暗くした時に邪魔なので、光らないものを買ってもいいかもしれない。</p>
+<p>パソコン用の電源タップは予備も何個か買ってもいいかもしれない。</p>
 </div>
 </div>
 <div class="section" id="id11">
@@ -512,13 +569,15 @@
 <h4>タイムスケジュール<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>ドームを膨らませる前に<strong>ダクトの配線</strong>だけは完成していなければならないので、機長会議で予定時刻を確認して計画を立てよう。
 早朝から開始となるので、前日の夜間に最低限二人は参加しておくのが望ましい。
-なお、日電は基本的に配線優先のため<strong>ドーム作業が全て免除される。</strong></p>
+なお、日電はドームの展開(40人必要)などドーム作業の人数がどうしても足りない時以外は<strong>配線を優先</strong>しよう。</p>
 </div>
 <div class="section" id="id14">
 <h4>トレ体<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>当日、電源は<strong>トレーニング体育館(トレ体)と第一体育館(一体)</strong>から取っていいことになっている。
 トレ体が5:00に開くので、まずはトレ体からドームの場所までコードを引っ張ろう。
 入り口から入り、左の廊下に曲がってすぐの場所にコンセントがある。</p>
+<p>ただし、これは28までの話であり、29以降は卒検・リハの会場が変わり、電源をとる場所も変わるだろう。
+必ず<strong>朝早くからとれる電源を確保</strong>しておこう。</p>
 <p>ここで注意だが、人が通る場所では
 <strong>引っかからないようコードを固定しなければならない。</strong>
 養生テープを用意し、一定間隔に貼っておこう。これは卒検やリハに限らず、本番でも必要なことだ(しかし、地面が濡れていて固定が難しいこともあるので臨機応変に)。</p>
@@ -547,7 +606,9 @@
 <p>屋内でコードを引っ張るだけなので、卒検やリハよりは楽なはずだ。
 かなり床が冷える中二体中を歩き回るので、スリッパの用意があると幸せになれる。</p>
 <p>二体のコンセントも、グラグラしているものや壊れているものがある。コンセント周辺は抜けないように念入りに固定し、できれば注意書きもあるとなおよい。</p>
-<p>コードの固定は、広大な二体のあらゆる場所で行うのは無理があるためできる範囲で。ただし、C系統(女子更衣室前)から<strong>入り口を横切る部分</strong>はお客様が大勢通るので、コードが浮かないようにしておこう。</p>
+<p>コードはなるべく段ボールパネルの裏側などのお客さんの通らない場所を通し、お客さんの通る場所を通す場合は特に念入りにテープで固定しよう。
+28代の本番、公演と公演の間におそらくお客さんの足に引っかかってコードの根元が抜けたことがあり、日周緯度変が動かなくなり、主投が消えたことがあった。
+公演中でなかったため大惨事にはならなかったが、しっかりと固定をしておこう。</p>
 </div>
 </div>
 <div class="section" id="id18">
@@ -577,7 +638,7 @@
         <a href="hojotou.html" class="btn btn-neutral float-right" title="補助投影機との連携" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="twinkle.html" class="btn btn-neutral" title="またたき回路" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="日電引き継ぎドキュメント" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

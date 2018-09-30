@@ -40,7 +40,7 @@
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
         <link rel="next" title="無線制御(Acrabの実装解説)" href="acrab-code.html"/>
-        <link rel="prev" title="備品管理" href="../bihin.html"/> 
+        <link rel="prev" title="無線制御(PISCIUM)" href="piscium.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -100,54 +100,11 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../syutou.html">主投影機との連携</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(Acrab)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">使い方</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">下準備</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">起動と接続</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">公演用画面</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">プログラム</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">ファイル構成</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">技術要素</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#htmlcss">HTMLとCSS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#jquery">jQuery</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#json">JSON</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">指示書の検討</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id10">指示書をどう表現するか</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">エクセルからJSONデータへ</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">ソースコード解説</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">今後の展望</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id14">既知の問題</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id15">同時多数点灯対策でごちゃごちゃしている</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">星座のグループが正しく点灯・消灯しない</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">画面レイアウトの改善</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id18">フルスクリーン機能について</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">追加機能案</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id20">設定画面の改善・機能追加</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id21">デスクトップアプリ化</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="acrab-code.html">無線制御(Acrabの実装解説)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graffias.html">無線制御(GRAFFIAS)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hojotou.html">補助投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protect.html">過電圧保護回路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -205,6 +162,7 @@
 <li class="toctree-l1"><a class="reference internal" href="acrab-code.html">無線制御(Acrabの実装解説)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graffias.html">無線制御(GRAFFIAS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protect.html">過電圧保護回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../haisen-kagoshii.html">配線(かごしい内)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bihin.html">備品管理</a></li>
@@ -546,7 +504,7 @@ Web技術が大好きor勉強してみたいのであれば、やってみては
         <a href="acrab-code.html" class="btn btn-neutral float-right" title="無線制御(Acrabの実装解説)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../bihin.html" class="btn btn-neutral" title="備品管理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="piscium.html" class="btn btn-neutral" title="無線制御(PISCIUM)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

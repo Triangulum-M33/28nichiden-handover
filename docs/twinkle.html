@@ -39,8 +39,8 @@
               href="genindex.html"/>
         <link rel="search" title="検索" href="search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="index.html"/>
-        <link rel="next" title="配線" href="haisen.html"/>
-        <link rel="prev" title="無線制御(PISCIUM)" href="wireless/piscium.html"/> 
+        <link rel="next" title="東京大学地文研究会天文部 日電引き継ぎ" href="main.html"/>
+        <link rel="prev" title="過電圧保護回路" href="protect.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -100,14 +100,44 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="syutou.html">主投影機との連携</a></li>
-<li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/acrab-code.html">無線制御(Acrabの実装解説)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wireless/graffias.html">無線制御(GRAFFIAS)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hojotou.html">補助投影機との連携</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protect.html">過電圧保護回路</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">またたき回路</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">原理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">自然のゆらぎ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">間欠カオス法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">回路</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">スイッチ類</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">またたき制御部</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">またたき出力部</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">電源部</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">プログラム</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#twinkle-h">Twinkle.h</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#twinkle-cpp">Twinkle.cpp</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#port-shift">port_shift()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#refresh">refresh()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chaos-gen-y">chaos_gen(y)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generate">generate()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#twinkle-ino">Twinkle.ino</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#isr-int0-vect">ISR(INT0_vect)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#isr-timer0-compa-vect">ISR(TIMER0_COMPA_vect)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#main">main()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">書き込むには</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -135,7 +165,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id7">スイッチ類</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id8">またたき制御部</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id9">またたき出力部</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">過電圧保護回路</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">電源部</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id11">プログラム</a><ul>
@@ -158,6 +188,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="protect.html">過電圧保護回路</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen.html">配線</a></li>
 <li class="toctree-l1"><a class="reference internal" href="haisen-kagoshii.html">配線(かごしい内)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bihin.html">備品管理</a></li>
@@ -238,7 +269,8 @@
 <h1>またたき回路<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2017/03/25</li>
+<li>更新: Kenta Suda(nichiden_28)</li>
+<li>更新日時: 2017/09/28</li>
 <li>実行に必要な知識・技能: 電子回路、AVRマイコン</li>
 <li>タスクの重さ: 3/数週間</li>
 <li>タスクの必須度: 2/たまにやるべき</li>
@@ -252,7 +284,7 @@
 <h2>概要<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>いっとうはただ明るいだけでなく、またたいているように見える効果が付いています。
 そのための「またたき回路」の開発は日電に委託されており、遅くとも20主投の頃から存在していました。
-現行の回路は23が作ったもので、プログラムは27で改造したものです。</p>
+現行のプログラム、回路は23が作ったもので、プログラムは27で改造、回路は28で改造して作り直したものです。</p>
 </div>
 <div class="section" id="id3">
 <h2>原理<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -295,16 +327,17 @@
 <h2>回路<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>北天用と南天用の二つが現存する。
 回路は全く同じで、プログラムだけが違う。</p>
-<p>電源電圧はマイコン、投影機共に5V。
-回路には<strong>過電圧保護回路</strong>があり、約5.2Vを超える電圧を印加すると電流を遮断する。
-これは、いっとう以外の投影機の電源電圧が12Vであり、刺し間違いによる故障を避けるためである。
-耐圧は15V程度の設計であるため、24Vなどの高電圧をかけると保護回路が破損する危険がある。</p>
+<p><strong>電源電圧は12V</strong>である。
+いっとうのユニットやマイコンの電源は5Vであるが、他の主投の電源が12Vであるためそれに合わせて12Vになっている。
+それを3端子レギュレータで5Vに降圧して利用している。</p>
+<p>もともと27までのまたたき回路は電源電圧が5Vで、12Vを刺し間違えても壊れないように過電圧保護回路が入っていた。
+しかし、他の主投と電圧を統一するために28で回路を変更した。</p>
 <div class="figure" id="id13">
-<img alt="またたき回路の回路図" src="_images/twinkle-circuit.png" />
+<img alt="またたき回路の回路図" src="_images/twinkle-circuit28.png" />
 <p class="caption"><span class="caption-text">またたき回路の回路図</span></p>
 </div>
 <p>回路図を掲載する。
-<strong>電源部</strong>(過電圧保護部)、<strong>またたき制御部</strong>(マイコン)、<strong>またたき出力部</strong>(トランジスタアレイ、DCジャック)が主だった構成である。</p>
+<strong>電源部</strong>(変圧部)、<strong>またたき制御部</strong>(マイコン)、<strong>またたき出力部</strong>(トランジスタアレイ、DCジャック)が主だった構成である。</p>
 <div class="section" id="id7">
 <h3>スイッチ類<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="figure" id="id14">
@@ -334,30 +367,12 @@ OFFにすると消灯するわけではなく、またたきの効果のない�
 各出力ピンが<code class="docutils literal notranslate"><span class="pre">HIGH</span></code>になると、対応したDCジャックのGNDが導通して電流が流れる仕組みである。</p>
 </div>
 <div class="section" id="id10">
-<h3>過電圧保護回路<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>23製作時に、こうとうユニットの電源電圧が12Vであったことから急遽設置された。
-電源を12Vに統一して三端子レギュレータで5Vにするアイデアもあり、作り変えの際には考慮されたい。</p>
-<div class="figure" id="id15">
-<img alt="過電圧保護回路" src="_images/twinkle-protection.png" />
-<p class="caption"><span class="caption-text">過電圧保護回路</span></p>
-</div>
-<p>閾値の検出に使用しているのは<strong>ツェナーダイオード</strong>である。
-ダイオードには、逆方向に電圧をかけるとある閾値以上の電位差で逆向きに電流が流れ、それ以上電位差が大きくならない効果がある。
-その閾値をツェナー電圧という。</p>
-<p>通常のダイオードでは非常に高いツェナー電圧だが、ツェナーダイオードは不純物を混ぜることでツェナー電圧を下げている。
-またたき回路で使用した<code class="docutils literal notranslate"><span class="pre">HZ5B1</span></code>のツェナー電圧は4.6-4.8V。
-カソード側の200Ωの抵抗により、回路全体としての閾値を<strong>5.1-5.2V</strong>としてある。</p>
-<p><code class="docutils literal notranslate"><span class="pre">VCC_IN</span></code>が約5.1V以下の場合、ツェナーダイオードには電流が流れず、<code class="docutils literal notranslate"><span class="pre">2SA1015GR</span></code>はOFFの状態になる。
-<code class="docutils literal notranslate"><span class="pre">2SA1015GR</span></code>のコレクタはプルダウンされているので0Vに落ち、FET(<code class="docutils literal notranslate"><span class="pre">2SJ471</span></code>)にはゲート・ソース間電圧が発生する。
-従って、FETのソース・ドレイン間に電流が流れ、<code class="docutils literal notranslate"><span class="pre">VCC_OUT</span></code>に入力電圧がそのまま出てくる。</p>
-<p><code class="docutils literal notranslate"><span class="pre">VCC_IN</span></code>が約5.2Ｖを超えると、ツェナーダイオードに逆向きの電流が流れ始める。
-<code class="docutils literal notranslate"><span class="pre">2SA1015GR</span></code>にエミッタ・ベース電流が流れることで、コレクタに電流が流れて<code class="docutils literal notranslate"><span class="pre">2SJ471</span></code>のゲート電圧が<code class="docutils literal notranslate"><span class="pre">VCC_IN</span></code>とほぼ等しくなる。
-結果、ゲート・ソース間電圧はほぼ0Vとなり、FETがOFFの状態になって電源が遮断される。</p>
-<p>この回路の耐圧はツェナーダイオードの許容損失による。
-入力が約15Vを越えると許容損失を超え、ダイオードが焼き切れる可能性がある。
-仮に焼ききれた場合、ツェナーダイオードに電流が流れない状態と同じになり、入力電圧が<code class="docutils literal notranslate"><span class="pre">VCC_OUT</span></code>に出力されてしまう。
-大変危険なので、<strong>高電圧の電源を接続しないよう注意すべきだ</strong>。</p>
-<p>保護回路の閾値は、ツェナーダイオードのツェナー電圧やカソード側の抵抗値を調整することで変更できる。</p>
+<h3>電源部<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>三端子レギュレータを用いて12Vの電源電圧を5Vに降圧している。
+三端子レギュレータの使い方は<a class="reference external" href="http://radio1ban.com/bb_regu/">このサイト</a>を参考にするとよい。</p>
+<p>なお、降圧した7V分は熱として放出される。
+放熱効率を上げるために<a class="reference external" href="http://akizukidenshi.com/catalog/g/gP-00429/">放熱器</a>を取り付けている。
+放熱器と接触する面に<a class="reference external" href="http://akizukidenshi.com/catalog/g/gT-04721/">放熱用シリコングリス</a>を塗ってとりつけよう。</p>
 </div>
 </div>
 <div class="section" id="id11">
@@ -594,10 +609,10 @@ Arduinoの中身はAVRマイコンなので、マイコン(ボード)の定義�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="haisen.html" class="btn btn-neutral float-right" title="配線" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="main.html" class="btn btn-neutral float-right" title="東京大学地文研究会天文部 日電引き継ぎ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="wireless/piscium.html" class="btn btn-neutral" title="無線制御(PISCIUM)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="protect.html" class="btn btn-neutral" title="過電圧保護回路" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
