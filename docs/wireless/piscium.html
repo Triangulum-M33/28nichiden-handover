@@ -115,7 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless.html">無線制御</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(PISCIUM)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
@@ -218,104 +218,113 @@
   <div class="section" id="piscium">
 <h1>無線制御(PISCIUM)<a class="headerlink" href="#piscium" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
-<li>書いた人：眞木俊弥</li>
-<li>更新日時：2017/3/22</li>
-<li>実行に必要な知識・技能：電子工作の経験，電子回路について一通りの知識，マイコン（Arduino,
-PIC)，インターネットの仕組み</li>
+<li>書いた人：眞木俊弥(nichiden_27)</li>
+<li>更新：Kenta Suda(nichiden_28)</li>
+<li>更新日時：2018/10/4</li>
+<li>実行に必要な知識・技能：電子工作の経験、電子回路について一通りの知識、マイコン（Arduino,
+PIC)、インターネットの仕組み</li>
 <li>タスクの重さ: 4/一月はかかる</li>
-<li>タスクの必須度：5/しないとプラネ終了/とりあえず前の年のものを使えるようにしておくこと，壊れてたら…頑張ってくれ…</li>
+<li>タスクの必須度：5/しないとプラネ終了</li>
 </ul>
 <div class="section" id="id1">
 <h2>概要<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>※とりあえず使えるようにするだけだったら，<strong>概要</strong>と<strong>使い方</strong>の部分を理解すれば大丈夫です。ブラックボックスになるように設計しました。ただ，故障した…とかいうことになったら，頑張って<strong>技術仕様</strong>のところを理解するか，いっそのこと全部作り直してください。</p>
-<p>プラネタリウムの公演と，外で星をぼんやりみている時の差とは何でしょうか？
-それは，ずばり，分かりやすい解説やワクワクするストーリーがあるないかです！
-そして，その演出をサポートしてくれるものは何と言っても様々な神話や逸話に彩られた星座でしょう。
-ただ，一般の人には満天の星空の中から星座を見つけ出すことは至難の技なので，プラネタリウムでは，「星座絵」を投影します。
-そのため，ナレーションに合わせて星座絵を点灯・消灯する必要があります。
-ただ，投影機からたくさん線を引き出してしまうと，日周・緯度の変化の際の回転で絡まってしまうため，我々のプラネタリウムでは，無線制御を行っています。</p>
-<p>27代では，新たに無線制御装置を作り直しました。
-その名も，<code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>(Planetarium Integrated Stars and Constellation
+<p>※とりあえず使えるようにするだけだったら、<strong>概要</strong>と<strong>使い方</strong>の部分を理解すれば大丈夫です。ブラックボックスになるように設計しました。ただ、故障した…とかいうことになったら、頑張って<strong>技術仕様</strong>のところを理解するか、いっそのこと全部作り直してください。</p>
+<p>プラネタリウムの公演と、外で星をぼんやりみている時の差とは何でしょうか？
+それは、ずばり、分かりやすい解説やワクワクするストーリーがあるないかです！
+そして、その演出をサポートしてくれるものは何と言っても様々な神話や逸話に彩られた星座でしょう。
+ただ、一般の人には満天の星空の中から星座を見つけ出すことは至難の技なので、プラネタリウムでは、「星座絵」を投影します。
+そのため、ナレーションに合わせて星座絵を点灯・消灯する必要があります。
+ただ、投影機からたくさん線を引き出してしまうと、日周・緯度の変化の際の回転で絡まってしまうため、我々のプラネタリウムでは、無線制御を行っています。</p>
+<p>27代では、新たに無線制御装置を作り直しました。
+その名も、<code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>(Planetarium Integrated Stars and Constellation
 Images Utility Module)です！！
-（ちなみに，この名前は27日電長伊東氏の発案です。なお，私は長らく<code class="docutils literal notranslate"><span class="pre">PISCUIM</span></code>だと勘違いしていて，ファイル名とかコメントとかを修正する無駄な手間が生じた記憶があります。）
-<code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>を使うことで，みなさんよくお世話になっているWi-Fiネットワークを介して，パソコン，スマホ，タブレットなどWi-Fiの接続可能な端末から星座絵などのかごしい内部の投影機を無線で制御できます。</p>
+<code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>を使うことで、みなさんよくお世話になっているWi-Fiネットワークを介して、パソコン、スマホ、タブレットなどWi-Fiの接続可能な端末から星座絵などのかごしい内部の投影機を無線で制御できます。</p>
+<p>28代で電源回りを設計し直し、細かいところを修正して作り直しました。</p>
 </div>
 <div class="section" id="id2">
 <h2>使い方<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>はそのほかのボックス類と同じように，（百均）タッパーを加工したケースに収められています。
+<p><code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>はそのほかのボックス類と同じように、（百均）タッパーを加工したケースに収められています。
 かごしいの側面に固定して使うことを想定しています。
-また，事前に部室にあるはずの無線Wi-Fiルーターの電源を入れておきましょう。</p>
+また、事前に部室にあるはずの無線Wi-Fiルーターの電源を入れておきましょう。</p>
 <p><img alt="image0" src="../_images/router_photo.jpg" /></p>
-<p>使用するには，電源を接続（27代ではパソコン用のATX電源とUSB充電器を使用）し，出力用の側面のDCジャックに星座絵などの投影機を接続してください。
-使用している電源は，<a class="reference external" href="http://www.kuroutoshikou.com/product/power/atx/krpw-l5-400w_80_/">玄人志向の400Wの電源</a>です。</p>
-<p><img alt="image1" src="../_images/atx-dengen.jpg" /></p>
-<p>ATX電源は，20ピンATXと，6ピンPCI Express用のコネクタを使用しています。</p>
-<p><img alt="image2" src="../_images/電源コネクタ説明.png" /></p>
-<p><code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>を上から見たときに，DCジャックが見えていない方を下側面としたときに，</p>
+<p>使用するには、電源を接続し、出力用の側面のDCジャックに星座絵などの投影機を接続してください。
+使用している電源は、<a class="reference external" href="http://akizukidenshi.com/catalog/g/gM-09089/">12V150WのACアダプター</a>です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>を上から見たときに、DCジャックが見えていない方を下側面としたときに、</p>
 <ul class="simple">
-<li>上側面と右側面が星座絵(12V)。全部で16ポート。ポート1からポート16まで。</li>
-<li>左側面が，上から，こうとう1(12V)，こうとう2(12V)，いっとう(5V)，ぎんとう(5Vまたは12V，内部のピンヘッダで切り替え可能,現在は12Vに設定してある。ピンヘッダは上と真ん中が接続されているときは12V,
-真ん中と下が接続されているときは5Vになる)</li>
+<li>上側面の一番左以外と右側面が星座絵(12V)。全部で16ポート。ポート1からポート16まで。</li>
+<li>左側面が、下から、こうとうONOFFなし(12V、2つ)、こうとうONOFFあり(12V、2つ)、いっとう(12V)、上側面の一番左がぎんとう(12V)</li>
 </ul>
-<p>となっています。 <img alt="image3" src="../_images/PISCIUM端子番号.jpg" /></p>
-<p>左側面だけは，こうとうやいっとうなど，特殊な投影機を接続するためにそのほかのDCジャックとは異なる仕様になっているので注意してください。
-また，こうとうを星座絵の所などに接続すると，電力が大きすぎてよくないので，注意してください。
-あと，いっとうだけは5Vなので，接続場所間違えるといっとうボックスが壊れます。</p>
-<p>無線Wi-Fiルーターに自動的に接続されるので，ブラウザで特定のURLにアクセスすることで制御が可能になります。
-ブラウザでの制御に関しては，伊東氏が開発したWebアプリケーション<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>があるので，<a class="reference external" href="acrab.html">そちらの説明</a>を参照してください。</p>
-<p>なるべくブラックボックスになるように設計したので，何とかなるはずです（だと信じたい）。</p>
+<p>となっています。</p>
+<p>こうとうのポートだけは他と仕様が違うので注意してください。
+また、いっとうとぎんとうは星座絵と仕様が全く同じなので入れ替えることができます。</p>
+<p>無線Wi-Fiルーターに自動的に接続されるので、ブラウザで特定のURLにアクセスすることで制御が可能になります。
+ブラウザでの制御に関しては、Webアプリケーション<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>があるので、<a class="reference external" href="acrab.html">そちらの説明</a>を参照してください。</p>
+<p>また、基本的に給電は上記のように12V150WのACアダプターを電源用のコネクタに刺して行いますが、軽くテストしたいだけなのにかごしいに固定してある電源を利用するのは大変だと思います。
+そのようなときは、ONOFFなしのこうとうのポートのどちらかに12Vの普通のACアダプター(端子がDCプラグのもの)を刺すと<code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>に給電ができます。</p>
+<p>ただし、これはあくまでもテスト用の給電なので、星座絵を何個も同時に点灯させたい場合や、こうとうをつけたい場合など大電力を使う場合(ACアダプターの定格電力を超える場合)は正しい給電方法を行ってください。
+また、<strong>2つ以上の電源から同時に給電しない</strong>ようにしてください。</p>
 <div class="section" id="id3">
 <h3>使用上の注意点<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<ul class="simple">
-<li>電源がついた状態での各投影機の抜き差しは故障の原因になるのでやめてください。</li>
-<li>ATX電源には，大事な自作パソコンを守ってくれる安全装置が付いています。そのため，過電流，過電圧を感知すると自動的に電源が落ちます。PISCIUMの電源設計は甘々なので（すみません…），各投影機のオンオフ時の電圧サージに耐えられず，電源が落ちてしまうことがあります。その場合は，ATX電源の電源を手動で入れ直してください。<ul>
-<li>ATX電源自体にスイッチがついていますが、かごしいに設置後は手が入らないので、かごしいに繋がる延長コードごと抜き差しするといいでしょう。</li>
-<li>Wi-Fiモジュールが再起動した後、設定を送り直すため<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>のページを再読み込みする必要あり(これは欠陥なので改善されるべき)。</li>
-</ul>
+<ul>
+<li><p class="first">電源がついた状態での各投影機の抜き差しは故障の原因になるのでやめてください。</p>
 </li>
-<li>かごしいのグラウンドが弱いため，稼働している間に全体が帯電してしまうようです。
-27代の公演でも，公演中に火花が飛び散り，空中放電して一瞬ブラックアウトしたことがあります。
-<strong>28の皆さんには，かごしいのアース接続を何とかしてほしいです。</strong>
-そうでないと最悪の場合，火花放電により出火します。
-かごしい本体とは導通していることは確認しているので，かごしいか，それと導通しているごきぶりをアースしてください。
-アースするときは，より線ではなく，単芯の太めの導線を使用し，体育館の柱など地面に突き刺さっている大きい金属に接続してください。
-アースしただけで治るのかはよくわかりませんが，アースしてないのはまずいです。</li>
-<li>また，グラウンドが弱く，サージに耐えられないので，こうとうの制御は現時点では不可能（電源が落ちてしまう）です。そのため，こうとうは付けっ放しにしておくのですが，最初に点灯するときに，やはり電源が落ちやすいので，何度かトライすることになります…（誰かなんとかしてー）</li>
-<li>27代の本番では，こうとうが消えてしまって真っ暗になるリスクを回避するために，こうとうの電源は，<code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>を通さず，ATX電源のPCI
-Express
-6ピンコネクタから直接給電するケーブルを作成し，こうとうを常時点灯かつ<code class="docutils literal notranslate"><span class="pre">PISCIUM</span></code>の影響を受けないようにしました。</li>
-<li>いっとうの制御は可能ですが，いっとうボックスの瞬き回路の起動に時間がかかり，点灯までにタイムラグが生じるので，現時点では行える状況にありません。</li>
-<li>また，いっとうボックスの方にノイズが乗り，しばしばいっとうが映らなくなる事案が発生したので，本番は結局5Vの別のACアダプタを用意しました。5Vの電源をATX電源とは別に用意するのは無駄なので，できれば，SATAとかHDDとかのコネクタから5Vを取り出せるようなケーブルを新たに作成してほしいです。</li>
-<li>以上のように，星座絵以外の制御は事実上できないような状況になってしまっています。</li>
+<li><p class="first">ATX電源からACアダプターに変えたため電源が落ちることはなくなりましたが、万が一電源が落ちて再起動した場合、Wi-Fiモジュールも再起動します。
+Wi-Fiモジュールが再起動した後、設定を送り直すため<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>のページを再読み込みする必要あります(これは欠陥なので改善されるべき)。</p>
+</li>
+<li><p class="first">かごしいのグラウンドが弱いため、稼働している間に全体が帯電してしまうようです。
+27代の公演でも、公演中に火花が飛び散り、空中放電して一瞬ブラックアウトしたことがあります。
+<strong>かごしいのアース接続を何とかする必要があります。</strong>
+そうでないと最悪の場合、火花放電により出火します。
+かごしい本体とは導通していることは確認しているので、かごしいか、それと導通しているごきぶりをアースしてください。
+アースするときは、より線ではなく、単芯の太めの導線を使用し、体育館の柱など地面に突き刺さっている大きい金属に接続してください。
+アースしただけで治るのかはよくわかりませんが、アースしてないのはまずいです。</p>
+<p>28代ではその指摘を受けて、赤黒の太い線(より線ではあるが)を使って、片側はごきぶりの下の方にあるボルトに挟み、もう片側をバレーボールの支柱を立てる土台に固定してアースをしました。
+そのおかげか28代では火花が散ることはありませんでした。
+ただし、かごしいを触ると静電気のようなものを感じることは何度もあったので、帯電はしていたようです。
+27代よりも頻繁に(毎公演の前に)調整を行っていたので、アースのおかげではなく、人間を通じて放電していただけなのかもしれないです。</p>
+</li>
+<li><p class="first">また、グラウンドが弱く、サージに耐えられないので、こうとうの制御は27代の時点では不可能（電源が落ちてしまう）でしたが、28代で電源を変えたのと、こうとうboxに突入電流防止用のサーミスタをつけたことで、こうとうの制御が可能になりました。
+しかし、本番直前にPICのこうとうの制御をしているピンが壊れてしまい、本番はこうとうはONOFFなしのポートに接続し、常時つけっぱなしにしていました。
+単純に経年劣化の可能性もありますが、こうとうをONOFFする際のサージにPICが耐えられなかった可能性があります。
+実際、こうとうはあおとうやしるとうの光で見えなくなるので、公演の際にONOFFをいじる手間を考えると常時ONにするという選択肢もあるでしょう。</p>
+</li>
+<li><p class="first">いっとうの制御は可能ですが、いっとうボックスのまたたき回路の起動に時間がかかり、点灯までにタイムラグが生じるので、現時点では行える状況にありません。
+またたき回路のプログラムを変更して、すぐに起動できるようにする、またはまたたき回路に無線の機能をつければいっとうの制御もできるようになるでしょう。</p>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="id4">
 <h2>技術仕様<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>27代で作成したファイルは全て<a class="reference external" href="https://github.com/macv35/nichiden27">Githubレポジトリ</a>においてあります。</p>
+<p>27代、28代で作成したファイルは全て<a class="reference external" href="https://github.com/Triangulum-M33/nichiden28">Githubレポジトリ</a>においてあります。</p>
 <div class="section" id="id5">
 <h3>回路<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>主な部品としては，Wi-Fiの制御を行う<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>というSoC(System on
+<p>主な部品としては、Wi-Fiの制御を行う<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>というSoC(System on
 Chip:
-マイコン，通信制御回路などが一つのチップの中に収まっているもの）の開発ボード，<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>からのシリアル通信を受信して各DCジャックを制御するPICマイコン，DCジャックの電流をスイッチングするFETから構成されています。
-<img alt="回路図" src="../_images/PISCIUM_circuit.png" /></p>
-<p>一見複雑そうに見えますが，DCジャックがたくさんあるだけです。
-ただ，いかに単純な回路の反復とはいえども，これはんだ付けして作るのは地獄でした。
-私はKiCadの配線図のピン番間違えてFETのはんだ付けし直すはめになったのですが，やばかったです。
-みなさんも配線図書き終わったらじっくり見直すようにしましょう。無駄な仕事が増えます。</p>
+マイコン、通信制御回路などが一つのチップの中に収まっているもの）の開発ボード、<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>からのシリアル通信を受信して各DCジャックを制御するPICマイコン、DCジャックの電流をスイッチングするFETから構成されています。
+<img alt="回路図" src="wireless\_media/PISCIUM_circuit28.jpg" /></p>
+<p>こうとう以外のポートには、DCジャックの付け根に2.2Ωの抵抗(定格1W)が入っています。
+これは、27代において、各投影機をONにした際の突入電流によって電源が落ちるということが何度も起きたため、その突入電流を制限するために28代出つけました。
+これで理論上突入電流は最大でも(12/2.2=)5.5Aまでしか流れないです。
+こうとうに関しては特に大電流を流すので、こうとうbox側で別途突入電流対策をしています。</p>
+<p>しかし、実際は28代でATX電源をACアダプターに変えたことで電源が落ちるという問題は解決されていた可能性もあり、この抵抗の意味があるのかはいまいち不明です。
+さらに、28代で実際にあった事例として、星座絵のユニットの部分でショートしていたことがあり、電流を流しすぎてこの抵抗が焼き切れた(見た目上はわからないが電流が流れなくなる)ことがあります。
+これは一度だけでなく何度も起きた事例で、抵抗を交換する手間がかかりました。
+ただし、これは一概に悪いこととは言えず、もし抵抗がなかったらFETやもっと大事な部分が壊れていた可能性もあり、ヒューズのような役割を果たしていたともいえます。
+かごしいに固定したままでも抵抗を交換できるような機構を作るのが一番良いのかもしれません。</p>
 </div>
 <div class="section" id="esp8266">
 <h3>ESP8266の開発ボード周りのソフトウェア<a class="headerlink" href="#esp8266" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>（中華製の安物の）Wi-Fi入りマイコンボードを利用しています。
-この<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>は，<code class="docutils literal notranslate"><span class="pre">Xtensa</span></code>というアーキテクチャを採用していますが，有志により，Arduino
-IDEで開発できるようになっていて，Wi-Fiサーバーなどの高度なプログラムもライブラリとして整備されていて，我々素人にとっては非常に開発のしやすいモジュールです。
-また，今回使用しているボードには，すでに書き込み用の回路も付いているので，USBでパソコンに接続するだけで開発できます。
-ただ，USB-シリアル変換素子はArduino純正のものとは違うので，ドライバをインストールする必要があります。
-USB-シリアル変換素子の型番は，<code class="docutils literal notranslate"><span class="pre">CH340g</span></code>です。Githubとか製造元のサイトからドライバ落としてきてインスコしてください。
-また，ボードの書き込み設定などは，<a class="reference external" href="http://trac.switch-science.com/wiki/esp_dev_arduino_ide">このサイト</a>などを参照してください。
+この<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>は、<code class="docutils literal notranslate"><span class="pre">Xtensa</span></code>というアーキテクチャを採用していますが、有志により、Arduino
+IDEで開発できるようになっていて、Wi-Fiサーバーなどの高度なプログラムもライブラリとして整備されていて、我々素人にとっては非常に開発のしやすいモジュールです。
+また、今回使用しているボードには、すでに書き込み用の回路も付いているので、USBでパソコンに接続するだけで開発できます。
+ただ、USB-シリアル変換素子はArduino純正のものとは違うので、ドライバをインストールする必要があります。
+USB-シリアル変換素子の型番は、<code class="docutils literal notranslate"><span class="pre">CH340g</span></code>です。Githubとか製造元のサイトからドライバ落としてきてインスコしてください。
+また、ボードの書き込み設定などは、<a class="reference external" href="http://trac.switch-science.com/wiki/esp_dev_arduino_ide">このサイト</a>などを参照してください。
 “ESP8266 書き込み”とかでググるとわんさか出てくるはずです。</p>
-<p>27代が開発したプログラムは，<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>上でwebサーバー（のようなもの）を動かし，特定のURIのGETリクエストを受け取ると，シリアル通信でPICマイコンに点灯状況を送信する形になっています。
-IPアドレスは，固定IPで，北天が192.168.11.100，南天が192.168.11.101になっています。</p>
+<p>27代が開発したプログラムは、<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>上でwebサーバー（のようなもの）を動かし、特定のURIのGETリクエストを受け取ると、シリアル通信でPICマイコンに点灯状況を送信する形になっています。
+IPアドレスは、固定IPで、北天が192.168.11.100、南天が192.168.11.101になっています。</p>
 <div class="section" id="id6">
 <span id="id7"></span><h4>使い方<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p><a class="reference external" href="https://github.com/macv35/nichiden27/wiki/Piscium#usage">Wikiへのリンク</a></p>
@@ -340,25 +349,25 @@ Set all port OFF.
 </ol>
 </div></blockquote>
 <p>以上の5種類のコマンドが用意されています。
-通常の公演時は，<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>がこの辺のことはやってくれるはずですが，回路関係のデバッグをする際には，手持ちのスマホとかでこれらのURIにアクセスしながらやると楽です。</p>
-<p><code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>が正しくURIをパーズすると，シリアル通信（UART）でPICマイコンにコマンドが送られます。
-“NS”の2文字を送ったあとに，各DCジャック（ポート）20個分の点灯状況を点灯の時“1”，消灯の時“0”として，20文字分送ったあとに，23文字目に“\n”（改行）をパケットとして送るプロトコルを使用しています。
-名付けてNS（Nichiden Seizae）プロトコル…雑です，はい，すみません。
-まあ，どうせUARTなんだし，こんな雑なプロトコルでも問題は起きていませんのでご安心を。</p>
-<p>また，UARTでPICにパケットが送られるのと同時に，GETリクエストに対して，現在のステータスを表したjsonを返します。</p>
-<p>参考までに，ソースコードのリンクをつけておきます。
+通常の公演時は、<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>がこの辺のことはやってくれるはずですが、回路関係のデバッグをする際には、手持ちのスマホとかでこれらのURIにアクセスしながらやると楽です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>が正しくURIをパーズすると、シリアル通信（UART）でPICマイコンにコマンドが送られます。
+“NS”の2文字を送ったあとに、各DCジャック（ポート）20個分の点灯状況を点灯の時“1”、消灯の時“0”として、20文字分送ったあとに、23文字目に“\n”（改行）をパケットとして送るプロトコルを使用しています。
+名付けてNS（Nichiden Seizae）プロトコル…雑です、はい、すみません。
+まあ、どうせUARTなんだし、こんな雑なプロトコルでも問題は起きていませんのでご安心を。</p>
+<p>また、UARTでPICにパケットが送られるのと同時に、GETリクエストに対して、現在のステータスを表したjsonを返します。</p>
+<p>参考までに、ソースコードのリンクをつけておきます。
 （汚いのであんまり見ないでー。URIパーザーの部分とかは他のクラスに分けるとかするべきだった。）</p>
 <p><a class="reference external" href="https://github.com/macv35/nichiden27/blob/master/PISCIUM/PISCIUMServer/PISCIUMServer.ino">Arduinoのスケッチ</a></p>
 </div>
 </div>
 <div class="section" id="pic">
 <h3>PICマイコンのソフトウェア<a class="headerlink" href="#pic" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>から送られてきたシリアル通信をデコードして各ポートのFETをオンオフするだけの子なので，大したことはしてないです。
-<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>は3.3V駆動なのに対して，PICは5Vで駆動しているので，間にシリアルレベル変換素子は入れてあります。
+<p><code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>から送られてきたシリアル通信をデコードして各ポートのFETをオンオフするだけの子なので、大したことはしてないです。
+<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>は3.3V駆動なのに対して、PICは5Vで駆動しているので、間にシリアルレベル変換素子は入れてあります。
 MPLAB
 Xのプロジェクトファイルが引き継ぎ資料の<code class="docutils literal notranslate"><span class="pre">/pic_decoder/</span></code>ディレクトリに入っています。
-もし万が一，PICが壊れたりした場合は，<code class="docutils literal notranslate"><span class="pre">PICkit3</span></code>を差し込めるピンヘッダを用意しておいたので，PICを交換して書き込み直してください。
-書き込み方は，<a class="reference external" href="http://ww1.microchip.com/downloads/jp/DeviceDoc/52010A_JP.pdf">PICkit3の使い方</a>をみてください。</p>
+もし万が一、PICが壊れたりした場合は、<code class="docutils literal notranslate"><span class="pre">PICkit3</span></code>を差し込めるピンヘッダを用意しておいた(28で作り替えた際に書き込み用のピンヘッダを省略して作りました。必要に応じて追加してください)ので、PICを交換して書き込み直してください。
+書き込み方は、<a class="reference external" href="http://ww1.microchip.com/downloads/jp/DeviceDoc/52010A_JP.pdf">PICkit3の使い方</a>をみてください。</p>
 </div>
 </div>
 </div>

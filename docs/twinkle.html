@@ -136,6 +136,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id12">書き込むには</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">改善点</a></li>
 </ul>
 </li>
 </ul>
@@ -148,7 +149,7 @@
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wireless/acrab.html">無線制御(Acrab)</a></li>
@@ -186,6 +187,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id12">書き込むには</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">改善点</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="protect.html">過電圧保護回路</a></li>
@@ -270,7 +272,7 @@
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
 <li>更新: Kenta Suda(nichiden_28)</li>
-<li>更新日時: 2017/09/28</li>
+<li>更新日時: 2017/10/4</li>
 <li>実行に必要な知識・技能: 電子回路、AVRマイコン</li>
 <li>タスクの重さ: 3/数週間</li>
 <li>タスクの必須度: 2/たまにやるべき</li>
@@ -332,7 +334,8 @@
 それを3端子レギュレータで5Vに降圧して利用している。</p>
 <p>もともと27までのまたたき回路は電源電圧が5Vで、12Vを刺し間違えても壊れないように過電圧保護回路が入っていた。
 しかし、他の主投と電圧を統一するために28で回路を変更した。</p>
-<div class="figure" id="id13">
+<p>ただし、<strong>いっとうのユニット自体の電源電圧自体は5V</strong>なので、またたき回路を通さずにいっとうを光らせたい場合は12Vをつながないように注意しよう。</p>
+<div class="figure" id="id14">
 <img alt="またたき回路の回路図" src="_images/twinkle-circuit28.png" />
 <p class="caption"><span class="caption-text">またたき回路の回路図</span></p>
 </div>
@@ -340,7 +343,7 @@
 <strong>電源部</strong>(変圧部)、<strong>またたき制御部</strong>(マイコン)、<strong>またたき出力部</strong>(トランジスタアレイ、DCジャック)が主だった構成である。</p>
 <div class="section" id="id7">
 <h3>スイッチ類<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<div class="figure" id="id14">
+<div class="figure" id="id15">
 <img alt="またたき回路の外観" src="_images/twinkle-appearance.jpg" />
 <p class="caption"><span class="caption-text">またたき回路の外観</span></p>
 </div>
@@ -596,6 +599,12 @@ Arduinoの中身はAVRマイコンなので、マイコン(ボード)の定義�
 <p>手順の詳細は<a class="reference external" href="http://make.kosakalab.com/make/electronic-work/arduino-ide/attiny-dev/">Arduino IDE に ATtiny45/85/2313
 他の開発環境を組み込む</a>など参照。</p>
 </div>
+</div>
+<div class="section" id="id13">
+<h2>改善点<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>現在のまたたき回路は起動に時間がかかるため、いっとうも無線制御にしようとしても、どうしてもONにしてから点灯するまでにラグが生じてしまう。
+現在の間欠カオス法による1/fゆらぎの再現は現実に近いものなのかもしれないが、再現性を少し犠牲にしてでも、処理が軽く起動の速い新しいまたたき回路を作ることを考えてもいいかもしれない。
+もしくは、またたき回路自体を無線制御できるようにするという手も考えられる。</p>
 </div>
 </div>
 

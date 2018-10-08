@@ -11,7 +11,7 @@
   <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,NOARCHIVE">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>日周緯度変(Ogoseの実装解説)※工事中 &mdash; Nichiden 0.9 RC ドキュメント</title>
+  <title>日周緯度変(Ogoseの実装解説) &mdash; Nichiden 0.9 RC ドキュメント</title>
   
 
   
@@ -115,7 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">日周緯度変(Ogoseの実装解説)※工事中</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">日周緯度変(Ogoseの実装解説)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">ファイル構成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#app-xaml">App.xaml</a><ul>
@@ -137,16 +137,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#id9">コマンド</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id10">コマンドの使い方</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id11">キー操作でコマンドを実行する(※28日電では誤操作防止のため使用せず)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">コマンドで呼ばれる処理</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">シリアル通信</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id13">ポート一覧の取得</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14">ポートへの接続</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">ポート一覧の更新</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16">コマンド送信</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">シリアル通信</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">ポート一覧の取得</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">ポートへの接続</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">ポート一覧の更新</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">コマンド送信</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">公演モード(誤操作防止モード)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">公演モード(誤操作防止モード)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">メモ帳機能</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#nisshuidohencontroller-cs">NisshuidohenController.cs</a></li>
@@ -216,7 +218,7 @@
     
       <li><a href="../index.html">Nichiden</a> &raquo;</li>
         
-      <li>日周緯度変(Ogoseの実装解説)※工事中</li>
+      <li>日周緯度変(Ogoseの実装解説)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -236,10 +238,11 @@
             <div itemprop="articleBody">
               
   <div class="section" id="ogose">
-<h1>日周緯度変(Ogoseの実装解説)※工事中<a class="headerlink" href="#ogose" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>日周緯度変(Ogoseの実装解説)<a class="headerlink" href="#ogose" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
-<li>更新日時: 2017/03/06</li>
+<li>更新: Hanaka Satoh(nichiden_28)</li>
+<li>更新日時: 2018/10/08</li>
 <li>実行に必要な知識・技能: Windows GUI開発、C#、WPF、Visual Studioの操作</li>
 <li>難易度: 3/練習・勉強が必要</li>
 <li>情報の必須度: 3/必要な場合がある</li>
@@ -403,7 +406,7 @@ UIのデザインについてもこの中に書けるが、たいへん長いの
 <div class="section" id="id6">
 <h3>編集方法について<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ウィンドウの見た目はXAMLのコードだけで自在に操れるが、VSではより便利に、実際の画面をプレビューしながらドラッグ&amp;ドロップで編集することもできる。</p>
-<div class="figure" id="id18">
+<div class="figure" id="id20">
 <img alt="Visual Studioの画面プレビュー編集" src="../_images/mainwindow-xaml.png" />
 <p class="caption"><span class="caption-text">Visual Studioの画面プレビュー編集</span></p>
 </div>
@@ -598,9 +601,11 @@ XAMLで<code class="docutils literal notranslate"><span class="pre">&lt;KeyBindi
 結局、<code class="docutils literal notranslate"><span class="pre">sender</span></code>は第二引数に人力で指定した。</p>
 <p><code class="docutils literal notranslate"><span class="pre">e.Parameter</span></code>というのは、仕様では「コマンドに固有の情報を渡す」とされていて、要は自由に使っていいようだ。
 キーボード操作によるものかどうか、コマンドの処理で判定するために“KeyDown”という文字列(勝手に決めた)を渡している。</p>
-<p>※28代でメモ欄を設置したことにより、キー操作による誤操作の可能性が高まったことと、皆結局マウスで操作していることからいったん<code class="docutils literal notranslate"><span class="pre">MainWindow.xaml</span></code>の<code class="docutils literal notranslate"><span class="pre">Keydown</span></code>イベントを削除し、キー操作でのコマンド実行を無効にした。
-#### コマンドで呼ばれる処理
-最後に、CommandBindingでコマンドと紐付けた関数について書く。
+<p>※28代でメモ欄を設置したことにより、キー操作による誤操作の可能性が高まったことと、皆結局マウスで操作していることからいったん<code class="docutils literal notranslate"><span class="pre">MainWindow.xaml</span></code>の<code class="docutils literal notranslate"><span class="pre">Keydown</span></code>イベントを削除し、キー操作でのコマンド実行を無効にした。</p>
+</div>
+<div class="section" id="id12">
+<h4>コマンドで呼ばれる処理<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>最後に、CommandBindingでコマンドと紐付けた関数について書く。
 日周を進めるボタンのものは以下のようになっている。</p>
 <div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">diurnalPlusButtonCommand_Executed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ExecutedRoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
@@ -651,12 +656,12 @@ XAMLで<code class="docutils literal notranslate"><span class="pre">&lt;KeyBindi
 バグの原因になっている可能性もあるので、後任の方は綺麗に書き直してやって頂きたい。</p>
 </div>
 </div>
-<div class="section" id="id12">
-<h3>シリアル通信<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id13">
+<h3>シリアル通信<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">MainWindow.xaml.cs</span></code>のうちシリアル通信に関する記述の大部分は、24の<code class="docutils literal notranslate"><span class="pre">Fujisawa</span></code>から受け継いでいる。
 この項では、通信を行うためのコードを読み、必要に応じて解説を加える。</p>
-<div class="section" id="id13">
-<h4>ポート一覧の取得<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="section" id="id14">
+<h4>ポート一覧の取得<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
 <span class="c1">/// シリアルポート名を取得し前回接続したものがあればそれを使用 ボーレートの設定</span>
 <span class="c1">/// &lt;/summary&gt;</span>
@@ -691,8 +696,8 @@ XAMLで<code class="docutils literal notranslate"><span class="pre">&lt;KeyBindi
 <p>foreach文の中で使用している<code class="docutils literal notranslate"><span class="pre">SerialPortItem</span></code>は自作クラスで、<code class="docutils literal notranslate"><span class="pre">ToString()</span></code>をオーバーライドしている。
 何の為のものかは理解していないので、興味があればソースコードを確認してほしい。</p>
 </div>
-<div class="section" id="id14">
-<h4>ポートへの接続<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="section" id="id15">
+<h4>ポートへの接続<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>接続ボタンがクリックされると、<code class="docutils literal notranslate"><span class="pre">ConnectButton_IsCheckedChanged()</span></code>が呼ばれる。
 その中身はこうだ。</p>
 <div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
@@ -768,13 +773,13 @@ XAMLで<code class="docutils literal notranslate"><span class="pre">&lt;KeyBindi
 <code class="docutils literal notranslate"><span class="pre">ConnectButton.Checked</span> <span class="pre">-=</span> <span class="pre">ConnectButton_IsCheckedChanged;</span></code>などとしておくことで、ポートへの接続を試行している間ボタンのクリックを無効化しているようだ。
 このコードを削除した状態でボタンを連打しても特に問題はなかったので効果のほどは分からないが、あっても害にはならないだろう。</p>
 </div>
-<div class="section" id="id15">
-<h4>ポート一覧の更新<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="section" id="id16">
+<h4>ポート一覧の更新<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p>ポート一覧のコンボボックスは、開くたびにシリアルポートを取得し直している。
 <code class="docutils literal notranslate"><span class="pre">portComboBox_DropDownOpened()</span></code>に処理が書かれているが、<code class="docutils literal notranslate"><span class="pre">Window_Loaded()</span></code>と同じようなことをしているだけなので省略する。</p>
 </div>
-<div class="section" id="id16">
-<h4>コマンド送信<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="section" id="id17">
+<h4>コマンド送信<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">emitCommand()</span></code>は、コマンド文字列を与えて実行すると接続しているポートに送信してくれる。
 <code class="docutils literal notranslate"><span class="pre">serialPort.IsOpen</span></code>がfalseの時は、警告とともにコマンド文字列をMessageBoxに表示する。</p>
 <div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="c1">/// &lt;summary&gt;</span>
@@ -801,36 +806,102 @@ XAMLで<code class="docutils literal notranslate"><span class="pre">&lt;KeyBindi
 </div>
 </div>
 </div>
-<div class="section" id="id17">
-<h3>公演モード(誤操作防止モード)<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id18">
+<h3>公演モード(誤操作防止モード)<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">checkBox2</span></code>は公演モードのON/OFFを管理している。
 公演モードは、日周を進める以外の機能を制限して誤操作を防ぐ為のものだ。
-ただ、これもかなり直前になって放り込んだため無理やりな実装になっている。</p>
-<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">checkBox2_Changed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MessageBoxResult</span><span class="p">();</span>
-    <span class="n">isPerfMode</span> <span class="p">=</span> <span class="p">(</span><span class="kt">bool</span><span class="p">)(((</span><span class="n">CheckBox</span><span class="p">)</span><span class="n">sender</span><span class="p">).</span><span class="n">IsChecked</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">isPerfMode</span><span class="p">)</span>
-    <span class="p">{</span>
-      <span class="n">result</span> <span class="p">=</span> <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;公演モードに切り替えます。\n日周を進める以外の動作はロックされます。よろしいですか？&quot;</span><span class="p">,</span> <span class="s">&quot;Changing Mode&quot;</span><span class="p">,</span> <span class="n">MessageBoxButton</span><span class="p">.</span><span class="n">YesNo</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-      <span class="n">result</span> <span class="p">=</span> <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;公演モードを解除します。\nよろしいですか？&quot;</span><span class="p">,</span> <span class="s">&quot;Changing Mode&quot;</span><span class="p">,</span> <span class="n">MessageBoxButton</span><span class="p">.</span><span class="n">YesNo</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="p">==</span> <span class="n">MessageBoxResult</span><span class="p">.</span><span class="n">No</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-    <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">keyList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">isEnabled</span><span class="p">.</span><span class="n">Keys</span><span class="p">);</span> <span class="c1">// isEnabled.Keysを直接見に行くとループで書き換えてるので実行時エラーになる</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">key</span> <span class="k">in</span> <span class="n">keyList</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="p">!=</span> <span class="s">&quot;diurnalMinusButton&quot;</span><span class="p">)</span> <span class="n">isEnabled</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="p">=</span> <span class="p">!</span><span class="n">isPerfMode</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">latitudeRadioButton1</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">latitudeRadioButton2</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">latitudeRadioButton3</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">latitudeRadioButton4</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="p">!</span><span class="n">isPerfMode</span><span class="p">;</span>
-<span class="p">}</span>
+一応28で目立ったバグは修正したつもりだが、何らかの不具合が確認された場合は適宜修正してもらいたい。</p>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">checkBox2_Checked</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MessageBoxResult</span><span class="p">();</span>
+            <span class="n">result</span> <span class="p">=</span> <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;公演モードに切り替えます。\n日周を進める以外の動作はロックされます。よろしいですか？&quot;</span><span class="p">,</span> <span class="s">&quot;Changing Mode&quot;</span><span class="p">,</span> <span class="n">MessageBoxButton</span><span class="p">.</span><span class="n">YesNo</span><span class="p">);</span>
+
+            <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="p">==</span> <span class="n">MessageBoxResult</span><span class="p">.</span><span class="n">No</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">checkBox2</span><span class="p">.</span><span class="n">IsChecked</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+                <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">isPerfMode</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">keyList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">isEnabled</span><span class="p">.</span><span class="n">Keys</span><span class="p">);</span> <span class="c1">// isEnabled.Keysを直接見に行くとループで書き換えてるので実行時エラーになる</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">key</span> <span class="k">in</span> <span class="n">keyList</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="p">!=</span> <span class="s">&quot;diurnalMinusButton&quot;</span><span class="p">)</span> <span class="n">isEnabled</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="p">=</span> <span class="p">!</span><span class="n">isPerfMode</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">latitudeRadioButton1</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">latitudeRadioButton2</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">latitudeRadioButton3</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">latitudeRadioButton4</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="p">!</span><span class="n">isPerfMode</span><span class="p">;</span>
+            <span class="n">notepadCombobox</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">Savebutton1</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="p">!</span><span class="n">isPerfMode</span><span class="p">;</span>
+            <span class="n">textBox1</span><span class="p">.</span><span class="n">Focusable</span> <span class="p">=</span> <span class="p">!</span><span class="n">isPerfMode</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">checkBox2_Unchecked</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MessageBoxResult</span><span class="p">();</span>
+            <span class="n">result</span> <span class="p">=</span> <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="s">&quot;公演モードを終了します。&quot;</span><span class="p">,</span> <span class="s">&quot;Finish PerfMode&quot;</span><span class="p">,</span> <span class="n">MessageBoxButton</span><span class="p">.</span><span class="n">OK</span><span class="p">);</span>
+
+            <span class="n">isPerfMode</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+            <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">keyList</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="n">isEnabled</span><span class="p">.</span><span class="n">Keys</span><span class="p">);</span> <span class="c1">// isEnabled.Keysを直接見に行くとループで書き換えてるので実行時エラーになる</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">key</span> <span class="k">in</span> <span class="n">keyList</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="p">!=</span> <span class="s">&quot;diurnalMinusButton&quot;</span><span class="p">)</span> <span class="n">isEnabled</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="p">=</span> <span class="p">!</span><span class="n">isPerfMode</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">latitudeRadioButton1</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">latitudeRadioButton2</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">latitudeRadioButton3</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">latitudeRadioButton4</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="p">!</span><span class="n">isPerfMode</span><span class="p">;</span>
+            <span class="n">notepadCombobox</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="n">Savebutton1</span><span class="p">.</span><span class="n">IsEnabled</span> <span class="p">=</span> <span class="p">!</span><span class="n">isPerfMode</span><span class="p">;</span>
+            <span class="n">textBox1</span><span class="p">.</span><span class="n">Focusable</span> <span class="p">=</span> <span class="p">!</span><span class="n">isPerfMode</span><span class="p">;</span>
+        <span class="p">}</span>
 </pre></div>
 </div>
 <p>他の関数等で公演モードかどうかいちいち判定する必要が出てきたので、<code class="docutils literal notranslate"><span class="pre">isPerfMode</span></code>というbool値に記録するようにした。
 たいへん紛らわしいが、<code class="docutils literal notranslate"><span class="pre">diurnalMinusButton</span></code>が「日周進める」ボタンである。
-実機で運用した際に、かごしいの実際の動きを合わせてラベルだけ交換したため逆になっている。</p>
+実機で運用した際に、かごしいの実際の動きを合わせてラベルだけ交換したため逆になっている。
+28でもかごしいに合わせ何度かラベル交換したので、29のかごしいの動きではそれぞれのボタンを押したときにどのような動きをするのかしっかりと確認し、変更してほしい。</p>
+</div>
+<div class="section" id="id19">
+<h3>メモ帳機能<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">notepadCombobox_DropDownOpened</span></code>は、メモ帳を読み込むときに使われる。コンボボックスを開いた時も閉じたときもこの処理が行われるようになっているが、</div>
+<div class="line">この仕様のせいで妙に重い等の不具合がもしあれば修正したほうがいいのかもしれない。</div>
+<div class="line">メモ帳に加えた変更の保存は、<code class="docutils literal notranslate"><span class="pre">Savebutton1_Click</span></code>の方で行っている。</div>
+</div>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">notepadCombobox_DropDownOpened</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">item</span> <span class="p">=</span> <span class="n">notepadCombobox</span><span class="p">.</span><span class="n">SelectedItem</span><span class="p">;</span>
+            <span class="n">notepadCombobox</span><span class="p">.</span><span class="n">SelectedIndex</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span><span class="p">;</span>
+            <span class="n">notepadCombobox</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+
+            <span class="kt">string</span><span class="p">[]</span> <span class="n">files</span> <span class="p">=</span> <span class="n">Directory</span><span class="p">.</span><span class="n">GetFiles</span><span class="p">(</span>
+                    <span class="s">@&quot;..\..\WorkInstructions&quot;</span><span class="p">,</span> <span class="s">&quot;*.txt&quot;</span><span class="p">,</span> <span class="n">SearchOption</span><span class="p">.</span><span class="n">AllDirectories</span><span class="p">);</span>
+            <span class="n">Array</span><span class="p">.</span><span class="n">Sort</span><span class="p">(</span><span class="n">files</span><span class="p">);</span>
+
+            <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">file</span> <span class="k">in</span> <span class="n">files</span><span class="p">)</span>
+                <span class="n">notepadCombobox</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">textblock1</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="n">GetFileName</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+                <span class="n">notepadCombobox</span><span class="p">.</span><span class="n">SelectedIndex</span> <span class="p">=</span> <span class="n">Array</span><span class="p">.</span><span class="n">IndexOf</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">item</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+                <span class="k">using</span> <span class="p">(</span><span class="n">FileStream</span> <span class="n">fs</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FileStream</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">ToString</span><span class="p">(),</span> <span class="n">FileMode</span><span class="p">.</span><span class="n">Open</span><span class="p">,</span> <span class="n">FileAccess</span><span class="p">.</span><span class="n">ReadWrite</span><span class="p">))</span>
+                <span class="p">{</span>
+                    <span class="k">using</span> <span class="p">(</span><span class="n">StreamReader</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StreamReader</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">GetEncoding</span><span class="p">(</span><span class="s">&quot;shift_jis&quot;</span><span class="p">),</span> <span class="k">true</span><span class="p">))</span>
+                    <span class="p">{</span>
+                        <span class="k">try</span>
+                        <span class="p">{</span>
+                            <span class="n">textBox1</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">sr</span><span class="p">.</span><span class="n">ReadToEnd</span><span class="p">();</span>
+                        <span class="p">}</span>
+                        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+                        <span class="p">{</span>
+                            <span class="n">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">構文は<a class="reference external" href="https://divakk.co.jp/aoyagi/csharp_tips_using.html">こちらのリンク</a>を見て書いた部分が大きい。
+読み込むファイルについては、<code class="docutils literal notranslate"><span class="pre">Directory.GetFiles</span></code>を使って<code class="docutils literal notranslate"><span class="pre">WorkInstructions</span></code>ディレクトリ内の.txtファイルを読み込むようにしている…のだが、</div>
+<div class="line">そのファイルのパスがそのままコンボボックスに表示されてしまうため見栄えが悪い。28日電の知識ではどうにもならなかったが、修正できる人がいれば修正してほしいところだ。</div>
+</div>
 </div>
 </div>
 <div class="section" id="nisshuidohencontroller-cs">

@@ -1,6 +1,7 @@
-# 日周緯度変(Ogoseの実装解説)※工事中
+# 日周緯度変(Ogoseの実装解説)
 - 書いた人: Kenichi Ito(nichiden_27)
-- 更新日時: 2017/03/06
+- 更新: Hanaka Satoh(nichiden_28)
+- 更新日時: 2018/10/08
 - 実行に必要な知識・技能: Windows GUI開発、C#、WPF、Visual Studioの操作
 - 難易度: 3/練習・勉強が必要
 - 情報の必須度: 3/必要な場合がある
@@ -390,6 +391,7 @@ private void Window_KeyDown(object sender, KeyEventArgs e)
 キーボード操作によるものかどうか、コマンドの処理で判定するために"KeyDown"という文字列(勝手に決めた)を渡している。
 
 ※28代でメモ欄を設置したことにより、キー操作による誤操作の可能性が高まったことと、皆結局マウスで操作していることからいったん`MainWindow.xaml`の`Keydown`イベントを削除し、キー操作でのコマンド実行を無効にした。
+
 #### コマンドで呼ばれる処理
 最後に、CommandBindingでコマンドと紐付けた関数について書く。
 日周を進めるボタンのものは以下のようになっている。
@@ -606,34 +608,97 @@ private void emitCommand(string cmd)
 ### 公演モード(誤操作防止モード)
 `checkBox2`は公演モードのON/OFFを管理している。
 公演モードは、日周を進める以外の機能を制限して誤操作を防ぐ為のものだ。
-ただ、これもかなり直前になって放り込んだため無理やりな実装になっている。
+一応28で目立ったバグは修正したつもりだが、何らかの不具合が確認された場合は適宜修正してもらいたい。
 
 ```c#
-private void checkBox2_Changed(object sender, RoutedEventArgs e)
-{
-    var result = new MessageBoxResult();
-    isPerfMode = (bool)(((CheckBox)sender).IsChecked);
-    if(isPerfMode)
-    {
-      result = MessageBox.Show("公演モードに切り替えます。\n日周を進める以外の動作はロックされます。よろしいですか？", "Changing Mode", MessageBoxButton.YesNo);
-    }
-    else
-    {
-      result = MessageBox.Show("公演モードを解除します。\nよろしいですか？", "Changing Mode", MessageBoxButton.YesNo);
-    }
-    if(result == MessageBoxResult.No) return;
-    List<string> keyList = new List<string>(isEnabled.Keys); // isEnabled.Keysを直接見に行くとループで書き換えてるので実行時エラーになる
-    foreach (string key in keyList)
-    {
-        if(key != "diurnalMinusButton") isEnabled[key] = !isPerfMode;
-    }
-    latitudeRadioButton1.IsEnabled = latitudeRadioButton2.IsEnabled = latitudeRadioButton3.IsEnabled = latitudeRadioButton4.IsEnabled = !isPerfMode;
-}
+private void checkBox2_Checked(object sender, RoutedEventArgs e)
+        {
+            var result = new MessageBoxResult();
+            result = MessageBox.Show("公演モードに切り替えます。\n日周を進める以外の動作はロックされます。よろしいですか？", "Changing Mode", MessageBoxButton.YesNo);
+            
+            if(result == MessageBoxResult.No)
+            {
+                checkBox2.IsChecked = false;
+                return;
+            }
+            isPerfMode = true;
+            List<string> keyList = new List<string>(isEnabled.Keys); // isEnabled.Keysを直接見に行くとループで書き換えてるので実行時エラーになる
+            foreach (string key in keyList)
+            {
+                if(key != "diurnalMinusButton") isEnabled[key] = !isPerfMode;
+            }
+            latitudeRadioButton1.IsEnabled = latitudeRadioButton2.IsEnabled = latitudeRadioButton3.IsEnabled = latitudeRadioButton4.IsEnabled = !isPerfMode;
+            notepadCombobox.IsEnabled = Savebutton1.IsEnabled = !isPerfMode;
+            textBox1.Focusable = !isPerfMode; 
+        }
+
+        private void checkBox2_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var result = new MessageBoxResult();
+            result = MessageBox.Show("公演モードを終了します。", "Finish PerfMode", MessageBoxButton.OK);
+
+            isPerfMode = false;
+            List<string> keyList = new List<string>(isEnabled.Keys); // isEnabled.Keysを直接見に行くとループで書き換えてるので実行時エラーになる
+            foreach (string key in keyList)
+            {
+                if (key != "diurnalMinusButton") isEnabled[key] = !isPerfMode;
+            }
+            latitudeRadioButton1.IsEnabled = latitudeRadioButton2.IsEnabled = latitudeRadioButton3.IsEnabled = latitudeRadioButton4.IsEnabled = !isPerfMode;
+            notepadCombobox.IsEnabled = Savebutton1.IsEnabled = !isPerfMode;
+            textBox1.Focusable = !isPerfMode; 
+        }
 ```
 
 他の関数等で公演モードかどうかいちいち判定する必要が出てきたので、`isPerfMode`というbool値に記録するようにした。
 たいへん紛らわしいが、`diurnalMinusButton`が「日周進める」ボタンである。
 実機で運用した際に、かごしいの実際の動きを合わせてラベルだけ交換したため逆になっている。
+28でもかごしいに合わせ何度かラベル交換したので、29のかごしいの動きではそれぞれのボタンを押したときにどのような動きをするのかしっかりと確認し、変更してほしい。
+
+### メモ帳機能
+`notepadCombobox_DropDownOpened`は、メモ帳を読み込むときに使われる。コンボボックスを開いた時も閉じたときもこの処理が行われるようになっているが、  
+この仕様のせいで妙に重い等の不具合がもしあれば修正したほうがいいのかもしれない。  
+メモ帳に加えた変更の保存は、`Savebutton1_Click`の方で行っている。
+
+```c#
+private void notepadCombobox_DropDownOpened(object sender, EventArgs e)
+        {
+            var item = notepadCombobox.SelectedItem;
+            notepadCombobox.SelectedIndex = -1;
+            notepadCombobox.Items.Clear();
+
+            string[] files = Directory.GetFiles(
+                    @"..\..\WorkInstructions", "*.txt", SearchOption.AllDirectories);
+            Array.Sort(files);
+
+            foreach (var file in files)
+                notepadCombobox.Items.Add(file);
+
+            if (item != null)
+            {
+                textblock1.Text = Path.GetFileName(item.ToString());
+                notepadCombobox.SelectedIndex = Array.IndexOf(files, item.ToString());
+                using (FileStream fs = new FileStream(item.ToString(), FileMode.Open, FileAccess.ReadWrite))
+                {
+                    using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("shift_jis"), true))
+                    {
+                        try
+                        {
+                            textBox1.Text = sr.ReadToEnd();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+
+                }
+            }
+        }
+```
+
+構文は[こちらのリンク](https://divakk.co.jp/aoyagi/csharp_tips_using.html)を見て書いた部分が大きい。
+読み込むファイルについては、`Directory.GetFiles`を使って`WorkInstructions`ディレクトリ内の.txtファイルを読み込むようにしている…のだが、  
+そのファイルのパスがそのままコンボボックスに表示されてしまうため見栄えが悪い。28日電の知識ではどうにもならなかったが、修正できる人がいれば修正してほしいところだ。
 
 ## NisshuidohenController.cs
 さいたまに送るコマンド文字列を生成するための`NisshuidohenController`クラスが実装されている。

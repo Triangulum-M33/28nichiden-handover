@@ -137,7 +137,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/wireless.html">無線制御</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/piscium.html">無線制御(PISCIUM)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wireless/acrab.html">無線制御(Acrab)</a></li>
@@ -226,7 +226,7 @@
 <ul class="simple">
 <li>書いた人: Kenichi Ito(nichiden_27)</li>
 <li>更新: Hanaka Satoh(nichiden_28)</li>
-<li>更新日時: 2018/08/26</li>
+<li>更新日時: 2018/10/08</li>
 <li>実行に必要な知識・技能: シリアル通信、C#</li>
 <li>タスクの重さ: 3/数週間</li>
 <li>タスクの必須度: 4/毎年やるべき</li>
@@ -275,6 +275,7 @@
 <div class="line-block">
 <div class="line">画面の右側には.txtファイルを表示する欄がある。あまり機会はないかもしれないが、Ogoseの画面上で編集して保存することも可能。新規作成はできない。</div>
 <div class="line">表示する.txtファイルは<code class="docutils literal notranslate"><span class="pre">Ogose/Ogose/WorkInstructions</span></code>ディレクトリ内のものなので、.txtファイルの追加・削除・変更等はここから行えばよい。</div>
+<div class="line">この.txtファイルはOgose操作時の指示書として使うことがほとんどだと思うので、本番前に忘れずに準備しておこう。</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Ogose</span></code>のコードの解説は、たいへん長いので別記事とする。</p>
 <p>-&gt; <a class="reference external" href="pc-software-code.html">Ogoseの実装解説</a></p>
@@ -391,8 +392,12 @@ ChromeとJavaScriptをベースにデスクトップアプリを実現する<cod
 </div>
 <div class="section" id="id12">
 <h3>メモ帳欄の改良<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>28でメモ帳の表示機能をつけてみたはいいものの、メモ帳を開くコンボボックスの表示がゴチャゴチャしてしまう点をどうしても解決できなかった。
-また、メモ帳のレイアウトも、現状は取り敢えず右に置いてみただけとなっているので、さらに使いやすいレイアウト案があったら改良していってほしい。</p>
+<div class="line-block">
+<div class="line">28でメモ帳の表示機能をつけてみたはいいものの、メモ帳を開くコンボボックスの表示がゴチャゴチャしてしまう点をどうしても解決できなかった。
+また、メモ帳のレイアウトも、現状は取り敢えず右に置いてみただけとなっているので、さらに使いやすいレイアウト案があったら改良していってほしい。
+また、28でOgoseを実際に使った人からは、メモ欄に原稿の抜粋ではなく、原稿を全部表示して、操作があるところだけ強調or改行を挟んではどうかという意見があった。</div>
+<div class="line">表示に使っているのがtxtファイルである以上、強調のためにハイライトを入れるのは難しいが、改行を挟むことや強調のための記号等を入れることくらいならささっとできるので検討してみてもいいかと思う。</div>
+</div>
 </div>
 </div>
 </div>

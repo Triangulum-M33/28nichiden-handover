@@ -40,7 +40,7 @@
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
         <link rel="next" title="無線制御(PISCIUM)" href="piscium.html"/>
-        <link rel="prev" title="日周緯度変(Ogoseの実装解説)※工事中" href="../nissyu-idohen/pc-software-code.html"/> 
+        <link rel="prev" title="日周緯度変(Ogoseの実装解説)" href="../nissyu-idohen/pc-software-code.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -115,7 +115,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/ikebukuro.html">日周緯度変(Ikebukuro)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-history.html">日周緯度変(外部制御アプリの歴史)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)※工事中</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">概要</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">沿革</a><ul>
@@ -126,14 +126,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#id11">25主投</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id13">26主投</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id15">27主投</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">28主投</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id17">無線通信の要件</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id18">どの投影機を制御するか</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">送信側と受信側の同期</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">冗長化</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">電流管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">法令遵守</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">無線通信の要件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id20">どの投影機を制御するか</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">送信側と受信側の同期</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">冗長化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">電流管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">法令遵守</a></li>
 </ul>
 </li>
 </ul>
@@ -224,7 +225,8 @@
 <h1>無線制御<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <ul class="simple">
 <li>書いた人：Kenichi Ito(nichiden_27)</li>
-<li>更新日時：2017/3/20</li>
+<li>更新：Kenta Suda(nichiden_28)</li>
+<li>更新日時：2018/10/4</li>
 <li>実行に必要な知識・技能：電子回路、マイコン</li>
 <li>タスクの重さ: 5/準備だけで数ヶ月</li>
 <li>タスクの必須度：4/毎年やるべき</li>
@@ -258,7 +260,7 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
 <p>南北の受信機の区別にも工夫があった。
 ジャンパピンの位置で、上位・下位それぞれ8bitのどちらを読み取るか切り替えられる。
 これにより、送信側からは南北まとめて信号を送り、受信側で南北を区別する仕組みだ。</p>
-<div class="figure" id="id23">
+<div class="figure" id="id25">
 <img alt="22星座絵受信機に貼られていたラベル" src="../_images/wireless-22.jpg" />
 <p class="caption"><span class="caption-text">22星座絵受信機に貼られていたラベル</span></p>
 </div>
@@ -277,7 +279,7 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
 しかし、回路の不備で正しい応答が返らず、星座絵の操作はできたもののフィードバックは実現しなかった。</p>
 <p>受信機の回路には22同様AVRマイコンが使われていた。
 さらに、過電圧保護回路やトランジスタアレイでのポート制御など、以降の星座絵受信機の基本となる設計がこの時期に生み出されたと言える。</p>
-<div class="figure" id="id24">
+<div class="figure" id="id26">
 <img alt="23星座絵受信機回路図" src="../_images/wireless-23-circuit.png" />
 <p class="caption"><span class="caption-text">23星座絵受信機回路図</span></p>
 </div>
@@ -288,7 +290,7 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
 <p>また、PC操作用のソフト<code class="docutils literal notranslate"><span class="pre">Constellation</span> <span class="pre">Picture</span> <span class="pre">Transmitter</span></code>が開発された。
 黒基調のUIが採用され、「黄道十二星座」「夏の大三角」といった星座グループの一括オンオフにも対応している。
 ただ、受信側からのフィードバックで表示を修正する機能はうまく動作しなかった模様である。</p>
-<div class="figure" id="id25">
+<div class="figure" id="id27">
 <img alt="Constellation Picture Transmitterの画面" src="../_images/constellation-picture-transmitter.png" />
 <p class="caption"><span class="caption-text">Constellation Picture Transmitterの画面</span></p>
 </div>
@@ -298,7 +300,7 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
 <p>25日電はPC側アプリケーションの改良を進め、<code class="docutils literal notranslate"><span class="pre">Funabashi</span></code>を開発した。
 しかし、不具合により本番で動かず、24の<code class="docutils literal notranslate"><span class="pre">Constellation</span> <span class="pre">Picture</span> <span class="pre">Transmitter</span></code>に切り替えたという。</p>
 <p><code class="docutils literal notranslate"><span class="pre">Fuinabashi</span></code>では24と同じように星座一覧から選ぶモードと、ソフトやライブ解説の指示に沿ってボタンが並ぶモードが用意された。</p>
-<div class="figure" id="id26">
+<div class="figure" id="id28">
 <img alt="Funabashiのソフト指示画面" src="../_images/funabashi.png" />
 <p class="caption"><span class="caption-text">Funabashiのソフト指示画面</span></p>
 </div>
@@ -317,7 +319,7 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
 ソフトの要望により、こうとうの無線によるオンオフにも挑戦した。</p>
 <p>最終的に、<code class="docutils literal notranslate"><span class="pre">XBee</span></code>からWi-Fi規格のモジュールに変更し、全主投影機をオンオフする能力を備えた<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>が新たな受信機として登場した。</p>
 <p>また、Wi-Fi採用により送信側はPC単体で済むようになり、操作用Webアプリ<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>が作られた。</p>
-<div class="figure" id="id27">
+<div class="figure" id="id29">
 <img alt="Acrabのメイン画面" src="../_images/acrab-main.png" />
 <p class="caption"><span class="caption-text">Acrabのメイン画面</span></p>
 </div>
@@ -327,27 +329,33 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
 23から続いていた受信機からのフィードバック機能を初めて実用化したと言えるだろう。</p>
 <p>また、「公演用」画面においてソフトの指示をファイルから読み込み、進む/戻るボタンで簡単に操作できるようにした。
 本番中の負担が大きく軽減され、星座絵のメンバーにも操作を手伝って頂くことができた。</p>
-<div class="figure" id="id28">
+<div class="figure" id="id30">
 <img alt="Acrabの公演用画面" src="../_images/acrab-scenario.png" />
 <p class="caption"><span class="caption-text">Acrabの公演用画面</span></p>
 </div>
-<p>実装など詳細はPiscium・Acrabの個別記事に掲載する。</p>
-</div>
+<p>実装など詳細は<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>・<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>の個別記事に掲載する。</p>
 </div>
 <div class="section" id="id17">
-<h2>無線通信の要件<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<span id="id18"></span><h3>28主投<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>28では基本的に27の星座絵受信機<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>とWebアプリ<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>を使いまわした。
+27の<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>は電源が不安定であるという問題があったため、そこを改善した。
+27で全投影機の制御が実装されていたが、実際には電源が突入電流に耐えられず機能しなかった。
+28で電源を改善したため、調整中には実際に全投影機の制御が可能であることが確認できた。
+しかし、本番では問題が発生して星座絵以外の制御は使用しなかった。(詳しくは個別の記事で書く。)</p>
+</div>
+</div>
+<div class="section" id="id19">
+<h2>無線通信の要件<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>無線通信を実現する技術は、プラネの歴史を見ればわかるように様々である。
 しかし、手法によらず達成しておくべき機能がいくつかある。</p>
 <p>27の<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>や<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>固有の反省点については個別記事内で触れる。</p>
-<div class="section" id="id18">
-<h3>どの投影機を制御するか<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id20">
+<h3>どの投影機を制御するか<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>無線制御装置は、元より星座絵を遠隔で点灯させるために始まった。
-しかし27では、その対象を全投影機に広げた。</p>
+しかし27でその対象を全投影機に広げた。</p>
 <p>ソフトの「星空が急に現れる」という演出の都合上、こうとうが確実に消える必要があったための措置である。
 ところが本番での検証の結果、こうとうはあおとうで確実に搔き消え、しるとうのみの状態でも2等星が見えるか見えないかという状態だった。
-こうとうが回路の不安定要素だったこともあり、オンオフは結局不要との結論に至ったのである。</p>
-<p>むしろ、本番以上の時間を占める投影機調整で、主投が常時点灯せず、無線から一々操作が必要なのは日電にも各投影機にも大変なストレスであった。
-調整時の負担を考えれば、こうとうとぎんとうを無線で操作できる仕様にはデメリットの方が大きいようだ。</p>
+そのため、実際はこうとうのONOFF制御はいらなかったかもしれない。</p>
 <p>一方で、あおとうの全点灯時にもいっとうだけは見えていた。
 ドーム内が「昼間」の状態でも一等星の位置が分かるのは日周の位置合わせに便利だったが、昼間に星が見えるのは本来正しくない。</p>
 <p>星空を再現するのであれば、<strong>夕日が沈むのに合わせて一等星を少しずつ点灯させるのがベストだろう。</strong>
@@ -355,8 +363,8 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
 ソフトや他の投影機と一度話し合っておいてほしい。</p>
 <p>※とはいえ、いっとうと電源の間には既に「またたき回路」が挟まっている。またたき機能と無線機能を兼ね備えた新たな回路を作れば一等星を個別に操れるかもしれない。</p>
 </div>
-<div class="section" id="id19">
-<h3>送信側と受信側の同期<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id21">
+<h3>送信側と受信側の同期<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>エアコンの赤外線リモコンを操作していて、障害物などで信号が届かなかった経験があるだろう。
 こうした場合、リモコンの表示は「オン」なのに実際はオフ、といった食い違いが起こる。
 ここからエアコンを起動するには、ボタンをさらに数回押してやらねばならない。</p>
@@ -367,8 +375,8 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
 <p>この手法にもデメリットはあり、送受信に時間がかかるような環境ではボタンを押してから表示が変化するまでにラグが発生してしまう。
 現在使われるような高性能のモジュールではほぼ問題はなさそうだが、遅延が無視できない対策が必要だ。</p>
 </div>
-<div class="section" id="id20">
-<h3>冗長化<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id22">
+<h3>冗長化<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>無線制御装置が本番で突然故障し、予備もないとしよう。
 その瞬間から、星座絵は一つも点灯できず、星座絵メンバーの努力が水の泡となる。
 このような恐ろしい事態を避けるために、二重・三重の対策が必要だ。</p>
@@ -383,8 +391,8 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
 無線通信が絶たれても、受信機のところまで行って手で操作すれば投影機が点灯するというものだ。
 回路が余計に複雑になるので27では見送ったが、検討の余地はありそうだ。</p>
 </div>
-<div class="section" id="id21">
-<h3>電流管理<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id23">
+<h3>電流管理<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>投影機の光源は旧来の電球からLEDにシフトしつつある。
 なかでも、強力な光源を必要とする主投影機が昨今相次いで採用しているのが、「パワーLED」だ。
 パワーLEDは、一個で1Wや3Wといった大電力を消費する。
@@ -394,8 +402,8 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
 27の<code class="docutils literal notranslate"><span class="pre">Piscium</span></code>で、あえてトランジスタアレイを使わずFETを採用したのも、万一問題が起きても故障が高価な部品にまで及ばないようにするためだ。</p>
 <p>すぐに目に見える故障が起きないとしても、大電流が流れる回路であることを意識して、アースの確保や導線の太さの選定などに気をつけてほしい。</p>
 </div>
-<div class="section" id="id22">
-<h3>法令遵守<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id24">
+<h3>法令遵守<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>今や、電波は我々の文明にとって欠かせない資源である。
 わが国では、その利用について「電波法」で定めている。</p>
 <p>無線局は誰でも勝手に設置して良いものではなく、原則として免許を受けねばならない。
@@ -420,7 +428,7 @@ Solutions社の<code class="docutils literal notranslate"><span class="pre">AM-R
         <a href="piscium.html" class="btn btn-neutral float-right" title="無線制御(PISCIUM)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../nissyu-idohen/pc-software-code.html" class="btn btn-neutral" title="日周緯度変(Ogoseの実装解説)※工事中" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../nissyu-idohen/pc-software-code.html" class="btn btn-neutral" title="日周緯度変(Ogoseの実装解説)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
