@@ -10,10 +10,12 @@
    :maxdepth: 1
    :caption: 最近更新した記事
 
-   haisen
-   hojotou
-   protect
    twinkle
+   nissyu-idohen/pc-software
+   nissyu-idohen/pc-software-code
+   wireless/piscium
+   wireless/wireless
+   protect
 
 .. toctree::
    :maxdepth: 2

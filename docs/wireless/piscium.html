@@ -39,8 +39,8 @@
               href="../genindex.html"/>
         <link rel="search" title="検索" href="../search.html"/>
     <link rel="top" title="Nichiden 0.9 RC ドキュメント" href="../index.html"/>
-        <link rel="next" title="無線制御(Acrab)" href="acrab.html"/>
-        <link rel="prev" title="無線制御" href="wireless.html"/> 
+        <link rel="next" title="無線制御" href="wireless.html"/>
+        <link rel="prev" title="日周緯度変(Ogoseの実装解説)" href="../nissyu-idohen/pc-software-code.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -100,11 +100,29 @@
             
             
                 <p class="caption"><span class="caption-text">最近更新した記事</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../haisen.html">配線</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hojotou.html">補助投影機との連携</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protect.html">過電圧保護回路</a></li>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../twinkle.html">またたき回路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software.html">日周緯度変(外部制御アプリ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nissyu-idohen/pc-software-code.html">日周緯度変(Ogoseの実装解説)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">無線制御(PISCIUM)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">使い方</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">使用上の注意点</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">技術仕様</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">回路</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#esp8266">ESP8266の開発ボード周りのソフトウェア</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">使い方</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pic">PICマイコンのソフトウェア</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wireless.html">無線制御</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protect.html">過電圧保護回路</a></li>
 </ul>
 <p class="caption"><span class="caption-text">目次</span></p>
 <ul class="current">
@@ -265,32 +283,29 @@ Images Utility Module)です！！
 また、<strong>2つ以上の電源から同時に給電しない</strong>ようにしてください。</p>
 <div class="section" id="id3">
 <h3>使用上の注意点<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<ul>
-<li><p class="first">電源がついた状態での各投影機の抜き差しは故障の原因になるのでやめてください。</p>
-</li>
-<li><p class="first">ATX電源からACアダプターに変えたため電源が落ちることはなくなりましたが、万が一電源が落ちて再起動した場合、Wi-Fiモジュールも再起動します。
-Wi-Fiモジュールが再起動した後、設定を送り直すため<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>のページを再読み込みする必要あります(これは欠陥なので改善されるべき)。</p>
-</li>
-<li><p class="first">かごしいのグラウンドが弱いため、稼働している間に全体が帯電してしまうようです。
+<ul class="simple">
+<li>電源がついた状態での各投影機の抜き差しは故障の原因になるのでやめてください。</li>
+<li>ATX電源からACアダプターに変えたため電源が落ちることはなくなりましたが、万が一電源が落ちて再起動した場合、Wi-Fiモジュールも再起動します。
+Wi-Fiモジュールが再起動した後、設定を送り直すため<code class="docutils literal notranslate"><span class="pre">Acrab</span></code>のページを再読み込みする必要あります(これは欠陥なので改善されるべき)。</li>
+<li>かごしいのグラウンドが弱いため、稼働している間に全体が帯電してしまうようです。
 27代の公演でも、公演中に火花が飛び散り、空中放電して一瞬ブラックアウトしたことがあります。
 <strong>かごしいのアース接続を何とかする必要があります。</strong>
 そうでないと最悪の場合、火花放電により出火します。
 かごしい本体とは導通していることは確認しているので、かごしいか、それと導通しているごきぶりをアースしてください。
 アースするときは、より線ではなく、単芯の太めの導線を使用し、体育館の柱など地面に突き刺さっている大きい金属に接続してください。
-アースしただけで治るのかはよくわかりませんが、アースしてないのはまずいです。</p>
+アースしただけで治るのかはよくわかりませんが、アースしてないのはまずいです。</li>
+</ul>
 <p>28代ではその指摘を受けて、赤黒の太い線(より線ではあるが)を使って、片側はごきぶりの下の方にあるボルトに挟み、もう片側をバレーボールの支柱を立てる土台に固定してアースをしました。
 そのおかげか28代では火花が散ることはありませんでした。
 ただし、かごしいを触ると静電気のようなものを感じることは何度もあったので、帯電はしていたようです。
 27代よりも頻繁に(毎公演の前に)調整を行っていたので、アースのおかげではなく、人間を通じて放電していただけなのかもしれないです。</p>
-</li>
-<li><p class="first">また、グラウンドが弱く、サージに耐えられないので、こうとうの制御は27代の時点では不可能（電源が落ちてしまう）でしたが、28代で電源を変えたのと、こうとうboxに突入電流防止用のサーミスタをつけたことで、こうとうの制御が可能になりました。
+<ul class="simple">
+<li>また、グラウンドが弱く、サージに耐えられないので、こうとうの制御は27代の時点では不可能（電源が落ちてしまう）でしたが、28代で電源を変えたのと、こうとうboxに突入電流防止用のサーミスタをつけたことで、こうとうの制御が可能になりました。
 しかし、本番直前にPICのこうとうの制御をしているピンが壊れてしまい、本番はこうとうはONOFFなしのポートに接続し、常時つけっぱなしにしていました。
 単純に経年劣化の可能性もありますが、こうとうをONOFFする際のサージにPICが耐えられなかった可能性があります。
-実際、こうとうはあおとうやしるとうの光で見えなくなるので、公演の際にONOFFをいじる手間を考えると常時ONにするという選択肢もあるでしょう。</p>
-</li>
-<li><p class="first">いっとうの制御は可能ですが、いっとうボックスのまたたき回路の起動に時間がかかり、点灯までにタイムラグが生じるので、現時点では行える状況にありません。
-またたき回路のプログラムを変更して、すぐに起動できるようにする、またはまたたき回路に無線の機能をつければいっとうの制御もできるようになるでしょう。</p>
-</li>
+実際、こうとうはあおとうやしるとうの光で見えなくなるので、公演の際にONOFFをいじる手間を考えると常時ONにするという選択肢もあるでしょう。</li>
+<li>いっとうの制御は可能ですが、いっとうボックスのまたたき回路の起動に時間がかかり、点灯までにタイムラグが生じるので、現時点では行える状況にありません。
+またたき回路のプログラムを変更して、すぐに起動できるようにする、またはまたたき回路に無線の機能をつければいっとうの制御もできるようになるでしょう。</li>
 </ul>
 </div>
 </div>
@@ -302,7 +317,7 @@ Wi-Fiモジュールが再起動した後、設定を送り直すため<code cla
 <p>主な部品としては、Wi-Fiの制御を行う<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>というSoC(System on
 Chip:
 マイコン、通信制御回路などが一つのチップの中に収まっているもの）の開発ボード、<code class="docutils literal notranslate"><span class="pre">ESP8266</span></code>からのシリアル通信を受信して各DCジャックを制御するPICマイコン、DCジャックの電流をスイッチングするFETから構成されています。
-<img alt="回路図" src="wireless\_media/PISCIUM_circuit28.jpg" /></p>
+<img alt="回路図" src="../_images/PISCIUM_circuit28.jpg" /></p>
 <p>こうとう以外のポートには、DCジャックの付け根に2.2Ωの抵抗(定格1W)が入っています。
 これは、27代において、各投影機をONにした際の突入電流によって電源が落ちるということが何度も起きたため、その突入電流を制限するために28代出つけました。
 これで理論上突入電流は最大でも(12/2.2=)5.5Aまでしか流れないです。
@@ -382,10 +397,10 @@ Xのプロジェクトファイルが引き継ぎ資料の<code class="docutils 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="acrab.html" class="btn btn-neutral float-right" title="無線制御(Acrab)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="wireless.html" class="btn btn-neutral float-right" title="無線制御" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="wireless.html" class="btn btn-neutral" title="無線制御" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../nissyu-idohen/pc-software-code.html" class="btn btn-neutral" title="日周緯度変(Ogoseの実装解説)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
